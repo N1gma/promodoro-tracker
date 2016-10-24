@@ -1,18 +1,228 @@
 body{
     background-color: #2a3f50;
+    width: 100%;
+}
+.wrapper{
+    max-width: 1366px;
+}
+.main-head{
+    overflow: hidden;
 }
 
-header{
-
-}
 .interface-container{
+    margin: 56px 6.8% 17px 6.8%;
     float: right;
+    width: 100%;
+    text-align: right;
+    font-size: 18px;
 }
+
 .interface-container button{
     font-family: icomoon;
-    color: #8da5b8;
     cursor: pointer;
+    margin-left: 2.4%;
 }
-.interface-container button:hover{
+
+.main-head-title{
+    clear: both;
+    font: 28px "Roboto", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
     color: white;
 }
+
+.sub-title{
+    font: 20px "Roboto", sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #8198ab;
+    margin-top: 17px;
+    margin-bottom: 81px;
+    position: relative;
+}
+
+.interface-container-2{
+    position: absolute;
+    right: 6.7%;
+    color: white;
+    top: 0;
+}
+
+.interface-container-2 button{
+    color: #8da5b8;
+    cursor: pointer;
+    font: 15px "Roboto", sans-serif;
+}
+
+
+.main-content{
+    padding: 0 20.1%;
+    padding-right: 12.8%;
+    color: white;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main-content i{
+    margin-right: 2.4%;
+}
+.select-field{
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #8da5b8;
+    text-align: center;
+    padding-bottom: 4px;
+    width: 40%;
+}
+.minus-count{
+
+}
+.option{
+    width: 38.8%;
+    margin-right: 10.7%;
+    display: inline-block;
+    margin-bottom: 4.5%;
+    box-sizing: border-box;
+
+}
+.option label{
+    position: relative;
+    width: 59%;
+}
+.minus-count{
+    position: absolute;
+    left: 3%;
+    color: #8da5b8;
+    font-size: 11px;
+    top: 0;
+    font-family: icomoon;
+}
+
+.plus-count{
+    position: absolute;
+    right: 1%;
+    color: #8da5b8;
+    font-family: icomoon;
+    font-size: 11px;
+    top: 0;
+}
+
+.plus-count:hover{
+    color: white;
+}
+.minus-count:hover{
+    color: white;
+}
+.minus-count:hover + input, .plus-count:hover ~ input {
+    border-color: white;
+}
+.opt-details{
+    color: #8198ab;
+    margin-top: 12px;
+    margin-left: 9.6%;
+}
+.opt-title{
+    display: inline-block;
+    width: 40%;
+}
+
+.graph h3{
+    font: 20px Ptsans, sans-serif;
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 9.2%;
+}
+.button-holder{
+    width: 21.2%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+.button-1{
+    color: white;
+    width: 44%;
+    padding: 12px 0;
+}
+
+.button-2{
+    color: white;
+    width: 44%;
+    padding: 12px 0;
+}
+
+/*settings-2*/
+
+.categories-choose-wrap{
+    width: 20.8%;
+    color: #5b7284;
+    margin: 0 auto;
+    font: 16px "Roboto", sans-serif;
+    margin-bottom: 7%;
+}
+
+.categories-choose-list{
+    margin-top: -4%;
+    padding-left: 14%;
+}
+
+.categories-choose-list li {
+    margin-bottom: 14%;
+    border-bottom: 1px solid #5b7284;
+    padding-bottom: 6px;
+    position: relative;
+    /* padding-left: 14%; */
+}
+.categories-choose-list input{
+    display: none;
+}
+.label1{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    left: -17%;
+    background: url(../img/ico-sprite.png) no-repeat 0 -19px;
+}
+
+.label2{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    left: -17%;
+    background: url(../img/ico-sprite.png) no-repeat -18px -19px;
+}
+.label3{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    left: -17%;
+    background: url(../img/ico-sprite.png) no-repeat -36px -19px;
+}
+.label4{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    left: -17%;
+    background: url(../img/ico-sprite.png) no-repeat -54px -19px;
+}
+.label5{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    left: -17%;
+    background: url(../img/ico-sprite.png) no-repeat -72px -19px;
+}
+
+#work:checked ~ .label1{
+    background-position: 0 0;
+}
+
+.categories-choose-list li:hover{
+    border-color: white;
+    color: white;
+}
+

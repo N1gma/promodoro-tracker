@@ -1,0 +1,30 @@
+.button-blue{
+    background-color: #59ABE3;
+}
+.button-blue:hover,.button-blue:focus{
+    background-color: #368BC5;
+}
+.button-blue:active{
+    background-color: #82C7E0;
+}
+
+.button-green{
+    background-color: #1ABC9C;
+}
+.button-green:hover,.button-green:focus{
+    background-color: #16A085;
+}
+.button-green:active{
+    background-color: #62D3BD;
+}
+
+.ico-text-button{
+    color: #8da5b8;
+}
+.ico-text-button:hover{
+    color: white;
+
+}
+.ico-text-button:active,.ico-text-button:active{
+    color: #59ABE3;
+}

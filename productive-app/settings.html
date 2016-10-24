@@ -2,19 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Settings</title>
+    <script src="https://use.fontawesome.com/c5ceb228c0.js"></script>
     <link rel="stylesheet" type="text/css" href="css/settings.css">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/effects.css">
+
 </head>
 <body>
-<header>
-    <div class="interface-container">
-        <button>&#xe908</button>
-        <button>&#xe90b</button>
-        <button>&#xe90c</button>
-    </div>
-</header>
+<div class="wrapper">
+    <header class="main-head">
+        <div class="interface-container">
+            <button class="ico-text-button">&#xe90c</button>
+            <button class="ico-text-button">&#xe90b</button>
+            <button class="ico-text-button">&#xe908</button>
+        </div>
+        <h2 class="main-head-title">Settings</h2>
+        <div class="sub-title">Pomodoros settings<div class="interface-container-2">
+            <button class="ico-text-button">Pomodoros </button> |
+            <button class="ico-text-button">Categories</button>
+        </div></div>
+    </header>
+    <main class="main-content">
+        <div class="option">
+            <i style="color: #ffb200" class="fa fa-circle" aria-hidden="true"></i>
+            <p class="opt-title">WORK TIME</p>
+            <label>
+                <span class="plus-count" >&#xe900</span>
+                <span class="minus-count" >&#xe911</span>
+                <input class="select-field" type="text" value="25 min">
+            </label>
+            <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+        </div>
+        <div class="option">
+            <i style="color: #00d4d9" class="fa fa-circle" aria-hidden="true"></i>
+            <p class="opt-title">WORK ITERATION</p>
+            <label>
+                <span class="plus-count" >&#xe900</span>
+                <span class="minus-count" >&#xe911</span>
+                <input class="select-field" type="text" value="5">
+            </label>
+            <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+        </div>
+        <div class="option">
+            <i style="color: #59abe3" class="fa fa-circle" aria-hidden="true"></i>
+            <p class="opt-title">SHORT BREAK</p>
+            <label>
+                <span class="plus-count" >&#xe900</span>
+                <span class="minus-count" >&#xe911</span>
+                <input class="select-field" type="text" value="5 min">
+            </label>
+            <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+        </div>
+        <div class="option">
+            <i style="color: #59abe3" class="fa fa-circle" aria-hidden="true"></i>
+            <p class="opt-title">LONG BREAK</p>
+            <label>
+                <span class="plus-count" >&#xe900</span>
+                <span class="minus-count" >&#xe911</span>
+                <input class="select-field" type="text" value="45 min">
+            </label>
+            <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+        </div>
+    </main>
+    <section class="graph">
+        <h3>Your cycle</h3>
+        <div class="button-holder">
+            <button class="button-1 button-blue">Back</button>
+            <button class="button-2 button-green">Save</button>
+        </div>
+    </section>
+</div>
 </body>
 </html>
