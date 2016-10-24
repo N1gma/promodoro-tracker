@@ -1,0 +1,18 @@
+body{
+    background-color: #2a3f50;
+}
+
+header{
+
+}
+.interface-container{
+    float: right;
+}
+.interface-container button{
+    font-family: icomoon;
+    color: #8da5b8;
+    cursor: pointer;
+}
+.interface-container button:hover{
+    color: white;
+}
