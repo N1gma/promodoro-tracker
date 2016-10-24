@@ -12,12 +12,12 @@ body{
 .interface-container{
     margin: 56px 6.8% 17px 6.8%;
     float: right;
-    width: 100%;
+    width: 87%;
     text-align: right;
     font-size: 18px;
 }
 
-.interface-container button{
+.interface-container .ico-text-button{
     font-family: icomoon;
     cursor: pointer;
     margin-left: 2.4%;
@@ -49,7 +49,7 @@ body{
     top: 0;
 }
 
-.interface-container-2 button{
+.interface-container-2 .ico-text-button{
     color: #8da5b8;
     cursor: pointer;
     font: 15px "Roboto", sans-serif;
@@ -180,6 +180,7 @@ body{
 .categories-choose-list input{
     display: none;
 }
+
 .label1{
     width: 19px;
     height: 19px;
@@ -217,8 +218,20 @@ body{
     background: url(../img/ico-sprite.png) no-repeat -72px -19px;
 }
 
-#work:checked ~ .label1{
+input:checked ~ .label1{
     background-position: 0 0;
+}
+input:checked ~ .label2{
+    background-position: -18px 0;
+}
+input:checked ~ .label3{
+    background-position: -36px 0;
+}
+input:checked ~ .label4{
+    background-position: -54px 0;
+}
+input:checked ~ .label5{
+    background-position: -72px 0;
 }
 
 .categories-choose-list li:hover{
