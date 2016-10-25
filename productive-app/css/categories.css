@@ -1,0 +1,25 @@
+
+.work .category, .high .urgency {
+    background-color: #ffb200;
+}
+
+.education .category{
+    background-color: #00d4d9;
+}
+.sport .category{
+    background-color: #b470d0;
+}
+.hobby .category,.urgent .urgency{
+    background-color: #e16c65;
+}
+.other .category{
+    background-color: #59abe3;
+}
+
+.middle .urgency{
+    background-color: #fddc43;
+}
+
+.low .urgency{
+    background-color: #1abc9c;
+}
