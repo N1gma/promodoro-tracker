@@ -4,51 +4,58 @@
     <meta charset="UTF-8">
     <title>task-list</title>
     <script src="https://use.fontawesome.com/c5ceb228c0.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/task-list.css">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/effects.css">
     <link rel="stylesheet" type="text/css" href="css/categories.css">
+    <link rel="stylesheet" type="text/css" href="css/task-list.css">
+    <link type="import" href="templates/templates.html">
 </head>
 <body>
-<template id="interface-control-trash-button">
-    <button class="ico-text-button">&#xe912</button>
-</template>
 <div class="wrapper">
     <header class="main-head">
         <div class="interface-container">
-            <button class="ico-text-button">&#xe912</button>
+            <button class="ico-text-button">&#xe900</button>
+            <button class="ico-text-button">&#xe912<span class="trash-counter"></span></button>
             <button class="ico-text-button">&#xe90c</button>
             <button class="ico-text-button">&#xe90b</button>
             <button class="ico-text-button">&#xe908</button>
         </div>
-        <h2 class="main-head-title">Daily Task List +</h2>
-        <div class="sub-title">
-            <div class="interface-container-2">
-                <button class="ico-text-button">To Do </button> |
-                <button class="ico-text-button">Done</button>
-            </div>
-        </div>
     </header>
+    <h2 class="main-head-title">Daily Task List +</h2>
+    <div class="sub-title">
+        <div class="interface-container-2">
+            <button class="ico-text-button">To Do </button> |
+            <button class="ico-text-button">Done</button>
+        </div>
+    </div>
     <ul class="today-list">
-        <li class="work urgent">
-            <div class="category"></div>
+        <li class="work high done">
+            <div class="category">&#xe912</div>
+            <div class="border-category"></div>
             <div class="date">TODAY</div>
             <section class="task-info">
-                <h2>Lorem ipsum sit amet</h2>
+                <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                <button class="edit-task">&#xe905</button>
+                <div class="task-buttons-container">
+                    <button class="drag-task">&#xe904</button>
+                    <button class="edit-task">&#xe905</button>
+                </div>
             </section>
             <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
         </li>
-        <li class="sport low">
-            <div class="category"></div>
+        <li class="education urgent trash">
+            <div class="category">&#xe912</div>
+            <div class="border-category"></div>
             <div class="date">TODAY</div>
             <section class="task-info">
-                <h2>Lorem ipsum sit amet</h2>
+                <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                <button class="edit-task">&#xe905</button>
+                <div class="task-buttons-container">
+                    <button class="drag-task">&#xe904</button>
+                    <button class="edit-task">&#xe905</button>
+                </div>
             </section>
             <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
         </li>
@@ -63,6 +70,75 @@
                 <button class="ico-text-button">Low</button>
             </div>
         </div>
+        <ul class="global-list">
+            <button class="drop-switch"><span>Global list</span>&#xe906</button>
+            <li>
+                <ul class="sorted-list sport low">
+                    <div class="list-header"><span class="list-header-category-mark"></span>TITLE</div>
+                    <li >
+                        <div class="category">&#xe912</div>
+                        <div class="border-category"></div>
+                        <div class="date">TODAY</div>
+                        <section class="task-info">
+                            <h2 class="task-info-title">Lorem ipsum sit amet</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                            <div class="task-buttons-container">
+                                <button class="drag-task">&#xe904</button>
+                                <button class="edit-task">&#xe905</button>
+                            </div>
+                        </section>
+                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                    </li>
+                    <li >
+                        <div class="category">&#xe912</div>
+                        <div class="border-category"></div>
+                        <div class="date">TODAY</div>
+                        <section class="task-info">
+                            <h2 class="task-info-title">Lorem ipsum sit amet</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                            <div class="task-buttons-container">
+                                <button class="drag-task">&#xe904</button>
+                                <button class="edit-task">&#xe905</button>
+                            </div>
+                        </section>
+                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="sorted-list work ">
+                    <div class="list-header"><span class="list-header-category-mark"></span>TITLE</div>
+                    <li class="high work" >
+                        <div class="category">&#xe912</div>
+                        <div class="border-category"></div>
+                        <div class="date">TODAY</div>
+                        <section class="task-info">
+                            <h2 class="task-info-title">Lorem ipsum sit amet</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                            <div class="task-buttons-container">
+                                <button class="drag-task">&#xe904</button>
+                                <button class="edit-task">&#xe905</button>
+                            </div>
+                        </section>
+                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                    </li>
+                    <li class="urgent work" >
+                        <div class="category">&#xe912</div>
+                        <div class="border-category"></div>
+                        <div class="date">TODAY</div>
+                        <section class="task-info">
+                            <h2 class="task-info-title">Lorem ipsum sit amet</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                            <div class="task-buttons-container">
+                                <button class="drag-task">&#xe904</button>
+                                <button class="edit-task">&#xe905</button>
+                            </div>
+                        </section>
+                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>
 </body>

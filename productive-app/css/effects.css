@@ -20,10 +20,13 @@
 
 .ico-text-button{
     color: #8da5b8;
+    position: relative;
 }
 .ico-text-button:hover{
     color: white;
-
+}
+.interface-container-3 .ico-text-button:hover {
+    color: white;
 }
 .ico-text-button:active,.ico-text-button:active{
     color: #59ABE3;

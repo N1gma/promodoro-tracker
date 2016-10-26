@@ -11,9 +11,9 @@ body{
 }
 
 .interface-container{
-    margin-bottom: 17px ;
+    margin-bottom: 17px;
     float: right;
-    width: 87%;
+    width: 46%;
     text-align: right;
     font-size: 18px;
 }
@@ -21,7 +21,7 @@ body{
 .interface-container .ico-text-button{
     font-family: icomoon;
     cursor: pointer;
-    margin-left: 2.4%;
+    margin-left: 5.7%;
 }
 
 .main-head-title{
@@ -31,27 +31,29 @@ body{
     text-align: center;
     width: 100%;
     color: white;
+    padding: 0 6.8%;
+    box-sizing: border-box;
 }
 
 .sub-title{
+    padding: 0 6.8%;
     font: 20px "Roboto", sans-serif;
     text-align: center;
     width: 100%;
     color: #8198ab;
     margin-top: 17px;
-    margin-bottom: 81px;
+    margin-bottom: 76px;
     position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .interface-container-2{
-    position: absolute;
-    right: 0;
     color: #8da5b8;
-    top: 0;
+    float: right;
 }
 
 .interface-container-2 .ico-text-button{
-    color: #8da5b8;
     cursor: pointer;
     font: 15px "Roboto", sans-serif;
 }
@@ -160,20 +162,17 @@ body{
 
 /*task-list*/
 .sub-title-2{
-    width: 100%;
-    position: relative;
+    width: 46%;
     box-sizing: border-box;
     height: 50px;
+    float: right;
 }
 .interface-container-3{
-    position: absolute;
-    right: 0;
+    float: right;
     color: #8da5b8;
-    top: 0;
 }
 
 .interface-container-3 .ico-text-button{
-    color: #8da5b8;
     cursor: pointer;
     font: 15px "Roboto", sans-serif;
 }
@@ -183,7 +182,7 @@ body{
     box-sizing:border-box;
     font-family: 'Roboto', sans-serif;
 }
-.today-list li{
+.today-list li,.sorted-list li{
     height: 87px;
     width: 100%;
     background-color: white;
@@ -191,86 +190,49 @@ body{
     display: flex;
     justify-content: flex-start;
     margin-bottom: 0.6%;
-}
-
-.category{
-    height: 100%;
-    background-color: black;
-    width: 1%;
-}
-
-.date{
-    color: gray;
-    text-align: center;
-    width: 8%;
-    font-size: 11px;
-}
-
-.task-info{
-    display: flex;
-    flex-wrap: wrap;
-    width: 83.8%;
     position: relative;
 }
-
-.task-info h2{
-    font-size: 19px;
-    color: red;
-    display: block;
-    height: 50%;
-    line-height: 57px;
+.sorted-list{
     width: 100%;
-    text-align: left;
+    box-sizing:border-box;
+    font-family: 'Roboto', sans-serif;
 }
-.task-info p{
-    color: gray;
-    display: inline-block;
-    height: 50%;
-    line-height: 25px;
-    text-align: left;
-    font-size: 16px ;
+
+.task-buttons-container{
+    position: absolute;
+    right: 34px;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 80%;
 }
 
 .edit-task{
     color: #cacaca;
-    position: absolute;
-    right: 34px;
     font-family: icomoon;
     cursor: pointer;
-    align-self: center;
+    width: 100%;
+}
+
+.drag-task{
+    color: #cacaca;
+    font-family: icomoon;
+    cursor: pointer;
+    width: 100%;
+    display: none;
+}
+
+.sorted-list .drag-task{
+    display: inline-block;
 }
 
 .edit-task:hover{
     color: #88a3b5;
 }
 
-.urgency{
-    font-family: icomoon;
-    color: white;
-    width: 7.2%;
-    font-size: 49px;
-    text-align: center;
-    line-height: 87px;
-    position: relative;
-    background-color: black;
-}
-
-.urgent-1{
-    background-color: red;
-}
-
-.urgency-counter{
-    position: absolute;
-    left: 3px;
-    color: white;
-    top: 0;
-    right: 0;
-    font-size: 30px;
-    bottom: 0;
-}
-
-.urgency-counter-off{
-    display: none;
+.drag-task:hover{
+    color: #88a3b5;
 }
 
 .sorted-lists-wrapper{
@@ -278,4 +240,72 @@ body{
     width: 100%;
     box-sizing:border-box;
     font-family: 'Roboto', sans-serif;
+}
+
+.global-list{
+    font-family: icomoon;
+    position: relative;
+    font-size: 20px;
+    color: #8da5b8;
+}
+
+
+.drop-switch{
+    color: #8da5b8;
+    display: inline-block;
+    font-family: icomoon;
+    font-size: 11px;
+}
+
+.drop-switch span{
+    display: inline-block;
+    vertical-align: text-bottom;
+    font-size: 20px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.list-header{
+    display: inline-block;
+    padding-left: 2%;
+    font-size: 18px;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    position: relative;
+}
+.list-header-category-mark{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    left: -4px;
+    background: url(../img/ico-sprite.png);
+    z-index: 9999;
+}
+
+
+.top-block-message{
+    font-size: 42px;
+    color: #8da5b8;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 6.8%;
+    text-align: center;
+    line-height: 114%;
+}
+
+.top-block-empty-arrow{
+    font-family: icomoon;
+    font-size: 60px;
+    text-align: center;
+    width: 100%;
+    margin-top: 33px;
+}
+.trash-counter{
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
 }
