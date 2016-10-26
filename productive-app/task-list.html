@@ -13,6 +13,13 @@
     <link type="import" href="templates/templates.html">
 </head>
 <body>
+<div class="modal-add-wrap">
+    <div class="modal-window">
+        <h2 class="modal-window-head">Add task</h2>
+        <label class="modal-input-title" for="title-input">TITLE</label>
+        <input class="modal-input-field" id="title-input" type="text" placeholder="Add title here">
+    </div>
+</div>
 <div class="wrapper">
     <header class="main-head">
         <div class="interface-container">
@@ -31,7 +38,7 @@
         </div>
     </div>
     <ul class="today-list">
-        <li class="work high done">
+        <li class="task work high done">
             <div class="category">&#xe912</div>
             <div class="border-category"></div>
             <div class="date">TODAY</div>
@@ -45,7 +52,7 @@
             </section>
             <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
         </li>
-        <li class="education urgent trash">
+        <li class="task education urgent trash">
             <div class="category">&#xe912</div>
             <div class="border-category"></div>
             <div class="date">TODAY</div>
@@ -70,12 +77,12 @@
                 <button class="ico-text-button">Low</button>
             </div>
         </div>
+        <button class="drop-switch"><span>Global list</span>&#xe906</button>
         <ul class="global-list">
-            <button class="drop-switch"><span>Global list</span>&#xe906</button>
             <li>
-                <ul class="sorted-list sport low">
-                    <div class="list-header"><span class="list-header-category-mark"></span>TITLE</div>
-                    <li >
+                <ul class="sorted-list sport">
+                    <li class="list-header"><span class="list-header-category-mark"></span>TITLE</li>
+                    <li class="task urgent">
                         <div class="category">&#xe912</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
@@ -89,7 +96,7 @@
                         </section>
                         <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
                     </li>
-                    <li >
+                    <li class="task low" >
                         <div class="category">&#xe912</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
@@ -106,9 +113,9 @@
                 </ul>
             </li>
             <li>
-                <ul class="sorted-list work ">
-                    <div class="list-header"><span class="list-header-category-mark"></span>TITLE</div>
-                    <li class="high work" >
+                <ul class="sorted-list education">
+                    <li class="list-header"><span class="list-header-category-mark"></span>TITLE</li>
+                    <li class="task low">
                         <div class="category">&#xe912</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
@@ -122,7 +129,7 @@
                         </section>
                         <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
                     </li>
-                    <li class="urgent work" >
+                    <li class="task high" >
                         <div class="category">&#xe912</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
