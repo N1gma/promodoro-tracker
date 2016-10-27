@@ -9,23 +9,31 @@
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/effects.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link type="import" href="templates/templates.html">
 </head>
 <body>
-<div class="wrapper">
-    <header class="main-head">
-        <div class="interface-container">
-            <button class="ico-text-button">&#xe90c</button>
-            <button class="ico-text-button">&#xe90b</button>
-            <button class="ico-text-button">&#xe908</button>
+<header class="main-head">
+        <div class="inner-head">
+            <div class="inner-2-head">
+                <img class="logo" src="img/Logo.svg" alt="logo goes here">
+                <div class="interface-container">
+                    <button class="ico-text-button">&#xe90c</button>
+                    <button class="ico-text-button">&#xe90b</button>
+                    <button class="ico-text-button">&#xe908</button>
+                </div>
+            </div>
         </div>
-        <h2 class="main-head-title">Settings</h2>
-        <div class="sub-title">Choose categories
+</header>
+<div class="wrapper">
+    <h2 class="main-head-title">Settings</h2>
+        <div class="sub-title">Pomodoros settings
             <div class="interface-container-2">
                 <button class="ico-text-button">Pomodoros </button> |
                 <button class="ico-text-button">Categories</button>
             </div>
         </div>
-    </header>
+</div>
     <main class="categories-choose-wrap">
         <ul class="categories-choose-list">
             <li><input id="work" type="radio" value="Work" name="ctg1">
@@ -56,6 +64,5 @@
             <button class="button-2 button-green">Save</button>
         </div>
     </section>
-</div>
 </body>
 </html>

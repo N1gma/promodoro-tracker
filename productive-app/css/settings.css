@@ -2,26 +2,14 @@ body{
     background-color: #2a3f50;
     width: 100%;
 }
+
+
 .wrapper{
     max-width: 1366px;
-}
-.main-head{
-    overflow: hidden;
-}
-
-.interface-container{
-    margin: 56px 6.8% 17px 6.8%;
-    float: right;
-    width: 87%;
-    text-align: right;
-    font-size: 18px;
+    padding-top: 6%;
+    margin: 0 auto;
 }
 
-.interface-container .ico-text-button{
-    font-family: icomoon;
-    cursor: pointer;
-    margin-left: 2.4%;
-}
 
 .main-head-title{
     clear: both;
@@ -41,6 +29,7 @@ body{
     margin-bottom: 81px;
     position: relative;
 }
+
 
 .interface-container-2{
     position: absolute;

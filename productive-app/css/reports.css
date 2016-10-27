@@ -1,0 +1,101 @@
+body{
+    background-color: #2a3f50;
+    width: 100%;
+}
+
+.wrapper {
+    max-width: 1366px;
+    padding-top: 6%;
+    margin: 0 auto;
+    padding-bottom: 2.2%;
+}
+
+
+.main-head-title{
+    clear: both;
+    font: 28px "Roboto", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.
+
+.button-holder{
+    width: 21.2%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+
+.button-2{
+    color: white;
+    width: 44%;
+    padding: 12px 0;
+    font: 15px Roboto, sans-serif;
+}
+
+
+/*timer*/
+
+.back{
+    font-family: icomoon;
+    position: absolute;
+    left: 27px;
+    top: 50%;
+    bottom: 50%;
+    font-size: 41px;
+    cursor: pointer;
+    display: none;
+}
+
+.forward{
+    font-family: icomoon;
+    position: absolute;
+    right: 27px;
+    top: 50%;
+    bottom: 50%;
+    font-size: 41px;
+    cursor: pointer;
+    display: none;
+}
+
+.main-wrapper{
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 6.8%;
+    box-sizing: border-box;
+}
+/*reports*/
+.interface-container-2{
+    margin: 0 auto;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 29px;
+}
+
+.interface-container-2 .ico-text-button{
+    cursor: pointer;
+    font: 15px "Roboto", sans-serif;
+    margin: 0 6px;
+}
+
+.main-wrapper img{
+    margin: 0 auto;
+    display: block;
+}
+
+.main-head-title {
+    clear: both;
+    font: 28px "Roboto", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    color: white;
+    margin-bottom: 28px;
+}

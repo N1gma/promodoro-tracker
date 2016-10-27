@@ -17,6 +17,16 @@
 .button-green:active{
     background-color: #62D3BD;
 }
+.button-red{
+    background-color: #f15a4a;
+}
+.button-red:hover,.button-red:focus{
+    background-color: #c94d47;
+}
+.button-red:active{
+    background-color: #f99595;
+}
+
 
 .ico-text-button{
     color: #8da5b8;

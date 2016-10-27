@@ -1,0 +1,139 @@
+body{
+    background-color: #2a3f50;
+    width: 100%;
+}
+
+.wrapper {
+    max-width: 1366px;
+    padding-top: 6%;
+    margin: 0 auto;
+    padding-bottom: 2.2%;
+}
+
+
+.main-head-title{
+    clear: both;
+    font: 28px "Roboto", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.sub-title{
+    font: 20px "Roboto", sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #8198ab;
+    margin-top: 17px;
+    position: relative;
+}
+
+.interface-container-2{
+    position: absolute;
+    right: 6.7%;
+    color: white;
+    top: 0;
+}
+
+.interface-container-2 .ico-text-button{
+    cursor: pointer;
+    font: 15px "Roboto", sans-serif;
+}
+
+.button-holder{
+    width: 21.2%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+
+.button-2{
+    color: white;
+    width: 44%;
+    padding: 12px 0;
+    font: 15px Roboto, sans-serif;
+}
+
+
+/*timer*/
+
+.main-wrapper{
+    max-width: 1366px;
+    margin: 0 auto;
+}
+.phases{
+    width: 10%;
+    /* padding: 0 6.8%; */
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.phase{
+    width: 28px;
+    height: 23px;
+    display: inline-block;
+    background: url(../img/tomato.svg) no-repeat;
+    margin: 0 5px;
+}
+
+.phase-done{
+    background: url("../img/tomato_fill.svg") no-repeat;
+}
+
+.phase-failed{
+    background: url("../img/tomato-failed.svg") no-repeat;
+}
+.phase-add-active .phase-add{
+    display: inline-block;
+}
+.phase-add{
+    font-family: icomoon;
+    position: absolute;
+    right:-10px;
+    color: #8ca4b7;
+    line-height: 25px;
+    cursor: pointer;
+    display: none;
+}
+.phase-add:hover{
+    color: white;
+}
+.graph-container{
+
+}
+
+.graph{
+    margin: 0 auto;
+    display: block;
+}
+
+.back{
+    font-family: icomoon;
+    position: absolute;
+    left: 27px;
+    top: 50%;
+    bottom: 50%;
+    font-size: 41px;
+    cursor: pointer;
+    display: none;
+}
+
+.forward{
+    font-family: icomoon;
+    position: absolute;
+    right: 27px;
+    top: 50%;
+    bottom: 50%;
+    font-size: 41px;
+    cursor: pointer;
+    display: none;
+}
+
+.move-on .back,.move-on .forward{
+    display: inline-block;
+}

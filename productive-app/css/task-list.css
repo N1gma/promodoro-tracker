@@ -2,27 +2,13 @@ body{
     background-color: #2a3f50;
     width: 100%;
 }
+
 .wrapper{
     max-width: 1366px;
-}
-.main-head{
-    overflow: hidden;
-    padding:56px 6.8% 0 6.8% ;
+    padding-top: 10%;
+    margin: 0 auto;
 }
 
-.interface-container{
-    margin-bottom: 17px;
-    float: right;
-    width: 46%;
-    text-align: right;
-    font-size: 18px;
-}
-
-.interface-container .ico-text-button{
-    font-family: icomoon;
-    cursor: pointer;
-    margin-left: 5.7%;
-}
 
 .main-head-title{
     clear: both;
@@ -59,104 +45,7 @@ body{
 }
 
 
-.main-content{
-    padding: 0 20.1%;
-    padding-right: 12.8%;
-    color: white;
-    box-sizing: border-box;
-    overflow: hidden;
-}
 
-.main-content i{
-    margin-right: 2.4%;
-}
-.select-field{
-    background: transparent;
-    color: white;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #8da5b8;
-    text-align: center;
-    padding-bottom: 4px;
-    width: 40%;
-}
-.minus-count{
-
-}
-.option{
-    width: 38.8%;
-    margin-right: 10.7%;
-    display: inline-block;
-    margin-bottom: 4.5%;
-    box-sizing: border-box;
-
-}
-.option label{
-    position: relative;
-    width: 59%;
-}
-.minus-count{
-    position: absolute;
-    left: 3%;
-    color: #8da5b8;
-    font-size: 11px;
-    top: 0;
-    font-family: icomoon;
-}
-
-.plus-count{
-    position: absolute;
-    right: 1%;
-    color: #8da5b8;
-    font-family: icomoon;
-    font-size: 11px;
-    top: 0;
-}
-
-.plus-count:hover{
-    color: white;
-}
-.minus-count:hover{
-    color: white;
-}
-.minus-count:hover + input, .plus-count:hover ~ input {
-    border-color: white;
-}
-.opt-details{
-    color: #8198ab;
-    margin-top: 12px;
-    margin-left: 9.6%;
-}
-.opt-title{
-    display: inline-block;
-    width: 40%;
-}
-
-.graph h3{
-    font: 20px Ptsans, sans-serif;
-    color: white;
-    text-align: center;
-    width: 100%;
-    margin-top: 2%;
-    margin-bottom: 9.2%;
-}
-.button-holder{
-    width: 21.2%;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-}
-.button-1{
-    color: white;
-    width: 44%;
-    padding: 12px 0;
-}
-
-.button-2{
-    color: white;
-    width: 44%;
-    padding: 12px 0;
-}
 
 /*settings-2*/
 
@@ -205,7 +94,8 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 80%;
+    height: 100%;
+    top: 0;
 }
 
 .edit-task{
@@ -311,8 +201,39 @@ body{
     width: 20px;
     height: 20px;
 }
-.modal-add-wrap{
-    display: block;
+
+/*modal*/
+.modal-interface{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    padding: 0 2.8%;
+    box-sizing: border-box;
+}
+.modal-interface-trash{
+    float: left;
+    font-family: icomoon;
+    font-size: 20px;
+    color: #88a0b3;
+}
+.modal-interface-confirm,.modal-interface-cancel{
+    float: right;
+    font-family: icomoon;
+    font-size: 20px;
+    color: #88a0b3;
+}
+.modal-interface-cancel{
+    margin-right: 3%;
+}
+.modal-interface button:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.modal-wrap{
+    display: none;
+    /*display: block;*/
     position: fixed;
     z-index: 9999999;
     left: 0;
@@ -326,22 +247,24 @@ body{
     background-color: #2a3f50;
     margin: 6.4% auto;
     width: 500px;
-    padding: 43px 3%;
+    padding: 41px 3%;
     color: white;
     box-sizing: border-box;
+    position: relative;
 }
 
 .modal-window-head{
     font-size: 28px;
     text-align: center;
     width: 100%;
-    margin-top: 14px;
+    margin-bottom: 10px;
 }
 
-.modal-input-title{
+.modal-input-title {
     display: block;
     font: 14px 'Roboto', sans-serif;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
+    margin-top: 9px;
 }
 
 .modal-input-field{
@@ -350,5 +273,56 @@ body{
     font: 16px 'Roboto', sans-serif;
     padding-bottom: 4px;
     width: 100%;
+    margin-bottom: 25px;
+}
+.modal-input-field:focus{
+    color: white;
+}
+
+
+.estimation-range{
+    width: 50%;
+    display: block;
+    margin-bottom: 34px;
+}
+
+.estimation-range li{
+    width: 28px;
+    height: 23px;
+    display: inline-block;
+    background: url("../img/tomato.svg") no-repeat;
+}
+
+.estimation-range li:hover{
+    background: url("../img/tomato_fill.svg") no-repeat;
+}
+
+.modal-remove-inner-wrapper{
+    height: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: 30%;
+    box-sizing: border-box;
+    position: relative;
+}
+.remove-submit-msg{
+    font: 36px Roboto, sans-serif;
+    color: #8da5b8;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 44%;
+}
+.button-default{
+    color: white;
+    width: 38%;
+    padding: 12px 0;
+}
+.button-holder-default{
+    width: 73%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
 }
 

@@ -1,6 +1,11 @@
+<template id="settings-template-button-next-green">
+    <button class="button-2 button-green">Next</button>
+</template>
+
 <template id="interface-control-trash-button">
     <button class="ico-text-button">&#xe912</button>
 </template>
+
 <template id="task-list-node">
     <li class="task">
         <div class="category"></div>
@@ -39,5 +44,148 @@
 <template id="top-block-today-list-resolved">
     <div class="top-block-message">
         <p>Excellent,<br>all daily tasks done! :)</p>
+    </div>
+</template>
+
+<template id="modal-add-task">
+    <div class="modal-wrap">
+        <form class="modal-window">
+            <div class="modal-interface">
+                <button>&#xe910</button>
+                <button>&#xe90f</button>
+            </div>
+            <h2 class="modal-window-head">Add task</h2>
+            <label class="modal-input-title" for="title-input">TITLE</label>
+            <input class="modal-input-field" id="title-input" type="text" placeholder="Add title here">
+            <label class="modal-input-title" for="description-input">DESCRIPTION</label>
+            <input class="modal-input-field" id="description-input" type="text" placeholder="Add description here">
+            <h3 class="modal-input-title">CATEGORY</h3>
+            <ul class="categories-choose-list">
+                <li><input id="work" type="radio" value="Work" name="ctg1">
+                    <label class="text-label" for="work">Work</label>
+                    <label class="label1" for="work"></label>
+                </li>
+                <li><input id="education" type="radio" value="Education" name="ctg1">
+                    <label class="text-label" for="education">Education</label>
+                    <label class="label2" for="education"></label>
+                </li>
+                <li><input id="hobby" type="radio" value="Hobby" name="ctg1">
+                    <label class="text-label" for="hobby">Hobby</label>
+                    <label class="label3" for="hobby"></label>
+                </li>
+                <li><input id="sport" type="radio" value="Sport" name="ctg1">
+                    <label class="text-label" for="sport">Sport</label>
+                    <label class="label4" for="sport"></label>
+                </li>
+                <li><input id="other" type="radio" value="Other" name="ctg1">
+                    <label class="text-label" for="other">Other</label>
+                    <label class="label5" for="other"></label>
+                </li>
+            </ul>
+            <label class="modal-input-title" for="deadline-input">DEADLINE</label>
+            <input class="modal-input-field" id="deadline-input" type="text" placeholder="Set date">
+            <h3 class="modal-input-title" >ESTIMATION</h3>
+            <ul class="estimation-range">
+                <li></li><li></li><li></li><li></li><li></li>
+            </ul>
+            <h3 class="modal-input-title">PRIORITY</h3>
+            <ul class="categories-choose-list">
+                <li><input id="urgent" type="radio" value="Urgent" name="ctg11">
+                    <label class="text-label" for="urgent">Urgent</label>
+                    <label class="label11" for="urgent"></label>
+                </li>
+                <li><input id="high" type="radio" value="High" name="ctg11">
+                    <label class="text-label" for="high">High</label>
+                    <label class="label22" for="high"></label>
+                </li>
+                <li><input id="middle" type="radio" value="Middle" name="ctg11">
+                    <label class="text-label" for="middle">Middle</label>
+                    <label class="label33" for="middle"></label>
+                </li>
+                <li><input id="low" type="radio" value="Low" name="ctg11">
+                    <label class="text-label" for="low">Low</label>
+                    <label class="label44" for="low"></label>
+                </li>
+            </ul>
+        </form>
+    </div>
+</template>
+
+<template id="modal-edit-task">
+        <form class="modal-window">
+            <div class="modal-interface">
+                <button class="modal-interface-trash">&#xe912</button>
+                <button class="modal-interface-confirm">&#xe90f</button>
+                <button class="modal-interface-cancel">&#xe910</button>
+            </div>
+            <h2 class="modal-window-head">Edit Task</h2>
+            <label class="modal-input-title" for="title-input">TITLE</label>
+            <input class="modal-input-field" id="title-input" type="text" placeholder="Add title here">
+            <label class="modal-input-title" for="description-input">DESCRIPTION</label>
+            <input class="modal-input-field" id="description-input" type="text" placeholder="Add description here">
+            <h3 class="modal-input-title">CATEGORY</h3>
+            <ul class="categories-choose-list">
+                <li><input id="work" type="radio" value="Work" name="ctg1">
+                    <label class="text-label" for="work">Work</label>
+                    <label class="label1" for="work"></label>
+                </li>
+                <li><input id="education" type="radio" value="Education" name="ctg1">
+                    <label class="text-label" for="education">Education</label>
+                    <label class="label2" for="education"></label>
+                </li>
+                <li><input id="hobby" type="radio" value="Hobby" name="ctg1">
+                    <label class="text-label" for="hobby">Hobby</label>
+                    <label class="label3" for="hobby"></label>
+                </li>
+                <li><input id="sport" type="radio" value="Sport" name="ctg1">
+                    <label class="text-label" for="sport">Sport</label>
+                    <label class="label4" for="sport"></label>
+                </li>
+                <li><input id="other" type="radio" value="Other" name="ctg1">
+                    <label class="text-label" for="other">Other</label>
+                    <label class="label5" for="other"></label>
+                </li>
+            </ul>
+            <label class="modal-input-title" for="deadline-input">DEADLINE</label>
+            <input class="modal-input-field" id="deadline-input" type="text" placeholder="Set date">
+            <h3 class="modal-input-title" >ESTIMATION</h3>
+            <ul class="estimation-range">
+                <li></li><li></li><li></li><li></li><li></li>
+            </ul>
+            <h3 class="modal-input-title">PRIORITY</h3>
+            <ul class="categories-choose-list">
+                <li><input id="urgent" type="radio" value="Urgent" name="ctg11">
+                    <label class="text-label" for="urgent">Urgent</label>
+                    <label class="label11" for="urgent"></label>
+                </li>
+                <li><input id="high" type="radio" value="High" name="ctg11">
+                    <label class="text-label" for="high">High</label>
+                    <label class="label22" for="high"></label>
+                </li>
+                <li><input id="middle" type="radio" value="Middle" name="ctg11">
+                    <label class="text-label" for="middle">Middle</label>
+                    <label class="label33" for="middle"></label>
+                </li>
+                <li><input id="low" type="radio" value="Low" name="ctg11">
+                    <label class="text-label" for="low">Low</label>
+                    <label class="label44" for="low"></label>
+                </li>
+            </ul>
+        </form>
+</template>
+
+<template id="modal-remove-task">
+    <div class="modal-window">
+        <div class="modal-interface">
+            <button class="modal-interface-cancel">&#xe910</button>
+        </div>
+        <h2 class="modal-window-head">Remove Task</h2>
+        <div class="modal-remove-inner-wrapper">
+            <p class="remove-submit-msg">Are you sure you want to remove selected task(s)?</p>
+            <div class="button-holder-default">
+                <button class="button-default button-blue">Cancel</button>
+                <button class="button-default button-red">Remove</button>
+            </div>
+        </div>
     </div>
 </template>

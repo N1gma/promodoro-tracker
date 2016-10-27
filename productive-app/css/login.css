@@ -3,33 +3,20 @@ body {
     background-size: cover;
 }
 
-.st0 {
-    fill: url(#SVGID_1_);
-}
-
-.st1 {
-    opacity: 0.9;
-    fill: #FFFFFF;
-}
-
-.st2 {
-    fill: url(#SVGID_2_);
-}
 
 .center-logos {
     margin: 0 auto;
     width: 246px;
+    padding-top: 48px;
 }
 
-.tomato {
-    margin: 50px 0 45px 0;
-}
+
 
 .center-inputs {
     margin: 0 auto;
     font-family: icomoon;
     color: #8da5b8;
-    margin-top: 4.2%;
+    padding-top: 1.2%;
     width: 353px;
 }
 
@@ -42,7 +29,7 @@ body {
     margin-left: 20px;
 }
 
-.center-inputs input[type='text'], .center-inputs input[type='password'] {
+.log-input, .pw-input {
     border: none;
     background-color: transparent;
     font: 16px Roboto, sans-serif;
@@ -69,7 +56,7 @@ body {
     left: 0;
 }
 
-.center-inputs input[type='submit'] {
+.submit {
     display: block;
     margin: 14% auto;
     width: 125px;
@@ -81,11 +68,11 @@ body {
     height: 42px;
 }
 
-.center-inputs input[type='submit']:active {
+.submit:active {
     background-color: #62D3BD;
 }
 
-.center-inputs input[type='submit']:focus, .center-inputs input[type='submit']:hover {
+.submit:focus, .submit:hover {
     background-color: #16A085;
 }
 
