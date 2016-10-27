@@ -1,16 +1,15 @@
-body{
+body {
     background-color: #2a3f50;
     width: 100%;
 }
 
-.wrapper{
+.wrapper {
     max-width: 1366px;
     padding-top: 10%;
     margin: 0 auto;
 }
 
-
-.main-head-title{
+.main-head-title {
     clear: both;
     font: 28px "Roboto", sans-serif;
     font-weight: bold;
@@ -21,7 +20,7 @@ body{
     box-sizing: border-box;
 }
 
-.sub-title{
+.sub-title {
     padding: 0 6.8%;
     font: 20px "Roboto", sans-serif;
     text-align: center;
@@ -34,44 +33,43 @@ body{
     overflow: hidden;
 }
 
-.interface-container-2{
+.interface-container-2 {
     color: #8da5b8;
     float: right;
 }
 
-.interface-container-2 .ico-text-button{
+.interface-container-2 .ico-text-button {
     cursor: pointer;
     font: 15px "Roboto", sans-serif;
 }
 
 
-
-
-/*settings-2*/
-
 /*task-list*/
-.sub-title-2{
+.sub-title-2 {
     width: 46%;
     box-sizing: border-box;
     height: 25px;
     float: right;
 }
-.interface-container-3{
+
+.interface-container-3 {
     float: right;
     color: #8da5b8;
 }
 
-.interface-container-3 .ico-text-button{
+.interface-container-3 .ico-text-button {
     cursor: pointer;
     font: 15px "Roboto", sans-serif;
 }
-.today-list{
+
+.today-list {
     padding: 0 6.7%;
     width: 100%;
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-.task{
+
+.task {
     height: 87px;
     width: 100%;
     background-color: white;
@@ -81,13 +79,14 @@ body{
     margin-bottom: 0.6%;
     position: relative;
 }
-.sorted-list{
+
+.sorted-list {
     width: 100%;
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-.task-buttons-container{
+.task-buttons-container {
     position: absolute;
     right: 34px;
     align-self: center;
@@ -98,14 +97,14 @@ body{
     top: 0;
 }
 
-.edit-task{
+.edit-task {
     color: #cacaca;
     font-family: icomoon;
     cursor: pointer;
     width: 100%;
 }
 
-.drag-task{
+.drag-task {
     color: #cacaca;
     font-family: icomoon;
     cursor: pointer;
@@ -113,26 +112,26 @@ body{
     display: none;
 }
 
-.sorted-list .drag-task{
+.sorted-list .drag-task {
     display: inline-block;
 }
 
-.edit-task:hover{
+.edit-task:hover {
     color: #88a3b5;
 }
 
-.drag-task:hover{
+.drag-task:hover {
     color: #88a3b5;
 }
 
-.sorted-lists-wrapper{
+.sorted-lists-wrapper {
     padding: 30px 6.7% 0 6.7%;
     width: 100%;
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-.global-list{
+.global-list {
     font-family: icomoon;
     position: relative;
     font-size: 20px;
@@ -140,15 +139,14 @@ body{
     clear: both;
 }
 
-
-.drop-switch{
+.drop-switch {
     color: #8da5b8;
     display: inline-block;
     font-family: icomoon;
     font-size: 11px;
 }
 
-.drop-switch span{
+.drop-switch span {
     display: inline-block;
     vertical-align: text-bottom;
     font-size: 20px;
@@ -156,7 +154,7 @@ body{
     font-weight: bold;
 }
 
-.list-header{
+.list-header {
     padding-left: 2%;
     font-size: 18px;
     margin-bottom: 1%;
@@ -165,7 +163,7 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.list-header-category-mark{
+.list-header-category-mark {
     width: 19px;
     height: 19px;
     position: absolute;
@@ -174,8 +172,7 @@ body{
     z-index: 9999;
 }
 
-
-.top-block-message{
+.top-block-message {
     font-size: 42px;
     color: #8da5b8;
     width: 100%;
@@ -185,14 +182,15 @@ body{
     line-height: 114%;
 }
 
-.top-block-empty-arrow{
+.top-block-empty-arrow {
     font-family: icomoon;
     font-size: 60px;
     text-align: center;
     width: 100%;
     margin-top: 33px;
 }
-.trash-counter{
+
+.trash-counter {
     position: absolute;
     bottom: -10px;
     right: -10px;
@@ -202,8 +200,9 @@ body{
     height: 20px;
 }
 
-/*modal*/
-.modal-interface{
+/*modal window*/
+
+.modal-interface {
     position: absolute;
     top: 15px;
     left: 0;
@@ -211,27 +210,31 @@ body{
     padding: 0 2.8%;
     box-sizing: border-box;
 }
-.modal-interface-trash{
+
+.modal-interface-trash {
     float: left;
     font-family: icomoon;
     font-size: 20px;
     color: #88a0b3;
 }
-.modal-interface-confirm,.modal-interface-cancel{
+
+.modal-interface-confirm, .modal-interface-cancel {
     float: right;
     font-family: icomoon;
     font-size: 20px;
     color: #88a0b3;
 }
-.modal-interface-cancel{
+
+.modal-interface-cancel {
     margin-right: 3%;
 }
+
 .modal-interface button:hover {
     color: white;
     cursor: pointer;
 }
 
-.modal-wrap{
+.modal-wrap {
     display: none;
     /*display: block;*/
     position: fixed;
@@ -240,9 +243,10 @@ body{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }
-.modal-window{
+
+.modal-window {
     font: 14px 'Roboto', sans-serif;
     background-color: #2a3f50;
     margin: 6.4% auto;
@@ -253,7 +257,7 @@ body{
     position: relative;
 }
 
-.modal-window-head{
+.modal-window-head {
     font-size: 28px;
     text-align: center;
     width: 100%;
@@ -267,7 +271,7 @@ body{
     margin-top: 9px;
 }
 
-.modal-input-field{
+.modal-input-field {
     color: #748b9e;
     border-bottom: 1px solid #425869;
     font: 16px 'Roboto', sans-serif;
@@ -275,29 +279,29 @@ body{
     width: 100%;
     margin-bottom: 25px;
 }
-.modal-input-field:focus{
+
+.modal-input-field:focus {
     color: white;
 }
 
-
-.estimation-range{
+.estimation-range {
     width: 50%;
     display: block;
     margin-bottom: 34px;
 }
 
-.estimation-range li{
+.estimation-range li {
     width: 28px;
     height: 23px;
     display: inline-block;
     background: url("../img/tomato.svg") no-repeat;
 }
 
-.estimation-range li:hover{
+.estimation-range li:hover {
     background: url("../img/tomato_fill.svg") no-repeat;
 }
 
-.modal-remove-inner-wrapper{
+.modal-remove-inner-wrapper {
     height: 480px;
     display: flex;
     flex-wrap: wrap;
@@ -306,7 +310,8 @@ body{
     box-sizing: border-box;
     position: relative;
 }
-.remove-submit-msg{
+
+.remove-submit-msg {
     font: 36px Roboto, sans-serif;
     color: #8da5b8;
     width: 90%;
@@ -314,12 +319,14 @@ body{
     text-align: center;
     margin-bottom: 44%;
 }
-.button-default{
+
+.button-default {
     color: white;
     width: 38%;
     padding: 12px 0;
 }
-.button-holder-default{
+
+.button-holder-default {
     width: 73%;
     display: flex;
     margin: 0 auto;

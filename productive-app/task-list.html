@@ -12,15 +12,15 @@
     <link rel="stylesheet" type="text/css" href="css/task-list.css">
     <link rel="stylesheet" type="text/css" href="css/radio-lists.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link type="import" href="templates/templates.html">
+    <link type="text/html" rel="import" href="templates/templates.html">
 </head>
 <body>
 <div class="modal-wrap">
     <form class="modal-window">
         <div class="modal-interface">
-            <button class="modal-interface-trash">&#xe912</button>
-            <button class="modal-interface-confirm">&#xe90f</button>
-            <button class="modal-interface-cancel">&#xe910</button>
+            <button class="modal-interface-trash">&#xe912;</button>
+            <button class="modal-interface-confirm">&#xe90f;</button>
+            <button class="modal-interface-cancel">&#xe910;</button>
         </div>
         <h2 class="modal-window-head">Edit Task</h2>
         <label class="modal-input-title" for="title-input">TITLE</label>
@@ -52,9 +52,13 @@
         </ul>
         <label class="modal-input-title" for="deadline-input">DEADLINE</label>
         <input class="modal-input-field" id="deadline-input" type="text" placeholder="Set date">
-        <h3 class="modal-input-title" >ESTIMATION</h3>
+        <h3 class="modal-input-title">ESTIMATION</h3>
         <ul class="estimation-range">
-            <li></li><li></li><li></li><li></li><li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
         <h3 class="modal-input-title">PRIORITY</h3>
         <ul class="categories-choose-list">
@@ -82,11 +86,11 @@
         <div class="inner-2-head">
             <img class="logo visible-logo" src="img/Logo.svg" alt="logo goes here">
             <div class="interface-container">
-                <button class="ico-text-button">&#xe900</button>
-                <button class="ico-text-button">&#xe912<span class="trash-counter"></span></button>
-                <button class="ico-text-button">&#xe90c</button>
-                <button class="ico-text-button">&#xe90b</button>
-                <button class="ico-text-button">&#xe908</button>
+                <button class="ico-text-button">&#xe900;</button>
+                <button class="ico-text-button">&#xe912;<span class="trash-counter"></span></button>
+                <button class="ico-text-button">&#xe90c;</button>
+                <button class="ico-text-button">&#xe90b;</button>
+                <button class="ico-text-button">&#xe908;</button>
             </div>
         </div>
     </div>
@@ -95,82 +99,87 @@
     <h2 class="main-head-title">Daily Task List +</h2>
     <div class="sub-title">
         <div class="interface-container-2">
-            <button class="ico-text-button">To Do </button> |
+            <button class="ico-text-button">To Do</button>
+            |
             <button class="ico-text-button">Done</button>
         </div>
     </div>
     <ul class="today-list">
         <li class="task work high done">
-            <div class="category">&#xe912</div>
+            <div class="category">&#xe912;</div>
             <div class="border-category"></div>
             <div class="date">TODAY</div>
             <section class="task-info">
                 <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                 <div class="task-buttons-container">
-                    <button class="drag-task">&#xe904</button>
-                    <button class="edit-task">&#xe905</button>
+                    <button class="drag-task">&#xe904;</button>
+                    <button class="edit-task">&#xe905;</button>
                 </div>
             </section>
-            <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+            <div class="urgency">&#xe90e;<p class="urgency-counter">3</p></div>
         </li>
         <li class="task education urgent trash">
-            <div class="category">&#xe912</div>
+            <div class="category">&#xe912;</div>
             <div class="border-category"></div>
             <div class="date">TODAY</div>
             <section class="task-info">
                 <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                 <div class="task-buttons-container">
-                    <button class="drag-task">&#xe904</button>
-                    <button class="edit-task">&#xe905</button>
+                    <button class="drag-task">&#xe904;</button>
+                    <button class="edit-task">&#xe905;</button>
                 </div>
             </section>
-            <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+            <div class="urgency">&#xe90e;<p class="urgency-counter">3</p></div>
         </li>
     </ul>
     <div class="sorted-lists-wrapper">
         <div class="sub-title-2">
             <div class="interface-container-3">
-                <button class="ico-text-button">All </button> |
-                <button class="ico-text-button">Urgent</button> |
-                <button class="ico-text-button">High</button> |
-                <button class="ico-text-button">Middle</button> |
+                <button class="ico-text-button">All</button>
+                |
+                <button class="ico-text-button">Urgent</button>
+                |
+                <button class="ico-text-button">High</button>
+                |
+                <button class="ico-text-button">Middle</button>
+                |
                 <button class="ico-text-button">Low</button>
             </div>
         </div>
-        <button class="drop-switch"><span>Global list</span>&#xe906</button>
+        <button class="drop-switch"><span>Global list</span>&#xe906;</button>
         <ul class="global-list">
             <li>
                 <ul class="sorted-list sport">
                     <li class="list-header"><span class="list-header-category-mark"></span>TITLE</li>
                     <li class="task urgent">
-                        <div class="category">&#xe912</div>
+                        <div class="category">&#xe912;</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
                         <section class="task-info">
                             <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                             <div class="task-buttons-container">
-                                <button class="drag-task">&#xe904</button>
-                                <button class="edit-task">&#xe905</button>
+                                <button class="drag-task">&#xe904;</button>
+                                <button class="edit-task">&#xe905;</button>
                             </div>
                         </section>
-                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                        <div class="urgency">&#xe90e;<p class="urgency-counter">3</p></div>
                     </li>
-                    <li class="task low" >
-                        <div class="category">&#xe912</div>
+                    <li class="task low">
+                        <div class="category">&#xe912;</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
                         <section class="task-info">
                             <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                             <div class="task-buttons-container">
-                                <button class="drag-task">&#xe904</button>
-                                <button class="edit-task">&#xe905</button>
+                                <button class="drag-task">&#xe904;</button>
+                                <button class="edit-task">&#xe905;</button>
                             </div>
                         </section>
-                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                        <div class="urgency">&#xe90e;<p class="urgency-counter">3</p></div>
                     </li>
                 </ul>
             </li>
@@ -178,32 +187,32 @@
                 <ul class="sorted-list education">
                     <li class="list-header"><span class="list-header-category-mark"></span>TITLE</li>
                     <li class="task low">
-                        <div class="category">&#xe912</div>
+                        <div class="category">&#xe912;</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
                         <section class="task-info">
                             <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                             <div class="task-buttons-container">
-                                <button class="drag-task">&#xe904</button>
-                                <button class="edit-task">&#xe905</button>
+                                <button class="drag-task">&#xe904;</button>
+                                <button class="edit-task">&#xe905;</button>
                             </div>
                         </section>
-                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                        <div class="urgency">&#xe90e;<p class="urgency-counter">3</p></div>
                     </li>
-                    <li class="task high" >
-                        <div class="category">&#xe912</div>
+                    <li class="task high">
+                        <div class="category">&#xe912;</div>
                         <div class="border-category"></div>
                         <div class="date">TODAY</div>
                         <section class="task-info">
                             <h2 class="task-info-title">Lorem ipsum sit amet</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                             <div class="task-buttons-container">
-                                <button class="drag-task">&#xe904</button>
-                                <button class="edit-task">&#xe905</button>
+                                <button class="drag-task">&#xe904;</button>
+                                <button class="edit-task">&#xe905;</button>
                             </div>
                         </section>
-                        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+                        <div class="urgency">&#xe90e;<p class="urgency-counter">3</p></div>
                     </li>
                 </ul>
             </li>
