@@ -1,9 +1,11 @@
 .button-blue{
     background-color: #59ABE3;
 }
+
 .button-blue:hover,.button-blue:focus{
     background-color: #368BC5;
 }
+
 .button-blue:active{
     background-color: #82C7E0;
 }
@@ -11,6 +13,7 @@
 .button-green{
     background-color: #1ABC9C;
 }
+
 .button-green:hover,.button-green:focus{
     background-color: #16A085;
 }
@@ -27,7 +30,6 @@
     background-color: #f99595;
 }
 
-
 .ico-text-button{
     color: #8da5b8;
     position: relative;
@@ -40,4 +42,30 @@
 }
 .ico-text-button:active,.ico-text-button:active{
     color: #59ABE3;
+}
+
+.tip{
+    font-size: 12px;
+    background: #ccdce8;
+    width: 127px;
+    color: #566978;
+    font-weight: bold;
+    text-align: center;
+    height: 30px;
+    position: absolute;
+    border-radius: 6px;
+    line-height: 30px;
+}
+
+.tip::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    border: 5px solid transparent;
+    border-bottom: 5px solid #ccdce8;
+}
+
+.tip-in{
+    position: relative;
 }
