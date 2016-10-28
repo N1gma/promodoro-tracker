@@ -5,7 +5,7 @@ body {
 
 .wrapper {
     max-width: 1366px;
-    padding-top: 7%;
+    padding-top: 130px;
     margin: 0 auto;
 }
 
@@ -41,7 +41,7 @@ body {
     font: 15px "Roboto", sans-serif;
 }
 
-.main-content {
+.settings-wrap {
     padding: 0 22.1%;
     padding-right: 14.2%;
     color: white;
@@ -49,7 +49,7 @@ body {
     overflow: hidden;
 }
 
-.main-content i {
+.settings-wrap {
     margin-right: 2.4%;
 }
 
@@ -131,7 +131,7 @@ body {
 }
 
 .button-holder {
-    width: 21.2%;
+    width: 288px;
     display: flex;
     margin: 0 auto;
     justify-content: space-around;
@@ -139,107 +139,107 @@ body {
 
 .button-1 {
     color: white;
-    width: 44%;
     padding: 12px 0;
+    width: 125px;
 }
 
 .button-2 {
     color: white;
-    width: 44%;
     padding: 12px 0;
+    width: 125px;
 }
 
 /*settings-2*/
 
 .categories-choose-wrap {
-    width: 19.8%;
     color: #5b7284;
     margin: 0 auto 7% auto;
     font: 16px "Roboto", sans-serif;
+    max-width: 281px;
 }
 
 .categories-choose-list {
-    padding-left: 14%;
+padding-left: 14%;
 }
 
 .categories-choose-list li {
-    margin-bottom: 15%;
-    position: relative;
+margin-bottom: 15%;
+position: relative;
 }
 
 .categories-choose-list input {
-    display: none;
+display: none;
 }
 
 .label1, .label2, .label3, .label4, .label5 {
-    width: 19px;
-    height: 19px;
-    position: absolute;
-    left: -17%;
-    top: 0;
-    cursor: pointer;
+width: 19px;
+height: 19px;
+position: absolute;
+left: -17%;
+top: 0;
+cursor: pointer;
 }
 
 .label1 {
-    background: url(../img/ico-sprite.png) no-repeat 0 -19px;
+background: url(../img/ico-sprite.png) no-repeat 0 -19px;
 }
 
 .label2 {
-    background: url(../img/ico-sprite.png) no-repeat -18px -19px;
+background: url(../img/ico-sprite.png) no-repeat -18px -19px;
 }
 
 .label3 {
-    background: url(../img/ico-sprite.png) no-repeat -36px -19px;
+background: url(../img/ico-sprite.png) no-repeat -36px -19px;
 }
 
 .label4 {
-    background: url(../img/ico-sprite.png) no-repeat -54px -19px;
+background: url(../img/ico-sprite.png) no-repeat -54px -19px;
 }
 
 .label5 {
-    background: url(../img/ico-sprite.png) no-repeat -72px -19px;
+background: url(../img/ico-sprite.png) no-repeat -72px -19px;
 }
 
 .text-label {
-    border-bottom: 1px solid #5b7284;
-    width: 100%;
-    display: inline-block;
-    padding-bottom: 7px;
-    cursor: pointer;
+border-bottom: 1px solid #5b7284;
+width: 100%;
+display: inline-block;
+padding-bottom: 7px;
+cursor: pointer;
 }
 
 input:checked ~ .text-label {
-    border-color: white;
-    color: white;
+border-color: white;
+color: white;
 }
 
 input:hover ~ .text-label {
-    border-color: white;
-    color: white;
+border-color: white;
+color: white;
 }
 
 input:checked ~ .label1 {
-    background-position: 0 0;
+background-position: 0 0;
 }
 
 input:checked ~ .label2 {
-    background-position: -18px 0;
+background-position: -18px 0;
 }
 
 input:checked ~ .label3 {
-    background-position: -36px 0;
+background-position: -36px 0;
 }
 
 input:checked ~ .label4 {
-    background-position: -54px 0;
+background-position: -54px 0;
 }
 
 input:checked ~ .label5 {
-    background-position: -72px 0;
+background-position: -72px 0;
 }
 
 .categories-choose-list li:hover {
-    border-color: white;
-    color: white;
+border-color: white;
+color: white;
 }
 
