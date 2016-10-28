@@ -149,6 +149,8 @@
 
 .task-info{
     display: flex;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     width: 84.8%;
     position: relative;

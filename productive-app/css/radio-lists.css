@@ -3,6 +3,9 @@
 .categories-choose-list{
     border-bottom: 1px solid #5b7284;
     display: flex;
+    display: -webkit-flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: flex-start;
     justify-content: flex-start;
     margin-bottom: 32px;;
 }

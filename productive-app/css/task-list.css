@@ -75,7 +75,10 @@ body {
     background-color: white;
     line-height: 87px;
     display: flex;
+    display: -webkit-flex;
     justify-content: flex-start;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
     margin-bottom: 0.6%;
     position: relative;
     box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);
@@ -91,7 +94,9 @@ body {
     position: absolute;
     right: 34px;
     display: flex;
+    display: -webkit-flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     height: 100%;
     top: 0;
     font-size: 19px;
@@ -306,7 +311,9 @@ body {
 .modal-remove-inner-wrapper {
     height: 480px;
     display: flex;
+    display: -webkit-flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     align-content: flex-start;
     padding-top: 30%;
     box-sizing: border-box;
@@ -331,8 +338,11 @@ body {
 .button-holder-default {
     width: 73%;
     display: flex;
+    display: -webkit-flex;
     margin: 0 auto;
     justify-content: space-around;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-around;
 }
 
 /*notifications*/
@@ -377,7 +387,10 @@ body {
 .notification-list-top li,.notification-list-bottom li {
     height: 52px;
     display: flex;
+    display: -webkit-flex;
     justify-content: flex-start;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: flex-start;
     position: relative;
     border: 1px solid white;
     border-radius: 5px;

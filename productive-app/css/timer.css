@@ -44,6 +44,9 @@ body{
 .button-holder{
     width: 21.2%;
     display: flex;
+    display: -webkit-flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-around;
     margin: 0 auto;
     justify-content: space-around;
 }
@@ -69,6 +72,9 @@ body{
     box-sizing: border-box;
     margin: 0 auto;
     display: flex;
+    display: -webkit-flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: center;
     justify-content: center;
     position: relative;
 }
