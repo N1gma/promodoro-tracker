@@ -31,5 +31,3 @@ function validateInput(a,b) {
 function calculate(operator,a,b) {
     return calculations[operator]? calculations[operator](a,b) : 'Error, unsupported operation!';
 }
-
-console.log(calculate('+', 2,1));
