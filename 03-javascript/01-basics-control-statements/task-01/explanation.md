@@ -1,6 +1,6 @@
 Provide an answer, cast steps and explanations for each quiz:
-1.	'' + 1 + 0 = '10' // string + number goes first so will be ' 1' + 0 , ' 1' + 0 = ' 01' , in other case '1' + 0 = 1
-2.	'' - 1 + 0 = -1 // ' ' -1 = -1 bcuz of empty string
+1.	'' + 1 + 0 = '10' // string + number concat "" + 1 = "1"+0 (same) = '10'
+2.	'' - 1 + 0 = -1 // ' ' -1 = -1 bcuz of empty string, otherwise NaN
 3.	true + false = 1 // 1 + 0
 4.	6 / '3' = 2 // only '+' operator can concat string with number, other variantions gives number if theres number in string or returns NaN
 5.	'2' * '3' = 6 // same string contains only number
@@ -20,7 +20,7 @@ Provide an answer, cast steps and explanations for each quiz:
 19.	undefined + 1 = NaN // same as as 13,9 etc
 20.	(1,5 - 1) * 2 = 1 // default
 21.	+ '' = 0 // converts empty string to number returns 0
-22.	+[] = 0 // converts empty array +' ' returns 0
+22.	+[] = 0 // converts empty array +'' returns 0
 23.	[] + [] // ' ' + ' ' = ' '
 24.	[7] + [8] = '78' //same as '7' + '8'
 25.	+[8] = 8 // same as +'8'
