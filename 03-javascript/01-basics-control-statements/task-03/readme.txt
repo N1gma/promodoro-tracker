@@ -7,11 +7,13 @@ If argument is not a number, it should return an error string ‘Error, argument
 
 Than implement function which takes three arguments – the first number, the second number and size for Multiply Table and return ‘two dimensional’ array with multiply table
 multiplyTable(1, 3, 4), the result must looks like
-    [[null, 1, 2, 3, 4],
+    [
+    [ , 1, 2, 3, 4],
     [3, 3, 6, 9, 12],
     [4, 4, 8, 12, 16],
-    [5, 5, 10, 15, 20],
-    [6, 6, 12, 18, 24]]
+    [5, 5, 10,15, 20],
+    [6, 6, 12,18, 24]
+    ]
 
 Than implement function which takes the result of previous function and return it’s string equivalent: (null should become a space character, end of lines – \n symbol – new line)
 multiplyView(multiplyTable(3, 5, 4))) should return: (the first symbol is space)

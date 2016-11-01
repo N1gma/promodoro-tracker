@@ -14,9 +14,9 @@ Provide an answer, cast steps and explanations for each quiz:
 13.	'  -9\n' - 5 = NaN // same as 9
 14.	5 && 2 = 2 // if both true returns last
 15.	2 && 5 = 5 //same
-16.	5 || 0 = 5 //returns true, 0 is false
+16.	5 || 0 = 5 //returns true, 0 is a false
 17.	0 || 5 = 5 //same
-18.	null + 1 = 1 //null converts in mathematic operation
+18.	null + 1 = 1 //null converts in 0
 19.	undefined + 1 = NaN // same as as 13,9 etc
 20.	(1,5 - 1) * 2 = 1 // default
 21.	+ '' = 0 // converts empty string to number returns 0
