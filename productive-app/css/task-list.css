@@ -6,7 +6,7 @@ body {
 
 .wrapper {
     max-width: 1366px;
-    padding-top: 140px;
+    padding-top: 10%;
     margin: 0 auto;
 }
 
@@ -75,10 +75,7 @@ body {
     background-color: white;
     line-height: 87px;
     display: flex;
-    display: -webkit-flex;
     justify-content: flex-start;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
     margin-bottom: 0.6%;
     position: relative;
     box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);
@@ -93,15 +90,12 @@ body {
 .task-buttons-container {
     position: absolute;
     right: 34px;
+    align-self: center;
     display: flex;
-    display: -webkit-flex;
     flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
+    justify-content: space-between;
     height: 100%;
     top: 0;
-    font-size: 19px;
-    padding: 11px 0;
-    box-sizing: border-box;
 }
 
 .edit-task {
@@ -216,8 +210,6 @@ body {
     width: 100%;
     padding: 0 2.8%;
     box-sizing: border-box;
-    font-family: icomoon;
-
 }
 
 .modal-interface-trash {
@@ -244,6 +236,7 @@ body {
 }
 
 .modal-wrap {
+    display: none;
     position: fixed;
     z-index: 9999999;
     left: 0;
@@ -311,9 +304,7 @@ body {
 .modal-remove-inner-wrapper {
     height: 480px;
     display: flex;
-    display: -webkit-flex;
     flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
     align-content: flex-start;
     padding-top: 30%;
     box-sizing: border-box;
@@ -338,11 +329,8 @@ body {
 .button-holder-default {
     width: 73%;
     display: flex;
-    display: -webkit-flex;
     margin: 0 auto;
     justify-content: space-around;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-around;
 }
 
 /*notifications*/
@@ -356,7 +344,6 @@ body {
 }
 
 .notification-list-top {
-    display: none;
     max-width: 1366px;
     margin: 0 auto;
     position: relative;
@@ -387,10 +374,7 @@ body {
 .notification-list-top li,.notification-list-bottom li {
     height: 52px;
     display: flex;
-    display: -webkit-flex;
     justify-content: flex-start;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: flex-start;
     position: relative;
     border: 1px solid white;
     border-radius: 5px;

@@ -1,5 +1,4 @@
 /*categories*/
-
 .work .category,.work .border-category {
     background-color: #ffb200;
 }
@@ -46,9 +45,7 @@
 .other .list-header-category-mark{
     background-position: -72px 0;
 }
-
 /*urgency*/
-
 .urgent .urgency{
     background-color: #e16c65;
 }
@@ -76,28 +73,7 @@
 .low .task-info-title{
     color:#1abc9c ;
 }
-
-/*estimation*/
-
-.estimate-1 .estimation-counter:before{
-    content:'1';
-}
-
-.estimate-2 .estimation-counter:before{
-    content:'2';
-}
-
-.estimate-3 .estimation-counter:before{
-    content:'3';
-}
-
-.estimate-4 .estimation-counter:before{
-    content:'4';
-}
-
-
 /*states*/
-
 .today-list .done,.sorted-list .done{
     background-color: #d4d9dc;
 }
@@ -149,8 +125,6 @@
 
 .task-info{
     display: flex;
-    display: -webkit-flex;
-    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     width: 84.8%;
     position: relative;
@@ -183,29 +157,19 @@
     line-height: 87px;
     position: relative;
     background-color: black;
-    cursor: pointer;
-}
-.urgency::before{
-    content:'\e90e';
 }
 
-.urgency:hover:before{
-    content:'\e90d';
-}
 
-.urgency:hover .estimation-counter{
-    visibility: hidden;
-}
-
-.estimation-counter{
+.urgency-counter{
     position: absolute;
-    left: 0;
+    left: 3px;
     color: white;
     top: 0;
     right: 0;
     font-size: 30px;
     bottom: 0;
-    cursor: pointer;
 }
 
-
+.urgency-counter-off{
+    display: none;
+}

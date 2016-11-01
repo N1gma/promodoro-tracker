@@ -1,0 +1,50 @@
+.wrapper {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    background: white;
+}
+.pie {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: #08C;
+    transform-origin: 100% 50%;
+ }
+.spinner {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    z-index: 200;
+    border-right: none;
+    animation: rota 10s linear infinite;
+}
+.filler {
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    z-index: 100;
+    border-left: none;
+    animation: fill 10s steps(1, end) infinite;
+    left: 50%;
+    opacity: 0;
+}
+.mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    z-index: 300;
+    opacity: 1;
+    background: inherit;
+    animation: mask 10s steps(1, end) infinite;
+}
+@keyframes rota {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fill {
+    0%        { opacity: 0; }
+    50%, 100% { opacity: 1; }
+}
+
+@keyframes mask {
+    0%        { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}

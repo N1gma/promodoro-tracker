@@ -5,7 +5,7 @@ body{
 
 .wrapper {
     max-width: 1366px;
-    padding-top: 130px;
+    padding-top: 9%;
     margin: 0 auto;
     padding-bottom: 2.2%;
 }
@@ -20,14 +20,10 @@ body{
     color: white;
 }
 
-.
 
 .button-holder{
     width: 21.2%;
     display: flex;
-    display: -webkit-flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-around;
     margin: 0 auto;
     justify-content: space-around;
 }
@@ -78,9 +74,6 @@ body{
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    display: -webkit-flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: center;
     justify-content: center;
     margin-bottom: 29px;
 }
