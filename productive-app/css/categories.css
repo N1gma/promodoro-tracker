@@ -5,12 +5,15 @@
 
 .education .category,.education .border-category{
     background-color: #00d4d9;
+
 }
 .sport .category,.sport .border-category{
     background-color: #b470d0;
+
 }
 .hobby .category,.hobby .border-category{
     background-color: #e16c65;
+
 }
 .other .category,.other .border-category{
     background-color: #59abe3;

@@ -159,6 +159,7 @@ body {
     background-color: #2a3f50;
     border-radius: 50%;
     color: white;
+    z-index: 99999;
 }
 
 .timer-time {
@@ -181,53 +182,62 @@ body {
     font-size: 24px;
     width: 100%;
 }
-
-.timer {
-    background: -webkit-linear-gradient(left, #8da5b8 50%, #2a3f50 50%);
-    border-radius: 50%;
+.time-wrapper {
+    width: 250px;
     height: 250px;
     position: relative;
-    width: 250px;
-    -webkit-animation: time 10s steps(20, start) infinite ;
-    display: block;
-    margin: 0 auto;
-    align-self: center;
-}
-
-.mask {
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-    height: 100%;
+    background-color: #2a3f50;
+    border-radius: 50%;
     left: 0;
-    position: absolute;
+    right: 0;
     top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.pie {
     width: 50%;
-    -webkit-animation: mask 10s  steps(10, start) infinite ;
-    -webkit-transform-origin: 100% 50%;
+    height: 100%;
+    position: absolute;
+    background: #8da5b8;
+    transform-origin: 100% 50%;
+}
+.spinner {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    z-index: 200;
+    border-right: none;
+    animation: rota 10s linear ;
+}
+.filler {
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    z-index: 100;
+    border-left: none;
+    animation: fill 10s steps(1, end) ;
+    left: 50%;
+    opacity: 0;
+}
+.mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    z-index: 300;
+    opacity: 1;
+    background: inherit;
+    animation: mask 10s steps(1, end) ;
+    border-radius: 50% 0 0 50%;
+}
+@keyframes rota {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-@-webkit-keyframes time {
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+@keyframes fill {
+    0%        { opacity: 0; }
+    50%, 100% { opacity: 1; }
 }
 
-@-webkit-keyframes mask {
-    0% {
-        background: #2a3f50; /* Background colour */
-        -webkit-transform: rotate(0deg);
-    }
-    50% {
-        background: #2a3f50; /* Background colour */
-        -webkit-transform: rotate(-180deg);
-    }
-    50.01% {
-        background: #8da5b8; /* Foreground colour */
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        background: #8da5b8; /* Foreground colour */
-        -webkit-transform: rotate(-180deg);
-    }
+@keyframes mask {
+    0%        { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
 
 ​
