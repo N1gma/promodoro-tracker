@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Timer</title>
+    <title>Reports</title>
     <script src="https://use.fontawesome.com/c5ceb228c0.js"></script>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
@@ -11,8 +11,11 @@
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/reports.css">
     <link type="text/html" rel="import" href="templates/templates.html">
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/reports-graph.js"></script>
 </head>
-<body class="">
+<body>
 <button class="back ico-text-button">&#xe902;</button>
 <button class="forward ico-text-button">&#xe903;</button>
 <header class="main-head">
@@ -38,7 +41,9 @@
             |
             <button class="ico-text-button">Month</button>
         </div>
-        <img src="img/Report_Day.png" alt="report">
+        <div class="graph-container" id="report-graph">
+
+        </div>
 
         <div class="interface-container-2">
             <button class="ico-text-button">Pomodoros</button>
