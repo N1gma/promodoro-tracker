@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/timer.css">
     <link rel="stylesheet" type="text/css" href="css/color-schemes.css">
     <link type="text/html" rel="import" href="templates/templates.html">
+    <script src="js/timer.js"></script>
 </head>
 <body class="move-on">
 <button class="back ico-text-button">&#xe902;</button>
@@ -41,12 +42,12 @@
         <li class="phase"></li>
         <li class="phase-add">&#xe900;</li>
     </ul>
-    <div class="graph-container sport">
+    <div class="graph-container ">
         <div class="timer-outer-circle category">
             <div class="time-wrapper">
-                <div class="spinner pie"></div>
-                <div class="filler pie"></div>
-                <div class="mask"></div>
+                <div class="rotator circle set-able"></div>
+                <div class="filler circle set-able"></div>
+                <div class="mask set-able"></div>
             </div>
             <div class="timer-inner-circle">
                 <div class="timer-time">6
@@ -55,7 +56,7 @@
             </div>
         </div>
         <div class="button-holder">
-            <button class="button-2 button-green">Start</button>
+            <button class="button-2 button-green" id="start-timer">Start</button>
         </div>
         <div class="button-holder">
             <button class="button-2 button-red">Fail Pomodora</button>

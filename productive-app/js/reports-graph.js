@@ -38,7 +38,10 @@ $(function () {
         },
 
         tooltip: {
-          pointFormat: '<b>{series.name}: {point.y}</b>'
+            pointFormatter:function(){
+                return '<b>'+this.name.toUpperCase() + '</b><br><b>Tasks: '+this.y + '</b>';
+            },
+            headerFormat:''
         },
 
         plotOptions: {
@@ -127,15 +130,13 @@ $(function () {
             backgroundColor:'#2a3f50',
             type: 'column',
             renderTo:'report-graph-2',
-            spacing : [0, 0, 0, 0],
             borderWidth: 0,
             style:{
                 fontColor:'white'
             }
         },
-        title: {
-            text: ''
-        },
+        title: null,
+        subtitle:null,
         colors: ['#e05446', '#fba640', '#fcdb43', '#1ab99a', '#8da5b8'],
         legend: {
             symbolRadius: 0,
@@ -169,6 +170,7 @@ $(function () {
         yAxis: {
             allowDecimals: false,
             min: 0,
+            max:25,
             title: {
                 text:null
             },
@@ -188,7 +190,8 @@ $(function () {
         plotOptions: {
             column: {
                 stacking: 'normal',
-                borderWidth: 0
+                borderWidth: 0,
+                cursor:'pointer'
             },
             series: {
                 pointWidth: 28
@@ -196,7 +199,7 @@ $(function () {
         },
         tooltip: {
             pointFormatter:function(){
-                return '<b>'+this.series.name + '</b><br>Tasks: '+this.y;
+                return '<b>'+this.series.name.toUpperCase() + '</b><br><b>Tasks: '+this.y + '</b>';
             },
             headerFormat:''
         },
@@ -207,7 +210,7 @@ $(function () {
         }, {
             name: 'High',
             data: [3, 4, 4, 2, 5],
-            category: 'Tasks'
+            stack:'finished'
         }, {
             name: 'Middle',
             data: [2, 5, 6, 2, 1],
