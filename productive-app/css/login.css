@@ -2,28 +2,31 @@ body {
     background: url("../img/bg.png");
     background-size: cover;
 }
-
-.center-logos {
+.login-wrapper{
     margin: 0 auto;
+    max-width: 320px;
+    text-align: center;
+}
+.center-logo {
     width: 246px;
-    padding-top: 48px;
+    padding: 48px 0;
+    text-align: center;
 }
 
 .center-inputs {
     margin: 0 auto;
     font-family: icomoon;
     color: #8da5b8;
-    padding-top: 1.2%;
-    width: 353px;
+    width: 360px;
 }
 
 .center-inputs:nth-child(2) .input-row {
-    margin-top: 7%;
+    margin-bottom: 29px;
 }
 
 .input-row {
     position: relative;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .log-input, .pw-input {
@@ -55,7 +58,7 @@ body {
 
 .submit {
     display: block;
-    margin: 14% auto;
+    margin: 51px auto;
     width: 125px;
     background-color: #1abc9c;
     color: white;

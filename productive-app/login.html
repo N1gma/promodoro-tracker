@@ -10,21 +10,24 @@
     <link rel="stylesheet" type="text/css" href="css/effects.css">
 </head>
 <body>
-<div class="center-logos">
-    <img src="img/Logo_1.svg" alt="logo goes here">
+<div class="login-wrapper">
+
+        <img class="center-logo" src="img/Logo_1.svg" alt="logo goes here">
+
+    <form class="center-inputs">
+        <div class="input-row">
+            <input class="log-input" id="name_input" type="text" placeholder="Username" required>
+            <label for="name_input">&#xe909;</label>
+            <span class="invalid_msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+        </div>
+        <div class="input-row">
+            <input class="pw-input" id="pw_input" type="text" placeholder="Password" required>
+            <label for="pw_input">&#xe90a;</label>
+        </div>
+        <button class="submit" type="submit" >Log in</button>
+    </form>
 </div>
-<form class="center-inputs">
-    <div class="input-row">
-        <input class="log-input" id="name_input" type="text" placeholder="Username" required>
-        <label for="name_input">&#xe909;</label>
-        <span class="invalid_msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-    </div>
-    <div class="input-row">
-        <input class="pw-input" id="pw_input" type="text" placeholder="Password" required>
-        <label for="pw_input">&#xe90a;</label>
-    </div>
-    <input class="submit" type="submit" value="Log in">
-</form>
+
 
 </body>
 </html>
