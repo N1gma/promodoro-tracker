@@ -69,3 +69,8 @@
 .tip-in{
     position: relative;
 }
+
+.active-tab{
+    color: white;
+}
+

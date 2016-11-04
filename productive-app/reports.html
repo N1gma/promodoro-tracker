@@ -14,6 +14,7 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/reports-graph.js"></script>
+    <script src="js/globalMethods.js"></script>
 </head>
 <body>
 <button class="back ico-text-button">&#xe902;</button>
@@ -35,22 +36,17 @@
     <h2 class="main-head-title">Report</h2>
     <main class="main-wrapper">
         <div class="interface-container-2">
-            <button class="ico-text-button">Day</button>
+            <button class="ico-text-button active-tab" id="day_tab">Day</button>
             |
-            <button class="ico-text-button">Week</button>
+            <button class="ico-text-button" id="week_tab">Week</button>
             |
-            <button class="ico-text-button">Month</button>
+            <button class="ico-text-button" id="month_tab">Month</button>
         </div>
-        <div class="graph-container" id="report-graph">
-
-        </div>
-        <div class="graph-container" id="report-graph-2">
-
-        </div>
+        <div class="graph-container" id="report-graph"></div>
         <div class="interface-container-2">
             <button class="ico-text-button">Pomodoros</button>
             |
-            <button class="ico-text-button">Tasks</button>
+            <button class="ico-text-button active-tab">Tasks</button>
         </div>
     </main>
 </div>

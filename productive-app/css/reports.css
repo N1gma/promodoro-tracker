@@ -5,12 +5,14 @@ body{
 
 .wrapper {
     max-width: 1366px;
-    padding-top: 9%;
+    padding-top: 90px;
     margin: 0 auto;
     padding-bottom: 2.2%;
 }
 
-
+.logo{
+    display: none;
+}
 .main-head-title{
     clear: both;
     font: 28px "Roboto", sans-serif;
@@ -70,12 +72,12 @@ body{
 /*reports*/
 .interface-container-2{
     margin: 0 auto;
-    color: white;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    margin-bottom: 29px;
+    margin-bottom: 104px;
+    color: #8da5b8;
 }
 
 .interface-container-2 .ico-text-button{
@@ -99,12 +101,11 @@ body{
     margin: 0 auto;
     width: 100%;
     max-width: 650px;
-    height: 300px;
-    margin-bottom: 100px;
-    animation: init 1s linear;
+    height: 290px;
+    margin-bottom: 77px;
 }
 
-@keyframes init{
-    0%   { transform: scale(0,0); }
-    100% { transform: scale(1,1); }
+.active-tab{
+    color: white;
 }
+
