@@ -1,16 +1,10 @@
-function chartInit (options) {
+function chartInit(options) {
     var chart = new Highcharts.Chart(options);
 }
 
-window.onload = function(){
+window.onload = function () {
     chartInit(options.pieView);
-    document.getElementsByClassName('interface-container-2')[0].addEventListener('click', function(e){
-        globalMethods.activateTab(e);
-        if(e.target.id == 'day_tab') chartInit(options.pieView);
-        if(e.target.id == 'week_tab') chartInit(options.columnView);
-        if(e.target.id == 'month_tab') chartInit(options.columnViewMonthly);
-    });
-
+    globalMethods.initInterface();
 };
 
 var options = {
@@ -35,7 +29,8 @@ var options = {
             y: 15,
             style: {
                 "color": "white",
-                "fontSize": "70px"
+                "fontSize": "70px",
+                "fontFamily": "Roboto"
             }
 
         },
@@ -266,57 +261,57 @@ var options = {
         series: columnMonthly()
     }
 };
-
-function pieDaily(){ //get data from any source
-    return[
+//mocks
+function pieDaily() { //get data from any source
+    return [
         {
-            name:'Urgent',
-            y:2
+            name: 'Urgent',
+            y: 2
         },
         {
-            name:'High',
-            y:3
+            name: 'High',
+            y: 3
         },
         {
-            name:'Medium',
-            y:1
+            name: 'Medium',
+            y: 1
         },
         {
-            name:'Low',
-            y:6
+            name: 'Low',
+            y: 6
         },
         {
-            name:'Failed',
-            y:3
+            name: 'Failed',
+            y: 3
         }
     ];
 }
-function columnWeekly(){
+function columnWeekly() {
     return [{
         name: 'Urgent',
         data: [5, 3, 4, 7, 2],
-        stack:'finished'
+        stack: 'finished'
     }, {
         name: 'High',
         data: [3, 4, 4, 2, 5],
-        stack:'finished'
+        stack: 'finished'
     }, {
         name: 'Middle',
         data: [2, 5, 6, 2, 1],
-        stack:'finished'
+        stack: 'finished'
     }, {
         name: 'Low',
         data: [3, 0, 4, 4, 3],
-        stack:'finished'
+        stack: 'finished'
 
     }, {
         name: 'Failed',
         data: [3, 6, 4, 4, 3],
-        stack:'failed'
+        stack: 'failed'
     }
     ]
 }
-function columnMonthly(){
+function columnMonthly() {
     return [{
         name: 'Urgent',
         data: createRandom30xArray()
@@ -337,25 +332,16 @@ function columnMonthly(){
     ]
 }
 
-function createRandom30xArray(){
+function createRandom30xArray() {
     var data = [];
     var min = 1;
     var max = 6;
-    for (var i = 1;i<=31;i++){
+    for (var i = 1; i <= 31; i++) {
         data.push(parseInt(Math.random() * (max - min) + min));
     }
     return data;
 }
 
-
-function totalValueCount(){
-    var data = pieDaily();
-    var tasksInTotal = 0;
-    for(var i = 0;i<data.length;i++) {
-        tasksInTotal+=data[i].y;
-    }
-    return tasksInTotal;
-}
 
 
 
