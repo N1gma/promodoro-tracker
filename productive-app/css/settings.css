@@ -51,6 +51,7 @@ body {
     margin: 0 auto;
     width: 61%;
     padding-left: 62px;
+    min-width: 952px;
 }
 
 .main-content i {

@@ -1,4 +1,4 @@
-task-list.html
+**task-list.html**
 Modal windows  can be showed via their buttons ( + button(in header), edit button in task-node, trash button in task-node).
 For details look in js folder. Only to show them.
 Top notification block can be enabled via deselect of display:none property of "notification-wrap-top" class - element.
