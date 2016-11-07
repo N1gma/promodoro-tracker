@@ -1,18 +1,53 @@
-**task-list.html**
-Modal windows  can be showed via their buttons ( + button(in header), edit button in task-node, trash button in task-node).
-For details look in js folder. Only to show them.
-Top notification block can be enabled via deselect of display:none property of "notification-wrap-top" class - element.
-Task nodes are <li> elements from one same template(templates/templates.html - id='task-list-node' which customised by adding classes to <li>(manually right now, later maybe can be parsed from task-object).
-Same to notifications (templates/templates.html - id='notification-node');
+#phase1
+###task-list.html
+ Modal windows  can be showed via their buttons :
+<li>( **+ button(in header)**</li>
+<li> edit button in task-node</li>
+<li>trash button in task-node)</li>
 
-Task nodes settings classes are divided by types :
-categories(work,education,sport,other,hobby),
-urgency(urgent,high,medium,low),
-estimation(estimate-1,estimate-2,estimate-3,estimate-4)
+>*For details look in js folder. Only to show them.*
 
-One of each types added to the class attribute (like class='sport low estimate-1').
+ Top notification block can be enabled via deselect of    `display:none`    property of `.notification-wrap-top` class - element.
+ Task nodes are **li** elements from one same template(**templates/templates.html** - `id='task-list-node'` which customised by adding classes to `li`(manually right now, later maybe can be parsed from task-object).
+>Same to notifications (**templates/templates.html** - `id='notification-node'`);
 
-Notification classes : info-pomodora-type, warning-pomodora-type, failed-pomodora-type, success-pomodora-type(one of them should be added)
+ Task nodes settings classes are divided by types :
+ 
+ + categories
+    - work
+    - education
+    - sport
+    - other
+    - hobby,
+ + urgency
+    - urgent
+    - high
+    - medium
+    - low
+ + estimation
+    -estimate-1
+    -estimate-2
+    -estimate-3
+    -estimate-4
+
+>One of each types added to the class attribute (like class='sport low estimate-1').
+
+Notification classes : 
+
+ + info-pomodora-type
+ + warning-pomodora-type
+ + failed-pomodora-type
+ + success-pomodora-type *(one of them should be added)*
+ 
+#phase2
+###reports.html
+ 
+ + Click on **day/week/month** tab to change graphs
+ + Total tasks updated automatically after graph render
+ 
+###timer.html
+ + Outer circle color can be changed after changing its container class depending on catergory
+ + Animation can be pause if `start button` pressed
 
 
 
