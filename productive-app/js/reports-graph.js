@@ -342,6 +342,16 @@ function createRandom30xArray() {
     return data;
 }
 
+function totalValueCount() {
+    var data = pieDaily();
+    var tasksInTotal = 0;
+    for (var i = 0; i < data.length; i++) {
+        tasksInTotal += data[i].y;
+    }
+    return tasksInTotal;
+}
+
+
 
 
 
