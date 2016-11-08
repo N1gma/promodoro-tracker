@@ -123,25 +123,25 @@ document.addEventListener("DOMContentLoaded", function component1() {
         document.getElementById('workTime').descriptor = {
             metrics: ' min',
             iteration: 5,
-            minimum: 5,
-            maximum: 60
+            minimum: 15,
+            maximum: 40
         };
         document.getElementById('shortBreak').descriptor = {
             metrics: ' min',
             iteration: 1,
-            minimum: 3,
+            minimum: 1,
             maximum: 15
         };
         document.getElementById('workIteration').descriptor = {
             metrics: '',
             iteration: 1,
             minimum: 1,
-            maximum: 10
+            maximum: 5
         };
         document.getElementById('longBreak').descriptor = {
             metrics: ' min',
             iteration: 5,
-            minimum: 20,
+            minimum: 30,
             maximum: 60
         };
     })()
