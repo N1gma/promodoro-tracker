@@ -49,6 +49,10 @@ Notification classes :
  + Outer circle color can be changed after changing its container class depending on catergory
  + Animation can be pause if `start button` pressed
 
+#phase3
+###components -> settings_timeline
+
+
 
 
 

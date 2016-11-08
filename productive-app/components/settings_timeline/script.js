@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", function component1() {
         timeLabel.classList.add('timelabel');
         timeLabel.style.width = labelWidth;
         for (var i = 0; i < labelsTotal; i++) {
-            timePointer += data['WORK TIME'] + data['SHORT BREAK'];
+            //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
+            timePointer += 30;
             timeLabel.innerHTML = '<div><span></span>' + transformTime(timePointer) + '</div>';
             timelabelsFragment.appendChild(timeLabel.cloneNode(true));
         }
