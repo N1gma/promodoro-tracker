@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function component1() {
+    //var template = document.importNode(document.querySelector('link[rel="import"]').import.getElementById('timelabel').content, true);
     var timeline1 = new TimeLine(document.getElementsByClassName('timeline-container')[0]);
     timeline1.initTimeline();
     timeline1.renderTimeline(getValuesFromInput());
@@ -47,10 +48,10 @@ document.addEventListener("DOMContentLoaded", function component1() {
             }
         };
         this.renderTimeline = function (data) {
-            var fragment = document.createDocumentFragment();
-            var fragment2 = document.createDocumentFragment();
+            var mainFragment = document.createDocumentFragment();
+            var timelabelsFragment = document.createDocumentFragment();
 
-            //timelabelsmark--------------------
+            //timelabels
             var timePointer = 0;
             var labelsTotal = parseInt(data.general / (data['WORK TIME'] + data['SHORT BREAK']));
             var labelWidth = (data['WORK TIME'] + data['SHORT BREAK']) / data.general * 100 + '%';
@@ -60,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function component1() {
             for (var i = 0; i < labelsTotal; i++) {
                 timePointer += data['WORK TIME'] + data['SHORT BREAK'];
                 timeLabel.innerHTML = '<div><span></span>' + transformTime(timePointer) + '</div>';
-                fragment2.appendChild(timeLabel.cloneNode(true));
+                timelabelsFragment.appendChild(timeLabel.cloneNode(true));
             }
-            timeLineLabels.appendChild(fragment2);
+            timeLineLabels.appendChild(timelabelsFragment);
             var fullCycle = timeLabel.cloneNode(true);
             timePointer = (data['WORK TIME'] * data['WORK ITERATION']) + (data['SHORT BREAK'] * (data['WORK ITERATION'] - 1)) + data['LONG BREAK'];
             fullCycle.innerHTML = '<div>Full cycle: ' + transformTime(timePointer)+'<span></span></div>';
@@ -71,40 +72,28 @@ document.addEventListener("DOMContentLoaded", function component1() {
             console.log(fullCycle.width);
             timelineHeadLabel.appendChild(fullCycle);
 
-            //part1------------------------------------
-            for (var i = 0; i < data['WORK ITERATION']; i++) {
-                var work = document.createElement('div');
-                work.classList.add('work');
-                work.style.width = data['WORK TIME'] / data.general * 100 + '%';
-                fragment.appendChild(work);
-                if (i != data['WORK ITERATION'] - 1) {
-                    var breakk = document.createElement('div');
-                    breakk.classList.add('breakk');
-                    breakk.style.width = data['SHORT BREAK'] / data.general * 100 + '%';
-                    fragment.appendChild(breakk);
+            for (var j = 0;j<2;j++){
+                for (var i = 0; i < data['WORK ITERATION']; i++) {
+                    var work = document.createElement('div');
+                    work.classList.add('work');
+                    work.style.width = data['WORK TIME'] / data.general * 100 + '%';
+                    mainFragment.appendChild(work);
+                    if (i != data['WORK ITERATION'] - 1) {
+                        var breakk = document.createElement('div');
+                        breakk.classList.add('breakk');
+                        breakk.style.width = data['SHORT BREAK'] / data.general * 100 + '%';
+                        mainFragment.appendChild(breakk);
+                    }
                 }
-            }
-
-            //part2------------------------------------
-            var longbreakk = document.createElement('div');
-            longbreakk.classList.add('longbreakk');
-            longbreakk.style.width = data['LONG BREAK'] / data.general * 100 + '%';
-            fragment.appendChild(longbreakk);
-
-            //part3------------------------------------
-            for (var i = 0; i < data['WORK ITERATION']; i++) {
-                if (i != 0) {
-                    var breakk = document.createElement('div');
-                    breakk.classList.add('breakk');
-                    breakk.style.width = data['SHORT BREAK'] / data.general * 100 + '%';
-                    fragment.appendChild(breakk);
+                if(j!=1){
+                    var longbreakk = document.createElement('div');
+                    longbreakk.classList.add('longbreakk');
+                    longbreakk.style.width = data['LONG BREAK'] / data.general * 100 + '%';
+                    mainFragment.appendChild(longbreakk);
                 }
-                var work = document.createElement('div');
-                work.classList.add('work');
-                work.style.width = data['WORK TIME'] / data.general * 100 + '%';
-                fragment.appendChild(work);
+
             }
-            timelineBody.appendChild(fragment);
+            timelineBody.appendChild(mainFragment);
         }
     }
     //TimeLine.proto
