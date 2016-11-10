@@ -1,6 +1,6 @@
 function Model (){
     this.data = {};
-    this.event = new CustomEvent('dispatch',{
+    this.eventFires = new CustomEvent('data-changed',{
         bubbles: true,
         cancelable: true,
         details: undefined
@@ -9,6 +9,6 @@ function Model (){
 
 Model.prototype.getValuesFromDataComponent = function(data) {
     this.data = data;
-    document.dispatchEvent(this.event);
+    document.dispatchEvent(this.eventFires);
     return this;
 };

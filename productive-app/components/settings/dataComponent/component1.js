@@ -1,4 +1,4 @@
-function initComponent1(){
+function inputsComponent1(){ //data component - imputs
     var component = {
         data : {},
         container: document.getElementsByClassName('main-content')[0],
@@ -13,24 +13,24 @@ function initComponent1(){
                 (data['WORK ITERATION'] - 1))) * 2 + data['LONG BREAK'];
 
             return data;
-        }
+        },
+        eventFires : new CustomEvent('input-changed',{
+            bubbles: true,
+            cancelable: true,
+            details: undefined
+        })
     };
-    var event = new CustomEvent('dispatchinput',{
-        bubbles: true,
-        cancelable: true,
-        details: undefined
-    });
+
 
     component.container.addEventListener('click', function (e) {
         var targetInput = e.target.parentNode.children[2];
         if (e.target.classList.contains('plus-count') && (parseInt(targetInput.value) < targetInput.descriptor.maximum)) {
             targetInput.value = (parseInt(targetInput.value) + targetInput.descriptor.iteration) + targetInput.descriptor.metrics;
-            document.dispatchEvent(event);
-
+            document.dispatchEvent(component.eventFires);
         }
         if (e.target.classList.contains('minus-count') && targetInput.descriptor.minimum < parseInt(targetInput.value)) {
             targetInput.value = (parseInt(targetInput.value) - targetInput.descriptor.iteration) + targetInput.descriptor.metrics;
-            document.dispatchEvent(event);
+            document.dispatchEvent(component.eventFires);
         }
     });
 
