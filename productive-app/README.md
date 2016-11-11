@@ -52,18 +52,21 @@ Notification classes :
 #phase3
 ###components -> settings
  1. consist of 2 components
-   + **visualisation main component**
+   + **visualisation component**
      * `controller` listens to dependent data **component** which should be connected to him
      * `controller` listens to changes on model data
      * `model` fires custom **Event** if data was changed 
      * `controller` observes on `model` state and launch `view` visualisation render methods after **Event** interception
-   + **dependent data component**
-     * fires custom **Event** when input values changed
-     * **Event** intercepted by **controller** and call `dataUpdate`  method of model which fires chain **Event** after
+   + **data component**
+     * collect data from hes input fields and place it valid representation in hes **Event** obj
+     * fires custom **Event**
+     * **Event** intercepted by **controller** and call `dataUpdate`  method of model  with data value of  **Event** after
      > 2 **Events** total : input-changed of data **component** and data-changed of `model`
      > Both are intercepted by `controller`
  2. child classes may be created from existing `controller, view, model` to override some of methods for new **strategy** change approach
- 3. data component can be detached or changed to another data component (should be linked to controller further)
+ 3. components can be detached or changed to another data component
+ 4. the only dependency is that visualization component should listen over data component
+ 5. controller listenTo method was made for case if we need different reactions on differend events from different components
 
 
 

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function component1() {
     var view = new View(document.getElementsByClassName('timeline-container')[0]);
     var model = new Model();
     var controller = new Controller(model, view);
+    initComponent1();
     controller.start();
 });
 

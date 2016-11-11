@@ -1,5 +1,6 @@
 function View (renderZone){
     this.renderZone = renderZone;
+    this.representation = {};
 }
 
 View.prototype.initComponent = function () {

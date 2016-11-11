@@ -1,4 +1,4 @@
-function inputsComponent1(){ //data component - imputs
+function initComponent1 (){ //data component - inputs
     var component = {
         data : {},
         container: document.getElementsByClassName('main-content')[0],
@@ -11,7 +11,6 @@ function inputsComponent1(){ //data component - imputs
             }
             data.general = (data['WORK TIME'] * data['WORK ITERATION'] + (data['SHORT BREAK'] *
                 (data['WORK ITERATION'] - 1))) * 2 + data['LONG BREAK'];
-
             return data;
         },
         eventFires : new CustomEvent('input-changed',{
@@ -26,11 +25,15 @@ function inputsComponent1(){ //data component - imputs
         var targetInput = e.target.parentNode.children[2];
         if (e.target.classList.contains('plus-count') && (parseInt(targetInput.value) < targetInput.descriptor.maximum)) {
             targetInput.value = (parseInt(targetInput.value) + targetInput.descriptor.iteration) + targetInput.descriptor.metrics;
+            component.eventFires.data = component.representData();
             document.dispatchEvent(component.eventFires);
+            console.log('event fires');
         }
         if (e.target.classList.contains('minus-count') && targetInput.descriptor.minimum < parseInt(targetInput.value)) {
             targetInput.value = (parseInt(targetInput.value) - targetInput.descriptor.iteration) + targetInput.descriptor.metrics;
+            component.eventFires.data = component.representData();
             document.dispatchEvent(component.eventFires);
+            console.log('event fires');
         }
     });
 
@@ -60,6 +63,4 @@ function inputsComponent1(){ //data component - imputs
         minimum: 30,
         maximum: 60
     };
-
-    return component;
 }
