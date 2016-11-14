@@ -1,0 +1,67 @@
+.timeline-container{
+    width: 100%;
+    margin-top: 13px;
+    margin-bottom: 55px;
+    display: block;
+
+}
+.graph-head {
+    font: 20px Ptsans, sans-serif;
+    color: white;
+    text-align: center;
+    width: 100%;
+
+}
+.timeline{
+    width: 86.7%;
+    background-color: #59abe3;
+    height: 11px;
+    margin: 0 auto;
+    line-height: 11px;
+    position: relative;
+}
+.timelabels{
+    width: 86.7%;
+    background-color: transparent;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.timelabel{
+    display: inline-block;
+    height: 100%;
+    line-height: 30px;
+
+}
+.timelabel div{
+    float: right;
+    text-align: center;
+    background: #2a3f50;
+    color: #62788a;
+    font: 12px Roboto, sans-serif;
+    height: 100%;
+    line-height: 30px;
+    display: block;
+    width: 100%;
+    margin-right: -50%;
+}
+.timelabel span{
+    background-color: #02cdd3;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: 6px;
+    display: block;
+}
+.work{
+    background-color: #ffb200;
+    height: 100%;
+    display: inline-block;
+}
+.breakk,.longbreakk{
+    background-color: #59abe3;
+    height: 100%;
+    display: inline-block;
+}
