@@ -1,3 +1,4 @@
+<body>
 <template id="settings-pomodoros-main-block">
     <main class="main-content">
         <div class="option">
@@ -92,13 +93,14 @@
             <h2 class="task-info-title">Lorem ipsum sit amet</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
             <div class="task-buttons-container">
-                <button class="drag-task">&#xe904</button>
-                <button class="edit-task">&#xe905</button>
+                <button class="drag-task">&#xe904;</button>
+                <button class="edit-task">&#xe905;</button>
             </div>
         </section>
-        <div class="urgency">&#xe90e<p class="urgency-counter">3</p></div>
+        <div class="urgency"><p class="urgency-counter"></p></div>
     </li>
 </template>
+
 <template id="top-block-today-list">
     <ul class="today-list">
 
@@ -113,12 +115,14 @@
         </ul>
     </li>
 </template>
+
 <template id="top-block-today-list-empty">
-    <div class="top-block-empty">
+    <div class="top-block-message">
         <p>Task added,<br> drag it to the top 5 in daily task list</p>
         <p class="top-block-empty-arrow">&#xe901</p>
     </div>
 </template>
+
 <template id="top-block-today-list-resolved">
     <div class="top-block-message">
         <p>Excellent,<br>all daily tasks done! :)</p>
@@ -129,8 +133,8 @@
     <div class="modal-wrap">
         <form class="modal-window">
             <div class="modal-interface">
-                <button>&#xe910</button>
-                <button>&#xe90f</button>
+                <button class="modal-interface-confirm">&#xe90f</button>
+                <button class="modal-interface-cancel">&#xe910</button>
             </div>
             <h2 class="modal-window-head">Add task</h2>
             <label class="modal-input-title" for="title-input">TITLE</label>
@@ -162,9 +166,13 @@
             </ul>
             <label class="modal-input-title" for="deadline-input">DEADLINE</label>
             <input class="modal-input-field" id="deadline-input" type="text" placeholder="Set date">
-            <h3 class="modal-input-title" >ESTIMATION</h3>
+            <h3 class="modal-input-title">ESTIMATION</h3>
             <ul class="estimation-range">
-                <li></li><li></li><li></li><li></li><li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
             <h3 class="modal-input-title">PRIORITY</h3>
             <ul class="categories-choose-list">
@@ -190,6 +198,7 @@
 </template>
 
 <template id="modal-edit-task">
+    <div class="modal-wrap">
         <form class="modal-window">
             <div class="modal-interface">
                 <button class="modal-interface-trash">&#xe912</button>
@@ -226,9 +235,13 @@
             </ul>
             <label class="modal-input-title" for="deadline-input">DEADLINE</label>
             <input class="modal-input-field" id="deadline-input" type="text" placeholder="Set date">
-            <h3 class="modal-input-title" >ESTIMATION</h3>
+            <h3 class="modal-input-title">ESTIMATION</h3>
             <ul class="estimation-range">
-                <li></li><li></li><li></li><li></li><li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
             <h3 class="modal-input-title">PRIORITY</h3>
             <ul class="categories-choose-list">
@@ -250,20 +263,31 @@
                 </li>
             </ul>
         </form>
+    </div>
 </template>
 
 <template id="modal-remove-task">
-    <div class="modal-window">
-        <div class="modal-interface">
-            <button class="modal-interface-cancel">&#xe910</button>
-        </div>
-        <h2 class="modal-window-head">Remove Task</h2>
-        <div class="modal-remove-inner-wrapper">
-            <p class="remove-submit-msg">Are you sure you want to remove selected task(s)?</p>
-            <div class="button-holder-default">
-                <button class="button-default button-blue">Cancel</button>
-                <button class="button-default button-red">Remove</button>
+    <div class="modal-wrap">
+        <div class="modal-window">
+            <div class="modal-interface">
+                <button class="modal-interface-cancel">&#xe910</button>
+            </div>
+            <h2 class="modal-window-head">Remove Task</h2>
+            <div class="modal-remove-inner-wrapper">
+                <p class="remove-submit-msg">Are you sure you want to remove selected task(s)?</p>
+                <div class="button-holder-default">
+                    <button class="button-default button-blue">Cancel</button>
+                    <button class="button-default button-red">Remove</button>
+                </div>
             </div>
         </div>
     </div>
+</template>
+</body>
+<template id="notification-node">
+    <li id="notification-" class="">
+        <div class="notify-ico "></div>
+        <p class="notify-msg">This is just an info notification message!</p>
+        <button class="notify-dismiss">&#xe910</button>
+    </li>
 </template>

@@ -24,7 +24,7 @@
     position: absolute;
     left: 0;
     background: url(../img/ico-sprite.png) no-repeat 0 -37px;
-    top: 0;
+    bottom: 8px;
     line-height: 19px;
 }
 .label1:hover,.text-label:hover ~ .label1{
@@ -91,7 +91,7 @@ input:checked ~ .label5{
     position: absolute;
     left: 0;
     background: url(../img/urgency-sprite.png) no-repeat -1px -38px;
-    top: 0;
+    bottom: 8px;
     line-height: 19px;
 }
 .label11:hover,.text-label:hover ~ .label11{
@@ -107,7 +107,6 @@ input:checked ~ .label5{
     background: url(../img/urgency-sprite.png) no-repeat -55px -20px;
 }
 
-
 input:checked ~ .label11 {
     background-position: -1px -1px;
 }
@@ -120,6 +119,3 @@ input:checked ~ .label33{
 input:checked ~ .label44{
     background-position: -55px -1px;
 }
-
-
-

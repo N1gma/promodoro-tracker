@@ -12,8 +12,12 @@
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link type="text/html" rel="import" href="templates/templates.html">
     <script src="js/globalMethods.js"></script>
-    <script src="components/settings_timeline/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="components/settings_timeline/timeline.css">
+    <script src="components/settings/dataComponent/component1.js"></script>
+    <script src="components/settings/script.js"></script>
+    <script src="components/settings/visualisationComponent/view.js"></script>
+    <script src="components/settings/visualisationComponent/model.js"></script>
+    <script src="components/settings/visualisationComponent/controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="components/settings/visualisationComponent/style.css">
 </head>
 <body>
 <header class="main-head">
@@ -38,46 +42,46 @@
     </div>
 </div>
 <main class="main-content">
-    <div class="option">
+    <form class="option">
         <i style="color: #ffb200" class="fa fa-circle" aria-hidden="true"></i>
-        <p class="opt-title">WORK TIME</p>
+        <label for="workTime" class="opt-title">WORK TIME</label>
         <label>
             <span class="plus-count">&#xe900;</span>
             <span class="minus-count">&#xe911;</span>
-            <input class="select-field" type="text" value="25 min">
+            <input id="workTime" class="select-field" type="text" value="25 min" disabled>
         </label>
         <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-    </div>
-    <div class="option">
+    </form>
+    <form class="option">
         <i style="color: #00d4d9" class="fa fa-circle" aria-hidden="true"></i>
-        <p class="opt-title">WORK ITERATION</p>
+        <label for="workIteration" class="opt-title">WORK ITERATION</label>
         <label>
             <span class="plus-count">&#xe900;</span>
             <span class="minus-count">&#xe911;</span>
-            <input class="select-field" type="text" value="5">
+            <input id="workIteration" class="select-field" type="text" value="5" disabled>
         </label>
         <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-    </div>
-    <div class="option">
+    </form>
+    <form class="option">
         <i style="color: #59abe3" class="fa fa-circle" aria-hidden="true"></i>
-        <p class="opt-title">SHORT BREAK</p>
+        <label for="shortBreak" class="opt-title">SHORT BREAK</label>
         <label>
             <span class="plus-count">&#xe900;</span>
             <span class="minus-count">&#xe911;</span>
-            <input class="select-field" type="text" value="5 min">
+            <input id="shortBreak" class="select-field" type="text" value="5 min" disabled>
         </label>
         <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-    </div>
-    <div class="option">
+    </form>
+    <form class="option">
         <i style="color: #59abe3" class="fa fa-circle" aria-hidden="true"></i>
-        <p class="opt-title">LONG BREAK</p>
+        <label for="longBreak" class="opt-title">LONG BREAK</label>
         <label>
             <span class="plus-count">&#xe900;</span>
             <span class="minus-count">&#xe911;</span>
-            <input class="select-field" type="text" value="45 min">
+            <input id="longBreak" class="select-field" type="text" value="45 min" disabled>
         </label>
         <p class="opt-details">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-    </div>
+    </form>
 </main>
 <div class="timeline-container">
 
