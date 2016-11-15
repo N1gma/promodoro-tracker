@@ -179,23 +179,23 @@ body {
 }
 
 .label1 {
-    background: url(../img/ico-sprite.png) no-repeat 0 -19px;
+    background: url(../../img/ico-sprite.png) no-repeat 0 -19px;
 }
 
 .label2 {
-    background: url(../img/ico-sprite.png) no-repeat -18px -19px;
+    background: url(../../img/ico-sprite.png) no-repeat -18px -19px;
 }
 
 .label3 {
-    background: url(../img/ico-sprite.png) no-repeat -36px -19px;
+    background: url(../../img/ico-sprite.png) no-repeat -36px -19px;
 }
 
 .label4 {
-    background: url(../img/ico-sprite.png) no-repeat -54px -19px;
+    background: url(../../img/ico-sprite.png) no-repeat -54px -19px;
 }
 
 .label5 {
-    background: url(../img/ico-sprite.png) no-repeat -72px -19px;
+    background: url(../../img/ico-sprite.png) no-repeat -72px -19px;
 }
 
 .text-label {

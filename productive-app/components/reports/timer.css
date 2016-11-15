@@ -76,16 +76,16 @@ body {
     width: 28px;
     height: 23px;
     display: inline-block;
-    background: url(../img/tomato.svg) no-repeat;
+    background: url(../../img/tomato.svg) no-repeat;
     margin: 0 5px;
 }
 
 .phase-done {
-    background: url("../img/tomato_fill.svg") no-repeat;
+    background: url("../../img/tomato_fill.svg") no-repeat;
 }
 
 .phase-failed {
-    background: url("../img/tomato-failed.svg") no-repeat;
+    background: url("../../img/tomato-failed.svg") no-repeat;
 }
 
 .phase-add-active .phase-add {

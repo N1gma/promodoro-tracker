@@ -175,7 +175,7 @@ body {
     height: 19px;
     position: absolute;
     left: -4px;
-    background: url(../img/ico-sprite.png);
+    background: url(../../img/ico-sprite.png);
     z-index: 9999;
 }
 
@@ -301,11 +301,11 @@ body {
     width: 28px;
     height: 23px;
     display: inline-block;
-    background: url("../img/tomato.svg") no-repeat;
+    background: url("../../img/tomato.svg") no-repeat;
 }
 
 .estimation-range li:hover {
-    background: url("../img/tomato_fill.svg") no-repeat;
+    background: url("../../img/tomato_fill.svg") no-repeat;
 }
 
 .modal-remove-inner-wrapper {
@@ -658,7 +658,7 @@ body {
     height: 19px;
     position: absolute;
     left: -4px;
-    background: url(../img/ico-sprite.png);
+    background: url(../../img/ico-sprite.png);
     z-index: 9999;
 }
 
@@ -784,11 +784,11 @@ body {
     width: 28px;
     height: 23px;
     display: inline-block;
-    background: url("../img/tomato.svg") no-repeat;
+    background: url("../../img/tomato.svg") no-repeat;
 }
 
 .estimation-range li:hover {
-    background: url("../img/tomato_fill.svg") no-repeat;
+    background: url("../../img/tomato_fill.svg") no-repeat;
 }
 
 .modal-remove-inner-wrapper {

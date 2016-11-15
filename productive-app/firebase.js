@@ -1,14 +1,3 @@
-class LoginController {
-    constructor(view, model) {
-        this.view = view;
-        this.model = model;
-    }
-
-    
-    
-}
-
-var logCtrl = new LoginController();
 
 var config = {
     apiKey: "AIzaSyAxCZC-gz6f6pCxlPli1c-Vigmj0KVARyg",
@@ -19,13 +8,6 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if(user) {
-        window.location = 'settings.html';
-    }
-});
 
 /*firebase.auth().signOut();
 
@@ -41,7 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var val2 = document.getElementById('pw_input').value;
         firebase.auth()
             .signInWithEmailAndPassword(val1, val2);
-    })
+    });
+    /*document.getElementById('log_out').addEventListener('click', function (e) {
+        firebase.auth().signOut();
+    })*/
 });
 
 
