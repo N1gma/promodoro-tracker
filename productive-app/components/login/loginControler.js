@@ -21,7 +21,7 @@ LoginController.prototype.init = function(){
 firebase.auth().onAuthStateChanged(function(user) {
     if(user) {
         console.log('login success');
-        window.location = '../../components/settings/settings.html';
+        window.location = 'index.html';
     }
     if(!user) {
         console.log('logged out')
