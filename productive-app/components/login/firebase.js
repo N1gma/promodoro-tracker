@@ -16,18 +16,11 @@ var database = firebase.database();
  window.location = 'index.html';
  }
  });*/
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
-        e.preventDefault();
-        var val1 = document.getElementById('name_input').value;
-        var val2 = document.getElementById('pw_input').value;
-        firebase.auth()
-            .signInWithEmailAndPassword(val1, val2);
-    });
+
     /*document.getElementById('log_out').addEventListener('click', function (e) {
         firebase.auth().signOut();
     })*/
-});
+
 
 
 
