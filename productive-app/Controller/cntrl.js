@@ -5,4 +5,4 @@ class Controller{
     }
 }
 
-let loginController = new Controller()
+

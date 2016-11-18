@@ -1,10 +1,13 @@
 import './header.css'
-import './Logo.svg'
-import template from  './markup.jade'
+import './../../img/Logo.svg'
+import template1 from  './markup.jade'
 
-document.addEventListener('DOMContentLoaded',function () {
+
+console.log(template)
+
+/*document.addEventListener('DOMContentLoaded',function () {
     var node = document.createElement('div');
     node.innerHTML = template();
-    document.body.appendChild(node.firstElementChild)
+    document.body.appendChild(node.firstElementChild);
     console.log(node)
-})
+});*/

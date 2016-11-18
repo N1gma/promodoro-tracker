@@ -1,3 +1,4 @@
+
 function View(eBus) {
     this.eBus = eBus;
 }
@@ -12,6 +13,11 @@ View.prototype.auth = function (e) {
             msgs[i].style.display = 'block';
         }
     });
-    console.log('auth');
 };
+
+View.prototype.logOut = function(){
+    firebase.auth().signOut();
+};
+
+
 

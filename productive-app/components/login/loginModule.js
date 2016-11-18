@@ -48,22 +48,18 @@
 
 	__webpack_require__(1);
 
-	__webpack_require__(5);
+	var _template = __webpack_require__(6);
 
-	var _markup = __webpack_require__(6);
-
-	var _markup2 = _interopRequireDefault(_markup);
+	var _template2 = _interopRequireDefault(_template);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Header = {};
-
-	/*document.addEventListener('DOMContentLoaded',function () {
-	    var node = document.createElement('div');
-	    node.innerHTML = template();
-	    document.body.appendChild(node.firstElementChild);
-	    console.log(node)
-	});*/
+	Router.renderLog = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _template2.default)();
+	    console.log(el);
+	    document.body.appendChild(el.firstElementChild);
+	};
 
 /***/ },
 /* 1 */
@@ -75,14 +71,14 @@
 	var content = __webpack_require__(2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./header.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./header.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./login.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./login.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -100,7 +96,7 @@
 
 
 	// module
-	exports.push([module.id, ".logo{\r\n    visibility: hidden;\r\n    margin-top: 28px;\r\n    margin-bottom: 27px;\r\n    min-width: 249px;\r\n    width: 21%;\r\n    display: none;\r\n}\r\n\r\n.main-head{\r\n    overflow: hidden;\r\n    position: fixed;\r\n    width: 100%;\r\n    background-color: #2a3f50;\r\n}\r\n.main-head-shadow-on{\r\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\r\n}\r\n.inner-head{\r\n    max-width: 1366px;\r\n    margin: 0 auto;\r\n    box-sizing: border-box;\r\n}\r\n.inner-2-head{\r\n    width: 100%;\r\n    padding: 0 6.8%;\r\n    box-sizing: border-box;\r\n    padding-top: 56px;\r\n}\r\n.visible-logo{\r\n    visibility: visible;\r\n}\r\n\r\n.interface-container{\r\n    margin-bottom: 17px;\r\n    float: right;\r\n    width: 46%;\r\n    text-align: right;\r\n    font-size: 18px;\r\n}\r\n\r\n.interface-container .ico-text-button {\r\n    font-family: icomoon;\r\n    cursor: pointer;\r\n    margin-left: 5.7%;\r\n}\r\n\r\n.visible-logo {\r\n    visibility: visible;\r\n}", ""]);
+	exports.push([module.id, "body {\r\n    background: url(" + __webpack_require__(4) + ");\r\n    background-size: cover;\r\n}\r\n.login-wrapper{\r\n    margin: 0 auto;\r\n    max-width: 320px;\r\n    text-align: center;\r\n}\r\n.center-logo {\r\n    width: 246px;\r\n    padding: 48px 0;\r\n    text-align: center;\r\n}\r\n\r\n.center-inputs {\r\n    margin: 0 auto;\r\n    font-family: icomoon;\r\n    color: #8da5b8;\r\n    width: 360px;\r\n}\r\n\r\n.center-inputs:nth-child(2) .input-row {\r\n    margin-bottom: 29px;\r\n}\r\n\r\n.input-row {\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.log-input, .pw-input {\r\n    border: none;\r\n    background-color: transparent;\r\n    font: 16px Roboto, sans-serif;\r\n    padding-left: 30px;\r\n    color: #8da5b8;\r\n    border-bottom: 1px solid #425869;\r\n    padding-bottom: 10px;\r\n    width: 91%;\r\n}\r\n\r\n.center-inputs input:focus {\r\n    border-color: white;\r\n    color: white;\r\n}\r\n\r\n.center-inputs input:focus + label {\r\n    color: white;\r\n}\r\n\r\n.center-inputs label {\r\n    font-size: 14px;\r\n    position: absolute;\r\n    bottom: 13px;\r\n    left: 0;\r\n}\r\n\r\n.submit {\r\n    display: block;\r\n    margin: 51px auto;\r\n    width: 125px;\r\n    background-color: #1abc9c;\r\n    color: white;\r\n    border: none;\r\n    outline: none;\r\n    font: 18px \"PTSans\", sans-serif;\r\n    height: 42px;\r\n}\r\n\r\n.submit:active {\r\n    background-color: #62D3BD;\r\n}\r\n\r\n.submit:focus, .submit:hover {\r\n    background-color: #16A085;\r\n}\r\n\r\n.invalid_msg {\r\n    font: 12px \"Roboto\", sans-serif;\r\n    color: red;\r\n    position: absolute;\r\n    display: none;\r\n    left: 0;\r\n    bottom: -20px;\r\n}\r\n\r\n", ""]);
 
 	// exports
 
@@ -163,6 +159,12 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "img/bg.png";
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -414,12 +416,6 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/Logo.svg";
-
-/***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -430,7 +426,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button class=\"ico-text-button\">&#xe90c;</button><button class=\"ico-text-button\">&#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\">&#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<div class=\"login-wrapper\"><img src=\"./img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
 	}
 
 /***/ },

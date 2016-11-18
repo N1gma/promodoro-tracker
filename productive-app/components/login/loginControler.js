@@ -1,29 +1,36 @@
-function LoginController(view,eBus){
+function LoginController(view, eBus) {
     this.view = view;
     this.eBus = eBus;
 }
 
-document.addEventListener('DOMContentLoaded', function(e){
-    var loginCtrl = new LoginController(new View(EventBus),EventBus);
-    loginCtrl.init(e);
-});
 
-LoginController.prototype.init = function(){
-    firebase.auth().signOut();
-    this.eBus.subscribe('auth',this.view.auth);
-    var context = this;
-    document.getElementsByClassName('center-inputs')[0].addEventListener('submit',function(e){
-        e.preventDefault();
-        context.eBus.publish('auth');
+
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+        var loginCtrl = new LoginController(new View(EventBus), EventBus);
+
+        loginCtrl.eBus.subscribe('auth', loginCtrl.view.auth);
+        loginCtrl.eBus.subscribe('logOut', loginCtrl.view.logOut);
+
+
+        /*document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
+         e.preventDefault();
+         context.eBus.publish('auth');
+         });*/
+        loginCtrl.eBus.publish('login');
     })
-};
 
-firebase.auth().onAuthStateChanged(function(user) {
-    if(user) {
-        console.log('login success');
-        window.location = 'index.html';
-    }
-    if(!user) {
-        console.log('logged out')
-    }
-});
+
+/*var loginCtrl = new LoginController(new View(EventBus), EventBus);
+loginCtrl.init();*/
+
+/*firebase.auth().onAuthStateChanged(function (user) {
+ if (!user) {
+ window.location = '/components/login/login.html';
+ }
+ if (user) {
+ window.location = 'index.html';
+ }
+ });*/
+

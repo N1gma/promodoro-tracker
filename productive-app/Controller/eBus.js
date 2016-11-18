@@ -19,3 +19,10 @@ var EventBus = {
         });
     }
 };
+
+EventBus.subscribe('login',function(){
+    Router.clearContent(document.body)
+});
+EventBus.subscribe('login',function(){
+    Router.renderLog()
+});
