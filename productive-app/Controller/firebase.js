@@ -10,14 +10,6 @@ var database = firebase.database();
 
 //firebase.auth().signOut();
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (!user) {
-        localStorage.setItem('user',false)
-    }
-    if (user) {
-        localStorage.setItem('user',true)
-    }
-});
 
 /*document.getElementById('log_out').addEventListener('click', function (e) {
  firebase.auth().signOut();

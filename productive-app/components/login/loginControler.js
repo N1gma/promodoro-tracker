@@ -4,26 +4,26 @@ function LoginController(view, eBus) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    var loginCtrl = new LoginController(new View(EventBus), EventBus);
 
-
-
-    document.addEventListener('DOMContentLoaded', function(){
-        var loginCtrl = new LoginController(new View(EventBus), EventBus);
-
-        loginCtrl.eBus.subscribe('auth', loginCtrl.view.auth);
-        loginCtrl.eBus.subscribe('logOut', loginCtrl.view.logOut);
-
-
-        /*document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
-         e.preventDefault();
-         context.eBus.publish('auth');
-         });*/
-        loginCtrl.eBus.publish('login');
+    loginCtrl.eBus.subscribe('auth', loginCtrl.view.auth);
+    loginCtrl.eBus.subscribe('logOut', loginCtrl.view.logOut);
+    loginCtrl.eBus.publish('login');
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+            EventBus.publish('no-user')
+        }
+        if (user) {
+           //loginCtrl.eBus
+            EventBus.publish('settings');
+        }
     })
+});
 
 
 /*var loginCtrl = new LoginController(new View(EventBus), EventBus);
-loginCtrl.init();*/
+ loginCtrl.init();*/
 
 /*firebase.auth().onAuthStateChanged(function (user) {
  if (!user) {

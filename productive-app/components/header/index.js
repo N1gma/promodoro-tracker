@@ -1,13 +1,14 @@
 import './header.css'
-import './../../img/Logo.svg'
 import template1 from  './markup.jade'
 
 
-console.log(template)
 
-/*document.addEventListener('DOMContentLoaded',function () {
-    var node = document.createElement('div');
-    node.innerHTML = template();
-    document.body.appendChild(node.firstElementChild);
-    console.log(node)
-});*/
+Router.renderHeader = function(){
+    var el = document.createElement('div');
+    el.innerHTML = template1();
+    console.log(el);
+    document.body.appendChild(el.firstElementChild);
+    document.getElementById('log_out').addEventListener('click', function (e) {
+        firebase.auth().signOut();
+    });
+}

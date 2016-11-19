@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './components/login/index.js',
+    entry: ['./components/login/index.js','./components/header/index.js'],
     output: {
         filename: './components/login/loginModule.js'
     },

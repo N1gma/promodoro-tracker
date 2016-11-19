@@ -10,10 +10,3 @@ class Controller{
 
 var headerController = new Controller(new View());
 
-document.getElementById('log_out').addEventListener('click', function (e) {
-    context.eBus.publish('logOut');
-});
-
-
-
-

@@ -26,3 +26,17 @@ EventBus.subscribe('login',function(){
 EventBus.subscribe('login',function(){
     Router.renderLog()
 });
+//----------------------------------
+EventBus.subscribe('settings',function(){
+    Router.clearContent(document.body)
+});
+EventBus.subscribe('settings',function(){
+    Router.renderHeader()
+});
+EventBus.subscribe('settings',function(){
+   // Router.renderTitle()
+});
+//----------------------------------
+EventBus.subscribe('no-user', function () {
+    EventBus.publish('login')
+});
