@@ -45,7 +45,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(10);
+	__webpack_require__(5);
+	__webpack_require__(8);
+	__webpack_require__(10);
+	__webpack_require__(16);
+	module.exports = __webpack_require__(18);
 
 
 /***/ },
@@ -54,9 +58,7 @@
 
 	'use strict';
 
-	__webpack_require__(2);
-
-	var _template = __webpack_require__(7);
+	var _template = __webpack_require__(2);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -65,8 +67,7 @@
 	Router.renderLog = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
-	    console.log(el);
-	    document.body.appendChild(el.firstElementChild);
+	    document.body.appendChild(el);
 	    document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
 	        e.preventDefault();
 	        EventBus.publish('auth');
@@ -77,372 +78,18 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(3);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./login.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./login.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(4)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "body {\r\n    background: url(" + __webpack_require__(5) + ");\r\n    background-size: cover;\r\n    background-position: 50%;\r\n}\r\nbody,html{\r\n    height: 100%;\r\n}\r\n.login-wrapper{\r\n    margin: 0 auto;\r\n    max-width: 320px;\r\n    text-align: center;\r\n}\r\n.center-logo {\r\n    width: 246px;\r\n    padding: 48px 0;\r\n    text-align: center;\r\n}\r\n\r\n.center-inputs {\r\n    margin: 0 auto;\r\n    font-family: icomoon;\r\n    color: #8da5b8;\r\n    width: 360px;\r\n}\r\n\r\n.center-inputs:nth-child(2) .input-row {\r\n    margin-bottom: 29px;\r\n}\r\n\r\n.input-row {\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.log-input, .pw-input {\r\n    border: none;\r\n    background-color: transparent;\r\n    font: 16px Roboto, sans-serif;\r\n    padding-left: 30px;\r\n    color: #8da5b8;\r\n    border-bottom: 1px solid #425869;\r\n    padding-bottom: 10px;\r\n    width: 91%;\r\n}\r\n\r\n.center-inputs input:focus {\r\n    border-color: white;\r\n    color: white;\r\n}\r\n\r\n.center-inputs input:focus + label {\r\n    color: white;\r\n}\r\n\r\n.center-inputs label {\r\n    font-size: 14px;\r\n    position: absolute;\r\n    bottom: 13px;\r\n    left: 0;\r\n}\r\n\r\n.submit {\r\n    display: block;\r\n    margin: 51px auto;\r\n    width: 125px;\r\n    background-color: #1abc9c;\r\n    color: white;\r\n    border: none;\r\n    outline: none;\r\n    font: 18px \"PTSans\", sans-serif;\r\n    height: 42px;\r\n}\r\n\r\n.submit:active {\r\n    background-color: #62D3BD;\r\n}\r\n\r\n.submit:focus, .submit:hover {\r\n    background-color: #16A085;\r\n}\r\n\r\n.invalid_msg {\r\n    font: 12px \"Roboto\", sans-serif;\r\n    color: red;\r\n    position: absolute;\r\n    display: none;\r\n    left: 0;\r\n    bottom: -20px;\r\n}\r\n\r\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/bg.png";
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		var blob = new Blob([css], { type: "text/css" });
-
-		var oldSrc = linkElement.href;
-
-		linkElement.href = URL.createObjectURL(blob);
-
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(8);
+	var jade = __webpack_require__(3);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<div class=\"login-wrapper\"><img src=\"./img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
+	buf.push("<style>body {\n    background: url(\"./img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n</style><div class=\"login-wrapper\"><img src=\"./img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 8 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -662,7 +309,7 @@
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(9).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(4).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -694,10 +341,109 @@
 
 
 /***/ },
-/* 9 */
+/* 4 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _markup = __webpack_require__(6);
+
+	var _markup2 = _interopRequireDefault(_markup);
+
+	var _controller = __webpack_require__(7);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.renderHeader = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _markup2.default)();
+	    document.body.appendChild(el);
+	    /*document.getElementById('log_out').addEventListener('click', function (e) {
+	        firebase.auth().signOut();
+	    });*/
+	    _controller.Controller.initCntrl();
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(3);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+
+	buf.push("<style>.logo {\n    visibility: hidden;\n    margin-top: 28px;\n    margin-bottom: 27px;\n    min-width: 249px;\n    width: 21%;\n    display: none;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n</style><header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	}
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var Controller = exports.Controller = {
+	    initCntrl: function initCntrl() {
+	        document.getElementById('log_out').addEventListener('click', function (e) {
+	            firebase.auth().signOut();
+	        });
+	        document.getElementById('settings').addEventListener('click', function (e) {
+	            EventBus.publish('settings');
+	        });
+	        document.getElementById('reports').addEventListener('click', function (e) {
+	            EventBus.publish('reports');
+	        });
+	    }
+	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _settings = __webpack_require__(9);
+
+	var _settings2 = _interopRequireDefault(_settings);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.renderTitle_settings_1 = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _settings2.default)();
+	    document.body.appendChild(el);
+	    document.getElementById('pomodoros-settings').addEventListener('click', function (e) {
+	        EventBus.publish('settings');
+	    });
+	    document.getElementById('categories-settings').addEventListener('click', function (e) {
+	        EventBus.publish('settings-2');
+	    });
+	};
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(3);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 131px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    margin-bottom: 22px;\n}\n\n.sub-title {\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-bottom: 81px;\n    position: relative;\n}\n\n.interface-container-2 {\n    position: absolute;\n    right: 6.7%;\n    top: 0;\n    font-size: 15px;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Settings</h2><div class=\"sub-title\">Pomodoros settings<div class=\"interface-container-2\"><button id=\"pomodoros-settings\" class=\"ico-text-button\">Pomodoros</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"categories-settings\" class=\"ico-text-button\">Categories</button></div></div></div>");;return buf.join("");
+	}
 
 /***/ },
 /* 10 */
@@ -705,77 +451,862 @@
 
 	'use strict';
 
-	__webpack_require__(11);
+	var _main = __webpack_require__(11);
 
-	var _markup = __webpack_require__(13);
+	var _main2 = _interopRequireDefault(_main);
 
-	var _markup2 = _interopRequireDefault(_markup);
+	var _component = __webpack_require__(12);
+
+	var _view = __webpack_require__(13);
+
+	var _view2 = _interopRequireDefault(_view);
+
+	var _model = __webpack_require__(14);
+
+	var _model2 = _interopRequireDefault(_model);
+
+	var _controller = __webpack_require__(15);
+
+	var _controller2 = _interopRequireDefault(_controller);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderHeader = function () {
+	Router.renderSettingsMain = function () {
+
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _markup2.default)();
-	    console.log(el);
-	    document.body.appendChild(el.firstElementChild);
-	    document.getElementById('log_out').addEventListener('click', function (e) {
-	        firebase.auth().signOut();
-	    });
+	    el.innerHTML = (0, _main2.default)();
+	    document.body.appendChild(el);
+	    var view = new _view2.default(document.getElementsByClassName('timeline-container')[0]);
+	    var model = new _model2.default();
+	    var controller = new _controller2.default(model, view);
+	    (0, _component.initComponent1)();
+	    controller.start();
+
+	    function CustomEvent(event, params) {
+	        params = params || { bubbles: false, cancelable: false, detail: undefined };
+	        var evt = document.createEvent('CustomEvent');
+	        evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+	        return evt;
+	    }
+
+	    CustomEvent.prototype = window.Event.prototype;
+
+	    window.CustomEvent = CustomEvent;
 	};
 
 /***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(12);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./header.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./header.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(4)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".logo{\r\n    visibility: hidden;\r\n    margin-top: 28px;\r\n    margin-bottom: 27px;\r\n    min-width: 249px;\r\n    width: 21%;\r\n    display: none;\r\n}\r\n\r\n.main-head{\r\n    overflow: hidden;\r\n    position: fixed;\r\n    width: 100%;\r\n    background-color: #2a3f50;\r\n}\r\n.main-head-shadow-on{\r\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\r\n}\r\n.inner-head{\r\n    max-width: 1366px;\r\n    margin: 0 auto;\r\n    box-sizing: border-box;\r\n}\r\n.inner-2-head{\r\n    width: 100%;\r\n    padding: 0 6.8%;\r\n    box-sizing: border-box;\r\n    padding-top: 56px;\r\n}\r\n.visible-logo{\r\n    visibility: visible;\r\n}\r\n\r\n.interface-container{\r\n    margin-bottom: 17px;\r\n    float: right;\r\n    width: 46%;\r\n    text-align: right;\r\n    font-size: 18px;\r\n}\r\n\r\n.interface-container .ico-text-button {\r\n    font-family: icomoon;\r\n    cursor: pointer;\r\n    margin-left: 5.7%;\r\n}\r\n\r\n.visible-logo {\r\n    visibility: visible;\r\n}", ""]);
-
-	// exports
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(8);
+	var jade = __webpack_require__(3);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"../../img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button class=\"ico-text-button\">&#xe90c;</button><button class=\"ico-text-button\">&#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\">&#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.main-content {\n    color: white;\n    box-sizing: border-box;\n    overflow: hidden;\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n    margin: 0 auto;\n    width: 61%;\n    padding-left: 62px;\n    min-width: 952px;\n}\n\n.main-content i {\n    margin-right: 19px;\n    font-size: 20px;\n}\n\n.select-field {\n    background: transparent;\n    color: white;\n    border: none;\n    outline: none;\n    border-bottom: 1px solid #8da5b8;\n    text-align: center;\n    padding-bottom: 4px;\n    width: 41%;\n    font-size: 16px;\n}\n\n.option {\n    width: 38.8%;\n    margin-right: 10.7%;\n    display: inline-block;\n    margin-bottom: 62px;;\n    box-sizing: border-box;\n    font: 13px Roboto, sans-serif;\n}\n\n.option label {\n    position: relative;\n}\n\n.minus-count {\n    position: absolute;\n    left: 3%;\n    color: #8da5b8;\n    font-size: 11px;\n    top: 0;\n    font-family: icomoon;\n    cursor: pointer;\n}\n\n.plus-count {\n    position: absolute;\n    right: 1%;\n    color: #8da5b8;\n    font-family: icomoon;\n    font-size: 11px;\n    top: 0;\n    cursor: pointer;\n}\n\n.plus-count:hover {\n    color: white;\n}\n\n.minus-count:hover {\n    color: white;\n}\n\n.minus-count:hover + input, .plus-count:hover ~ input {\n    border-color: white;\n}\n\n.opt-details {\n    color: #8198ab;\n    margin-top: 12px;\n    margin-left: 9.6%;\n}\n\n.opt-title {\n    display: inline-block;\n    width: 40%;\n}\n\n.timeline-container {\n    width: 100%;\n    margin-top: 13px;\n    margin-bottom: 55px;\n    display: block;\n\n}\n\n.graph-head {\n    font: 20px Ptsans, sans-serif;\n    color: white;\n    text-align: center;\n    width: 100%;\n\n}\n\n.timeline {\n    width: 86.7%;\n    background-color: #59abe3;\n    height: 11px;\n    margin: 0 auto;\n    line-height: 11px;\n    position: relative;\n}\n\n.timelabels {\n    width: 86.7%;\n    background-color: transparent;\n    height: 30px;\n    display: block;\n    margin: 0 auto;\n    overflow: hidden;\n}\n\n.timelabel {\n    display: inline-block;\n    height: 100%;\n    line-height: 30px;\n\n}\n\n.timelabel div {\n    float: right;\n    text-align: center;\n    background: #2a3f50;\n    color: #62788a;\n    font: 12px Roboto, sans-serif;\n    height: 100%;\n    line-height: 30px;\n    display: block;\n    width: 100%;\n    margin-right: -50%;\n}\n\n.timelabel span {\n    background-color: #02cdd3;\n    width: 4px;\n    height: 4px;\n    border-radius: 50%;\n    margin: 0 auto;\n    margin-top: 6px;\n    display: block;\n}\n\n.work {\n    background-color: #ffb200;\n    height: 100%;\n    display: inline-block;\n}\n\n.breakk, .longbreakk {\n    background-color: #59abe3;\n    height: 100%;\n    display: inline-block;\n}\n\n.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#pomodoros-settings,#settings{\n    color: white;\n}\n\n\n\n\n</style><main class=\"main-content\"><form class=\"option\"><i style=\"color: #ffb200\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"workTime\" class=\"opt-title\">WORK TIME</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"workTime\" type=\"text\" value=\"1\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #00d4d9\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"workIteration\" class=\"opt-title\">WORK ITERATION</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"workIteration\" type=\"text\" value=\"2\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #59abe3\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"shortBreak\" class=\"opt-title\">SHORT BREAK</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"shortBreak\" type=\"text\" value=\"3\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #59abe3\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"longBreak\" class=\"opt-title\">LONG BREAK</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"longBreak\" type=\"text\" value=\"4\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form></main><div class=\"timeline-container\"></div>");;return buf.join("");
 	}
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.initComponent1 = initComponent1;
+	exports.transformTime = transformTime;
+	function initComponent1() {
+	    //data component - inputs
+	    var component = {
+	        data: {},
+	        container: document.getElementsByClassName('main-content')[0],
+	        representData: function representData() {
+	            var data = {};
+	            var inputValues = document.getElementsByClassName('select-field');
+	            var dataTitles = document.getElementsByClassName('opt-title');
+	            for (var i = 0; i < inputValues.length; i++) {
+	                data[dataTitles[i].innerHTML] = parseInt(inputValues[i].value);
+	            }
+	            data.general = (data['WORK TIME'] * data['WORK ITERATION'] + data['SHORT BREAK'] * (data['WORK ITERATION'] - 1)) * 2 + data['LONG BREAK'];
+	            User.settings = data;
+	            return data;
+	        },
+	        eventFires: new CustomEvent('input-changed', {
+	            bubbles: true,
+	            cancelable: true,
+	            details: undefined
+	        })
+	    };
+
+	    component.container.addEventListener('click', function (e) {
+	        var targetInput = e.target.parentNode.children[2];
+	        if (e.target.classList.contains('plus-count') && parseInt(targetInput.value) < targetInput.descriptor.maximum) {
+	            targetInput.value = parseInt(targetInput.value) + targetInput.descriptor.iteration + targetInput.descriptor.metrics;
+	            component.eventFires.data = component.representData();
+	            document.dispatchEvent(component.eventFires);
+	            console.log('event fires');
+	        }
+	        if (e.target.classList.contains('minus-count') && targetInput.descriptor.minimum < parseInt(targetInput.value)) {
+	            targetInput.value = parseInt(targetInput.value) - targetInput.descriptor.iteration + targetInput.descriptor.metrics;
+	            component.eventFires.data = component.representData();
+	            document.dispatchEvent(component.eventFires);
+	            console.log('event fires');
+	        }
+	    });
+
+	    document.getElementById('workTime').descriptor = {
+	        metrics: ' min',
+	        iteration: 5,
+	        minimum: 15,
+	        maximum: 40
+	    };
+
+	    document.getElementById('shortBreak').descriptor = {
+	        metrics: ' min',
+	        iteration: 1,
+	        minimum: 1,
+	        maximum: 15
+	    };
+	    document.getElementById('workIteration').descriptor = {
+	        metrics: '',
+	        iteration: 1,
+	        minimum: 1,
+	        maximum: 5
+	    };
+	    document.getElementById('longBreak').descriptor = {
+	        metrics: ' min',
+	        iteration: 5,
+	        minimum: 30,
+	        maximum: 60
+	    };
+
+	    (function syncInputs() {
+	        User.getSettings(User.currentLogin, function (values) {
+	            var inputs = document.getElementsByClassName('select-field');
+	            var titles = document.getElementsByClassName('opt-title');
+	            for (var i = 0; i < inputs.length; i++) {
+	                inputs[i].value = values[titles[i].innerHTML] + inputs[i].descriptor.metrics;
+	            }
+	        });
+	    })();
+	}
+
+	function transformTime(time) {
+	    var hours = '';
+	    var minutes = '';
+	    if (time / 60 >= 1) hours = parseInt(time / 60) + 'h ';
+	    if (parseInt(time % 60) != 0) minutes = parseInt(time % 60) + 'm';
+	    return hours + minutes;
+	}
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = View;
+
+	var _component = __webpack_require__(12);
+
+	function View(renderZone) {
+	    this.renderZone = renderZone;
+	    this.representation = {};
+	}
+
+	View.prototype.initComponent = function () {
+	    var fragment = document.createDocumentFragment();
+	    this.representation = {
+	        head: fragment.appendChild(document.createElement('h3')),
+	        topLabel: fragment.appendChild(document.createElement('div')),
+	        body: fragment.appendChild(document.createElement('div')),
+	        bottomLabel: fragment.appendChild(document.createElement('div'))
+	    };
+	    this.representation.head.classList.add('graph-head');
+	    this.representation.head.innerHTML = 'Your cycle';
+	    this.representation.topLabel.classList.add('timelabels');
+	    this.representation.body.classList.add('timeline');
+	    this.representation.bottomLabel.classList.add('timelabels');
+	    this.renderZone.appendChild(fragment);
+	    return this;
+	};
+
+	View.prototype.clearComponent = function () {
+	    for (var i = 1; i < this.renderZone.children.length; i++) {
+	        while (this.renderZone.children[i].firstChild) {
+	            this.renderZone.children[i].removeChild(this.renderZone.children[i].firstChild);
+	        }
+	    }
+
+	    return this;
+	};
+
+	View.prototype.renderComponent = function (data) {
+	    var mainFragment = document.createDocumentFragment();
+	    var timelabelsFragment = document.createDocumentFragment();
+
+	    //labels render
+	    var timePointer = 0;
+	    var labelsTotal = parseInt(data.general / (data['WORK TIME'] + data['SHORT BREAK']));
+	    var labelWidth = (data['WORK TIME'] + data['SHORT BREAK']) / data.general * 100 + '%';
+	    var timeLabel = document.createElement('div');
+	    timeLabel.classList.add('timelabel');
+	    timeLabel.style.width = labelWidth;
+	    for (var i = 0; i < labelsTotal; i++) {
+	        //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
+	        timePointer += 30;
+	        timeLabel.innerHTML = '<div><span></span>' + (0, _component.transformTime)(timePointer) + '</div>';
+	        timelabelsFragment.appendChild(timeLabel.cloneNode(true));
+	    }
+	    this.representation.bottomLabel.appendChild(timelabelsFragment);
+	    var fullCycle = timeLabel.cloneNode(true);
+	    timePointer = data['WORK TIME'] * data['WORK ITERATION'] + data['SHORT BREAK'] * (data['WORK ITERATION'] - 1) + data['LONG BREAK'];
+	    fullCycle.innerHTML = '<div>Full cycle: ' + (0, _component.transformTime)(timePointer) + '<span></span></div>';
+	    fullCycle.style.width = timePointer / data.general * 100 + '%';
+	    this.representation.topLabel.style.height = '45px';
+	    this.representation.topLabel.appendChild(fullCycle);
+
+	    //body render
+	    for (var j = 0; j < 2; j++) {
+	        for (var i = 0; i < data['WORK ITERATION']; i++) {
+	            var work = document.createElement('div');
+	            work.classList.add('work');
+	            work.style.width = data['WORK TIME'] / data.general * 100 + '%';
+	            mainFragment.appendChild(work);
+	            if (i != data['WORK ITERATION'] - 1) {
+	                var breakk = document.createElement('div');
+	                breakk.classList.add('breakk');
+	                breakk.style.width = data['SHORT BREAK'] / data.general * 100 + '%';
+	                mainFragment.appendChild(breakk);
+	            }
+	        }
+	        if (j != 1) {
+	            var longbreakk = document.createElement('div');
+	            longbreakk.classList.add('longbreakk');
+	            longbreakk.style.width = data['LONG BREAK'] / data.general * 100 + '%';
+	            mainFragment.appendChild(longbreakk);
+	        }
+	    }
+	    this.representation.body.appendChild(mainFragment);
+	    return this;
+	};
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = Model;
+	function Model() {
+	    this.data = {};
+	    this.eventFires = new CustomEvent('data-changed', {
+	        bubbles: true,
+	        cancelable: true,
+	        details: undefined
+	    });
+	}
+
+	Model.prototype.setDefaultData = function () {
+	    var context = this;
+	    User.getSettings(User.currentLogin, function (value) {
+	        context.data = value;
+	        User.settings = value;
+	        document.dispatchEvent(context.eventFires);
+	        return context;
+	    });
+	};
+
+	Model.prototype.getValuesFromDataComponent = function (data) {
+	    this.data = data;
+	    document.dispatchEvent(this.eventFires);
+	    return this;
+	};
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = Controller;
+	function Controller(model, view) {
+	    this.model = model;
+	    this.view = view;
+	}
+
+	Controller.prototype.start = function () {
+	    var viewContext = this.view;
+	    var modelContext = this.model;
+	    var selfContext = this;
+	    this.view.initComponent();
+	    document.addEventListener(modelContext.eventFires.type, function (e) {
+	        //observes over model
+	        viewContext.clearComponent();
+	        viewContext.renderComponent(modelContext.data);
+	    });
+	    this.listenTo('input-changed'); //observes over event
+	    this.model.setDefaultData();
+	};
+
+	Controller.prototype.listenTo = function (eventType) {
+	    var modelContext = this.model;
+	    var selfContext = this;
+	    document.addEventListener(eventType, function (e) {
+	        modelContext.getValuesFromDataComponent(e.data);
+	    });
+	};
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _categories = __webpack_require__(17);
+
+	var _categories2 = _interopRequireDefault(_categories);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.renderSettingsCategories = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _categories2.default)();
+	    document.body.appendChild(el);
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(3);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+
+	buf.push("<style>.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#categories-settings, #settings {\n    color: white;\n}\n\n.categories-choose-wrap {\n    width: 19.8%;\n    color: #5b7284;\n    margin: 0 auto 7% auto;\n    font: 16px \"Roboto\", sans-serif;\n    max-width: 267px;\n}\n\n.categories-choose-list {\n    padding-left: 14%;\n}\n\n.categories-choose-list li {\n    margin-bottom: 15%;\n    position: relative;\n}\n\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -17%;\n    top: 0;\n    cursor: pointer;\n}\n\n.label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    border-bottom: 1px solid #5b7284;\n    width: 100%;\n    display: inline-block;\n    padding-bottom: 7px;\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:hover ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
+	}
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _template = __webpack_require__(19);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	var _Controller = __webpack_require__(20);
+
+	var _View = __webpack_require__(23);
+
+	var _Model = __webpack_require__(22);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.renderReports = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _template2.default)();
+	    document.body.appendChild(el);
+	    var controller = new _Controller.Controller(_Model.Model, _View.View);
+	    controller.initController();
+	};
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(3);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 90px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n}\n\n.logo {\n    display: none;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n}\n\n.button-holder {\n    width: 21.2%;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n.interface-container-2, .interface-container-3 {\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    display: flex;\n    justify-content: center;\n    margin-bottom: 104px;\n    color: #8da5b8;\n}\n\n.interface-container-2 .ico-text-button, .interface-container-3 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n    margin: 0 6px;\n}\n\n.interface-container-3 {\n    margin-bottom: 0;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    margin-bottom: 28px;\n}\n\n.graph-container {\n    margin: 0 auto;\n    width: 100%;\n    max-width: 650px;\n    height: 290px;\n    margin-bottom: 77px;\n    font-family: Roboto;\n}\n\n.active-tab {\n    color: white;\n}\n\n #reports {\n    color: white;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Report</h2><main class=\"main-wrapper\"><div class=\"interface-container-2\"><button id=\"day_tab\" class=\"ico-text-button active-tab\">Day</button>            |<button id=\"week_tab\" class=\"ico-text-button\">Week</button>            |<button id=\"month_tab\" class=\"ico-text-button\">Month</button></div><div id=\"report-graph\" class=\"graph-container\"></div><div class=\"interface-container-3\"><button class=\"ico-text-button\">Pomodoros</button>            |<button class=\"ico-text-button active-tab\">Tasks</button></div></main></div>");;return buf.join("");
+	}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Controller = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _options = __webpack_require__(21);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Controller = exports.Controller = function () {
+	    function Controller(model, view) {
+	        _classCallCheck(this, Controller);
+
+	        this.model = model;
+	        this.view = view;
+	    }
+
+	    _createClass(Controller, [{
+	        key: 'initController',
+	        value: function initController() {
+	            var context = this;
+	            var obj = {};
+	            obj.activateTab = function (e) {
+	                for (var i = 0; i < e.currentTarget.children.length; i++) {
+	                    if (e.currentTarget.children[i].classList.contains('active-tab')) {
+	                        e.currentTarget.children[i].classList.remove('active-tab');
+	                    }
+	                }
+	                e.target.classList.add('active-tab');
+	                return obj;
+	            };
+	            obj.initInterface = function (e) {
+	                document.getElementsByClassName('interface-container-2')[0].addEventListener('click', function (e) {
+	                    globalMethods.activateTab(e);
+	                    if (e.target.id == 'day_tab') {
+	                        this.view.renderChart(_options.options.pieView);
+	                    }
+	                    /*if (e.target.id == 'week_tab') chartInit(options.columnView);
+	                    if (e.target.id == 'month_tab') chartInit(options.columnViewMonthly);*/
+	                });
+	            };
+	            context.model.patchData(function () {
+	                _options.options.pieView.series[0].data = context.model.data.pieView;
+	                console.log(_options.options.pieView);
+	                context.view.renderChart(_options.options.pieView);
+	            });
+	            /*User.getData(User.currentLogin,'reports/pieView', function (callbackValue) {
+	                console.log(callbackValue)
+	                context.view.renderChart(options.pieView)
+	            })*/
+	        }
+	    }]);
+
+	    return Controller;
+	}();
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.options = undefined;
+	exports.createRandom30xArray = createRandom30xArray;
+	exports.totalValueCount = totalValueCount;
+
+	var _Model = __webpack_require__(22);
+
+	var options = exports.options = {
+	    pieView: {
+	        chart: {
+	            plotBackgroundColor: '#2a3f50',
+	            plotBorderWidth: 0,
+	            plotShadow: false,
+	            type: 'pie',
+	            spacing: [0, 0, 0, 0],
+	            renderTo: 'report-graph'
+	        },
+
+	        credits: {
+	            enabled: false
+	        },
+
+	        title: {
+	            text: totalValueCount(),
+	            align: 'center',
+	            verticalAlign: 'middle',
+	            y: 15,
+	            style: {
+	                "color": "white",
+	                "fontSize": "70px",
+	                "fontFamily": "Roboto"
+	            }
+
+	        },
+
+	        subtitle: {
+	            text: 'total',
+	            align: 'center',
+	            verticalAlign: 'middle',
+	            y: 40,
+	            style: {
+	                "color": "white",
+	                "fontSize": "18px"
+	            }
+
+	        },
+
+	        tooltip: {
+	            pointFormatter: function pointFormatter() {
+	                return '<b>' + this.name.toUpperCase() + '</b><br><b>Tasks: ' + this.y + '</b>';
+	            },
+	            headerFormat: ''
+	        },
+
+	        plotOptions: {
+	            pie: {
+	                dataLabels: {
+	                    enabled: true,
+	                    distance: -30,
+	                    style: {
+	                        color: 'white',
+	                        cursor: 'pointer',
+	                        textShadow: false,
+	                        fontSize: '14px'
+	                    }
+	                },
+	                innerSize: '50%',
+	                startAngle: 0,
+	                endAngle: 360,
+	                center: ['50%', '50%'],
+	                allowPointSelect: true,
+	                colors: ['#e05446', '#fba640', '#fcdb43', '#1ab99a', '#8da5b8'],
+	                cursor: 'pointer',
+	                highlight: {
+	                    opacity: '0'
+	                },
+	                borderColor: null
+	            },
+	            series: {
+	                states: {
+	                    hover: {
+	                        halo: {
+	                            attributes: {
+	                                fill: '#fff'
+	                            },
+	                            opacity: '0.75'
+	                        }
+	                    }
+	                }
+	            }
+
+	        },
+
+	        series: [{
+	            name: 'Tasks',
+	            keys: ['name', 'y'],
+	            data: ''
+	        }]
+	    },
+	    columnView: {
+	        chart: {
+	            backgroundColor: '#2a3f50',
+	            type: 'column',
+	            renderTo: 'report-graph',
+	            borderWidth: 0,
+	            style: {
+	                fontColor: 'white'
+	            }
+	        },
+	        title: null,
+	        subtitle: null,
+	        colors: ['#e05446', '#fba640', '#fcdb43', '#1ab99a', '#8da5b8'],
+	        legend: {
+	            symbolRadius: 0,
+	            style: {
+	                color: 'white'
+	            },
+	            itemStyle: {
+	                color: '#8198ab'
+	            },
+	            itemHoverStyle: {
+	                color: 'white'
+	            }
+	        },
+	        credits: {
+	            enabled: false
+	        },
+	        xAxis: {
+	            categories: ['MON', 'TUE', 'WED', 'THU', 'FRI'],
+	            allowDecimals: false,
+	            title: {
+	                text: null
+	            },
+	            gridLineColor: '#345168',
+	            tickWidth: 0,
+	            labels: {
+	                style: {
+	                    color: 'white'
+	                }
+	            }
+	        },
+	        yAxis: {
+	            allowDecimals: false,
+	            min: 0,
+	            title: {
+	                text: null
+	            },
+	            lineColor: 'white',
+	            lineWidth: 1,
+	            gridLineColor: '#345168',
+	            tickColor: "white",
+	            minorTickColor: "white",
+	            labels: {
+	                style: {
+	                    color: 'white'
+	                }
+	            },
+	            tickInterval: 2
+	        },
+
+	        plotOptions: {
+	            column: {
+	                stacking: 'normal',
+	                borderWidth: 0,
+	                cursor: 'pointer'
+	            },
+	            series: {
+	                pointWidth: 28
+	            }
+	        },
+	        tooltip: {
+	            pointFormatter: function pointFormatter() {
+	                return '<b>' + this.series.name.toUpperCase() + '</b><br><b>Tasks: ' + this.y + '</b>';
+	            },
+	            headerFormat: ''
+	        },
+	        series: _Model.Model.data.columnView
+	    },
+	    columnViewMonthly: {
+	        chart: {
+	            backgroundColor: '#2a3f50',
+	            type: 'column',
+	            renderTo: 'report-graph',
+	            borderWidth: 0,
+	            style: {
+	                fontColor: 'white'
+	            }
+	        },
+	        title: null,
+	        subtitle: null,
+	        colors: ['#e05446', '#fba640', '#fcdb43', '#1ab99a', '#8da5b8'],
+	        legend: {
+	            symbolRadius: 0,
+	            style: {
+	                color: 'white'
+	            },
+	            itemStyle: {
+	                color: '#8198ab'
+	            },
+	            itemHoverStyle: {
+	                color: 'white'
+	            }
+	        },
+	        credits: {
+	            enabled: false
+	        },
+	        xAxis: {
+	            //categories: ['MON', 'TUE', 'WED', 'THU', 'FRI'],
+	            allowDecimals: false,
+	            title: {
+	                text: null
+	            },
+	            tickInterval: 1,
+	            min: 1,
+	            max: 30,
+	            gridLineColor: '#345168',
+	            tickWidth: 0,
+	            labels: {
+	                style: {
+	                    color: 'white'
+	                }
+	            }
+	        },
+	        yAxis: {
+	            allowDecimals: false,
+	            min: 0,
+	            title: {
+	                text: null
+	            },
+	            lineColor: 'white',
+	            lineWidth: 1,
+	            gridLineColor: '#345168',
+	            tickColor: "white",
+	            minorTickColor: "white",
+	            labels: {
+	                style: {
+	                    color: 'white'
+	                }
+	            },
+	            tickInterval: 2
+	        },
+
+	        plotOptions: {
+	            column: {
+	                stacking: 'normal',
+	                borderWidth: 0,
+	                cursor: 'pointer'
+	            },
+	            series: {
+	                //pointWidth: 28
+	            }
+	        },
+	        tooltip: {
+	            pointFormatter: function pointFormatter() {
+	                return '<b>' + this.series.name.toUpperCase() + '</b><br><b>Tasks: ' + this.y + '</b>';
+	            },
+	            headerFormat: ''
+	        },
+	        series: _Model.Model.data.columnViewMonthly
+	    }
+	};
+	//mocks
+	function pieDaily() {
+	    //get data from any source
+	    return [{
+	        name: 'Urgent',
+	        y: 2
+	    }, {
+	        name: 'High',
+	        y: 3
+	    }, {
+	        name: 'Medium',
+	        y: 1
+	    }, {
+	        name: 'Low',
+	        y: 6
+	    }, {
+	        name: 'Failed',
+	        y: 3
+	    }];
+	}
+	function columnWeekly() {
+	    return [{
+	        name: 'Urgent',
+	        data: [5, 3, 4, 7, 2],
+	        stack: 'finished'
+	    }, {
+	        name: 'High',
+	        data: [3, 4, 4, 2, 5],
+	        stack: 'finished'
+	    }, {
+	        name: 'Middle',
+	        data: [2, 5, 6, 2, 1],
+	        stack: 'finished'
+	    }, {
+	        name: 'Low',
+	        data: [3, 0, 4, 4, 3],
+	        stack: 'finished'
+
+	    }, {
+	        name: 'Failed',
+	        data: [3, 6, 4, 4, 3],
+	        stack: 'failed'
+	    }];
+	}
+	function columnMonthly() {
+	    return [{
+	        name: 'Urgent',
+	        data: createRandom30xArray()
+	    }, {
+	        name: 'High',
+	        data: createRandom30xArray()
+	    }, {
+	        name: 'Middle',
+	        data: createRandom30xArray()
+	    }, {
+	        name: 'Low',
+	        data: createRandom30xArray()
+
+	    }, {
+	        name: 'Failed',
+	        data: createRandom30xArray()
+	    }];
+	}
+
+	function createRandom30xArray() {
+	    var data = [];
+	    var min = 1;
+	    var max = 6;
+	    for (var i = 1; i <= 31; i++) {
+	        data.push(parseInt(Math.random() * (max - min) + min));
+	    }
+	    return data;
+	}
+
+	function totalValueCount() {
+	    var data = pieDaily();
+	    var tasksInTotal = 0;
+	    for (var i = 0; i < data.length; i++) {
+	        tasksInTotal += data[i].y;
+	    }
+	    return tasksInTotal;
+	}
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var Model = exports.Model = {
+	    data: {
+	        pieView: '',
+	        columnView: '',
+	        columnViewMonthly: ''
+	    },
+	    patchData: function patchData(callback) {
+	        User.getData(User.currentLogin, 'reports/pieView', function (value) {
+	            Model.data.pieView = value;
+	            console.log(Model.data.pieView);
+	            User.getData(User.currentLogin, 'reports/columnView', function (value) {
+	                Model.data.columnView = value;
+	                User.getData(User.currentLogin, 'reports/columnViewMonthly', function (value) {
+	                    Model.data.columnViewMonthly = value;
+	                    callback();
+	                });
+	            });
+	        });
+	    }
+
+	};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.View = undefined;
+
+	var _Model = __webpack_require__(22);
+
+	var View = exports.View = {
+	    renderChart: function renderChart(options) {
+	        var chart = new Highcharts.Chart(options);
+	    }
+	};
 
 /***/ }
 /******/ ]);

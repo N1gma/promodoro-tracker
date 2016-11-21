@@ -1,8 +1,8 @@
-function initComponent1 (){ //data component - inputs
+export function initComponent1() { //data component - inputs
     var component = {
-        data : {},
+        data: {},
         container: document.getElementsByClassName('main-content')[0],
-        representData: function() {
+        representData: function () {
             var data = {};
             var inputValues = document.getElementsByClassName('select-field');
             var dataTitles = document.getElementsByClassName('opt-title');
@@ -11,16 +11,16 @@ function initComponent1 (){ //data component - inputs
             }
             data.general = (data['WORK TIME'] * data['WORK ITERATION'] + (data['SHORT BREAK'] *
                 (data['WORK ITERATION'] - 1))) * 2 + data['LONG BREAK'];
+            User.settings =  data;
             return data;
         },
-        eventFires : new CustomEvent('input-changed',{
+        eventFires: new CustomEvent('input-changed', {
             bubbles: true,
             cancelable: true,
             details: undefined
         })
     };
-    
-    
+
     component.container.addEventListener('click', function (e) {
         var targetInput = e.target.parentNode.children[2];
         if (e.target.classList.contains('plus-count') && (parseInt(targetInput.value) < targetInput.descriptor.maximum)) {
@@ -63,4 +63,22 @@ function initComponent1 (){ //data component - inputs
         minimum: 30,
         maximum: 60
     };
+
+    (function syncInputs() {
+        User.getSettings(User.currentLogin, function (values) {
+            var inputs = document.getElementsByClassName('select-field');
+            var titles = document.getElementsByClassName('opt-title');
+            for(var i =0;i<inputs.length;i++){
+                inputs[i].value = values[titles[i].innerHTML] + inputs[i].descriptor.metrics;
+            }
+        })
+    })()
+}
+
+export function transformTime(time) {
+    var hours = '';
+    var minutes = '';
+    if (time / 60 >= 1)  hours = parseInt(time / 60) + 'h ';
+    if (parseInt(time % 60) != 0)  minutes = parseInt(time % 60) + 'm';
+    return hours + minutes;
 }

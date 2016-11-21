@@ -1,19 +1,6 @@
 /*horisontal category select*/
 
-.categories-choose-list{
-    border-bottom: 1px solid #5b7284;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 32px;;
-}
 
-.categories-choose-list li {
-    position: relative;
-    padding-left: 5%;
-    display: inline-block;
-    box-sizing: border-box;
-    margin-right: 3%;
-}
 .categories-choose-list input{
     display: none;
 }

@@ -1,12 +1,13 @@
-import View from 'view'
-class Controller{
-    constructor(view){
-        this.view=view
+export var Controller = {
+    initCntrl: function () {
+        document.getElementById('log_out').addEventListener('click', function (e) {
+            firebase.auth().signOut();
+        });
+        document.getElementById('settings').addEventListener('click', function (e) {
+            EventBus.publish('settings')
+        });
+        document.getElementById('reports').addEventListener('click', function (e) {
+            EventBus.publish('reports')
+        });
     }
-    signOut(){
-        firebase.auth().signOut();
-    }
-}
-
-var headerController = new Controller(new View());
-
+};

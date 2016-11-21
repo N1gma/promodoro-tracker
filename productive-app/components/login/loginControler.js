@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
             EventBus.publish('no-user')
         }
         if (user) {
-           //loginCtrl.eBus
+            //loginCtrl.eBus
+            User.currentLogin = user.email.slice(0, user.email.search('@'));
             EventBus.publish('settings');
         }
     })

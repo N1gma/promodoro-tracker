@@ -1,0 +1,212 @@
+style.
+    .main-content {
+        color: white;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        width: 61%;
+        padding-left: 62px;
+        min-width: 952px;
+    }
+
+    .main-content i {
+        margin-right: 19px;
+        font-size: 20px;
+    }
+
+    .select-field {
+        background: transparent;
+        color: white;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #8da5b8;
+        text-align: center;
+        padding-bottom: 4px;
+        width: 41%;
+        font-size: 16px;
+    }
+
+    .option {
+        width: 38.8%;
+        margin-right: 10.7%;
+        display: inline-block;
+        margin-bottom: 62px;;
+        box-sizing: border-box;
+        font: 13px Roboto, sans-serif;
+    }
+
+    .option label {
+        position: relative;
+    }
+
+    .minus-count {
+        position: absolute;
+        left: 3%;
+        color: #8da5b8;
+        font-size: 11px;
+        top: 0;
+        font-family: icomoon;
+        cursor: pointer;
+    }
+
+    .plus-count {
+        position: absolute;
+        right: 1%;
+        color: #8da5b8;
+        font-family: icomoon;
+        font-size: 11px;
+        top: 0;
+        cursor: pointer;
+    }
+
+    .plus-count:hover {
+        color: white;
+    }
+
+    .minus-count:hover {
+        color: white;
+    }
+
+    .minus-count:hover + input, .plus-count:hover ~ input {
+        border-color: white;
+    }
+
+    .opt-details {
+        color: #8198ab;
+        margin-top: 12px;
+        margin-left: 9.6%;
+    }
+
+    .opt-title {
+        display: inline-block;
+        width: 40%;
+    }
+
+    .timeline-container {
+        width: 100%;
+        margin-top: 13px;
+        margin-bottom: 55px;
+        display: block;
+
+    }
+
+    .graph-head {
+        font: 20px Ptsans, sans-serif;
+        color: white;
+        text-align: center;
+        width: 100%;
+
+    }
+
+    .timeline {
+        width: 86.7%;
+        background-color: #59abe3;
+        height: 11px;
+        margin: 0 auto;
+        line-height: 11px;
+        position: relative;
+    }
+
+    .timelabels {
+        width: 86.7%;
+        background-color: transparent;
+        height: 30px;
+        display: block;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .timelabel {
+        display: inline-block;
+        height: 100%;
+        line-height: 30px;
+
+    }
+
+    .timelabel div {
+        float: right;
+        text-align: center;
+        background: #2a3f50;
+        color: #62788a;
+        font: 12px Roboto, sans-serif;
+        height: 100%;
+        line-height: 30px;
+        display: block;
+        width: 100%;
+        margin-right: -50%;
+    }
+
+    .timelabel span {
+        background-color: #02cdd3;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-top: 6px;
+        display: block;
+    }
+
+    .work {
+        background-color: #ffb200;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .breakk, .longbreakk {
+        background-color: #59abe3;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .button-holder {
+        width: 282px;
+        display: flex;
+        margin: 0 auto;
+        justify-content: space-around;
+    }
+
+    #pomodoros-settings,#settings{
+        color: white;
+    }
+
+
+
+
+
+main.main-content
+    form.option
+        i.fa.fa-circle(style='color: #ffb200', aria-hidden='true')
+        label.opt-title(for='workTime') WORK TIME
+        label
+            span.plus-count 
+            span.minus-count 
+            input#workTime.select-field(type='text', value='1', disabled='')
+        p.opt-details Lorem ipsum dolor sit amet consectetur adipiscing
+    form.option
+        i.fa.fa-circle(style='color: #00d4d9', aria-hidden='true')
+        label.opt-title(for='workIteration') WORK ITERATION
+        label
+            span.plus-count 
+            span.minus-count 
+            input#workIteration.select-field(type='text', value='2', disabled='')
+        p.opt-details Lorem ipsum dolor sit amet consectetur adipiscing
+    form.option
+        i.fa.fa-circle(style='color: #59abe3', aria-hidden='true')
+        label.opt-title(for='shortBreak') SHORT BREAK
+        label
+            span.plus-count 
+            span.minus-count 
+            input#shortBreak.select-field(type='text', value='3', disabled='')
+        p.opt-details Lorem ipsum dolor sit amet consectetur adipiscing
+    form.option
+        i.fa.fa-circle(style='color: #59abe3', aria-hidden='true')
+        label.opt-title(for='longBreak') LONG BREAK
+        label
+            span.plus-count 
+            span.minus-count 
+            input#longBreak.select-field(type='text', value='4', disabled='')
+        p.opt-details Lorem ipsum dolor sit amet consectetur adipiscing
+.timeline-container

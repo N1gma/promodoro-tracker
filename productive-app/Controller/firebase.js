@@ -15,6 +15,3 @@ var database = firebase.database();
  firebase.auth().signOut();
  })*/
 
-
-
-

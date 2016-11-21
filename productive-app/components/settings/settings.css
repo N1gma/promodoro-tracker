@@ -154,6 +154,7 @@ body {
     color: #5b7284;
     margin: 0 auto 7% auto;
     font: 16px "Roboto", sans-serif;
+    max-width: 267px;
 }
 
 .categories-choose-list {
