@@ -1,0 +1,337 @@
+style.
+    /*horisontal category select*/
+    .categories-choose-list {
+        border-bottom: 1px solid #5b7284;
+        display: flex;
+        display: -webkit-flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+        margin-bottom: 32px;;
+    }
+
+    .categories-choose-list li {
+        position: relative;
+        padding-left: 5%;
+        display: inline-block;
+        box-sizing: border-box;
+        margin-right: 3%;
+    }
+    .categories-choose-list input {
+        display: none;
+    }
+
+    .label1, .label2, .label3, .label4, .label5 {
+        width: 19px;
+        height: 19px;
+        position: absolute;
+        left: 0;
+        background: url(./img/ico-sprite.png) no-repeat 0 -37px;
+        bottom: 8px;
+        line-height: 19px;
+    }
+
+    .label1:hover, .text-label:hover ~ .label1 {
+        background: url(./img/ico-sprite.png) no-repeat 0 -19px;
+    }
+
+    .label2:hover, .text-label:hover ~ .label2 {
+        background: url(./img/ico-sprite.png) no-repeat -18px -19px;
+    }
+
+    .label3:hover, .text-label:hover ~ .label3 {
+        background: url(./img/ico-sprite.png) no-repeat -36px -19px;
+    }
+
+    .label4:hover, .text-label:hover ~ .label4 {
+        background: url(./img/ico-sprite.png) no-repeat -54px -19px;
+    }
+
+    .label5:hover, .text-label:hover ~ .label5 {
+        background: url(./img/ico-sprite.png) no-repeat -72px -19px;
+    }
+
+    .text-label {
+        color: #748b9e;
+        display: inline-block;
+        padding-bottom: 9px;
+        font: 16px Roboto, sans-serif;
+        line-height: 16px;
+    }
+
+    .categories-choose-list label {
+        cursor: pointer;
+    }
+
+    input:checked ~ .text-label {
+        color: white;
+    }
+
+    .categories-choose-list li:hover .text-label {
+        color: white;
+    }
+
+    input:checked ~ .label1 {
+        background-position: 0 0;
+    }
+
+    input:checked ~ .label2 {
+        background-position: -18px 0;
+    }
+
+    input:checked ~ .label3 {
+        background-position: -36px 0;
+    }
+
+    input:checked ~ .label4 {
+        background-position: -54px 0;
+    }
+
+    input:checked ~ .label5 {
+        background-position: -72px 0;
+    }
+
+    .categories-choose-list li:hover {
+        border-color: white;
+        color: white;
+    }
+
+    /*horisontal urgency select*/
+
+    .label11, .label22, .label33, .label44 {
+        width: 19px;
+        height: 19px;
+        position: absolute;
+        left: 0;
+        background: url(./img/urgency-sprite.png) no-repeat -1px -38px;
+        bottom: 8px;
+        line-height: 19px;
+    }
+
+    .label11:hover, .text-label:hover ~ .label11 {
+        background: url(./img/urgency-sprite.png) no-repeat -1px -20px;
+    }
+
+    .label22:hover, .text-label:hover ~ .label22 {
+        background: url(./img/urgency-sprite.png) no-repeat -19px -20px;
+    }
+
+    .label33:hover, .text-label:hover ~ .label33 {
+        background: url(./img/urgency-sprite.png) no-repeat -37px -20px;
+    }
+
+    .label44:hover, .text-label:hover ~ .label44 {
+        background: url(./img/urgency-sprite.png) no-repeat -55px -20px;
+    }
+
+    input:checked ~ .label11 {
+        background-position: -1px -1px;
+    }
+
+    input:checked ~ .label22 {
+        background-position: -19px -1px;
+    }
+
+    input:checked ~ .label33 {
+        background-position: -37px -1px;
+    }
+
+    input:checked ~ .label44 {
+        background-position: -55px -1px;
+    }
+
+    .modal-interface {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        width: 100%;
+        padding: 0 2.8%;
+        box-sizing: border-box;
+        font-family: icomoon;
+
+    }
+
+    .modal-interface-confirm, .modal-interface-cancel {
+        float: right;
+        font-family: icomoon;
+        font-size: 20px;
+        color: #88a0b3;
+    }
+
+    .modal-interface-cancel {
+        margin-right: 3%;
+    }
+
+    .modal-interface button:hover {
+        color: white;
+        cursor: pointer;
+    }
+
+    .modal-wrap {
+        position: fixed;
+        z-index: 9999999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-window {
+        font: 14px 'Roboto', sans-serif;
+        background-color: #2a3f50;
+        margin: 6.4% auto;
+        width: 500px;
+        padding: 41px 3%;
+        color: white;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .modal-window-head {
+        font-size: 28px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .modal-input-title {
+        display: block;
+        font: 14px 'Roboto', sans-serif;
+        margin-bottom: 8px;
+        margin-top: 9px;
+    }
+
+    .modal-input-field {
+        color: #748b9e;
+        border-bottom: 1px solid #425869;
+        font: 16px 'Roboto', sans-serif;
+        padding-bottom: 4px;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .modal-input-field:focus {
+        color: white;
+    }
+
+    .estimation-range {
+        width: 50%;
+        display: block;
+        margin-bottom: 34px;
+    }
+
+    .estimation-range li {
+        width: 28px;
+        height: 23px;
+        display: inline-block;
+        background: url("./img/tomato.svg") no-repeat;
+    }
+
+    .estimation-range li:hover {
+        background: url("./img/tomato_fill.svg") no-repeat;
+    }
+    .estimated{
+        background: url("./img/tomato_fill.svg") no-repeat!important;
+    }
+
+    .modal-remove-inner-wrapper {
+        height: 480px;
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        align-content: flex-start;
+        padding-top: 30%;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .remove-submit-msg {
+        font: 36px Roboto, sans-serif;
+        color: #8da5b8;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 44%;
+    }
+
+    .button-default {
+        color: white;
+        width: 38%;
+        padding: 12px 0;
+    }
+
+    .button-holder-default {
+        width: 73%;
+        display: flex;
+        display: -webkit-flex;
+        margin: 0 auto;
+        justify-content: space-around;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-around;
+    }
+
+
+.modal-wrap
+    form.modal-window
+        .modal-interface
+            button#modal-confirm-add.modal-interface-confirm &#xe90f
+            button#modal-close.modal-interface-cancel &#xe910
+        h2.modal-window-head Add task
+        label.modal-input-title(for='title-input') TITLE
+        input#title-input.modal-input-field(type='text', placeholder='Add title here')
+        label.modal-input-title(for='description-input') DESCRIPTION
+        input#description-input.modal-input-field(type='text', placeholder='Add description here')
+        h3.modal-input-title CATEGORY
+        ul.categories-choose-list
+            li
+                input#work(type='radio', value='Work', name='ctg1')
+                label.text-label(for='work') Work
+                label.label1(for='work')
+            li
+                input#education(type='radio', value='Education', name='ctg1')
+                label.text-label(for='education') Education
+                label.label2(for='education')
+            li
+                input#hobby(type='radio', value='Hobby', name='ctg1')
+                label.text-label(for='hobby') Hobby
+                label.label3(for='hobby')
+            li
+                input#sport(type='radio', value='Sport', name='ctg1')
+                label.text-label(for='sport') Sport
+                label.label4(for='sport')
+            li
+                input#other(type='radio', value='Other', name='ctg1')
+                label.text-label(for='other') Other
+                label.label5(for='other')
+        label.modal-input-title(for='deadline-input') DEADLINE
+        input#deadline-input.modal-input-field(type='text', placeholder='Set date')
+        h3.modal-input-title ESTIMATION
+        ul.estimation-range
+            li
+            li
+            li
+            li
+            li
+        h3.modal-input-title PRIORITY
+        ul.categories-choose-list
+            li
+                input#urgent(type='radio', value='Urgent', name='ctg11')
+                label.text-label(for='urgent') Urgent
+                label.label11(for='urgent')
+            li
+                input#high(type='radio', value='High', name='ctg11')
+                label.text-label(for='high') High
+                label.label22(for='high')
+            li
+                input#middle(type='radio', value='Middle', name='ctg11')
+                label.text-label(for='middle') Middle
+                label.label33(for='middle')
+            li
+                input#low(type='radio', value='Low', name='ctg11')
+                label.text-label(for='low') Low
+                label.label44(for='low')
+
+
+

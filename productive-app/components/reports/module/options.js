@@ -168,7 +168,7 @@ export var options = {
             },
             headerFormat: ''
         },
-        series: Model.data.columnView
+        series: ''
     },
     columnViewMonthly: {
         chart: {
@@ -250,7 +250,7 @@ export var options = {
             },
             headerFormat: ''
         },
-        series: Model.data.columnViewMonthly
+        series: ''
     }
 };
 //mocks
@@ -303,7 +303,7 @@ function columnWeekly() {
     }
     ]
 }
-function columnMonthly() {
+export function columnMonthly() {
     return [{
         name: 'Urgent',
         data: createRandom30xArray()

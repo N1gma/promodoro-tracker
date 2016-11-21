@@ -55,6 +55,14 @@ EventBus.subscribe('settings', function () {
             listener : function () {
                 User.saveSettings();
             }
+        },
+        {
+            node: document.createElement('button'),
+            class: ['button-row-2', 'button-blue'],
+            innerHtml : 'Next',
+            listener : function () {
+                EventBus.publish('taskList');
+            }
         }
     ];
     /*list[0].classList.add('button-row-2', 'button-blue');
@@ -105,7 +113,6 @@ EventBus.subscribe('settings-2', function () {
 //----------------------------------
 EventBus.subscribe('reports', function () {
     Router.clearContent(document.body);
-    
 });
 EventBus.subscribe('reports', function () {
     Router.renderHeader()
@@ -113,7 +120,19 @@ EventBus.subscribe('reports', function () {
 EventBus.subscribe('reports', function () {
     Router.renderReports()
 });
-
+//----------------------------------
+EventBus.subscribe('taskList', function () {
+    Router.clearContent(document.body);
+});
+EventBus.subscribe('taskList', function () {
+    Router.renderHeaderDetailed()
+});
+EventBus.subscribe('taskList', function () {
+    Router.renderTitleTaskList()
+});
+EventBus.subscribe('taskList', function () {
+    Router.renderReportsDaily()
+});
 //----------------------------------
 EventBus.subscribe('no-user', function () {
     EventBus.publish('login')

@@ -1,0 +1,108 @@
+style.
+
+    .today-list {
+        padding: 0 6.7%;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .task {
+        height: 87px;
+        width: 100%;
+        background-color: white;
+        line-height: 87px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: flex-start;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        margin-bottom: 0.6%;
+        position: relative;
+        box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);
+    }
+
+    .task-buttons-container {
+        position: absolute;
+        right: 34px;
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        height: 100%;
+        top: 0;
+        font-size: 19px;
+        padding: 11px 0;
+        box-sizing: border-box;
+    }
+
+    .edit-task {
+        color: #cacaca;
+        font-family: icomoon;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .drag-task {
+        color: #cacaca;
+        font-family: icomoon;
+        cursor: pointer;
+        width: 100%;
+        display: none;
+    }
+
+    .sorted-list .drag-task {
+        display: inline-block;
+    }
+
+    .edit-task:hover {
+        color: #88a3b5;
+    }
+
+    .drag-task:hover {
+        color: #88a3b5;
+    }
+
+    .drop-switch span {
+        display: inline-block;
+        vertical-align: text-bottom;
+        font-size: 20px;
+        margin-right: 8px;
+        font-weight: bold;
+    }
+
+    #to_do {
+        color: white;
+    }
+
+
+
+
+
+
+block headpart
+  ul.today-list
+    li.task
+        .category 
+        .border-category
+        .date
+        section.task-info
+            h2.task-info-title Lorem ipsum sit amet
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            .task-buttons-container
+                button.drag-task 
+                button.edit-task 
+        .urgency
+            p.estimation-counter
+    li.task
+        .category 
+        .border-category
+        .date TODAY
+        section.task-info
+            h2.task-info-title Lorem ipsum sit amet
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            .task-buttons-container
+                button.drag-task 
+                button.edit-task 
+        .urgency
+            p.estimation-counter

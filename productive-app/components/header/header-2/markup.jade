@@ -1,0 +1,77 @@
+style.
+    .logo {
+        visibility: hidden;
+        margin-top: 28px;
+        margin-bottom: 27px;
+        min-width: 249px;
+        width: 21%;
+        display: none;
+    }
+
+    .main-head {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        background-color: #2a3f50;
+    }
+
+    .main-head-shadow-on {
+        box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);
+    }
+
+    .inner-head {
+        max-width: 1366px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .inner-2-head {
+        width: 100%;
+        padding: 0 6.8%;
+        box-sizing: border-box;
+        padding-top: 56px;
+    }
+
+    .visible-logo {
+        visibility: visible;
+    }
+
+    .interface-container {
+        margin-bottom: 17px;
+        float: right;
+        width: 46%;
+        text-align: right;
+        font-size: 18px;
+    }
+
+    .interface-container .ico-text-button {
+        font-family: icomoon;
+        cursor: pointer;
+        margin-left: 5.7%;
+    }
+    .trash-counter {
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        background-color: red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+    }
+
+header.main-head.main-head-shadow-on
+    .inner-head
+        .inner-2-head
+            a(href='#')
+                img.logo(src='./img/Logo.svg', alt='logo goes here')
+            .interface-container
+                button#addTask.ico-text-button 
+                button#editTask.ico-text-button
+                    | 
+                    span.trash-counter
+
+                button#reports.ico-text-button &#xe90c;
+                button#settings.ico-text-button  &#xe90b;
+                button#log_out.ico-text-button  &#xe908;
+
+

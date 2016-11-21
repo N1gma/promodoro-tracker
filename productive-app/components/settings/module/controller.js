@@ -8,7 +8,7 @@ Controller.prototype.start = function () {
     var modelContext = this.model;
     var selfContext = this;
     this.view.initComponent();
-    document.addEventListener(modelContext.eventFires.type, function (e) { //observes over model
+    document.addEventListener(modelContext.eventFires.type, function (e) { //observes over module
         viewContext.clearComponent();
         viewContext.renderComponent(modelContext.data);
     });
