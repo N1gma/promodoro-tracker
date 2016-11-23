@@ -1,3 +1,20 @@
+/*class EventBusClass {
+    constructor() {
+        this.topics = [];
+    }
+    subscribe(topic, listener) {
+        if (!this.topics[topic]) this.topics[topic] = [];
+        this.topics[topic].push(listener);
+    }
+    publish(topic, data) {
+        if (!this.topics[topic] || this.topics[topic].length < 1) return;
+        this.topics[topic].forEach(function (listener) {
+            listener(data || {});
+        });
+    }
+}
+
+var EventBusLocalTasks = new EventBusClass();*/
 var EventBus = {
     topics: {},
 
@@ -19,6 +36,8 @@ var EventBus = {
         });
     }
 };
+
+//var EventBus = new EventBusClass();
 
 EventBus.subscribe('login', function () {
     Router.clearContent(document.body)
@@ -46,29 +65,29 @@ EventBus.subscribe('settings', function () {
         {
             node: document.createElement('button'),
             class: ['button-row-2', 'button-blue'],
-            innerHtml : 'Back'
+            innerHtml: 'Back'
 
         }, {
             node: document.createElement('button'),
             class: ['button-row-2', 'button-green'],
-            innerHtml : 'Save',
-            listener : function () {
+            innerHtml: 'Save',
+            listener: function () {
                 User.saveSettings();
             }
         },
         {
             node: document.createElement('button'),
             class: ['button-row-2', 'button-blue'],
-            innerHtml : 'Next',
-            listener : function () {
+            innerHtml: 'Next',
+            listener: function () {
                 EventBus.publish('taskList');
             }
         }
     ];
     /*list[0].classList.add('button-row-2', 'button-blue');
-    list[0].innerHTML = 'Back';
-    list[1].classList.add('button-row-2', 'button-green');
-    list[1].innerHTML = 'Save';*/
+     list[0].innerHTML = 'Back';
+     list[1].classList.add('button-row-2', 'button-green');
+     list[1].innerHTML = 'Save';*/
 
     Router.renderButtons(list)
 });

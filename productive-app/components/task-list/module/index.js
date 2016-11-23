@@ -17,5 +17,6 @@ Router.renderReportsDaily = function () {
             });
         }
         document.body.appendChild(el);
+        controller.setEventListeners();
     });
 };

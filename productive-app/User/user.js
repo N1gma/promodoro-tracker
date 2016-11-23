@@ -1,5 +1,5 @@
 var User = {
-    currentLogin: 'oleksandr_chornobai',
+    currentLogin: '',
     settings: {},
     reportsData: {},
     getSettings: function (account, callback) {
@@ -20,10 +20,40 @@ var User = {
             callback(snapshot.val());
         });
     },
-    setData: function (account, data) {
-        database.ref('users/' + account + '/tasks').set(data);
+    setTaskData: function (account, path) {
+        database.ref('users/' + account + path).set((function () {
+            var newData = {
+                title: document.getElementById('title-input').value,
+                description: document.getElementById('title-input').value,
+                category: (function () {
+                    var tag = document.getElementsByClassName('categories-choose-list')[0];
+                    for (var i = 0; i < tag.children.length; i++) {
+                        if (tag.children[i].firstElementChild.checked) {
+                            console.log(tag.children[i].firstElementChild);
+                            return tag.children[i].firstElementChild.value.toLowerCase();
+                        }
+                    }
+                })(),
+                deadline: document.getElementById('deadline-input').value,
+                estimation: document.getElementsByClassName('estimation-range')[0].estimation,
+                priority: (function () {
+                    var tag = document.getElementsByClassName('categories-choose-list')[1];
+                    for (var i = 0; i < tag.children.length; i++) {
+                        if (tag.children[i].firstElementChild.checked) {
+                            console.log(tag.children[i].firstElementChild);
+                            return tag.children[i].firstElementChild.value.toLowerCase();
+                        }
+                    }
+                })()
+            };
+            console.log(newData);
+            return newData;
+        })());
     },
-    updateData: function (data) {
+    deleteTaskData: function (account,path) {
+        database.ref('users/' + account + path).remove();
+    },
+    updateTasksData: function () {
         var path = 'users/' + User.currentLogin + '/tasks';
         var newKey = firebase.database().ref().child(path).push().key;
         path += '/' + newKey;
@@ -34,8 +64,8 @@ var User = {
                 var tag = document.getElementsByClassName('categories-choose-list')[0];
                 for (var i = 0; i < tag.children.length; i++) {
                     if (tag.children[i].firstElementChild.checked) {
-                        console.log(tag.children[i].firstElementChild)
-                        return tag.children[i].firstElementChild.innerHTML;
+                        console.log(tag.children[i].firstElementChild);
+                        return tag.children[i].firstElementChild.value.toLowerCase();
                     }
                 }
             })(),
@@ -46,12 +76,12 @@ var User = {
                 for (var i = 0; i < tag.children.length; i++) {
                     if (tag.children[i].firstElementChild.checked) {
                         console.log(tag.children[i].firstElementChild);
-                        return tag.children[i].firstElementChild.innerHTML;
+                        return tag.children[i].firstElementChild.value.toLowerCase();
                     }
                 }
             })()
         };
         console.log(newData);
-        firebase.database().ref(path).update(newData)
+        firebase.database().ref(path).update(newData);
     }
 };

@@ -77,32 +77,19 @@ style.
 
 
 
+ul.today-list
+    -for(var keys in data)
+      li.task(key="-KX71MV55oNeu3NkXq5J")
+          .category 
+          .border-category
+          .date
+          section.task-info
+              h2.task-info-title Lorem ipsum sit amet
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              .task-buttons-container
+                  button.drag-task 
+                  button.edit-task 
+          .urgency
+              p.estimation-counter
 
 
-
-block headpart
-  ul.today-list
-    li.task
-        .category 
-        .border-category
-        .date
-        section.task-info
-            h2.task-info-title Lorem ipsum sit amet
-            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            .task-buttons-container
-                button.drag-task 
-                button.edit-task 
-        .urgency
-            p.estimation-counter
-    li.task
-        .category 
-        .border-category
-        .date TODAY
-        section.task-info
-            h2.task-info-title Lorem ipsum sit amet
-            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            .task-buttons-container
-                button.drag-task 
-                button.edit-task 
-        .urgency
-            p.estimation-counter

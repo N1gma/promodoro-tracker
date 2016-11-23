@@ -12,7 +12,10 @@ export default class Controller {
         });
         document.getElementById('modal-confirm-add').addEventListener('click', function (e) {
             e.preventDefault();
-            context.view.dropData();
+            context.view.dropData(function(){
+                //EventBusLocalTasks.publish('task-added')
+                document.body.removeChild(context.el);
+            });
         });
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
             if (e.target.tagName.toUpperCase() == 'LI') {

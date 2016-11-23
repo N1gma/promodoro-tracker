@@ -3,7 +3,8 @@ module.exports = {
         './components/title/index.js','./components/settings/module/index.js',
         './components/settings/module2/index.js','./components/reports/module/index.js',
     './components/header/header-2/index.js','./components/title/titleTaskList/index.js',
-    './components/task-list/module/index.js','./components/modals/index.js'],
+    './components/task-list/module/index.js','./components/modals/addtask/index.js',
+        './components/modals/editTask/index.js'],
     output: {
         filename: './components/login/loginModule.js'
     },
