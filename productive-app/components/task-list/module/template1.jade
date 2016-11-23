@@ -79,13 +79,13 @@ style.
 
 ul.today-list
     -for(var keys in data)
-      li.task(key="-KX71MV55oNeu3NkXq5J")
+      li.task(class=[data[keys].category,data[keys].estimation, data[keys].priority])(key=keys)
           .category 
           .border-category
-          .date
+          .date TODAY
           section.task-info
-              h2.task-info-title Lorem ipsum sit amet
-              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              h2.task-info-title #{data[keys].title}
+              p #{data[keys].description}
               .task-buttons-container
                   button.drag-task 
                   button.edit-task 

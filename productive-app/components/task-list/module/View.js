@@ -1,4 +1,4 @@
-export var tasksListView = {
+/*export var tasksListView = {
     patchList: function () {
         User.getData(User.currentLogin, 'tasks', function (value) {
             if(!value || value == []){
@@ -9,5 +9,5 @@ export var tasksListView = {
         })
     }
 
-};
+};*/
 

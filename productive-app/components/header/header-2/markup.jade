@@ -49,6 +49,9 @@ style.
         cursor: pointer;
         margin-left: 5.7%;
     }
+    .active{
+        color: white;
+    }
     .trash-counter {
         position: absolute;
         bottom: -10px;
@@ -57,7 +60,10 @@ style.
         border-radius: 50%;
         width: 20px;
         height: 20px;
+        font-size: 14px;
+        display: none;
     }
+
 
 header.main-head.main-head-shadow-on
     .inner-head
@@ -66,7 +72,7 @@ header.main-head.main-head-shadow-on
                 img.logo(src='./img/Logo.svg', alt='logo goes here')
             .interface-container
                 button#addTask.ico-text-button 
-                button#editTask.ico-text-button
+                button#trashOn.ico-text-button
                     | 
                     span.trash-counter
 

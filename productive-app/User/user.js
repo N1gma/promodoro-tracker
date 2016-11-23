@@ -35,7 +35,7 @@ var User = {
                     }
                 })(),
                 deadline: document.getElementById('deadline-input').value,
-                estimation: document.getElementsByClassName('estimation-range')[0].estimation,
+                estimation: 'estimate-' + document.getElementsByClassName('estimation-range')[0].estimation,
                 priority: (function () {
                     var tag = document.getElementsByClassName('categories-choose-list')[1];
                     for (var i = 0; i < tag.children.length; i++) {
@@ -55,7 +55,7 @@ var User = {
     },
     updateTasksData: function () {
         var path = 'users/' + User.currentLogin + '/tasks';
-        var newKey = firebase.database().ref().child(path).push().key;
+        var newKey = database.ref().child(path).push().key;
         path += '/' + newKey;
         var newData = {
             title: document.getElementById('title-input').value,
@@ -70,7 +70,7 @@ var User = {
                 }
             })(),
             deadline: document.getElementById('deadline-input').value,
-            estimation: document.getElementsByClassName('estimation-range')[0].estimation,
+            estimation: 'estimate-' + document.getElementsByClassName('estimation-range')[0].estimation,
             priority: (function () {
                 var tag = document.getElementsByClassName('categories-choose-list')[1];
                 for (var i = 0; i < tag.children.length; i++) {
@@ -82,6 +82,6 @@ var User = {
             })()
         };
         console.log(newData);
-        firebase.database().ref(path).update(newData);
+        database.ref(path).update(newData);
     }
 };

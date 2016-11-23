@@ -53,8 +53,8 @@
 	__webpack_require__(24);
 	__webpack_require__(27);
 	__webpack_require__(29);
-	__webpack_require__(35);
-	module.exports = __webpack_require__(39);
+	__webpack_require__(33);
+	module.exports = __webpack_require__(37);
 
 
 /***/ },
@@ -1354,7 +1354,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    visibility: hidden;\n    margin-top: 28px;\n    margin-bottom: 27px;\n    min-width: 249px;\n    width: 21%;\n    display: none;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n}\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"editTask\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    visibility: hidden;\n    margin-top: 28px;\n    margin-bottom: 27px;\n    min-width: 249px;\n    width: 21%;\n    display: none;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -1379,6 +1379,20 @@
 	        });
 	        document.getElementById('addTask').addEventListener('click', function (e) {
 	            Router.showModalAdd();
+	        });
+	        document.getElementById('trashOn').addEventListener('click', function (e) {
+	            var tasks = document.getElementsByClassName('task');
+	            if (e.currentTarget.classList.contains('active')) {
+	                for (var i = 0; i < tasks.length; i++) {
+	                    tasks[i].classList.remove('trash');
+	                }
+	                e.currentTarget.classList.remove('active');
+	            } else {
+	                for (var i = 0; i < tasks.length; i++) {
+	                    tasks[i].classList.add('trash');
+	                }
+	                e.currentTarget.classList.add('active');
+	            }
 	        });
 	    }
 	};
@@ -1418,7 +1432,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 140px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n}\n\n.sub-title {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    margin-bottom: 76px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Daily Task List +</h2><div class=\"sub-title\"><div class=\"interface-container-2\"><button id=\"to_do\" class=\"ico-text-button\">To Do</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"done\" class=\"ico-text-button\">Done</button></div></div></div>");;return buf.join("");
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 140px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n}\n\n.sub-title {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    margin-bottom: 76px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Daily Task List +</h2><div class=\"sub-title\"><div class=\"interface-container-2\"><button id=\"to_do\" class=\"ico-text-button\">To Do</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"done\" class=\"ico-text-button\">Done</button></div><div class=\"interface-container-2 left-side\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -1431,23 +1445,21 @@
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _notasks = __webpack_require__(31);
-
-	var _notasks2 = _interopRequireDefault(_notasks);
-
-	var _Controller = __webpack_require__(32);
+	var _Controller = __webpack_require__(31);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(33);
-
-	var _View = __webpack_require__(34);
+	var _Model = __webpack_require__(32);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//import {EventBusLocal} from '../../../Globals/eBusLocalTasks'
+
+
+	//import templateNotasks from './notasks.jade'
 	Router.renderReportsDaily = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_View.tasksListView, _Model.tasks);
+	    var controller = new _Controller2.default(_Model.tasks, EventBusLocal);
 	    controller.initController(function () {
 	        console.log(_Model.tasks.data);
 	        if (_Model.tasks.data) {
@@ -1474,27 +1486,13 @@
 	buf.push("<style>.today-list {\n    padding: 0 6.7%;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n#to_do {\n    color: white;\n}\n\n\n</style><ul class=\"today-list\">");
 	for(var keys in data)
 	{
-	buf.push("<li key=\"-KX71MV55oNeu3NkXq5J\" class=\"task\"><div class=\"category\"></div><div class=\"border-category\"></div><div class=\"date\"></div><section class=\"task-info\"><h2 class=\"task-info-title\">Lorem ipsum sit amet</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p><div class=\"task-buttons-container\"><button class=\"drag-task\"></button><button class=\"edit-task\"></button></div></section><div class=\"urgency\"><p class=\"estimation-counter\"></p></div></li>");
+	buf.push("<li" + (jade.attr("key", keys, true, true)) + (jade.cls(['task',[data[keys].category,data[keys].estimation, data[keys].priority]], [null,true])) + "><div class=\"category\"></div><div class=\"border-category\"></div><div class=\"date\">TODAY</div><section class=\"task-info\"><h2 class=\"task-info-title\">" + (jade.escape((jade_interp = data[keys].title) == null ? '' : jade_interp)) + "</h2><p>" + (jade.escape((jade_interp = data[keys].description) == null ? '' : jade_interp)) + "</p><div class=\"task-buttons-container\"><button class=\"drag-task\"></button><button class=\"edit-task\"></button></div></section><div class=\"urgency\"><p class=\"estimation-counter\"></p></div></li>");
 	}
 	buf.push("</ul>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(3);
-
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-
-	buf.push("<style>.top-block-message {\n    font-size: 42px;\n    color: #8da5b8;\n    width: 100%;\n    box-sizing: border-box;\n    padding: 0 6.8%;\n    text-align: center;\n    line-height: 114%;\n}\n\n</style><div class=\"top-block-message\"><p>Excellent,<br>all daily tasks done! :)</p></div>");;return buf.join("");
-	}
-
-/***/ },
-/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1508,11 +1506,12 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
-	    function Controller(view, model) {
+	    function Controller(model, eBusLocal) {
 	        _classCallCheck(this, Controller);
 
-	        this.view = view;
+	        //this.view = view;
 	        this.model = model;
+	        this.eBusLocal = eBusLocal;
 	    }
 
 	    _createClass(Controller, [{
@@ -1524,10 +1523,17 @@
 	    }, {
 	        key: 'setEventListeners',
 	        value: function setEventListeners() {
+	            var context = this;
 	            document.getElementsByClassName('today-list')[0].addEventListener('click', function (e) {
 	                if (e.target.classList.contains('edit-task')) {
 	                    Router.showModalEdit(e.target);
 	                }
+	            });
+	            document.getElementsByClassName('today-list')[0].addEventListener('click', function (e) {
+	                context.eBusLocal.publish('trash-drop', {
+	                    e: e,
+	                    context: context
+	                });
 	            });
 	        }
 	    }]);
@@ -1538,7 +1544,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1551,6 +1557,7 @@
 
 	var tasks = exports.tasks = {
 	    data: {},
+	    trashBufferZone: [],
 	    patchList: function patchList(callback) {
 	        User.getData(User.currentLogin, 'tasks', function (value) {
 	            if (!value || value == []) {
@@ -1560,6 +1567,14 @@
 	            }
 	            callback();
 	        });
+	    },
+	    checkTrashBuffer: function checkTrashBuffer(key) {
+	        for (var i = 0; i < this.trashBufferZone.length; i++) {
+	            if (this.trashBufferZone[i] == key) {
+	                return false;
+	            }
+	        }
+	        return true;
 	    }
 	};
 
@@ -1579,40 +1594,20 @@
 	};
 
 /***/ },
-/* 34 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var tasksListView = exports.tasksListView = {
-	    patchList: function patchList() {
-	        User.getData(User.currentLogin, 'tasks', function (value) {
-	            if (!value || value == []) {
-	                console.log('empty list');
-	            } else {}
-	        });
-	    }
-
-	};
-
-/***/ },
-/* 35 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modalAdd = __webpack_require__(36);
+	var _modalAdd = __webpack_require__(34);
 
 	var _modalAdd2 = _interopRequireDefault(_modalAdd);
 
-	var _controller = __webpack_require__(37);
+	var _controller = __webpack_require__(35);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(38);
+	var _view = __webpack_require__(36);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1625,7 +1620,7 @@
 	};
 
 /***/ },
-/* 36 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1639,7 +1634,7 @@
 	}
 
 /***/ },
-/* 37 */
+/* 35 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1697,7 +1692,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 38 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1713,16 +1708,16 @@
 	};
 
 /***/ },
-/* 39 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modal = __webpack_require__(40);
+	var _modal = __webpack_require__(38);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _controller = __webpack_require__(41);
+	var _controller = __webpack_require__(39);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -1737,7 +1732,7 @@
 	};
 
 /***/ },
-/* 40 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1751,7 +1746,7 @@
 	}
 
 /***/ },
-/* 41 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
