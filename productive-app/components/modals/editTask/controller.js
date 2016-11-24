@@ -1,6 +1,7 @@
 export default class Controller {
-    constructor(el) {
+    constructor(el,view) {
         this.el = el;
+        this.view = view;
     }
 
     init(target) {

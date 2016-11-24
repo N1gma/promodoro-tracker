@@ -55,7 +55,7 @@
 	__webpack_require__(29);
 	__webpack_require__(33);
 	__webpack_require__(37);
-	module.exports = __webpack_require__(40);
+	module.exports = __webpack_require__(41);
 
 
 /***/ },
@@ -511,7 +511,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.main-content {\n    color: white;\n    box-sizing: border-box;\n    overflow: hidden;\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n    margin: 0 auto;\n    width: 61%;\n    padding-left: 62px;\n    min-width: 952px;\n}\n\n.main-content i {\n    margin-right: 19px;\n    font-size: 20px;\n}\n\n.select-field {\n    background: transparent;\n    color: white;\n    border: none;\n    outline: none;\n    border-bottom: 1px solid #8da5b8;\n    text-align: center;\n    padding-bottom: 4px;\n    width: 41%;\n    font-size: 16px;\n}\n\n.option {\n    width: 38.8%;\n    margin-right: 10.7%;\n    display: inline-block;\n    margin-bottom: 62px;;\n    box-sizing: border-box;\n    font: 13px Roboto, sans-serif;\n}\n\n.option label {\n    position: relative;\n}\n\n.minus-count {\n    position: absolute;\n    left: 3%;\n    color: #8da5b8;\n    font-size: 11px;\n    top: 0;\n    font-family: icomoon;\n    cursor: pointer;\n}\n\n.plus-count {\n    position: absolute;\n    right: 1%;\n    color: #8da5b8;\n    font-family: icomoon;\n    font-size: 11px;\n    top: 0;\n    cursor: pointer;\n}\n\n.plus-count:hover {\n    color: white;\n}\n\n.minus-count:hover {\n    color: white;\n}\n\n.minus-count:hover + input, .plus-count:hover ~ input {\n    border-color: white;\n}\n\n.opt-details {\n    color: #8198ab;\n    margin-top: 12px;\n    margin-left: 9.6%;\n}\n\n.opt-title {\n    display: inline-block;\n    width: 40%;\n}\n\n.timeline-container {\n    width: 100%;\n    margin-top: 13px;\n    margin-bottom: 55px;\n    display: block;\n\n}\n\n.graph-head {\n    font: 20px Ptsans, sans-serif;\n    color: white;\n    text-align: center;\n    width: 100%;\n\n}\n\n.timeline {\n    width: 86.7%;\n    background-color: #59abe3;\n    height: 11px;\n    margin: 0 auto;\n    line-height: 11px;\n    position: relative;\n}\n\n.timelabels {\n    width: 86.7%;\n    background-color: transparent;\n    height: 30px;\n    display: block;\n    margin: 0 auto;\n    overflow: hidden;\n}\n\n.timelabel {\n    display: inline-block;\n    height: 100%;\n    line-height: 30px;\n\n}\n\n.timelabel div {\n    float: right;\n    text-align: center;\n    background: #2a3f50;\n    color: #62788a;\n    font: 12px Roboto, sans-serif;\n    height: 100%;\n    line-height: 30px;\n    display: block;\n    width: 100%;\n    margin-right: -50%;\n}\n\n.timelabel span {\n    background-color: #02cdd3;\n    width: 4px;\n    height: 4px;\n    border-radius: 50%;\n    margin: 0 auto;\n    margin-top: 6px;\n    display: block;\n}\n\n.work {\n    background-color: #ffb200;\n    height: 100%;\n    display: inline-block;\n}\n\n.breakk, .longbreakk {\n    background-color: #59abe3;\n    height: 100%;\n    display: inline-block;\n}\n\n.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#pomodoros-settings,#settings{\n    color: white;\n}\n\n\n\n\n</style><main class=\"main-content\"><form class=\"option\"><i style=\"color: #ffb200\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"workTime\" class=\"opt-title\">WORK TIME</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"workTime\" type=\"text\" value=\"1\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #00d4d9\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"workIteration\" class=\"opt-title\">WORK ITERATION</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"workIteration\" type=\"text\" value=\"2\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #59abe3\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"shortBreak\" class=\"opt-title\">SHORT BREAK</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"shortBreak\" type=\"text\" value=\"3\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #59abe3\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"longBreak\" class=\"opt-title\">LONG BREAK</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"longBreak\" type=\"text\" value=\"4\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form></main><div class=\"timeline-container\"></div>");;return buf.join("");
+	buf.push("<style>.main-content {\n    color: white;\n    box-sizing: border-box;\n    overflow: hidden;\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n    margin: 0 auto;\n    width: 61%;\n    padding-left: 62px;\n    min-width: 952px;\n}\n\n.main-content i {\n    margin-right: 19px;\n    font-size: 20px;\n}\n\n.select-field {\n    background: transparent;\n    color: white;\n    border: none;\n    outline: none;\n    border-bottom: 1px solid #8da5b8;\n    text-align: center;\n    padding-bottom: 4px;\n    width: 41%;\n    font-size: 16px;\n}\n\n.option {\n    width: 38.8%;\n    margin-right: 10.7%;\n    display: inline-block;\n    margin-bottom: 62px;;\n    box-sizing: border-box;\n    font: 13px Roboto, sans-serif;\n}\n\n.option label {\n    position: relative;\n}\n\n.minus-count {\n    position: absolute;\n    left: 3%;\n    color: #8da5b8;\n    font-size: 11px;\n    top: 0;\n    font-family: icomoon;\n    cursor: pointer;\n}\n\n.plus-count {\n    position: absolute;\n    right: 1%;\n    color: #8da5b8;\n    font-family: icomoon;\n    font-size: 11px;\n    top: 0;\n    cursor: pointer;\n}\n\n.plus-count:hover {\n    color: white;\n}\n\n.minus-count:hover {\n    color: white;\n}\n\n.minus-count:hover + input, .plus-count:hover ~ input {\n    border-color: white;\n}\n\n.opt-details {\n    color: #8198ab;\n    margin-top: 12px;\n    margin-left: 9.6%;\n}\n\n.opt-title {\n    display: inline-block;\n    width: 40%;\n}\n\n.timeline-container {\n    width: 100%;\n    margin-top: 13px;\n    margin-bottom: 55px;\n    display: block;\n\n}\n\n.graph-head {\n    font: 20px Ptsans, sans-serif;\n    color: white;\n    text-align: center;\n    width: 100%;\n\n}\n\n.timeline {\n    width: 86.7%;\n    background-color: #59abe3;\n    height: 11px;\n    margin: 0 auto;\n    line-height: 11px;\n    position: relative;\n}\n\n.timelabels {\n    width: 86.7%;\n    background-color: transparent;\n    height: 30px;\n    display: block;\n    margin: 0 auto;\n    overflow: hidden;\n}\n\n.timelabel {\n    display: inline-block;\n    height: 100%;\n    line-height: 30px;\n\n}\n\n.timelabel div {\n    float: right;\n    text-align: center;\n    background: #2a3f50;\n    color: #62788a;\n    font: 12px Roboto, sans-serif;\n    height: 100%;\n    line-height: 30px;\n    display: block;\n    width: 100%;\n    margin-right: -50%;\n}\n\n.timelabel span {\n    background-color: #02cdd3;\n    width: 4px;\n    height: 4px;\n    border-radius: 50%;\n    margin: 0 auto;\n    margin-top: 6px;\n    display: block;\n}\n\n.work {\n    background-color: #ffb200;\n    height: 100%;\n    display: inline-block;\n}\n\n.breakk, .longbreakk {\n    background-color: #59abe3;\n    height: 100%;\n    display: inline-block;\n}\n\n.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#pomodoros-settings,#settings{\n    color: white;\n}\n\n\n\n\n</style><main class=\"main-content\"><form class=\"option\"><i style=\"color: #ffb200\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"workTime\" class=\"opt-title\">WORK TIME</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"workTime\" type=\"text\" value=\"\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #00d4d9\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"workIteration\" class=\"opt-title\">WORK ITERATION</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"workIteration\" type=\"text\" value=\"\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #59abe3\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"shortBreak\" class=\"opt-title\">SHORT BREAK</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"shortBreak\" type=\"text\" value=\"\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form><form class=\"option\"><i style=\"color: #59abe3\" aria-hidden=\"true\" class=\"fa fa-circle\"></i><label for=\"longBreak\" class=\"opt-title\">LONG BREAK</label><label><span class=\"plus-count\"></span><span class=\"minus-count\"></span><input id=\"longBreak\" type=\"text\" value=\"\" disabled=\"\" class=\"select-field\"></label><p class=\"opt-details\">Lorem ipsum dolor sit amet consectetur adipiscing</p></form></main><div class=\"timeline-container\"></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -1741,22 +1741,20 @@
 
 	var _controller2 = _interopRequireDefault(_controller);
 
+	var _view = __webpack_require__(40);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.showModalEdit = function (target) {
 	    var el = document.createElement('div');
-	    while (target.parentNode.classList.contains('task') == false) {
-	        target = target.parentNode;
-	    }
-	    var keyy = target.parentNode.getAttribute('key');
-	    console.log(User.dataSnapShot);
-	    el.innerHTML = (0, _modal2.default)({
-	        data: User.dataSnapShot[keyy]
+	    var controller = new _controller2.default(el, _view.view);
+	    controller.view.syncChanges(target, function (key) {
+	        el.innerHTML = (0, _modal2.default)({
+	            data: User.dataSnapShot[key]
+	        });
+	        document.body.appendChild(el);
 	    });
-	    document.body.appendChild(el);
-	    var controller = new _controller2.default(el);
 	    controller.init(target);
-	    console.log(target);
 	};
 
 /***/ },
@@ -1769,12 +1767,9 @@
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
-	;var locals_for_with = (locals || {});(function (console, data, document) {
+	;var locals_for_with = (locals || {});(function (console, data) {
 	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-interface-trash {\n    float: left;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");
-	console.log(data);
-	{
-	document.getElementById(data.priority).setAttribute('checked', true);
-	}}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"document" in locals_for_with?locals_for_with.document:typeof document!=="undefined"?document:undefined));;return buf.join("");
+	console.log(data);}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -1792,10 +1787,11 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
-	    function Controller(el) {
+	    function Controller(el, view) {
 	        _classCallCheck(this, Controller);
 
 	        this.el = el;
+	        this.view = view;
 	    }
 
 	    _createClass(Controller, [{
@@ -1849,11 +1845,36 @@
 
 /***/ },
 /* 40 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var view = exports.view = {
+	    syncChanges: function syncChanges(target, callback) {
+	        while (target.parentNode.classList.contains('task') == false) {
+	            target = target.parentNode;
+	        }
+	        var key = target.parentNode.getAttribute('key');
+	        callback(key);
+	        document.getElementById(User.dataSnapShot[key].priority).checked = true;
+	        document.getElementById(User.dataSnapShot[key].category).checked = true;
+	        var estimationRecount = User.dataSnapShot[key].estimation.slice(-1);
+	        for (var i = 0; i < estimationRecount; i++) {
+	            document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
+	        }
+	    }
+	};
+
+/***/ },
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(41);
+	var _template = __webpack_require__(42);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -1879,7 +1900,7 @@
 	};
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
