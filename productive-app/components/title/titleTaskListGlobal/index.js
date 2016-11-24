@@ -1,10 +1,10 @@
 import template from './template.jade'
 
-Router.renderTitleTaskList = function () {
+Router.renderTitleTaskListGlobal = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.body.appendChild(el);
-    /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
+    /*document.getElementsByClassName('sub-title')[1].addEventListener('click', function (e) {
         if(e.target.id == 'done'){
             //EventBus.publish('');
         }

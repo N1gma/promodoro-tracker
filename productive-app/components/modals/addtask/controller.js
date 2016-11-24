@@ -6,8 +6,9 @@ export default class Controller {
 
     init() {
         var context = this;
-        document.getElementById('modal-close').addEventListener('click', function (e) {
+        document.getElementById('modal-close').addEventListener('click', function listener (e) {
             e.preventDefault();
+            console.log(this)
             document.body.removeChild(context.el);
         });
         document.getElementById('modal-confirm-add').addEventListener('click', function (e) {

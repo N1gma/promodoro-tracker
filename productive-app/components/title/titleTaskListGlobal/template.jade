@@ -1,19 +1,8 @@
 style.
-    .wrapper {
+    .wrapper-2 {
         max-width: 1366px;
-        padding-top: 140px;
+        padding-top: 40px;
         margin: 0 auto;
-    }
-
-    .main-head-title {
-        clear: both;
-        font: 28px "Roboto", sans-serif;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-        color: white;
-        padding: 0 6.8%;
-        box-sizing: border-box;
     }
 
     .sub-title {
@@ -45,13 +34,18 @@ style.
         font: 15px "Roboto", sans-serif;
     }
 
-.wrapper
-    h2.main-head-title Daily Task List +
+.wrapper-2
     .sub-title
         .interface-container-2
-            button#to_do.ico-text-button To Do
+            button#filter-all.ico-text-button All
             | #{''} | #{''}
-            button#done.ico-text-button Done
+            button#filter-urgent.ico-text-button Urgent
+            | #{''} | #{''}
+            button#filter-high.ico-text-button High
+            | #{''} | #{''}
+            button#filter-middle.ico-text-button Middle
+            | #{''} | #{''}
+            button#filter-low.ico-text-button Low
         .interface-container-2.left-side.hidden
             button#select-all.ico-text-button Select All
             | #{''} | #{''}

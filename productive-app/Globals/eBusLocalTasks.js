@@ -50,3 +50,26 @@ EventBusLocal.subscribe('trash-drop',function (data) {
         console.log(context.model.trashBufferZone)
     }
 });
+
+EventBusLocal.subscribe('trash-on',function(e){
+    var tasks = document.getElementsByClassName('task');
+    if(e.currentTarget.classList.contains('active')){
+        for (var i =0;i<tasks.length;i++){
+            tasks[i].classList.remove('trash');
+        }
+        e.currentTarget.classList.remove('active');
+    }else{
+        for (var i =0;i<tasks.length;i++){
+            tasks[i].classList.add('trash');
+        }
+        e.currentTarget.classList.add('active');
+    }
+    var labels = document.getElementsByClassName('left-side');
+    for( var i = 0;i<labels.length;i++){
+        if(labels[i].classList.contains('hidden')){
+            labels[i].classList.remove('hidden');
+        }else if(!labels[i].classList.contains('hidden')){
+            labels[i].classList.add('hidden');
+        }
+    }
+});

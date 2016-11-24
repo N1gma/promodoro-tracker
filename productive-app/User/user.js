@@ -8,6 +8,7 @@ var User = {
             callback(snapshot.val());
         });
     },
+    dataSnapShot:{},
     /*setSettings: function (account, data) {
      database.ref('users/' + account + '/user_settings').set(data);
      },*/
@@ -17,10 +18,11 @@ var User = {
     getData: function (account, data, callback) {
         var info = database.ref('users/' + account + '/' + data);
         info.on('value', function (snapshot) {
-            callback(snapshot.val());
+            User.dataSnapShot = snapshot.val();
+            callback(User.dataSnapShot);
         });
     },
-    setTaskData: function (account, path) {
+    setTaskData: function (account, path,callback) {
         database.ref('users/' + account + path).set((function () {
             var newData = {
                 title: document.getElementById('title-input').value,

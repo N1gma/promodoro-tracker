@@ -263,9 +263,9 @@ style.
             button#modal-close.modal-interface-cancel &#xe910
         h2.modal-window-head Edit Task
         label.modal-input-title(for='title-input') TITLE
-        input#title-input.modal-input-field(type='text', placeholder='Add title here')
+        input#title-input.modal-input-field(type='text', placeholder='Add title here',value=data.title)
         label.modal-input-title(for='description-input') DESCRIPTION
-        input#description-input.modal-input-field(type='text', placeholder='Add description here')
+        input#description-input.modal-input-field(type='text', placeholder='Add description here',value=data.description)
         h3.modal-input-title CATEGORY
         ul.categories-choose-list
             li
@@ -289,7 +289,7 @@ style.
                 label.text-label(for='other') Other
                 label.label5(for='other')
         label.modal-input-title(for='deadline-input') DEADLINE
-        input#deadline-input.modal-input-field(type='text', placeholder='Set date')
+        input#deadline-input.modal-input-field(type='text', placeholder='Set date',value=data.deadline)
         h3.modal-input-title ESTIMATION
         ul.estimation-range
             li
@@ -315,3 +315,6 @@ style.
                 input#low(type='radio', value='Low', name='ctg11')
                 label.text-label(for='low') Low
                 label.label44(for='low')
+
+ -console.log(data);
+ -document.getElementById(data.priority).setAttribute('checked', true);

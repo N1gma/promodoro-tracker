@@ -17,7 +17,6 @@
 var EventBusLocalTasks = new EventBusClass();*/
 var EventBus = {
     topics: {},
-
     subscribe: function (topic, listener) {
         // create the topic if not yet created
         if (!this.topics[topic]) this.topics[topic] = [];
@@ -37,6 +36,7 @@ var EventBus = {
     }
 };
 
+//---------------------------------
 //var EventBus = new EventBusClass();
 
 EventBus.subscribe('login', function () {
@@ -151,6 +151,9 @@ EventBus.subscribe('taskList', function () {
 });
 EventBus.subscribe('taskList', function () {
     Router.renderReportsDaily()
+});
+EventBus.subscribe('taskList', function () {
+    Router.renderTitleTaskListGlobal()
 });
 //----------------------------------
 EventBus.subscribe('no-user', function () {

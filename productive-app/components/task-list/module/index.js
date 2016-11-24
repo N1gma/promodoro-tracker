@@ -7,15 +7,15 @@ import {tasks} from './Model'
 
 Router.renderReportsDaily = function () {
     var el = document.createElement('div');
-    var controller = new Controller(tasks,EventBusLocal);
+    let controller = new Controller(tasks, EventBusLocal);
     controller.initController(function () {
-        console.log(tasks.data);
-        if(tasks.data){
+        if(controller.model.data){
             el.innerHTML = template({
-                data: tasks.data
+                data: controller.model.data
             });
         }
-        document.body.appendChild(el);
-        controller.setEventListeners();
+        controller.removeEventListeners(el);
+        controller.setEventListeners(el);
     });
+    document.body.appendChild(el);
 };

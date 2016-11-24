@@ -5,11 +5,11 @@ export default class Controller {
 
     init(target) {
         var context = this;
-        document.getElementById('modal-close').addEventListener('click', function (e) {
+        document.getElementById('modal-close').addEventListener('click', function listener (e) {
             e.preventDefault();
             document.body.removeChild(context.el);
         });
-        document.getElementById('modal-confirm-edit').addEventListener('click', function (e) {
+        document.getElementById('modal-confirm-edit').addEventListener('click', function listener (e) {
             e.preventDefault();
             while (target.parentNode.classList.contains('task') == false) {
                 target = target.parentNode;
@@ -40,6 +40,7 @@ export default class Controller {
                 e.target.classList.add('estimated');
                 e.currentTarget.estimation = j;
             }
-        })
+        });
+        console.log(this.el)
     }
 }
