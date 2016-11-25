@@ -14,7 +14,14 @@ export default class Controller {
                     e:e,
                     context:this
                 })
-            }.bind(this)
+            }.bind(this),
+            showGlobalList:function(e){
+                if (e.target.classList.contains('drop-switch')) {
+                    e.target.innerHTML = '<span>Global list</span>&#xe907';
+                    document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden')
+                }
+            }
+
         };
     }
     initController(callback) {
@@ -24,6 +31,7 @@ export default class Controller {
         var context = this;
         el.addEventListener('click', this.listeners.editTask);
         el.addEventListener('click', this.listeners.trashDrop);
+        el.addEventListener('click', this.listeners.showGlobalList);
     }
 
     removeEventListeners(el){

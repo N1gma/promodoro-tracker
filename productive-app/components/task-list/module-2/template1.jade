@@ -85,7 +85,6 @@ style.
         color: #8da5b8;
         clear: both;
         padding: 0 6.8%;
-        cursor: pointer;
     }
 
     .drop-switch {
@@ -94,6 +93,7 @@ style.
         font-family: icomoon;
         font-size: 11px;
         padding-left: 6.8%;
+        cursor: pointer
     }
 
     .drop-switch span {
@@ -121,6 +121,12 @@ style.
         background: url(./img/ico-sprite.png);
         z-index: 9999;
     }
+    .list-hidden{
+        display: none;
+    }
+
+
+
 
 
 .sorted-lists-wrapper
@@ -137,13 +143,13 @@ style.
                     span.list-header-category-mark
                     | #{type.toUpperCase()}
                 -for(var i = 0;i<structure[type].length;i++)
-                  li.task(class=[data[structure[type][i]].priority, data[structure[type][i]].estimation])
+                  li.task(class=[data[structure[type][i]].priority, data[structure[type][i]].estimation], key=structure[type][i])
                     .category 
                     .border-category
                     .date TODAY
                     section.task-info
-                        h2.task-info-title Lorem ipsum sit amet
-                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        h2.task-info-title #{data[structure[type][i]].title}
+                        p #{data[structure[type][i]].description}
                         .task-buttons-container
                             button.drag-task 
                             button.edit-task 

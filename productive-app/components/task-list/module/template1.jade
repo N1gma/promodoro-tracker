@@ -84,7 +84,7 @@ style.
 .wrapper-list
   ul.today-list
     -for(var keys in data)
-      li.task(class=[data[keys].category,data[keys].estimation, data[keys].priority])(key=keys)
+      li.task(class=[data[keys].category,data[keys].estimation, data[keys].priority],key=keys)
           .category 
           .border-category
           .date TODAY

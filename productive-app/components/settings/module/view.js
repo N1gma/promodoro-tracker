@@ -37,8 +37,8 @@ View.prototype.renderComponent = function (data) {
 
     //labels render
     var timePointer = 0;
-    var labelsTotal = parseInt(data.general / (data['WORK TIME'] + data['SHORT BREAK']));
-    var labelWidth = (data['WORK TIME'] + data['SHORT BREAK']) / data.general * 100 + '%';
+    var labelsTotal = parseInt(data.general / 30,10);
+    var labelWidth = 30 / data.general * 100 + '%';
     var timeLabel = document.createElement('div');
     timeLabel.classList.add('timelabel');
     timeLabel.style.width = labelWidth;

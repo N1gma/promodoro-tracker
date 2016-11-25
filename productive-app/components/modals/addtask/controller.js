@@ -28,7 +28,7 @@ export default class Controller {
                     parent.children[i].classList.add('estimated');
                 }
                 e.target.classList.add('estimated');
-                e.currentTarget.estimation = j;
+                e.currentTarget.estimation = j+1;
             }
         })
     }
