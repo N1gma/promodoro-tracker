@@ -155,6 +155,9 @@ EventBus.subscribe('taskList', function () {
 EventBus.subscribe('taskList', function () {
     Router.renderTitleTaskListGlobal()
 });
+EventBus.subscribe('taskList', function () {
+    Router.renderReportsGlobal()
+});
 //----------------------------------
 EventBus.subscribe('no-user', function () {
     EventBus.publish('login')

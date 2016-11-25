@@ -1,4 +1,3 @@
-import {tasks} from '../module/Model'
 export default class Controller {
     constructor(model,eBusLocal) {
         //this.view = view;
@@ -18,20 +17,9 @@ export default class Controller {
             }.bind(this)
         };
     }
-
     initController(callback) {
-        /*User.getData(User.currentLogin, 'tasks', function (value) {
-            if(!value || value == []){
-                console.log('empty list');
-            }else{
-                tasks.data = value;
-                callback();
-            }
-        })*/
         this.model.patchList(callback);
-        //this.view.showList
     }
-
     setEventListeners(el) {
         var context = this;
         el.addEventListener('click', this.listeners.editTask);

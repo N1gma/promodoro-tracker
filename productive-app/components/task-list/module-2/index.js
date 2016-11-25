@@ -9,7 +9,8 @@ Router.renderReportsGlobal = function () {
     controller.initController(function () {
         if(controller.model.data){
             el.innerHTML = template({
-                data: controller.model.data
+                data: controller.model.data,
+                structure: controller.model.getStruct(controller.model.data)
             });
         }
         controller.removeEventListeners(el);

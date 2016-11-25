@@ -18,6 +18,18 @@ export var tasks = {
             }
         }
         return true;
+    },
+    getStruct:function(data){
+        var structure = {};
+        for(var key in data){
+            if(structure[data[key].category]){
+                structure[data[key].category].push(key);
+            }else if(!structure[data[key].category]){
+                structure[data[key].category]=[];
+                structure[data[key].category].push(key);
+            }
+        }
+        return structure;
     }
 };
 
