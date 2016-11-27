@@ -7,6 +7,6 @@ Router.renderHeaderDetailed = function(){
     var el = document.createElement('div');
     el.innerHTML = template1();
     document.body.appendChild(el);
-    Controller.initCntrl();
+    Controller.initCntrl(el);
 };
 

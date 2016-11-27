@@ -20,56 +20,137 @@ var EventBusLocal = {
     }
 };
 
-EventBusLocal.subscribe('trash-drop',function (data) {
+EventBusLocal.subscribe('trash-drop', function (data) {
     var e = data.e;
     var context = data.context;
     if (e.target.classList.contains('category') && !e.target.classList.contains('toogled') && e.target.parentNode.classList.contains('trash')) {
         e.target.innerHTML = '&#xe910;';
         e.target.classList.add('toogled');
-        console.log(context)
         if (context.model.checkTrashBuffer(e.target.parentNode.getAttribute('key'))) {
-            context.model.trashBufferZone.push(e.target.parentNode.getAttribute('key'));
-            if (context.model.trashBufferZone.length > 0) {
+            User.trashData.push(e.target.parentNode.getAttribute('key'));
+            if (User.trashData.length > 0) {
                 document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
-                document.getElementsByClassName('trash-counter')[0].innerHTML = context.model.trashBufferZone.length;
+                document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
             } else {
                 document.getElementsByClassName('trash-counter')[0].style.display = 'none';
             }
-            console.log(context.model.trashBufferZone)
+            console.log(User.trashData)
         }
     } else if (e.target.classList.contains('toogled') && e.target.parentNode.classList.contains('trash')) {
         e.target.innerHTML = '&#xe912;';
         e.target.classList.remove('toogled');
-        context.model.trashBufferZone.splice(context.model.trashBufferZone.indexOf(e.target.parentNode.getAttribute('key')), 1);
-        if (context.model.trashBufferZone.length > 0) {
+        User.trashData.splice(User.trashData.indexOf(e.target.parentNode.getAttribute('key')), 1);
+        if (User.trashData.length > 0) {
             document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
-            document.getElementsByClassName('trash-counter')[0].innerHTML = context.model.trashBufferZone.length;
+            document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
         } else {
             document.getElementsByClassName('trash-counter')[0].style.display = 'none';
         }
-        console.log(context.model.trashBufferZone)
+        console.log(User.trashData)
     }
 });
 
-EventBusLocal.subscribe('trash-on',function(e){
+EventBusLocal.subscribe('trash-check-all', function (dependency) {
+    var elems = document.getElementsByClassName('task');
+    for (var i = 0; i < elems.length; i++) {
+        if (elems[i].parentNode.classList.contains(dependency)) {
+            elems[i].firstElementChild.innerHTML = '&#xe910;';
+            elems[i].firstElementChild.classList.add('toogled');
+            var key = elems[i].getAttribute('key');
+            console.log(key)
+            if (User.trashData.indexOf(key) == -1) {
+                User.trashData.push(key);
+                if (User.trashData.length > 0) {
+                    document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
+                    document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+                } else {
+                    document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+                }
+                console.log(User.trashData)
+            }
+        }
+    }
+})
+
+EventBusLocal.subscribe('trash-uncheck-all', function (dependency) {
+    var elems = document.getElementsByClassName('task');
+    for (var i = 0; i < elems.length; i++) {
+        if (elems[i].parentNode.classList.contains(dependency)) {
+            elems[i].firstElementChild.innerHTML = '&#xe912;';
+            elems[i].firstElementChild.classList.remove('toogled');
+            var key = elems[i].getAttribute('key');
+            console.log(key)
+            if (User.trashData.indexOf(key) != -1) {
+                User.trashData.splice(User.trashData.indexOf(key),1);
+                if (User.trashData.length > 0) {
+                    document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
+                    document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+                } else {
+                    document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+                }
+                console.log(User.trashData)
+            }
+        }
+    }
+})
+
+EventBusLocal.subscribe('trash-refresh', function (e) {
+    document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+    document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+    User.trashData = [];
+});
+
+/*EventBusLocal.subscribe('trash-on',function(e){
+ var tasks = document.getElementsByClassName('task');
+ if(e.currentTarget.classList.contains('active')){
+ for (var i =0;i<tasks.length;i++){
+ tasks[i].classList.remove('trash');
+ }
+ e.currentTarget.classList.remove('active');
+ }else{
+ for (var i =0;i<tasks.length;i++){
+ tasks[i].classList.add('trash');
+ }
+ e.currentTarget.classList.add('active');
+ }
+ var labels = document.getElementsByClassName('left-side');
+ for( var i = 0;i<labels.length;i++){
+ if(labels[i].classList.contains('hidden')){
+ labels[i].classList.remove('hidden');
+ }else if(!labels[i].classList.contains('hidden')){
+ labels[i].classList.add('hidden');
+ }
+ }
+ });*/
+
+
+EventBusLocal.subscribe('trash-on', function (target) {
     var tasks = document.getElementsByClassName('task');
-    if(e.currentTarget.classList.contains('active')){
-        for (var i =0;i<tasks.length;i++){
-            tasks[i].classList.remove('trash');
-        }
-        e.currentTarget.classList.remove('active');
-    }else{
-        for (var i =0;i<tasks.length;i++){
-            tasks[i].classList.add('trash');
-        }
-        e.currentTarget.classList.add('active');
+    target.classList.add('active')
+
+    for (var i = 0; i < tasks.length; i++) {
+        tasks[i].classList.add('trash');
     }
+
     var labels = document.getElementsByClassName('left-side');
-    for( var i = 0;i<labels.length;i++){
-        if(labels[i].classList.contains('hidden')){
-            labels[i].classList.remove('hidden');
-        }else if(!labels[i].classList.contains('hidden')){
-            labels[i].classList.add('hidden');
-        }
+    for (var i = 0; i < labels.length; i++) {
+        labels[i].classList.remove('hidden');
+
     }
+});
+
+EventBusLocal.subscribe('trash-off', function (target) {
+    var tasks = document.getElementsByClassName('task');
+    target.classList.remove('active');
+
+    for (var i = 0; i < tasks.length; i++) {
+        tasks[i].classList.remove('trash');
+    }
+
+    var labels = document.getElementsByClassName('left-side');
+    for (var i = 0; i < labels.length; i++) {
+
+        labels[i].classList.add('hidden');
+    }
+    //EventBusLocal.publish('trash-refresh')
 });

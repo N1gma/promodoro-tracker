@@ -7,6 +7,16 @@ style.
         font-family: 'Roboto', sans-serif;
     }
 
+    .top-block-message {
+        font-size: 42px;
+        color: #8da5b8;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 6.8%;
+        text-align: center;
+        line-height: 114%;
+    }
+
     .task {
         height: 87px;
         width: 100%;
@@ -82,9 +92,13 @@ style.
 
 
 .wrapper-list
+  - var switcher = true;
+  -console.log(switcher);
   ul.today-list
     -for(var keys in data)
-      li.task(class=[data[keys].category,data[keys].estimation, data[keys].priority],key=keys)
+     -if(tools.compareDates(data[keys].deadline))
+       -switcher=false
+       li.task(class=[data[keys].category,data[keys].estimation, data[keys].priority],key=keys)
           .category 
           .border-category
           .date TODAY
@@ -97,4 +111,11 @@ style.
           .urgency
               p.estimation-counter
 
+
+  -if(switcher)
+    .top-block-message
+      p
+          | Excellent,
+          br
+          | all daily tasks done! :)
 

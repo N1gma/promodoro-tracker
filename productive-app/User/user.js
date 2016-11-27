@@ -1,6 +1,7 @@
 var User = {
     currentLogin: '',
     settings: {},
+    trashData:[],
     reportsData: {},
     getSettings: function (account, callback) {
         var data = database.ref('users/' + account + '/user_settings');
@@ -8,7 +9,7 @@ var User = {
             callback(snapshot.val());
         });
     },
-    dataSnapShot:{},
+    dataSnapShot: {},
     /*setSettings: function (account, data) {
      database.ref('users/' + account + '/user_settings').set(data);
      },*/
@@ -22,7 +23,10 @@ var User = {
             callback(User.dataSnapShot);
         });
     },
-    setTaskData: function (account, path,callback) {
+    setData:function (account, path, data) {
+        database.ref('users/' + account + path).set(data);
+    },
+    setTaskData: function (account, path, node) {
         database.ref('users/' + account + path).set((function () {
             var newData = {
                 title: document.getElementById('title-input').value,
@@ -36,8 +40,23 @@ var User = {
                         }
                     }
                 })(),
-                deadline: document.getElementById('deadline-input').value,
-                estimation: 'estimate-' + document.getElementsByClassName('estimation-range')[0].estimation,
+                deadline: (function () {
+                    var date = document.getElementById('deadline-input').value;
+                    var obj = {
+                        fullDate: date,
+                        month: date.slice(0, date.indexOf(' ')),
+                        day: date.slice(date.indexOf(' ') + 1, date.indexOf(',')),
+                        year: date.slice(date.indexOf(',') + 2)
+                    }
+                    return obj;
+                })(),
+                estimation: (function () {
+                    var parent = document.getElementsByClassName('estimation-range')[0];
+                    for (var i = 0, j = 0; parent.children[i]; i++) {
+                        if (parent.children[i].classList.contains('estimated')) j++;
+                    }
+                    return 'estimate-' + j;
+                })(),
                 priority: (function () {
                     var tag = document.getElementsByClassName('categories-choose-list')[1];
                     for (var i = 0; i < tag.children.length; i++) {
@@ -52,7 +71,7 @@ var User = {
             return newData;
         })());
     },
-    deleteTaskData: function (account,path) {
+    deleteTaskData: function (account, path) {
         database.ref('users/' + account + path).remove();
     },
     updateTasksData: function () {
@@ -71,7 +90,17 @@ var User = {
                     }
                 }
             })(),
-            deadline: document.getElementById('deadline-input').value,
+            //deadline: document.getElementById('deadline-input').value,
+            deadline: (function () {
+                var date = document.getElementById('deadline-input').value;
+                var obj = {
+                    fullDate: date,
+                    month: date.slice(0, date.indexOf(' ')),
+                    day: date.slice(date.indexOf(' ') + 1, date.indexOf(',')),
+                    year: date.slice(date.indexOf(',') + 2)
+                }
+                return obj;
+            })(),
             estimation: 'estimate-' + document.getElementsByClassName('estimation-range')[0].estimation,
             priority: (function () {
                 var tag = document.getElementsByClassName('categories-choose-list')[1];

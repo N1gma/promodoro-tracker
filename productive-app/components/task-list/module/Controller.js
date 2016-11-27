@@ -1,33 +1,26 @@
-import {tasks} from './Model'
 export default class Controller {
-    constructor(model,eBusLocal) {
+    constructor(model, eBusLocal) {
         //this.view = view;
         this.model = model;
         this.eBusLocal = eBusLocal;
         this.listeners = {
-            editTask:function (e) {
+            editTask: function (e) {
                 if (e.target.classList.contains('edit-task')) {
                     Router.showModalEdit(e.target);
                 }
             },
-            trashDrop:function (e) {
-                this.eBusLocal.publish('trash-drop',{
-                    e:e,
-                    context:this
+            trashDrop: function (e) {
+                this.eBusLocal.publish('trash-drop', {
+                    e: e,
+                    context: this
                 })
             }.bind(this)
         };
+
     }
 
     initController(callback) {
-        /*User.getData(User.currentLogin, 'tasks', function (value) {
-            if(!value || value == []){
-                console.log('empty list');
-            }else{
-                tasks.data = value;
-                callback();
-            }
-        })*/
+        EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
         this.model.patchList(callback);
         //this.view.showList
     }
@@ -38,10 +31,10 @@ export default class Controller {
         el.addEventListener('click', this.listeners.trashDrop);
     }
 
-    removeEventListeners(el){
+    removeEventListeners(el) {
         var context = this;
-        for(var key in this.listeners){
-            el.removeEventListener('click', this.listeners[key])
+        for (var key in this.listeners) {
+            el.removeEventListener('click', this.listeners[key]);
         }
     }
 }

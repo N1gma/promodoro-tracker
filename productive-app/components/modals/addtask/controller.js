@@ -6,30 +6,28 @@ export default class Controller {
 
     init() {
         var context = this;
-        document.getElementById('modal-close').addEventListener('click', function listener (e) {
-            e.preventDefault();
-            console.log(this)
-            document.body.removeChild(context.el);
-        });
-        document.getElementById('modal-confirm-add').addEventListener('click', function (e) {
-            e.preventDefault();
-            context.view.dropData(function(){
-                //EventBusLocalTasks.publish('task-added')
-                document.body.removeChild(context.el);
-            });
-        });
-        document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-            if (e.target.tagName.toUpperCase() == 'LI') {
-                var parent = e.currentTarget;
-                for (var i = 0; i<parent.children.length; i++) {
-                    parent.children[i].classList.remove('estimated');
-                }
-                for (var i=0,j = 0; parent.children[i]!= e.target; i++,j++) {
-                    parent.children[i].classList.add('estimated');
-                }
-                e.target.classList.add('estimated');
-                e.currentTarget.estimation = j+1;
+
+        var listeners = { // обьект проектирования поведения
+            'modal-close': function (e) {
+                context.view.modalClose(e, context.el);
+            },
+            'modal-confirm-add': function (e) {
+                e.preventDefault();
+                context.view.dropData(function () {
+                    //EventBusLocalTasks.publish('task-added')
+                    document.body.removeChild(context.el);
+                });
             }
-        })
+
+        };
+        this.el.addEventListener('click', function (e) {
+            if (listeners[e.target.id]) listeners[e.target.id](e)
+        });
+        
+        
+        document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
+            this.view.estimationRangeReview(e)
+        }.bind(context));
+        console.log(this.el)
     }
 }

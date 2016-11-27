@@ -1,19 +1,31 @@
 export var Controller = {
-    initCntrl: function () {
-        document.getElementById('log_out').addEventListener('click', function (e) {
-            firebase.auth().signOut();
-        });
-        document.getElementById('settings').addEventListener('click', function (e) {
-            EventBus.publish('settings')
-        });
-        document.getElementById('reports').addEventListener('click', function (e) {
-            EventBus.publish('reports')
-        });
-        document.getElementById('addTask').addEventListener('click', function (e) {
-            Router.showModalAdd()
-        });
-        document.getElementById('trashOn').addEventListener('click', function (e) {
-            EventBusLocal.publish('trash-on', e)
+    initCntrl: function (el) {
+        var listeners = { // обьект проектирования поведения
+            'log_out': function (e) {
+                firebase.auth().signOut();
+            },
+            'settings': function (e) {
+                EventBus.publish('settings')
+            },
+            'reports': function () {
+                EventBus.publish('reports')
+
+            },
+            'addTask':function () {
+                Router.showModalAdd()
+
+            },
+            'trashOn':function (e) {
+                if(e.target.classList.contains('active')){
+                    EventBusLocal.publish('trash-off', e.target)
+                }else{
+                    EventBusLocal.publish('trash-on', e.target)
+                }
+            }
+        };
+        
+        el.addEventListener('click',function (e) {
+            if (listeners[e.target.id]) listeners[e.target.id](e)
         })
     }
 };

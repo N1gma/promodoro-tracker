@@ -10,6 +10,6 @@ Router.renderHeader = function(){
     /*document.getElementById('log_out').addEventListener('click', function (e) {
         firebase.auth().signOut();
     });*/
-    Controller.initCntrl();
+    Controller.initCntrl(el);
 };
 

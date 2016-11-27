@@ -52,11 +52,11 @@
 	__webpack_require__(18);
 	__webpack_require__(24);
 	__webpack_require__(27);
-	__webpack_require__(29);
-	__webpack_require__(33);
-	__webpack_require__(37);
-	__webpack_require__(41);
-	module.exports = __webpack_require__(43);
+	__webpack_require__(30);
+	__webpack_require__(34);
+	__webpack_require__(38);
+	__webpack_require__(42);
+	module.exports = __webpack_require__(44);
 
 
 /***/ },
@@ -374,7 +374,7 @@
 	    /*document.getElementById('log_out').addEventListener('click', function (e) {
 	        firebase.auth().signOut();
 	    });*/
-	    _controller.Controller.initCntrl();
+	    _controller.Controller.initCntrl(el);
 	};
 
 /***/ },
@@ -401,15 +401,21 @@
 	    value: true
 	});
 	var Controller = exports.Controller = {
-	    initCntrl: function initCntrl() {
-	        document.getElementById('log_out').addEventListener('click', function (e) {
-	            firebase.auth().signOut();
-	        });
-	        document.getElementById('settings').addEventListener('click', function (e) {
-	            EventBus.publish('settings');
-	        });
-	        document.getElementById('reports').addEventListener('click', function (e) {
-	            EventBus.publish('reports');
+	    initCntrl: function initCntrl(el) {
+	        var listeners = { // обьект проектирования поведения
+	            'log_out': function log_out(e) {
+	                firebase.auth().signOut();
+	            },
+	            'settings': function settings(e) {
+	                EventBus.publish('settings');
+	            },
+	            'reports': function reports() {
+	                router.moveTo('reports');
+	            }
+
+	        };
+	        el.addEventListener('click', function (e) {
+	            if (listeners[e.target.id]) listeners[e.target.id](e);
 	        });
 	    }
 	};
@@ -479,26 +485,24 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderSettingsMain = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _main2.default)();
+	    document.body.appendChild(el);
+	    var view = new _view2.default(document.getElementsByClassName('timeline-container')[0]);
+	    var model = new _model2.default();
+	    var controller = new _controller2.default(model, view);
+	    (0, _component.initComponent1)();
+	    controller.start();
+	    function CustomEvent(event, params) {
+	        params = params || { bubbles: false, cancelable: false, detail: undefined };
+	        var evt = document.createEvent('CustomEvent');
+	        evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+	        return evt;
+	    }
 
-	        var el = document.createElement('div');
-	        el.innerHTML = (0, _main2.default)();
-	        document.body.appendChild(el);
-	        var view = new _view2.default(document.getElementsByClassName('timeline-container')[0]);
-	        var model = new _model2.default();
-	        var controller = new _controller2.default(model, view);
-	        (0, _component.initComponent1)();
-	        controller.start();
+	    CustomEvent.prototype = window.Event.prototype;
 
-	        function CustomEvent(event, params) {
-	                params = params || { bubbles: false, cancelable: false, detail: undefined };
-	                var evt = document.createEvent('CustomEvent');
-	                evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-	                return evt;
-	        }
-
-	        CustomEvent.prototype = window.Event.prototype;
-
-	        window.CustomEvent = CustomEvent;
+	    window.CustomEvent = CustomEvent;
 	};
 
 /***/ },
@@ -790,6 +794,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderSettingsCategories = function () {
+	    console.log(history);
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _categories2.default)();
 	    document.body.appendChild(el);
@@ -1342,7 +1347,7 @@
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _markup2.default)();
 	    document.body.appendChild(el);
-	    _controller.Controller.initCntrl();
+	    _controller.Controller.initCntrl(el);
 	};
 
 /***/ },
@@ -1369,21 +1374,31 @@
 	    value: true
 	});
 	var Controller = exports.Controller = {
-	    initCntrl: function initCntrl() {
-	        document.getElementById('log_out').addEventListener('click', function (e) {
-	            firebase.auth().signOut();
-	        });
-	        document.getElementById('settings').addEventListener('click', function (e) {
-	            EventBus.publish('settings');
-	        });
-	        document.getElementById('reports').addEventListener('click', function (e) {
-	            EventBus.publish('reports');
-	        });
-	        document.getElementById('addTask').addEventListener('click', function (e) {
-	            Router.showModalAdd();
-	        });
-	        document.getElementById('trashOn').addEventListener('click', function (e) {
-	            EventBusLocal.publish('trash-on', e);
+	    initCntrl: function initCntrl(el) {
+	        var listeners = { // обьект проектирования поведения
+	            'log_out': function log_out(e) {
+	                firebase.auth().signOut();
+	            },
+	            'settings': function settings(e) {
+	                EventBus.publish('settings');
+	            },
+	            'reports': function reports() {
+	                EventBus.publish('reports');
+	            },
+	            'addTask': function addTask() {
+	                Router.showModalAdd();
+	            },
+	            'trashOn': function trashOn(e) {
+	                if (e.target.classList.contains('active')) {
+	                    EventBusLocal.publish('trash-off', e.target);
+	                } else {
+	                    EventBusLocal.publish('trash-on', e.target);
+	                }
+	            }
+	        };
+
+	        el.addEventListener('click', function (e) {
+	            if (listeners[e.target.id]) listeners[e.target.id](e);
 	        });
 	    }
 	};
@@ -1398,25 +1413,28 @@
 
 	var _template2 = _interopRequireDefault(_template);
 
+	var _controller = __webpack_require__(29);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderTitleTaskList = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.body.appendChild(el);
-	    /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
-	        if(e.target.id == 'done'){
-	            //EventBus.publish('');
+	     var el = document.createElement('div');
+	     el.innerHTML = (0, _template2.default)();
+	     document.body.appendChild(el);
+	     _controller.controller.init(el, 'today-list');
+	     /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
+	      if(e.target.id == 'done'){
+	      //EventBus.publish('');
+	      }
+	      if(e.target.id == 'to_do'){
+	      //EventBus.publish('');
+	      }
+	      if(e.target.id == 'select-all'){
 	        }
-	        if(e.target.id == 'to_do'){
-	            //EventBus.publish('');
-	        }
-	        if(e.target.id == 'select-all'){
-	          }
-	        if(e.target.id == 'deselect-all'){
-	            //EventBus.publish('');
-	        }
-	    });*/
+	      if(e.target.id == 'deselect-all'){
+	      //EventBus.publish('');
+	      }
+	      });*/
 	};
 
 /***/ },
@@ -1430,38 +1448,70 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 140px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n}\n\n.sub-title {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    margin-bottom: 76px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Daily Task List +</h2><div class=\"sub-title\"><div class=\"interface-container-2\"><button id=\"to_do\" class=\"ico-text-button\">To Do</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"done\" class=\"ico-text-button\">Done</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button></div></div></div>");;return buf.join("");
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 140px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n}\n\n.sub-title {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    margin-bottom: 76px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Daily Task List +</h2><div class=\"sub-title\"><div class=\"interface-container-2\"><button id=\"to_do\" class=\"ico-text-button\">To Do</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"done\" class=\"ico-text-button\">Done</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"delete-all\" class=\"ico-text-button\">Delete Checked</button></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
 /* 29 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var controller = exports.controller = {
+	    listeners: {
+	        'delete-all': function deleteAll() {
+	            var trash = document.getElementById('trashOn');
+	            for (var i = 0; i < User.trashData.length; i++) {
+	                User.deleteTaskData(User.currentLogin, '/tasks/' + User.trashData[i]);
+	            }
+	            EventBusLocal.publish('trash-off', trash);
+	            EventBusLocal.publish('trash-refresh', trash);
+	        },
+	        'select-all': function selectAll(dependency) {
+	            EventBusLocal.publish('trash-check-all', dependency);
+	        },
+	        'deselect-all': function deselectAll(dependency) {
+	            EventBusLocal.publish('trash-uncheck-all', 'today-list', dependency);
+	        }
+
+	    },
+	    init: function init(el, dependency) {
+	        el.addEventListener('click', function (e) {
+	            if (controller.listeners[e.target.id]) controller.listeners[e.target.id](dependency);
+	        });
+	    }
+
+	};
+
+/***/ },
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(30);
+	var _template = __webpack_require__(31);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(31);
+	var _Controller = __webpack_require__(32);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(32);
+	var _Model = __webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//import {EventBusLocal} from '../../../Globals/eBusLocalTasks'
-
-
-	//import templateNotasks from './notasks.jade'
 	Router.renderReportsDaily = function () {
 	    var el = document.createElement('div');
 	    var controller = new _Controller2.default(_Model.tasks, EventBusLocal);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
-	                data: controller.model.data
+	                data: controller.model.data,
+	                tools: controller.model
 	            });
 	        }
 	        controller.removeEventListeners(el);
@@ -1471,7 +1521,7 @@
 	};
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1480,18 +1530,30 @@
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
-	;var locals_for_with = (locals || {});(function (data) {
-	buf.push("<style>.today-list {\n    padding: 0 6.8%;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n#to_do {\n    color: white;\n}\n\n.wrapper-list {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n</style><div class=\"wrapper-list\"><ul class=\"today-list\">");
+	;var locals_for_with = (locals || {});(function (console, data, tools) {
+	buf.push("<style>.today-list {\n    padding: 0 6.8%;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.top-block-message {\n    font-size: 42px;\n    color: #8da5b8;\n    width: 100%;\n    box-sizing: border-box;\n    padding: 0 6.8%;\n    text-align: center;\n    line-height: 114%;\n}\n\n.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n#to_do {\n    color: white;\n}\n\n.wrapper-list {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n</style><div class=\"wrapper-list\">");
+	var switcher = true;
+	console.log(switcher);
+	buf.push("<ul class=\"today-list\">");
 	for(var keys in data)
 	{
+	if(tools.compareDates(data[keys].deadline))
+	{
+	switcher=false
 	buf.push("<li" + (jade.attr("key", keys, true, true)) + (jade.cls(['task',[data[keys].category,data[keys].estimation, data[keys].priority]], [null,true])) + "><div class=\"category\"></div><div class=\"border-category\"></div><div class=\"date\">TODAY</div><section class=\"task-info\"><h2 class=\"task-info-title\">" + (jade.escape((jade_interp = data[keys].title) == null ? '' : jade_interp)) + "</h2><p>" + (jade.escape((jade_interp = data[keys].description) == null ? '' : jade_interp)) + "</p><div class=\"task-buttons-container\"><button class=\"drag-task\"></button><button class=\"edit-task\"></button></div></section><div class=\"urgency\"><p class=\"estimation-counter\"></p></div></li>");
 	}
-	buf.push("</ul></div>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
+	}
+	buf.push("</ul>");
+	if(switcher)
+	{
+	buf.push("<div class=\"top-block-message\"><p>Excellent,<br>all daily tasks done! :)</p></div>");
+	}
+	buf.push("</div>");}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"tools" in locals_for_with?locals_for_with.tools:typeof tools!=="undefined"?tools:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/* 32 */
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -1500,8 +1562,6 @@
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _Model = __webpack_require__(32);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1530,14 +1590,7 @@
 	    _createClass(Controller, [{
 	        key: 'initController',
 	        value: function initController(callback) {
-	            /*User.getData(User.currentLogin, 'tasks', function (value) {
-	                if(!value || value == []){
-	                    console.log('empty list');
-	                }else{
-	                    tasks.data = value;
-	                    callback();
-	                }
-	            })*/
+	            EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
 	            this.model.patchList(callback);
 	            //this.view.showList
 	        }
@@ -1564,7 +1617,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1574,7 +1627,6 @@
 	});
 	var tasks = exports.tasks = {
 	    data: {},
-	    trashBufferZone: [],
 	    patchList: function patchList(callback) {
 	        User.getData(User.currentLogin, 'tasks', function (value) {
 	            if (!value || value == []) {
@@ -1586,8 +1638,8 @@
 	        });
 	    },
 	    checkTrashBuffer: function checkTrashBuffer(key) {
-	        for (var i = 0; i < this.trashBufferZone.length; i++) {
-	            if (this.trashBufferZone[i] == key) {
+	        for (var i = 0; i < User.trashData.length; i++) {
+	            if (User.trashData[i] == key) {
 	                return false;
 	            }
 	        }
@@ -1596,32 +1648,39 @@
 	    getStruct: function getStruct(data) {
 	        var structure = {};
 	        for (var key in data) {
-	            if (structure[data[key].category]) {
-	                structure[data[key].category].push(key);
-	            } else if (!structure[data[key].category]) {
-	                structure[data[key].category] = [];
-	                structure[data[key].category].push(key);
+	            if (!this.compareDates(data[key].deadline)) {
+	                if (structure[data[key].category]) {
+	                    structure[data[key].category].push(key);
+	                } else if (!structure[data[key].category]) {
+	                    structure[data[key].category] = [];
+	                    structure[data[key].category].push(key);
+	                }
 	            }
 	        }
 	        return structure;
+	    },
+	    compareDates: function compareDates(date) {
+	        var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	        var currentDate = new Date();
+	        return monthArray[parseInt(currentDate.getMonth(), 10)] == date.month && parseInt(currentDate.getDate(), 10) == date.day && parseInt(currentDate.getFullYear(), 10) == date.year;
 	    }
 	};
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modalAdd = __webpack_require__(34);
+	var _modalAdd = __webpack_require__(35);
 
 	var _modalAdd2 = _interopRequireDefault(_modalAdd);
 
-	var _controller = __webpack_require__(35);
+	var _controller = __webpack_require__(36);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(36);
+	var _view = __webpack_require__(37);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1631,10 +1690,13 @@
 	    document.body.appendChild(el);
 	    var controller = new _controller2.default(_view.view, el);
 	    controller.init();
+	    $(".datepicker").datepicker({
+	        dateFormat: "MM dd, yy"
+	    });
 	};
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1644,11 +1706,11 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.remove-submit-msg {\n    font: 36px Roboto, sans-serif;\n    color: #8da5b8;\n    width: 90%;\n    margin: 0 auto;\n    text-align: center;\n    margin-bottom: 44%;\n}\n\n.button-default {\n    color: white;\n    width: 38%;\n    padding: 12px 0;\n}\n\n.button-holder-default {\n    width: 73%;\n    display: flex;\n    display: -webkit-flex;\n    margin: 0 auto;\n    justify-content: space-around;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-around;\n}\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
+	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.remove-submit-msg {\n    font: 36px Roboto, sans-serif;\n    color: #8da5b8;\n    width: 90%;\n    margin: 0 auto;\n    text-align: center;\n    margin-bottom: 44%;\n}\n\n.button-default {\n    color: white;\n    width: 38%;\n    padding: 12px 0;\n}\n\n.button-holder-default {\n    width: 73%;\n    display: flex;\n    display: -webkit-flex;\n    margin: 0 auto;\n    justify-content: space-around;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-around;\n}\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1673,31 +1735,28 @@
 	        key: 'init',
 	        value: function init() {
 	            var context = this;
-	            document.getElementById('modal-close').addEventListener('click', function listener(e) {
-	                e.preventDefault();
-	                console.log(this);
-	                document.body.removeChild(context.el);
-	            });
-	            document.getElementById('modal-confirm-add').addEventListener('click', function (e) {
-	                e.preventDefault();
-	                context.view.dropData(function () {
-	                    //EventBusLocalTasks.publish('task-added')
-	                    document.body.removeChild(context.el);
-	                });
-	            });
-	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-	                if (e.target.tagName.toUpperCase() == 'LI') {
-	                    var parent = e.currentTarget;
-	                    for (var i = 0; i < parent.children.length; i++) {
-	                        parent.children[i].classList.remove('estimated');
-	                    }
-	                    for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
-	                        parent.children[i].classList.add('estimated');
-	                    }
-	                    e.target.classList.add('estimated');
-	                    e.currentTarget.estimation = j + 1;
+
+	            var listeners = { // обьект проектирования поведения
+	                'modal-close': function modalClose(e) {
+	                    context.view.modalClose(e, context.el);
+	                },
+	                'modal-confirm-add': function modalConfirmAdd(e) {
+	                    e.preventDefault();
+	                    context.view.dropData(function () {
+	                        //EventBusLocalTasks.publish('task-added')
+	                        document.body.removeChild(context.el);
+	                    });
 	                }
+
+	            };
+	            this.el.addEventListener('click', function (e) {
+	                if (listeners[e.target.id]) listeners[e.target.id](e);
 	            });
+
+	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
+	                this.view.estimationRangeReview(e);
+	            }.bind(context));
+	            console.log(this.el);
 	        }
 	    }]);
 
@@ -1707,10 +1766,10 @@
 	exports.default = Controller;
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -1719,24 +1778,41 @@
 	    dropData: function dropData(callback) {
 	        User.updateTasksData();
 	        callback();
+	    },
+	    modalClose: function modalClose(e, el) {
+	        e.preventDefault();
+	        document.body.removeChild(el);
+	    },
+	    estimationRangeReview: function estimationRangeReview(e) {
+	        if (e.target.tagName.toUpperCase() == 'LI') {
+	            var parent = e.currentTarget;
+	            for (var i = 0; i < parent.children.length; i++) {
+	                parent.children[i].classList.remove('estimated');
+	            }
+	            for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
+	                parent.children[i].classList.add('estimated');
+	            }
+	            e.target.classList.add('estimated');
+	            e.currentTarget.estimation = j + 1;
+	        }
 	    }
 	};
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modal = __webpack_require__(38);
+	var _modal = __webpack_require__(39);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _controller = __webpack_require__(39);
+	var _controller = __webpack_require__(40);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(40);
+	var _view = __webpack_require__(41);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1750,10 +1826,13 @@
 	        document.body.appendChild(el);
 	    });
 	    controller.init(target);
+	    $(".datepicker").datepicker({
+	        dateFormat: "MM dd, yy"
+	    });
 	};
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1763,12 +1842,12 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (console, data) {
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-interface-trash {\n    float: left;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");
+	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-interface-trash {\n    float: left;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline.fullDate, true, true)) + " class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");
 	console.log(data);}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1793,42 +1872,25 @@
 	        key: 'init',
 	        value: function init(target) {
 	            var context = this;
-	            document.getElementById('modal-close').addEventListener('click', function listener(e) {
-	                e.preventDefault();
-	                document.body.removeChild(context.el);
-	            });
-	            document.getElementById('modal-confirm-edit').addEventListener('click', function listener(e) {
-	                e.preventDefault();
-	                while (target.parentNode.classList.contains('task') == false) {
-	                    target = target.parentNode;
+
+	            var listeners = { // обьект проектирования поведения
+	                'modal-close': function modalClose(e) {
+	                    context.view.modalClose(e, context.el);
+	                },
+	                'modal-confirm-edit': function modalConfirmEdit(e) {
+	                    context.view.modalConfirmEdit(e, context.el, target);
+	                },
+	                'modal-remove': function modalRemove(e) {
+	                    context.view.modalRemove(e, context.el, target);
 	                }
-	                var keyy = target.parentNode.getAttribute('key');
-	                User.setTaskData(User.currentLogin, '/tasks/' + keyy);
-	                //EventBusLocalTasks.publish('task-added')
-	                document.body.removeChild(context.el);
+	            };
+	            this.el.addEventListener('click', function (e) {
+	                if (listeners[e.target.id]) listeners[e.target.id](e);
 	            });
-	            document.getElementById('modal-remove').addEventListener('click', function (e) {
-	                e.preventDefault();
-	                while (target.parentNode.classList.contains('task') == false) {
-	                    target = target.parentNode;
-	                }
-	                var keyy = target.parentNode.getAttribute('key');
-	                User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
-	                document.body.removeChild(context.el);
-	            });
+
 	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-	                if (e.target.tagName.toUpperCase() == 'LI') {
-	                    var parent = e.currentTarget;
-	                    for (var i = 0; i < parent.children.length; i++) {
-	                        parent.children[i].classList.remove('estimated');
-	                    }
-	                    for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
-	                        parent.children[i].classList.add('estimated');
-	                    }
-	                    e.target.classList.add('estimated');
-	                    e.currentTarget.estimation = j + 1;
-	                }
-	            });
+	                this.view.estimationRangeReview(e);
+	            }.bind(context));
 	            console.log(this.el);
 	        }
 	    }]);
@@ -1839,7 +1901,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1860,18 +1922,55 @@
 	        for (var i = 0; i < estimationRecount; i++) {
 	            document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
 	        }
+	    },
+	    modalClose: function modalClose(e, el) {
+	        e.preventDefault();
+	        document.body.removeChild(el);
+	    },
+	    modalConfirmEdit: function modalConfirmEdit(e, el, target) {
+	        e.preventDefault();
+	        while (target.parentNode.classList.contains('task') == false) {
+	            target = target.parentNode;
+	        }
+	        var keyy = target.parentNode.getAttribute('key');
+	        User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
+	        document.body.removeChild(el);
+	    },
+	    modalRemove: function modalRemove(e, el, target) {
+	        e.preventDefault();
+	        while (target.parentNode.classList.contains('task') == false) {
+	            target = target.parentNode;
+	        }
+	        var keyy = target.parentNode.getAttribute('key');
+	        User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
+	        document.body.removeChild(el);
+	    },
+	    estimationRangeReview: function estimationRangeReview(e) {
+	        if (e.target.tagName.toUpperCase() == 'LI') {
+	            var parent = e.currentTarget;
+	            for (var i = 0; i < parent.children.length; i++) {
+	                parent.children[i].classList.remove('estimated');
+	            }
+	            for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
+	                parent.children[i].classList.add('estimated');
+	            }
+	            e.target.classList.add('estimated');
+	            e.currentTarget.estimation = j + 1;
+	        }
 	    }
 	};
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(42);
+	var _template = __webpack_require__(43);
 
 	var _template2 = _interopRequireDefault(_template);
+
+	var _controller = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1879,6 +1978,7 @@
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.body.appendChild(el);
+	    _controller.controller.init(el, 'sorted-list');
 	    /*document.getElementsByClassName('sub-title')[1].addEventListener('click', function (e) {
 	        if(e.target.id == 'done'){
 	            //EventBus.publish('');
@@ -1895,7 +1995,7 @@
 	};
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1905,24 +2005,24 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.wrapper-2 {\n    max-width: 1366px;\n    padding-top: 40px;\n    margin: 0 auto;\n}\n\n.sub-title-2 {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper-2\"><div class=\"sub-title-2\"><div class=\"interface-container-2\"><button id=\"filter-all\" class=\"ico-text-button\">All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-urgent\" class=\"ico-text-button\">Urgent</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-high\" class=\"ico-text-button\">High</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-middle\" class=\"ico-text-button\">Middle</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-low\" class=\"ico-text-button\">Low</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button></div></div></div>");;return buf.join("");
+	buf.push("<style>.wrapper-2 {\n    max-width: 1366px;\n    padding-top: 40px;\n    margin: 0 auto;\n}\n\n.sub-title-2 {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n    margin-bottom: 30px;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper-2\"><div class=\"sub-title-2\"><div class=\"interface-container-2\"><button id=\"filter-all\" class=\"ico-text-button\">All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-urgent\" class=\"ico-text-button\">Urgent</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-high\" class=\"ico-text-button\">High</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-middle\" class=\"ico-text-button\">Middle</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-low\" class=\"ico-text-button\">Low</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"delete-all\" class=\"ico-text-button\">Delete Checked</button></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(44);
+	var _template = __webpack_require__(45);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(45);
+	var _Controller = __webpack_require__(46);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(32);
+	var _Model = __webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1943,7 +2043,7 @@
 	};
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -1953,7 +2053,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (console, data, structure) {
-	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button class=\"drop-switch\"><span>Global list</span></button><ul class=\"global-list\">");
+	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button class=\"drop-switch\"><span>Global list</span></button><ul class=\"global-list\">");
 	console.log(structure)
 	console.log(data)
 	for(var type in structure)
@@ -1961,7 +2061,7 @@
 	buf.push("<li><ul" + (jade.cls(['sorted-list',type], [null,true])) + "><li class=\"list-header\"><span class=\"list-header-category-mark\"></span>" + (jade.escape((jade_interp = type.toUpperCase()) == null ? '' : jade_interp)) + "</li>");
 	for(var i = 0;i<structure[type].length;i++)
 	{
-	buf.push("<li" + (jade.attr("key", structure[type][i], true, true)) + (jade.cls(['task',[data[structure[type][i]].priority, data[structure[type][i]].estimation]], [null,true])) + "><div class=\"category\"></div><div class=\"border-category\"></div><div class=\"date\">TODAY</div><section class=\"task-info\"><h2 class=\"task-info-title\">" + (jade.escape((jade_interp = data[structure[type][i]].title) == null ? '' : jade_interp)) + "</h2><p>" + (jade.escape((jade_interp = data[structure[type][i]].description) == null ? '' : jade_interp)) + "</p><div class=\"task-buttons-container\"><button class=\"drag-task\"></button><button class=\"edit-task\"></button></div></section><div class=\"urgency\"><p class=\"estimation-counter\"></p></div></li>");
+	buf.push("<li" + (jade.attr("key", structure[type][i], true, true)) + (jade.cls(['task',[data[structure[type][i]].priority, data[structure[type][i]].estimation]], [null,true])) + "><div class=\"category\"></div><div class=\"border-category\"></div><div class=\"date\"><p class=\"date-day\">" + (jade.escape((jade_interp = data[structure[type][i]].deadline.day) == null ? '' : jade_interp)) + "</p><p class=\"date-month\">" + (jade.escape((jade_interp = data[structure[type][i]].deadline.month) == null ? '' : jade_interp)) + "</p></div><section class=\"task-info\"><h2 class=\"task-info-title\">" + (jade.escape((jade_interp = data[structure[type][i]].title) == null ? '' : jade_interp)) + "</h2><p>" + (jade.escape((jade_interp = data[structure[type][i]].description) == null ? '' : jade_interp)) + "</p><div class=\"task-buttons-container\"><button class=\"drag-task\"></button><button class=\"edit-task\"></button></div></section><div class=\"urgency\"><p class=\"estimation-counter\"></p></div></li>");
 	}
 	buf.push("</ul></li>");
 	}
@@ -1969,7 +2069,7 @@
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2006,6 +2106,26 @@
 	                    e.target.innerHTML = '<span>Global list</span>&#xe907';
 	                    document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden');
 	                }
+	            },
+	            moveToDaily: function moveToDaily(e) {
+	                if (e.target.classList.contains('drag-task')) {
+	                    var context = this;
+	                    var target = e.target;
+	                    while (!target.parentNode.classList.contains('task')) {
+	                        target = target.parentNode;
+	                    }
+	                    var key = target.parentNode.getAttribute('key');
+	                    var currentDate = new Date();
+	                    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	                    User.setData(User.currentLogin, '/tasks/' + key + '/deadline', {
+	                        day: currentDate.getDate(),
+	                        month: monthArray[parseInt(currentDate.getMonth(), 10)],
+	                        year: currentDate.getFullYear(),
+	                        fullDate: function () {
+	                            return monthArray[parseInt(currentDate.getMonth(), 10)] + ' ' + currentDate.getDate() + ', ' + currentDate.getFullYear();
+	                        }()
+	                    });
+	                }
 	            }
 
 	        };
@@ -2023,6 +2143,7 @@
 	            el.addEventListener('click', this.listeners.editTask);
 	            el.addEventListener('click', this.listeners.trashDrop);
 	            el.addEventListener('click', this.listeners.showGlobalList);
+	            el.addEventListener('click', this.listeners.moveToDaily);
 	        }
 	    }, {
 	        key: 'removeEventListeners',

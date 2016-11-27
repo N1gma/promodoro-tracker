@@ -1,8 +1,6 @@
 import template from './template1.jade'
-//import templateNotasks from './notasks.jade'
 import Controller from './Controller'
 import {tasks} from './Model'
-//import {EventBusLocal} from '../../../Globals/eBusLocalTasks'
 
 
 Router.renderReportsDaily = function () {
@@ -11,7 +9,8 @@ Router.renderReportsDaily = function () {
     controller.initController(function () {
         if(controller.model.data){
             el.innerHTML = template({
-                data: controller.model.data
+                data: controller.model.data,
+                tools: controller.model
             });
         }
         controller.removeEventListeners(el);

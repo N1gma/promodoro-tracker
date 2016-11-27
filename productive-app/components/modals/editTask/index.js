@@ -12,4 +12,8 @@ Router.showModalEdit = function (target) {
         document.body.appendChild(el);
     });
     controller.init(target);
+    $( ".datepicker" ).datepicker({
+        dateFormat: "MM dd, yy"
+    });
+
 };

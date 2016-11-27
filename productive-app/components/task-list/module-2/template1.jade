@@ -124,6 +124,17 @@ style.
     .list-hidden{
         display: none;
     }
+    .date-day {
+        height: 50%;
+        line-height: 70px;
+        font-size: 25px;
+    }
+    .date-month {
+        line-height: 34px;
+        height: 50%;
+    }
+
+
 
 
 
@@ -146,7 +157,9 @@ style.
                   li.task(class=[data[structure[type][i]].priority, data[structure[type][i]].estimation], key=structure[type][i])
                     .category 
                     .border-category
-                    .date TODAY
+                    .date
+                        p.date-day #{data[structure[type][i]].deadline.day}
+                        p.date-month #{data[structure[type][i]].deadline.month}
                     section.task-info
                         h2.task-info-title #{data[structure[type][i]].title}
                         p #{data[structure[type][i]].description}

@@ -7,5 +7,9 @@ Router.showModalAdd = function () {
     el.innerHTML = template();
     document.body.appendChild(el);
     var controller = new Controller(view,el);
-    controller.init()
+    controller.init();
+    $( ".datepicker" ).datepicker({
+        dateFormat: "MM dd, yy"
+    });
+    
 };

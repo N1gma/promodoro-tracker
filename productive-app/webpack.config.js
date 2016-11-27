@@ -7,7 +7,7 @@ module.exports = {
         './components/modals/editTask/index.js','./components/title/titleTaskListGlobal/index.js',
     './components/task-list/module-2/index.js'],
     output: {
-        filename: './components/login/loginModule.js'
+        filename: './Globals/app.js'
     },
     module: {
         loaders: [
