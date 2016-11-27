@@ -56,7 +56,8 @@
 	__webpack_require__(34);
 	__webpack_require__(38);
 	__webpack_require__(42);
-	module.exports = __webpack_require__(44);
+	__webpack_require__(44);
+	module.exports = __webpack_require__(48);
 
 
 /***/ },
@@ -92,7 +93,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>body {\n    background: url(\"./img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n</style><div class=\"login-wrapper\"><img src=\"./img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
+	buf.push("<style>body {\n    background: url(\"./Global/img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n</style><div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -371,9 +372,6 @@
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _markup2.default)();
 	    document.body.appendChild(el);
-	    /*document.getElementById('log_out').addEventListener('click', function (e) {
-	        firebase.auth().signOut();
-	    });*/
 	    _controller.Controller.initCntrl(el);
 	};
 
@@ -388,7 +386,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    visibility: hidden;\n    margin-top: 28px;\n    margin-bottom: 27px;\n    min-width: 249px;\n    width: 21%;\n    display: none;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n</style><header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    visibility: hidden;\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n</style><header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -407,9 +405,11 @@
 	                firebase.auth().signOut();
 	            },
 	            'settings': function settings(e) {
-	                EventBus.publish('settings');
+	                //EventBus.publish('settings')
+	                router.moveTo('pomodoras');
 	            },
 	            'reports': function reports() {
+	                //EventBus.publish('reports');
 	                router.moveTo('reports');
 	            }
 
@@ -437,10 +437,10 @@
 	    el.innerHTML = (0, _settings2.default)();
 	    document.body.appendChild(el);
 	    document.getElementById('pomodoros-settings').addEventListener('click', function (e) {
-	        EventBus.publish('settings');
+	        router.moveTo('pomodoras');
 	    });
 	    document.getElementById('categories-settings').addEventListener('click', function (e) {
-	        EventBus.publish('settings-2');
+	        router.moveTo('categories');
 	    });
 	};
 
@@ -794,7 +794,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderSettingsCategories = function () {
-	    console.log(history);
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _categories2.default)();
 	    document.body.appendChild(el);
@@ -811,7 +810,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#categories-settings, #settings {\n    color: white;\n}\n\n.categories-choose-wrap {\n    width: 19.8%;\n    color: #5b7284;\n    margin: 0 auto 7% auto;\n    font: 16px \"Roboto\", sans-serif;\n    max-width: 267px;\n}\n\n.categories-choose-list {\n    padding-left: 14%;\n}\n\n.categories-choose-list li {\n    margin-bottom: 15%;\n    position: relative;\n}\n\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -17%;\n    top: 0;\n    cursor: pointer;\n}\n\n.label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    border-bottom: 1px solid #5b7284;\n    width: 100%;\n    display: inline-block;\n    padding-bottom: 7px;\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:hover ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
+	buf.push("<style>.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#categories-settings, #settings {\n    color: white;\n}\n\n.categories-choose-wrap {\n    width: 19.8%;\n    color: #5b7284;\n    margin: 0 auto 7% auto;\n    font: 16px \"Roboto\", sans-serif;\n    max-width: 267px;\n}\n\n.categories-choose-list {\n    padding-left: 14%;\n}\n\n.categories-choose-list li {\n    margin-bottom: 15%;\n    position: relative;\n}\n\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -17%;\n    top: 0;\n    cursor: pointer;\n}\n\n.label1 {\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    border-bottom: 1px solid #5b7284;\n    width: 100%;\n    display: inline-block;\n    padding-bottom: 7px;\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:hover ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
 	}
 
 /***/ },
@@ -883,19 +882,8 @@
 	        key: 'initController',
 	        value: function initController() {
 	            var context = this;
-	            var obj = {};
-	            obj.activateTab = function (e) {
-	                for (var i = 0; i < e.currentTarget.children.length; i++) {
-	                    if (e.currentTarget.children[i].classList.contains('active-tab')) {
-	                        e.currentTarget.children[i].classList.remove('active-tab');
-	                    }
-	                }
-	                e.target.classList.add('active-tab');
-	                return obj;
-	            };
-
 	            document.getElementsByClassName('interface-container-2')[0].addEventListener('click', function (e) {
-	                obj.activateTab(e);
+	                context.view.activateTab(e);
 	                if (e.target.id == 'day_tab') {
 	                    context.view.renderChart(_options.options.pieView);
 	                }
@@ -914,10 +902,6 @@
 	                console.log(_options.options);
 	                context.view.renderChart(_options.options.pieView);
 	            });
-	            /*User.getData(User.currentLogin,'reports/pieView', function (callbackValue) {
-	             console.log(callbackValue)
-	             context.view.renderChart(options.pieView)
-	             })*/
 	        }
 	    }]);
 
@@ -1326,6 +1310,14 @@
 	var View = exports.View = {
 	    renderChart: function renderChart(options) {
 	        var chart = new Highcharts.Chart(options);
+	    },
+	    activateTab: function activateTab(e) {
+	        for (var i = 0; i < e.currentTarget.children.length; i++) {
+	            if (e.currentTarget.children[i].classList.contains('active-tab')) {
+	                e.currentTarget.children[i].classList.remove('active-tab');
+	            }
+	        }
+	        e.target.classList.add('active-tab');
 	    }
 	};
 
@@ -1361,7 +1353,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    visibility: hidden;\n    margin-top: 28px;\n    margin-bottom: 27px;\n    min-width: 249px;\n    width: 21%;\n    display: none;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -1380,10 +1372,10 @@
 	                firebase.auth().signOut();
 	            },
 	            'settings': function settings(e) {
-	                EventBus.publish('settings');
+	                router.moveTo('pomodoras');
 	            },
 	            'reports': function reports() {
-	                EventBus.publish('reports');
+	                router.moveTo('reports');
 	            },
 	            'addTask': function addTask() {
 	                Router.showModalAdd();
@@ -1474,7 +1466,7 @@
 	            EventBusLocal.publish('trash-check-all', dependency);
 	        },
 	        'deselect-all': function deselectAll(dependency) {
-	            EventBusLocal.publish('trash-uncheck-all', 'today-list', dependency);
+	            EventBusLocal.publish('trash-uncheck-all', dependency);
 	        }
 
 	    },
@@ -1583,7 +1575,13 @@
 	                    e: e,
 	                    context: this
 	                });
-	            }.bind(this)
+	            }.bind(this),
+	            goToTimer: function goToTimer(e) {
+	                if (e.target.classList.contains('urgency')) {
+	                    router.moveTo('timer', e.target.parentNode.getAttribute('key'));
+	                    //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
+	                }
+	            }
 	        };
 	    }
 
@@ -1600,6 +1598,7 @@
 	            var context = this;
 	            el.addEventListener('click', this.listeners.editTask);
 	            el.addEventListener('click', this.listeners.trashDrop);
+	            el.addEventListener('click', this.listeners.goToTimer);
 	        }
 	    }, {
 	        key: 'removeEventListeners',
@@ -1706,7 +1705,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.remove-submit-msg {\n    font: 36px Roboto, sans-serif;\n    color: #8da5b8;\n    width: 90%;\n    margin: 0 auto;\n    text-align: center;\n    margin-bottom: 44%;\n}\n\n.button-default {\n    color: white;\n    width: 38%;\n    padding: 12px 0;\n}\n\n.button-holder-default {\n    width: 73%;\n    display: flex;\n    display: -webkit-flex;\n    margin: 0 auto;\n    justify-content: space-around;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-around;\n}\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
+	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./Global/img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat!important;\n}\n\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.remove-submit-msg {\n    font: 36px Roboto, sans-serif;\n    color: #8da5b8;\n    width: 90%;\n    margin: 0 auto;\n    text-align: center;\n    margin-bottom: 44%;\n}\n\n.button-default {\n    color: white;\n    width: 38%;\n    padding: 12px 0;\n}\n\n.button-holder-default {\n    width: 73%;\n    display: flex;\n    display: -webkit-flex;\n    margin: 0 auto;\n    justify-content: space-around;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-around;\n}\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -1841,9 +1840,8 @@
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
-	;var locals_for_with = (locals || {});(function (console, data) {
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./img/tomato_fill.svg\") no-repeat!important;\n}\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-interface-trash {\n    float: left;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline.fullDate, true, true)) + " class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");
-	console.log(data);}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
+	;var locals_for_with = (locals || {});(function (data) {
+	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./Global/img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat!important;\n}\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-interface-trash {\n    float: left;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline.fullDate, true, true)) + " class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -2024,11 +2022,13 @@
 
 	var _Model = __webpack_require__(33);
 
+	var _View = __webpack_require__(47);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderReportsGlobal = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_Model.tasks, EventBusLocal);
+	    var controller = new _Controller2.default(_Model.tasks, _View.view, EventBusLocal);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
@@ -2053,7 +2053,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (console, data, structure) {
-	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button class=\"drop-switch\"><span>Global list</span></button><ul class=\"global-list\">");
+	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button class=\"drop-switch\"><span>Global list</span></button><ul class=\"global-list\">");
 	console.log(structure)
 	console.log(data)
 	for(var type in structure)
@@ -2083,11 +2083,12 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
-	    function Controller(model, eBusLocal) {
+	    function Controller(model, view, eBusLocal) {
 	        _classCallCheck(this, Controller);
 
 	        //this.view = view;
 	        this.model = model;
+	        this.view = view;
 	        this.eBusLocal = eBusLocal;
 	        this.listeners = {
 	            editTask: function editTask(e) {
@@ -2101,32 +2102,8 @@
 	                    context: this
 	                });
 	            }.bind(this),
-	            showGlobalList: function showGlobalList(e) {
-	                if (e.target.classList.contains('drop-switch')) {
-	                    e.target.innerHTML = '<span>Global list</span>&#xe907';
-	                    document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden');
-	                }
-	            },
-	            moveToDaily: function moveToDaily(e) {
-	                if (e.target.classList.contains('drag-task')) {
-	                    var context = this;
-	                    var target = e.target;
-	                    while (!target.parentNode.classList.contains('task')) {
-	                        target = target.parentNode;
-	                    }
-	                    var key = target.parentNode.getAttribute('key');
-	                    var currentDate = new Date();
-	                    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-	                    User.setData(User.currentLogin, '/tasks/' + key + '/deadline', {
-	                        day: currentDate.getDate(),
-	                        month: monthArray[parseInt(currentDate.getMonth(), 10)],
-	                        year: currentDate.getFullYear(),
-	                        fullDate: function () {
-	                            return monthArray[parseInt(currentDate.getMonth(), 10)] + ' ' + currentDate.getDate() + ', ' + currentDate.getFullYear();
-	                        }()
-	                    });
-	                }
-	            }
+	            showGlobalList: this.view.showGlobalList,
+	            moveToDaily: this.view.moveToDaily
 
 	        };
 	    }
@@ -2159,6 +2136,175 @@
 	}();
 
 	exports.default = Controller;
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var view = exports.view = {
+	    moveToDaily: function moveToDaily(e) {
+	        if (e.target.classList.contains('drag-task')) {
+	            var context = this;
+	            var target = e.target;
+	            while (!target.parentNode.classList.contains('task')) {
+	                target = target.parentNode;
+	            }
+	            var key = target.parentNode.getAttribute('key');
+	            var currentDate = new Date();
+	            var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	            User.setData(User.currentLogin, '/tasks/' + key + '/deadline', {
+	                day: currentDate.getDate(),
+	                month: monthArray[parseInt(currentDate.getMonth(), 10)],
+	                year: currentDate.getFullYear(),
+	                fullDate: function () {
+	                    return monthArray[parseInt(currentDate.getMonth(), 10)] + ' ' + currentDate.getDate() + ', ' + currentDate.getFullYear();
+	                }()
+	            });
+	        }
+	    },
+	    showGlobalList: function showGlobalList(e) {
+	        if (e.target.classList.contains('drop-switch')) {
+	            e.target.innerHTML = '<span>Global list</span>&#xe907';
+	            document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden');
+	        }
+	    }
+
+	};
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _template = __webpack_require__(49);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	var _controller = __webpack_require__(50);
+
+	var _controller2 = _interopRequireDefault(_controller);
+
+	var _view = __webpack_require__(51);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.renderTimer = function (data) {
+	    var el = document.createElement('div');
+	    var controller = new _controller2.default(data, _view.view);
+	    controller.init(_template2.default, el);
+	};
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(3);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (category, estimation, title, workTime) {
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n\n.button-holder {\n    width: 27%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-between;\n    min-width: 375px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n\n\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
+	for(var i =0;i<estimation;i++)
+	{
+	buf.push("<li class=\"phase\"></li>");
+	}
+	buf.push("</ul><div" + (jade.cls(['graph-container',category], [null,true])) + "><div class=\"timer-outer-circle category\"><div class=\"time-wrapper\"><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\"><div class=\"timer-time\">" + (jade.escape((jade_interp = workTime) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div></div></div></div></main>");}.call(this,"category" in locals_for_with?locals_for_with.category:typeof category!=="undefined"?category:undefined,"estimation" in locals_for_with?locals_for_with.estimation:typeof estimation!=="undefined"?estimation:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined,"workTime" in locals_for_with?locals_for_with.workTime:typeof workTime!=="undefined"?workTime:undefined));;return buf.join("");
+	}
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Controller = function () {
+	    function Controller(source, view) {
+	        _classCallCheck(this, Controller);
+
+	        this.view = view;
+	        this.sourceKey = source;
+	        this.cycle = {};
+	    }
+
+	    _createClass(Controller, [{
+	        key: 'init',
+	        value: function init(template, el) {
+	            this.timer = {
+	                container: document.getElementsByClassName('graph-container')[0],
+	                timerControlElements: document.getElementsByClassName('set-able')
+	            };
+	            console.log(this.sourceKey);
+	            console.log(this.timer.timerControlElements);
+	            this.cycle.estimation = User.dataSnapShot[this.sourceKey].estimation.slice(-1);
+	            this.cycle.category = User.dataSnapShot[this.sourceKey].category;
+	            this.cycle.workTime = User.settings['WORK TIME'];
+	            console.log(this.cycle);
+	            el.innerHTML = template({
+	                category: User.dataSnapShot[this.sourceKey].category,
+	                title: User.dataSnapShot[this.sourceKey].title,
+	                workTime: User.settings['WORK TIME'],
+	                estimation: User.dataSnapShot[this.sourceKey].estimation.slice(-1)
+	            });
+	            document.body.appendChild(el);
+
+	            this.view.animateTimer(this.timer, this.cycle.category, this.cycle.workTime);
+	            this.view.resumeAnimation(this.timer);
+	        }
+	    }]);
+
+	    return Controller;
+	}();
+
+	exports.default = Controller;
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var view = exports.view = {
+	    animateTimer: function animateTimer(timer, category, time) {
+	        /*if (timer.container.classList.length > 1) {
+	            timer.container.classList.remove(timer.classList[1]);
+	            timer.container.classList.add(category);
+	        } else {
+	            timer.container.classList.add(category);
+	        }*/
+	        for (var i = 0; i < timer.timerControlElements.length; i++) {
+	            timer.timerControlElements[i].style.animationDuration = time * 60 + 's';
+	        }
+	    },
+	    pauseAnimation: function pauseAnimation(timer) {
+	        for (var i = 0; i < timer.timerControlElements.length; i++) {
+	            timer.timerControlElements[i].style.animationPlayState = 'paused';
+	        }
+	    },
+	    resumeAnimation: function resumeAnimation(timer) {
+	        for (var i = 0; i < timer.timerControlElements.length; i++) {
+	            timer.timerControlElements[i].style.animationPlayState = 'running';
+	        }
+	    }
+	};
 
 /***/ }
 /******/ ]);

@@ -5,10 +5,10 @@ Router.renderTitle_settings_1 = function () {
     el.innerHTML = template();
     document.body.appendChild(el);
     document.getElementById('pomodoros-settings').addEventListener('click', function (e) {
-        EventBus.publish('settings');
+        router.moveTo('pomodoras')
     });
     document.getElementById('categories-settings').addEventListener('click', function (e) {
-        EventBus.publish('settings-2');
+        router.moveTo('categories')
     });
 };
 

@@ -14,7 +14,13 @@ export default class Controller {
                     e: e,
                     context: this
                 })
-            }.bind(this)
+            }.bind(this),
+            goToTimer:function (e) {
+                if (e.target.classList.contains('urgency')) {
+                    router.moveTo('timer', e.target.parentNode.getAttribute('key'))
+                    //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
+                }
+            }
         };
 
     }
@@ -29,6 +35,7 @@ export default class Controller {
         var context = this;
         el.addEventListener('click', this.listeners.editTask);
         el.addEventListener('click', this.listeners.trashDrop);
+        el.addEventListener('click', this.listeners.goToTimer);
     }
 
     removeEventListeners(el) {

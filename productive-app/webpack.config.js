@@ -5,9 +5,9 @@ module.exports = {
     './components/header/header-2/index.js','./components/title/titleTaskList/index.js',
     './components/task-list/module/index.js','./components/modals/addtask/index.js',
         './components/modals/editTask/index.js','./components/title/titleTaskListGlobal/index.js',
-    './components/task-list/module-2/index.js'],
+    './components/task-list/module-2/index.js','./components/timer/index.js'],
     output: {
-        filename: './Globals/app.js'
+        filename: './Global/js/app.js'
     },
     module: {
         loaders: [

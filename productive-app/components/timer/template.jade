@@ -1,0 +1,283 @@
+style.
+    .wrapper {
+        max-width: 1366px;
+        margin: 0 auto;
+        padding-bottom: 2.2%;
+        padding-top: 91px;
+    }
+
+    .main-head-title {
+        clear: both;
+        font: 28px "Roboto", sans-serif;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        color: white;
+        letter-spacing: 1px;
+    }
+
+    .sub-title {
+        font: 18px "Roboto", sans-serif;
+        text-align: center;
+        width: 100%;
+        color: #8198ab;
+        margin-top: 21px;
+        position: relative;
+    }
+
+    /*timer*/
+
+    .main-wrapper {
+        max-width: 1366px;
+        margin: 0 auto;
+    }
+
+    .phases {
+        width: 10%;
+        /* padding: 0 6.8%; */
+        box-sizing: border-box;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .phase {
+        width: 28px;
+        height: 23px;
+        display: inline-block;
+        background: url(./Global/img/tomato.svg) no-repeat;
+        margin: 0 5px;
+    }
+
+    .phase-done {
+        background: url("./Global/img/tomato_fill.svg") no-repeat;
+    }
+
+    .phase-failed {
+        background: url("./Global/img/tomato-failed.svg") no-repeat;
+    }
+
+    .phase-add-active .phase-add {
+        display: inline-block;
+    }
+
+    .phase-add {
+        font-family: icomoon;
+        position: absolute;
+        right: -10px;
+        color: #8ca4b7;
+        line-height: 25px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .phase-add:hover {
+        color: white;
+    }
+
+    .graph-container {
+        padding-top: 32px;
+    }
+
+    .back {
+        font-family: icomoon;
+        position: absolute;
+        left: 27px;
+        top: 50%;
+        bottom: 50%;
+        font-size: 41px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .forward {
+        font-family: icomoon;
+        position: absolute;
+        right: 27px;
+        top: 50%;
+        bottom: 50%;
+        font-size: 41px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .move-on .back, .move-on .forward {
+        display: inline-block;
+    }
+
+    /*graph*/
+    .timer-outer-circle {
+        height: 300px;
+        width: 300px;
+        margin: 0 auto;
+        background-color: #2a3f50;
+        border: 8px solid #2a3f50;
+        border-radius: 50%;
+        display: flex;
+        position: relative;
+        animation: init 1.5s linear;
+        margin-bottom: 39px;
+    }
+
+    .timer-inner-circle {
+        height: 150px;
+        width: 150px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #2a3f50;
+        border-radius: 50%;
+        color: white;
+        z-index: 99999;
+    }
+
+    .timer-time {
+        font-size: 100px;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        position: absolute;
+        text-align: center;
+        line-height: 102px;
+    }
+
+    .timer-estimate-points {
+        position: absolute;
+        bottom: 10px;
+        line-height: 24px;
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .time-wrapper {
+        width: 250px;
+        height: 250px;
+        position: relative;
+        background-color: #2a3f50;
+        border-radius: 50%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .circle {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        background: #8da5b8;
+        transform-origin: 100% 50%;
+    }
+
+    .rotator {
+        border-radius: 100% 0 0 100% / 50% 0 0 50%;
+        z-index: 200;
+        border-right: none;
+        animation: rota 10s linear;
+        animation-play-state: paused;
+    }
+
+    .filler {
+        border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+        z-index: 100;
+        border-left: none;
+        animation: fill 10s steps(1, end);
+        animation-play-state: paused;
+        left: 50%;
+        opacity: 0;
+    }
+
+    .mask {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        z-index: 300;
+        opacity: 1;
+        background: inherit;
+        animation: mask 10s steps(1, end);
+        animation-play-state: paused;
+        border-radius: 50% 0 0 50%;
+    }
+
+    .category {
+        background-color: transparent !important;
+    }
+
+    .button-holder {
+        width: 27%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        min-width: 375px;
+    }
+
+    @keyframes rota {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes fill {
+        0% {
+            opacity: 0;
+        }
+        50%, 100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes mask {
+        0% {
+            opacity: 1;
+        }
+        50%, 100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes init {
+        0% {
+            transform: scale(0, 0);
+        }
+        50% {
+            transform: scale(0, 0);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+    }
+
+
+
+
+
+.wrapper
+    h2.main-head-title 1.Creating a New Design
+    .sub-title
+        | #{title}
+main.main-wrapper
+    ul.phases.phase-add-active
+        -for(var i =0;i<estimation;i++)
+           li.phase
+    .graph-container(class=category)
+        .timer-outer-circle.category
+            .time-wrapper
+                .rotator.circle.set-able
+                .filler.circle.set-able
+                .mask.set-able
+            .timer-inner-circle
+                .timer-time
+                    | #{workTime}
+                    p.timer-estimate-points min
+

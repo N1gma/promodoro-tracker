@@ -12,26 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
     loginCtrl.eBus.publish('login');
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
-            EventBus.publish('no-user')
+            router.replaceState('login')
         }
         if (user) {
-            //loginCtrl.eBus
             User.currentLogin = user.email.slice(0, user.email.search('@'));
-            EventBus.publish('settings');
+            router.replaceState('pomodoras')
         }
     })
 });
-
-
-/*var loginCtrl = new LoginController(new View(EventBus), EventBus);
- loginCtrl.init();*/
-
-/*firebase.auth().onAuthStateChanged(function (user) {
- if (!user) {
- window.location = '/components/login/login.html';
- }
- if (user) {
- window.location = 'index.html';
- }
- });*/
 

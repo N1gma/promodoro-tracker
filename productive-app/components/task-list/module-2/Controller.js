@@ -1,7 +1,8 @@
 export default class Controller {
-    constructor(model, eBusLocal) {
+    constructor(model,view, eBusLocal) {
         //this.view = view;
         this.model = model;
+        this.view = view;
         this.eBusLocal = eBusLocal;
         this.listeners = {
             editTask: function (e) {
@@ -15,33 +16,8 @@ export default class Controller {
                     context: this
                 })
             }.bind(this),
-            showGlobalList: function (e) {
-                if (e.target.classList.contains('drop-switch')) {
-                    e.target.innerHTML = '<span>Global list</span>&#xe907';
-                    document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden')
-                }
-            },
-            moveToDaily: function (e) {
-                if (e.target.classList.contains('drag-task')) {
-                    var context = this;
-                    var target = e.target;
-                    while (!target.parentNode.classList.contains('task')) {
-                        target = target.parentNode;
-                    }
-                    var key = target.parentNode.getAttribute('key');
-                    var currentDate = new Date();
-                    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                    User.setData(User.currentLogin, '/tasks/' + key + '/deadline', {
-                        day: currentDate.getDate(),
-                        month: monthArray[parseInt(currentDate.getMonth(),10)],
-                        year: currentDate.getFullYear(),
-                        fullDate: (function () {
-                            return monthArray[parseInt(currentDate.getMonth(),10)] + ' ' +
-                                    currentDate.getDate()+', '+currentDate.getFullYear();
-                        })()
-                    })
-                }
-            }
+            showGlobalList: this.view.showGlobalList,
+            moveToDaily: this.view.moveToDaily
 
         };
     }

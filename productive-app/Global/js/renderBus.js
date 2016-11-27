@@ -1,20 +1,4 @@
-/*class EventBusClass {
-    constructor() {
-        this.topics = [];
-    }
-    subscribe(topic, listener) {
-        if (!this.topics[topic]) this.topics[topic] = [];
-        this.topics[topic].push(listener);
-    }
-    publish(topic, data) {
-        if (!this.topics[topic] || this.topics[topic].length < 1) return;
-        this.topics[topic].forEach(function (listener) {
-            listener(data || {});
-        });
-    }
-}
 
-var EventBusLocalTasks = new EventBusClass();*/
 var EventBus = {
     topics: {},
     subscribe: function (topic, listener) {
@@ -80,15 +64,10 @@ EventBus.subscribe('settings', function () {
             class: ['button-row-2', 'button-blue'],
             innerHtml: 'Next',
             listener: function () {
-                EventBus.publish('taskList');
+                router.moveTo('tasklist')
             }
         }
     ];
-    /*list[0].classList.add('button-row-2', 'button-blue');
-     list[0].innerHTML = 'Back';
-     list[1].classList.add('button-row-2', 'button-green');
-     list[1].innerHTML = 'Save';*/
-
     Router.renderButtons(list)
 });
 
@@ -157,6 +136,38 @@ EventBus.subscribe('taskList', function () {
 });
 EventBus.subscribe('taskList', function () {
     Router.renderReportsGlobal()
+});
+//----------------------------------
+EventBus.subscribe('goToTimer', function () {
+    Router.clearContent(document.body);
+});
+EventBus.subscribe('goToTimer', function () {
+    Router.renderHeader()
+});
+EventBus.subscribe('goToTimer', function (data) {
+    Router.renderTimer(data)
+});
+EventBus.subscribe('goToTimer', function () {
+    var list = [document.createElement('button'), document.createElement('button')];
+    list = [
+        {
+            node: document.createElement('button'),
+            class: ['button-row-2', 'button-red'],
+            innerHtml: 'Fail Pomodora',
+            listener:function () {
+                
+            }
+
+        }, {
+            node: document.createElement('button'),
+            class: ['button-row-2', 'button-green'],
+            innerHtml: 'Finish Pomodora',
+            listener: function () {
+                
+            }
+        }
+    ];
+    Router.renderButtons(list);
 });
 //----------------------------------
 EventBus.subscribe('no-user', function () {

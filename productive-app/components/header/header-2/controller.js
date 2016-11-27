@@ -5,10 +5,10 @@ export var Controller = {
                 firebase.auth().signOut();
             },
             'settings': function (e) {
-                EventBus.publish('settings')
+                router.moveTo('pomodoras')
             },
             'reports': function () {
-                EventBus.publish('reports')
+                router.moveTo('reports')
 
             },
             'addTask':function () {

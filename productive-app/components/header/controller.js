@@ -5,11 +5,12 @@ export var Controller = {
                 firebase.auth().signOut();
             },
             'settings': function (e) {
-                EventBus.publish('settings')
+                //EventBus.publish('settings')
+                router.moveTo('pomodoras')
             },
             'reports': function () {
-                EventBus.publish('reports');
-                //router.moveTo('reports')
+                //EventBus.publish('reports');
+                router.moveTo('reports')
             }
 
         }

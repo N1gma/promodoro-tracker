@@ -1,11 +1,13 @@
 import template from './template1.jade'
 import Controller from './Controller'
 import {tasks} from '../module/Model'
+import {view} from './View'
+
 
 
 Router.renderReportsGlobal = function () {
     var el = document.createElement('div');
-    let controller = new Controller(tasks, EventBusLocal);
+    let controller = new Controller(tasks, view, EventBusLocal);
     controller.initController(function () {
         if(controller.model.data){
             el.innerHTML = template({

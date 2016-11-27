@@ -12,7 +12,7 @@ export var controller = {
             EventBusLocal.publish('trash-check-all',dependency)
         },
         'deselect-all':function (dependency) {
-            EventBusLocal.publish('trash-uncheck-all','today-list',dependency)
+            EventBusLocal.publish('trash-uncheck-all',dependency)
         }
 
     },
