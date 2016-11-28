@@ -15,6 +15,7 @@ export var controller = {
             EventBusLocal.publish('trash-uncheck-all',dependency)
         }
 
+
     },
     init:function (el,dependency) {
         el.addEventListener('click', function (e) {

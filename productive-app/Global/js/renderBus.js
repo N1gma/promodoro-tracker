@@ -155,7 +155,7 @@ EventBus.subscribe('goToTimer', function () {
             class: ['button-row-2', 'button-red'],
             innerHtml: 'Fail Pomodora',
             listener:function () {
-                
+                EventBusLocal.publish('timer-stopped')
             }
 
         }, {

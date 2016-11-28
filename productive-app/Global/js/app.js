@@ -56,8 +56,8 @@
 	__webpack_require__(34);
 	__webpack_require__(38);
 	__webpack_require__(42);
-	__webpack_require__(44);
-	module.exports = __webpack_require__(48);
+	__webpack_require__(45);
+	module.exports = __webpack_require__(49);
 
 
 /***/ },
@@ -1353,7 +1353,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -1657,6 +1657,20 @@
 	            }
 	        }
 	        return structure;
+	    },
+	    getFilterStruct: function getFilterStruct(data, type) {
+	        var structure = [];
+	        for (var key in data) {
+	            if (!this.compareDates(data[key].deadline)) {
+	                if (data[key].priority == type) {
+	                    structure.push(key);
+	                }
+	            }
+	        }
+	        return {
+	            type: type,
+	            list: structure
+	        };
 	    },
 	    compareDates: function compareDates(date) {
 	        var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -1970,6 +1984,8 @@
 
 	var _controller = __webpack_require__(29);
 
+	var _filterController = __webpack_require__(44);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderTitleTaskListGlobal = function () {
@@ -1977,6 +1993,7 @@
 	    el.innerHTML = (0, _template2.default)();
 	    document.body.appendChild(el);
 	    _controller.controller.init(el, 'sorted-list');
+	    _filterController.controllerFilter.init(el);
 	    /*document.getElementsByClassName('sub-title')[1].addEventListener('click', function (e) {
 	        if(e.target.id == 'done'){
 	            //EventBus.publish('');
@@ -2003,32 +2020,87 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.wrapper-2 {\n    max-width: 1366px;\n    padding-top: 40px;\n    margin: 0 auto;\n}\n\n.sub-title-2 {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n    margin-bottom: 30px;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper-2\"><div class=\"sub-title-2\"><div class=\"interface-container-2\"><button id=\"filter-all\" class=\"ico-text-button\">All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-urgent\" class=\"ico-text-button\">Urgent</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-high\" class=\"ico-text-button\">High</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-middle\" class=\"ico-text-button\">Middle</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"filter-low\" class=\"ico-text-button\">Low</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"delete-all\" class=\"ico-text-button\">Delete Checked</button></div></div></div>");;return buf.join("");
+	buf.push("<style>.wrapper-2 {\n    max-width: 1366px;\n    padding-top: 40px;\n    margin: 0 auto;\n}\n\n.sub-title-2 {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n    margin-bottom: 30px;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n.active-tab{\n    color:white\n}\n\n</style><div class=\"wrapper-2\"><div class=\"sub-title-2\"><div class=\"interface-container-2\"><button id=\"all1\" class=\"ico-text-button active-tab\">All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"urgent1\" class=\"ico-text-button\">Urgent</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"high1\" class=\"ico-text-button\">High</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"middle1\" class=\"ico-text-button\">Middle</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"low1\" class=\"ico-text-button\">Low</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"delete-all\" class=\"ico-text-button\">Delete Checked</button></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
 /* 44 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var controllerFilter = exports.controllerFilter = {
+	    listeners: {
+	        'all': function all(type, target) {
+	            controllerFilter.activateTab(target);
+	            EventBusLocal.publish('filter-tasks', type);
+	        },
+	        'urgent': function urgent(type, target) {
+	            controllerFilter.activateTab(target);
+	            EventBusLocal.publish('filter-tasks', type);
+	        },
+	        'high': function high(type, target) {
+	            controllerFilter.activateTab(target);
+	            EventBusLocal.publish('filter-tasks', type);
+	        },
+	        'middle': function middle(type, target) {
+	            controllerFilter.activateTab(target);
+	            EventBusLocal.publish('filter-tasks', type);
+	        },
+	        'low': function low(type, target) {
+	            controllerFilter.activateTab(target);
+	            EventBusLocal.publish('filter-tasks', type);
+	        }
+
+	    },
+	    init: function init(el) {
+	        var context = this;
+	        //this.listeners['filter-all']();
+	        el.addEventListener('click', function (e) {
+	            var identifier = e.target.id.slice(0, -1);
+	            if (context.listeners[identifier]) {
+	                context.listeners[identifier](identifier, e.target);
+	                EventBusLocal.publish('trash-off', document.getElementById('trashOn'));
+	                EventBusLocal.publish('trash-refresh');
+	            }
+	        });
+	    },
+	    activateTab: function activateTab(target) {
+	        for (var i = 0; i < target.parentNode.children.length; i++) {
+	            if (target.parentNode.children[i].classList.contains('active-tab')) {
+	                target.parentNode.children[i].classList.remove('active-tab');
+	            }
+	        }
+	        target.classList.add('active-tab');
+	    }
+	};
+
+/***/ },
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(45);
+	var _template = __webpack_require__(46);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(46);
+	var _Controller = __webpack_require__(47);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
 	var _Model = __webpack_require__(33);
 
-	var _View = __webpack_require__(47);
+	var _View = __webpack_require__(48);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderReportsGlobal = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_Model.tasks, _View.view, EventBusLocal);
+	    var controller = new _Controller2.default(_Model.tasks, _View.view, EventBusLocal, _template2.default);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
@@ -2043,7 +2115,7 @@
 	};
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -2052,24 +2124,28 @@
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
-	;var locals_for_with = (locals || {});(function (console, data, structure) {
+	;var locals_for_with = (locals || {});(function (console, data, filterStruct, structure) {
 	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button class=\"drop-switch\"><span>Global list</span></button><ul class=\"global-list\">");
 	console.log(structure)
 	console.log(data)
+	console.log(filterStruct)
 	for(var type in structure)
 	{
 	buf.push("<li><ul" + (jade.cls(['sorted-list',type], [null,true])) + "><li class=\"list-header\"><span class=\"list-header-category-mark\"></span>" + (jade.escape((jade_interp = type.toUpperCase()) == null ? '' : jade_interp)) + "</li>");
 	for(var i = 0;i<structure[type].length;i++)
 	{
+	if(!filterStruct ||filterStruct.type == 'all' || filterStruct.list.indexOf(structure[type][i])!=-1)
+	{
 	buf.push("<li" + (jade.attr("key", structure[type][i], true, true)) + (jade.cls(['task',[data[structure[type][i]].priority, data[structure[type][i]].estimation]], [null,true])) + "><div class=\"category\"></div><div class=\"border-category\"></div><div class=\"date\"><p class=\"date-day\">" + (jade.escape((jade_interp = data[structure[type][i]].deadline.day) == null ? '' : jade_interp)) + "</p><p class=\"date-month\">" + (jade.escape((jade_interp = data[structure[type][i]].deadline.month) == null ? '' : jade_interp)) + "</p></div><section class=\"task-info\"><h2 class=\"task-info-title\">" + (jade.escape((jade_interp = data[structure[type][i]].title) == null ? '' : jade_interp)) + "</h2><p>" + (jade.escape((jade_interp = data[structure[type][i]].description) == null ? '' : jade_interp)) + "</p><div class=\"task-buttons-container\"><button class=\"drag-task\"></button><button class=\"edit-task\"></button></div></section><div class=\"urgency\"><p class=\"estimation-counter\"></p></div></li>");
+	}
 	}
 	buf.push("</ul></li>");
 	}
-	buf.push("</ul></div>");}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"structure" in locals_for_with?locals_for_with.structure:typeof structure!=="undefined"?structure:undefined));;return buf.join("");
+	buf.push("</ul></div>");}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"filterStruct" in locals_for_with?locals_for_with.filterStruct:typeof filterStruct!=="undefined"?filterStruct:undefined,"structure" in locals_for_with?locals_for_with.structure:typeof structure!=="undefined"?structure:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2083,10 +2159,11 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
-	    function Controller(model, view, eBusLocal) {
+	    function Controller(model, view, eBusLocal, template) {
 	        _classCallCheck(this, Controller);
 
 	        //this.view = view;
+	        this.template = template;
 	        this.model = model;
 	        this.view = view;
 	        this.eBusLocal = eBusLocal;
@@ -2121,6 +2198,21 @@
 	            el.addEventListener('click', this.listeners.trashDrop);
 	            el.addEventListener('click', this.listeners.showGlobalList);
 	            el.addEventListener('click', this.listeners.moveToDaily);
+	            EventBusLocal.subscribe('filter-tasks', function (type) {
+	                console.log('filter ' + type);
+	                console.log(this);
+	                this.initController(function () {
+	                    if (context.model.data) {
+	                        el.innerHTML = context.template({
+	                            data: context.model.data,
+	                            structure: context.model.getStruct(context.model.data),
+	                            filterStruct: context.model.getFilterStruct(context.model.data, type)
+	                        });
+	                    }
+	                    context.removeEventListeners(el);
+	                    context.setEventListeners(el);
+	                });
+	            }.bind(this));
 	        }
 	    }, {
 	        key: 'removeEventListeners',
@@ -2129,6 +2221,8 @@
 	            for (var key in this.listeners) {
 	                el.removeEventListener('click', this.listeners[key]);
 	            }
+	            EventBusLocal.unsubscribe('filter-tasks');
+	            console.log(EventBusLocal);
 	        }
 	    }]);
 
@@ -2138,7 +2232,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2177,20 +2271,20 @@
 	};
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(49);
+	var _template = __webpack_require__(50);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(50);
+	var _controller = __webpack_require__(51);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(51);
+	var _view = __webpack_require__(52);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2201,7 +2295,7 @@
 	};
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(3);
@@ -2220,7 +2314,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2274,7 +2368,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';

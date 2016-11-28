@@ -22,3 +22,4 @@ Model.prototype.getValuesFromDataComponent = function (data) {
     document.dispatchEvent(this.eventFires);
     return this;
 };
+

@@ -32,6 +32,21 @@ export var tasks = {
         }
         return structure;
     },
+    getFilterStruct:function(data, type){
+        var structure = [];
+        for (var key in data) {
+            if (!this.compareDates(data[key].deadline)) {
+                if(data[key].priority == type){
+                    structure.push(key)
+                }
+
+            }
+        }
+        return {
+            type:type,
+            list:structure
+        };
+    },
     compareDates: function (date) {
         var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var currentDate = new Date();

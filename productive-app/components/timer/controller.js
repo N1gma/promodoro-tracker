@@ -11,8 +11,8 @@ export default class Controller{
             container: document.getElementsByClassName('graph-container')[0],
             timerControlElements: document.getElementsByClassName('set-able')
         };
-        console.log(this.sourceKey);
-        console.log(this.timer.timerControlElements);
+        /*console.log(this.sourceKey);
+        console.log(this.timer.timerControlElements);*/
         this.cycle.estimation = User.dataSnapShot[this.sourceKey].estimation.slice(-1);
         this.cycle.category = User.dataSnapShot[this.sourceKey].category;
         this.cycle.workTime = User.settings['WORK TIME'];
@@ -21,11 +21,12 @@ export default class Controller{
             category:User.dataSnapShot[this.sourceKey].category,
             title: User.dataSnapShot[this.sourceKey].title,
             workTime: User.settings['WORK TIME'],
+            breakTime: User.settings['BREAK TIME'],
             estimation:User.dataSnapShot[this.sourceKey].estimation.slice(-1)
         });
         document.body.appendChild(el);
 
-        this.view.animateTimer(this.timer,this.cycle.category, this.cycle.workTime);
+        this.view.animateTimer(this.timer, this.cycle, this.cycle.workTime);
         this.view.resumeAnimation(this.timer);
     };
    

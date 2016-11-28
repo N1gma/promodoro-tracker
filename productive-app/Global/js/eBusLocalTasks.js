@@ -2,21 +2,19 @@ var EventBusLocal = {
     topics: {},
 
     subscribe: function (topic, listener) {
-        // create the topic if not yet created
         if (!this.topics[topic]) this.topics[topic] = [];
-
-        // add the listener
         this.topics[topic].push(listener);
     },
 
     publish: function (topic, data) {
-        // return if the topic doesn't exist, or there are no listeners
         if (!this.topics[topic] || this.topics[topic].length < 1) return;
-
-        // send the event to all listeners
         this.topics[topic].forEach(function (listener) {
             listener(data || {});
         });
+    },
+
+    unsubscribe: function (topic) {
+        delete this.topics[topic];
     }
 };
 
@@ -100,28 +98,6 @@ EventBusLocal.subscribe('trash-refresh', function (e) {
     User.trashData = [];
 });
 
-/*EventBusLocal.subscribe('trash-on',function(e){
- var tasks = document.getElementsByClassName('task');
- if(e.currentTarget.classList.contains('active')){
- for (var i =0;i<tasks.length;i++){
- tasks[i].classList.remove('trash');
- }
- e.currentTarget.classList.remove('active');
- }else{
- for (var i =0;i<tasks.length;i++){
- tasks[i].classList.add('trash');
- }
- e.currentTarget.classList.add('active');
- }
- var labels = document.getElementsByClassName('left-side');
- for( var i = 0;i<labels.length;i++){
- if(labels[i].classList.contains('hidden')){
- labels[i].classList.remove('hidden');
- }else if(!labels[i].classList.contains('hidden')){
- labels[i].classList.add('hidden');
- }
- }
- });*/
 
 
 EventBusLocal.subscribe('trash-on', function (target) {
@@ -154,3 +130,5 @@ EventBusLocal.subscribe('trash-off', function (target) {
     }
     //EventBusLocal.publish('trash-refresh')
 });
+
+

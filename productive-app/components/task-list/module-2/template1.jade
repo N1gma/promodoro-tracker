@@ -147,24 +147,26 @@ style.
     ul.global-list
       -console.log(structure)
       -console.log(data)
+      -console.log(filterStruct)
       -for(var type in structure)
-        li
+         li
             ul.sorted-list(class=type)
                 li.list-header
                     span.list-header-category-mark
                     | #{type.toUpperCase()}
                 -for(var i = 0;i<structure[type].length;i++)
-                  li.task(class=[data[structure[type][i]].priority, data[structure[type][i]].estimation], key=structure[type][i])
-                    .category 
-                    .border-category
-                    .date
+                  -if(!filterStruct ||filterStruct.type == 'all' || filterStruct.list.indexOf(structure[type][i])!=-1)
+                    li.task(class=[data[structure[type][i]].priority, data[structure[type][i]].estimation], key=structure[type][i])
+                      .category 
+                      .border-category
+                      .date
                         p.date-day #{data[structure[type][i]].deadline.day}
                         p.date-month #{data[structure[type][i]].deadline.month}
-                    section.task-info
+                      section.task-info
                         h2.task-info-title #{data[structure[type][i]].title}
                         p #{data[structure[type][i]].description}
                         .task-buttons-container
                             button.drag-task 
                             button.edit-task 
-                    .urgency
+                      .urgency
                         p.estimation-counter

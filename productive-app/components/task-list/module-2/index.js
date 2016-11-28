@@ -7,7 +7,7 @@ import {view} from './View'
 
 Router.renderReportsGlobal = function () {
     var el = document.createElement('div');
-    let controller = new Controller(tasks, view, EventBusLocal);
+    let controller = new Controller(tasks, view, EventBusLocal, template);
     controller.initController(function () {
         if(controller.model.data){
             el.innerHTML = template({

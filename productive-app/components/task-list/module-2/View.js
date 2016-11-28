@@ -25,6 +25,6 @@ export var view = {
             e.target.innerHTML = '<span>Global list</span>&#xe907';
             document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden')
         }
-    },
+    }
 
-}
+};

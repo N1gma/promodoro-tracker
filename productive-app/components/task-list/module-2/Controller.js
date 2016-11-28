@@ -1,6 +1,7 @@
 export default class Controller {
-    constructor(model,view, eBusLocal) {
+    constructor(model, view, eBusLocal, template) {
         //this.view = view;
+        this.template = template;
         this.model = model;
         this.view = view;
         this.eBusLocal = eBusLocal;
@@ -32,6 +33,22 @@ export default class Controller {
         el.addEventListener('click', this.listeners.trashDrop);
         el.addEventListener('click', this.listeners.showGlobalList);
         el.addEventListener('click', this.listeners.moveToDaily);
+        EventBusLocal.subscribe('filter-tasks', function (type) {
+            console.log('filter ' + type)
+            console.log(this)
+            this.initController(function () {
+                if (context.model.data) {
+                    el.innerHTML = context.template({
+                        data: context.model.data,
+                        structure: context.model.getStruct(context.model.data),
+                        filterStruct: context.model.getFilterStruct(context.model.data, type)
+                    });
+                }
+                context.removeEventListeners(el);
+                context.setEventListeners(el);
+            })
+        }.bind(this));
+
     }
 
     removeEventListeners(el) {
@@ -39,6 +56,8 @@ export default class Controller {
         for (var key in this.listeners) {
             el.removeEventListener('click', this.listeners[key])
         }
+        EventBusLocal.unsubscribe('filter-tasks');
+        console.log(EventBusLocal)
     }
 }
 
