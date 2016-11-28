@@ -2304,13 +2304,13 @@
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
-	;var locals_for_with = (locals || {});(function (category, estimation, title, workTime) {
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n\n.button-holder {\n    width: 27%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-between;\n    min-width: 375px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n\n\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
-	for(var i =0;i<estimation;i++)
+	;var locals_for_with = (locals || {});(function (data) {
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n\n.button-holder {\n    width: 27%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-between;\n    min-width: 375px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n\n\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
+	for(var i =0;i<data.estimation;i++)
 	{
 	buf.push("<li class=\"phase\"></li>");
 	}
-	buf.push("</ul><div" + (jade.cls(['graph-container',category], [null,true])) + "><div class=\"timer-outer-circle category\"><div class=\"time-wrapper\"><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\"><div class=\"timer-time\">" + (jade.escape((jade_interp = workTime) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div></div></div></div></main>");}.call(this,"category" in locals_for_with?locals_for_with.category:typeof category!=="undefined"?category:undefined,"estimation" in locals_for_with?locals_for_with.estimation:typeof estimation!=="undefined"?estimation:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined,"workTime" in locals_for_with?locals_for_with.workTime:typeof workTime!=="undefined"?workTime:undefined));;return buf.join("");
+	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div class=\"time-wrapper\"><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\"><div class=\"timer-time\">" + (jade.escape((jade_interp = data.cycleTime) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div></div></div></div></main>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -2334,31 +2334,48 @@
 	        this.view = view;
 	        this.sourceKey = source;
 	        this.cycle = {};
+	        this.listeners = {
+	            'pause': function pause(type, target) {
+	                controllerFilter.activateTab(target);
+	                EventBusLocal.publish('filter-tasks', type);
+	            },
+	            'resume': function resume(type, target) {
+	                controllerFilter.activateTab(target);
+	                EventBusLocal.publish('filter-tasks', type);
+	            }
+	        };
 	    }
 
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init(template, el) {
+	            var context = this;
 	            this.timer = {
 	                container: document.getElementsByClassName('graph-container')[0],
-	                timerControlElements: document.getElementsByClassName('set-able')
+	                timerControlElements: document.getElementsByClassName('set-able'),
+	                timeout: {},
+	                count: 0
 	            };
-	            console.log(this.sourceKey);
-	            console.log(this.timer.timerControlElements);
-	            this.cycle.estimation = User.dataSnapShot[this.sourceKey].estimation.slice(-1);
-	            this.cycle.category = User.dataSnapShot[this.sourceKey].category;
-	            this.cycle.workTime = User.settings['WORK TIME'];
+	            EventBusLocal.subscribe('time-stopped', function () {
+	                context.view.pauseAnimation(context.timer);
+	            });
+	            EventBusLocal.subscribe('time-resumed', function () {
+	                context.view.resumeAnimation(context.timer);
+	            });
+	            this.cycle = {
+	                estimation: parseInt(User.dataSnapShot[this.sourceKey].estimation.slice(-1), 10),
+	                category: User.dataSnapShot[this.sourceKey].category,
+	                cycleTime: User.settings['WORK TIME'],
+	                break: false,
+	                title: User.dataSnapShot[this.sourceKey].title
+	            };
 	            console.log(this.cycle);
 	            el.innerHTML = template({
-	                category: User.dataSnapShot[this.sourceKey].category,
-	                title: User.dataSnapShot[this.sourceKey].title,
-	                workTime: User.settings['WORK TIME'],
-	                estimation: User.dataSnapShot[this.sourceKey].estimation.slice(-1)
+	                data: this.cycle
 	            });
 	            document.body.appendChild(el);
-
-	            this.view.animateTimer(this.timer, this.cycle.category, this.cycle.workTime);
-	            this.view.resumeAnimation(this.timer);
+	            this.view.animateTimer(this.timer, this.cycle);
+	            //this.view.resumeAnimation(this.timer);
 	        }
 	    }]);
 
@@ -2377,26 +2394,32 @@
 	    value: true
 	});
 	var view = exports.view = {
-	    animateTimer: function animateTimer(timer, category, time) {
-	        /*if (timer.container.classList.length > 1) {
-	            timer.container.classList.remove(timer.classList[1]);
-	            timer.container.classList.add(category);
-	        } else {
-	            timer.container.classList.add(category);
-	        }*/
+	    animateTimer: function animateTimer(timer, cycle) {
 	        for (var i = 0; i < timer.timerControlElements.length; i++) {
-	            timer.timerControlElements[i].style.animationDuration = time * 60 + 's';
+	            timer.timerControlElements[i].style.animationDuration = cycle.cycleTime * 60 + 's';
+	            timer.timerControlElements[i].style.animationPlayState = 'running';
 	        }
+	        timer.timeout = setInterval(function () {
+	            timer.count++;
+	            console.log(timer.count);
+	        }, 1000);
 	    },
 	    pauseAnimation: function pauseAnimation(timer) {
 	        for (var i = 0; i < timer.timerControlElements.length; i++) {
 	            timer.timerControlElements[i].style.animationPlayState = 'paused';
 	        }
+	        clearInterval(timer.timeout);
+	        console.log('paused');
 	    },
 	    resumeAnimation: function resumeAnimation(timer) {
 	        for (var i = 0; i < timer.timerControlElements.length; i++) {
 	            timer.timerControlElements[i].style.animationPlayState = 'running';
 	        }
+	        timer.timeout = setInterval(function () {
+	            timer.count++;
+	            console.log(timer.count);
+	        }, 1000);
+	        console.log('resumed');
 	    }
 	};
 

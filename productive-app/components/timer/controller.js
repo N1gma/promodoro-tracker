@@ -1,33 +1,49 @@
-export default class Controller{
-    constructor(source,view){
+export default class Controller {
+    constructor(source, view) {
         this.view = view;
         this.sourceKey = source;
-        this.cycle = {
-
+        this.cycle = {}
+        this.listeners= {
+            'pause':function (type,target) {
+                controllerFilter.activateTab(target)
+                EventBusLocal.publish('filter-tasks', type)
+            },
+            'resume':function (type,target) {
+                controllerFilter.activateTab(target)
+                EventBusLocal.publish('filter-tasks', type)
+            }
         }
     }
-    init(template,el){
-        this.timer ={
+
+
+    init(template, el) {
+        var context = this;
+        this.timer = {
             container: document.getElementsByClassName('graph-container')[0],
-            timerControlElements: document.getElementsByClassName('set-able')
+            timerControlElements: document.getElementsByClassName('set-able'),
+            timeout: {},
+            count:0
         };
-        /*console.log(this.sourceKey);
-        console.log(this.timer.timerControlElements);*/
-        this.cycle.estimation = User.dataSnapShot[this.sourceKey].estimation.slice(-1);
-        this.cycle.category = User.dataSnapShot[this.sourceKey].category;
-        this.cycle.workTime = User.settings['WORK TIME'];
+        EventBusLocal.subscribe('time-stopped', function(){
+            context.view.pauseAnimation(context.timer);
+        });
+        EventBusLocal.subscribe('time-resumed', function(){
+            context.view.resumeAnimation(context.timer);
+        });
+        this.cycle = {
+            estimation: parseInt(User.dataSnapShot[this.sourceKey].estimation.slice(-1),10),
+            category: User.dataSnapShot[this.sourceKey].category,
+            cycleTime: User.settings['WORK TIME'],
+            break: false,
+            title:User.dataSnapShot[this.sourceKey].title
+        };
         console.log(this.cycle);
         el.innerHTML = template({
-            category:User.dataSnapShot[this.sourceKey].category,
-            title: User.dataSnapShot[this.sourceKey].title,
-            workTime: User.settings['WORK TIME'],
-            breakTime: User.settings['BREAK TIME'],
-            estimation:User.dataSnapShot[this.sourceKey].estimation.slice(-1)
+            data:this.cycle
         });
         document.body.appendChild(el);
-
-        this.view.animateTimer(this.timer, this.cycle, this.cycle.workTime);
-        this.view.resumeAnimation(this.timer);
+        this.view.animateTimer(this.timer, this.cycle);
+        //this.view.resumeAnimation(this.timer);
     };
-   
+
 }

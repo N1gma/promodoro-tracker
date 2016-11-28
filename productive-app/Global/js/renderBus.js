@@ -155,7 +155,7 @@ EventBus.subscribe('goToTimer', function () {
             class: ['button-row-2', 'button-red'],
             innerHtml: 'Fail Pomodora',
             listener:function () {
-                EventBusLocal.publish('timer-stopped')
+                EventBusLocal.publish('time-stopped')
             }
 
         }, {
@@ -163,7 +163,7 @@ EventBus.subscribe('goToTimer', function () {
             class: ['button-row-2', 'button-green'],
             innerHtml: 'Finish Pomodora',
             listener: function () {
-                
+                EventBusLocal.publish('time-resumed')
             }
         }
     ];
