@@ -68,6 +68,43 @@ Notification classes :
  4. the only dependency is that visualization component should listen over data component
  5. controller listenTo method was made for case if we need different reactions on differend events from different components
 
+#phase4
+##login data
+- login: Oleksandr_Chornobai@epam.com, 
+- pw: eE4180029818
 
+##logic
+- every components loads have `index.js` (entry for webpack )
+- each index requested translate hes own render function in `Global View.js` 
+- `app.js` is webpack output, which contain all index.js files from each component
+- further to render requested component simply call hes own render func from GlobalView
+- these functions are used in `renderBus.js` to create a chains for render different pages which activated on publish event
+- **templates** contains
+    - component own css(deleted with component so styles cant stack)
+    - some data in most cases (default locals argument) of template(locals) func
+    - simple js cycles etc
+    - html
+- each component works independent from each other, 
+  - in most cases getting data from `user.js` model
+  - a small connection in local eventBus in **task-list**
+- firebase watches over changes on **User authState**, when no user present - redirect to **login**
+- you can use back and forward browser buttons (you cant back to login page)
+- url changes depending on which page you currently are
+
+###components 
+  + **header**
+    * common header
+    * task-list header
+  + **login** - signed via firebase `firebase.auth().signInWithEmailAndPassword` (possible to add other users in firebase)
+  + **modals** 
+    * add task
+    * edit task
+  + **reports** - data mocked in firebase
+  + **settings** - **next** button moves to **task-list**, **save** button saves settings in firebase
+  + **task-list** - notifications isn't working (small bug in tasks filter)
+  + **timer** - gets data from task to render himself and start count, other features isn't working
+  + **title** - set of different titles
+
+>everything other seems to works properly, im not sure about notifications but timer isnt required to work on current stage
 
 
