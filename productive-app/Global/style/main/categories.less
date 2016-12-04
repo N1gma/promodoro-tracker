@@ -1,99 +1,28 @@
 /*categories*/
+@import "../additional/mixins.less";
 
-.work .category,.work .border-category {
-    background-color: #ffb200;
-}
+.addCategoriesView(~"work");
+.addCategoriesView(~"education");
+.addCategoriesView(~"sport");
+.addCategoriesView(~"hobby");
+.addCategoriesView(~"other");
 
-.education .category,.education .border-category{
-    background-color: #00d4d9;
-}
-.sport .category,.sport .border-category{
-    background-color: #b470d0;
-}
-.hobby .category,.hobby .border-category{
-    background-color: #e16c65;
-}
-.other .category,.other .border-category{
-    background-color: #59abe3;
-}
-.work .list-header{
-    color:#ffb200 ;
-}
-.education .list-header{
-    color:#00d4d9 ;
-}
-.sport .list-header{
-    color:#b470d0 ;
-}
-.hobby .list-header{
-    color:#e16c65 ;
-}
-.other .list-header{
-    color:#59abe3 ;
-}
-.work .list-header-category-mark{
-    background-position: 0 0;
-}
-.education .list-header-category-mark{
-    background-position: -18px 0;
-}
-.sport .list-header-category-mark{
-    background-position: -54px 0;
-}
-.hobby .list-header-category-mark{
-    background-position: -36px 0;
-}
-.other .list-header-category-mark{
-    background-position: -72px 0;
-}
 
 /*urgency*/
 
-.urgent .urgency{
-    background-color: #e16c65;
-}
-.urgent .task-info-title{
-    color:#e16c65 ;
-}
+.addUrgencyView(~"urgent");
+.addUrgencyView(~"high");
+.addUrgencyView(~"middle");
+.addUrgencyView(~"low");
 
-.high .urgency {
-    background-color: #ffb200;
-}
-.high .task-info-title{
-    color:#ffb200 ;
-}
-
-.middle .urgency{
-    background-color: #fddc43;
-}
-.middle .task-info-title{
-    color:#fddc43 ;
-}
-
-.low .urgency{
-    background-color: #1abc9c;
-}
-.low .task-info-title{
-    color:#1abc9c ;
-}
 
 /*estimation*/
 
-.estimate-1 .estimation-counter:before{
-    content:'1';
-}
+.addEstimationView(~"estimate-1");
+.addEstimationView(~"estimate-2");
+.addEstimationView(~"estimate-3");
+.addEstimationView(~"estimate-4");
 
-.estimate-2 .estimation-counter:before{
-    content:'2';
-}
-
-.estimate-3 .estimation-counter:before{
-    content:'3';
-}
-
-.estimate-4 .estimation-counter:before{
-    content:'4';
-}
 
 
 /*states*/
@@ -109,7 +38,7 @@
     visibility: hidden;
 }
 .trash .category{
-    width: 7.5%;
+    width: 88px;
     font-size: 44px;
     cursor: pointer;
 }
@@ -138,6 +67,7 @@
     font-family: icomoon;
     font-size: 0;
     text-align: center;
+
 }
 
 .date{
@@ -145,6 +75,7 @@
     text-align: center;
     width: 8%;
     font-size: 11px;
+    min-width: 88px;
 }
 
 .task-info{
@@ -152,6 +83,7 @@
     flex-wrap: wrap;
     width: 84.8%;
     position: relative;
+    padding-left: 10px;
 }
 
 .task-info h2{
@@ -182,6 +114,8 @@
     position: relative;
     background-color: black;
     cursor: pointer;
+    min-width: 88px;
+
 }
 .urgency::before{
     content:'\e90e';

@@ -1,0 +1,105 @@
+@import "../../../../Global/style/additional/mixins.less";
+
+
+.button-holder {
+  width: 282px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+#categories-settings, #settings {
+  color: white;
+}
+
+.categories-choose-wrap {
+  width: 19.8%;
+  color: #5b7284;
+  margin: 0 auto 7% auto;
+  font: 16px "Roboto", sans-serif;
+  max-width: 267px;
+}
+
+.categories-choose-list {
+  padding-left: 14%;
+}
+
+.categories-choose-list li {
+  margin-bottom: 15%;
+  position: relative;
+}
+
+.categories-choose-list input {
+  display: none;
+}
+
+.label1, .label2, .label3, .label4, .label5 {
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  left: -17%;
+  top: 0;
+  cursor: pointer;
+}
+
+.label1 {
+  .makeLabelsView(~"work");
+}
+
+.label2 {
+  .makeLabelsView(~"education");
+}
+
+.label3 {
+  .makeLabelsView(~"hobby");
+}
+
+.label4 {
+  .makeLabelsView(~"sport");
+}
+
+.label5 {
+  .makeLabelsView(~"other");
+}
+
+.text-label {
+  border-bottom: 1px solid #5b7284;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 7px;
+  cursor: pointer;
+}
+
+input:checked ~ .text-label {
+  border-color: white;
+  color: white;
+}
+
+input:hover ~ .text-label {
+  border-color: white;
+  color: white;
+}
+
+input:checked{
+  &~.label1{
+    background-position: @work-background-position;
+  }
+  &~.label2{
+    background-position: @education-background-position;
+  }
+  &~.label3{
+    background-position: @sport-background-position;
+  }
+  &~.label4{
+    background-position: @hobby-background-position;
+  }
+  &~.label5{
+    background-position: @other-background-position;
+  }
+}
+
+
+.categories-choose-list li:hover {
+  border-color: white;
+  color: white;
+}

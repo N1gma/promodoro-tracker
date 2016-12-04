@@ -46,12 +46,7 @@ EventBus.subscribe('settings', function () {
 EventBus.subscribe('settings', function () {
     var list = [document.createElement('button'), document.createElement('button')];
     list = [
-        {
-            node: document.createElement('button'),
-            class: ['button-row-2', 'button-blue'],
-            innerHtml: 'Back'
-
-        }, {
+       {
             node: document.createElement('button'),
             class: ['button-row-2', 'button-green'],
             innerHtml: 'Save',

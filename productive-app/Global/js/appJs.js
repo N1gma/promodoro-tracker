@@ -44,29 +44,72 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
-	__webpack_require__(5);
-	__webpack_require__(8);
-	__webpack_require__(10);
-	__webpack_require__(16);
-	__webpack_require__(18);
-	__webpack_require__(24);
-	__webpack_require__(27);
-	__webpack_require__(30);
-	__webpack_require__(34);
-	__webpack_require__(38);
-	__webpack_require__(42);
-	__webpack_require__(45);
-	module.exports = __webpack_require__(49);
+	__webpack_require__(44);
+	__webpack_require__(48);
+	__webpack_require__(51);
+	__webpack_require__(53);
+	__webpack_require__(59);
+	__webpack_require__(61);
+	__webpack_require__(67);
+	__webpack_require__(70);
+	__webpack_require__(73);
+	__webpack_require__(77);
+	__webpack_require__(81);
+	__webpack_require__(85);
+	__webpack_require__(88);
+	module.exports = __webpack_require__(92);
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(2);
+	var _template = __webpack_require__(45);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -83,21 +126,21 @@
 	};
 
 /***/ },
-/* 2 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>body {\n    background: url(\"./Global/img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n</style><div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
+	buf.push("<style>body {\n    background: url(\"./Global/img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n\n</style><div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 3 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -317,7 +360,7 @@
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(4).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(47).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -349,22 +392,22 @@
 
 
 /***/ },
-/* 4 */
+/* 47 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 5 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _markup = __webpack_require__(6);
+	var _markup = __webpack_require__(49);
 
 	var _markup2 = _interopRequireDefault(_markup);
 
-	var _controller = __webpack_require__(7);
+	var _controller = __webpack_require__(50);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -376,10 +419,10 @@
 	};
 
 /***/ },
-/* 6 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -390,7 +433,7 @@
 	}
 
 /***/ },
-/* 7 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -421,12 +464,12 @@
 	};
 
 /***/ },
-/* 8 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _settings = __webpack_require__(9);
+	var _settings = __webpack_require__(52);
 
 	var _settings2 = _interopRequireDefault(_settings);
 
@@ -445,10 +488,10 @@
 	};
 
 /***/ },
-/* 9 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -459,26 +502,26 @@
 	}
 
 /***/ },
-/* 10 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _main = __webpack_require__(11);
+	var _main = __webpack_require__(54);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _component = __webpack_require__(12);
+	var _component = __webpack_require__(55);
 
-	var _view = __webpack_require__(13);
+	var _view = __webpack_require__(56);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(14);
+	var _model = __webpack_require__(57);
 
 	var _model2 = _interopRequireDefault(_model);
 
-	var _controller = __webpack_require__(15);
+	var _controller = __webpack_require__(58);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -506,10 +549,10 @@
 	};
 
 /***/ },
-/* 11 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -520,7 +563,7 @@
 	}
 
 /***/ },
-/* 12 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -615,7 +658,7 @@
 	}
 
 /***/ },
-/* 13 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -625,7 +668,7 @@
 	});
 	exports.default = View;
 
-	var _component = __webpack_require__(12);
+	var _component = __webpack_require__(55);
 
 	function View(renderZone) {
 	    this.renderZone = renderZone;
@@ -710,7 +753,7 @@
 	};
 
 /***/ },
-/* 14 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -745,7 +788,7 @@
 	};
 
 /***/ },
-/* 15 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -782,12 +825,12 @@
 	};
 
 /***/ },
-/* 16 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _categories = __webpack_require__(17);
+	var _categories = __webpack_require__(60);
 
 	var _categories2 = _interopRequireDefault(_categories);
 
@@ -800,34 +843,34 @@
 	};
 
 /***/ },
-/* 17 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.button-holder {\n    width: 282px;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n#categories-settings, #settings {\n    color: white;\n}\n\n.categories-choose-wrap {\n    width: 19.8%;\n    color: #5b7284;\n    margin: 0 auto 7% auto;\n    font: 16px \"Roboto\", sans-serif;\n    max-width: 267px;\n}\n\n.categories-choose-list {\n    padding-left: 14%;\n}\n\n.categories-choose-list li {\n    margin-bottom: 15%;\n    position: relative;\n}\n\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -17%;\n    top: 0;\n    cursor: pointer;\n}\n\n.label1 {\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    border-bottom: 1px solid #5b7284;\n    width: 100%;\n    display: inline-block;\n    padding-bottom: 7px;\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:hover ~ .text-label {\n    border-color: white;\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
+	buf.push("<style>.button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(components/modals/ico-sprite.png) no-repeat 0 -19px;\n}\n.label2 {\n  background: url(components/modals/ico-sprite.png) no-repeat -18px -19px;\n}\n.label3 {\n  background: url(components/modals/ico-sprite.png) no-repeat -36px -19px;\n}\n.label4 {\n  background: url(components/modals/ico-sprite.png) no-repeat -54px -19px;\n}\n.label5 {\n  background: url(components/modals/ico-sprite.png) no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
 	}
 
 /***/ },
-/* 18 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(19);
+	var _template = __webpack_require__(62);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(20);
+	var _Controller = __webpack_require__(63);
 
-	var _View = __webpack_require__(23);
+	var _View = __webpack_require__(66);
 
-	var _Model = __webpack_require__(22);
+	var _Model = __webpack_require__(65);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -840,10 +883,10 @@
 	};
 
 /***/ },
-/* 19 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -854,7 +897,7 @@
 	}
 
 /***/ },
-/* 20 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -866,7 +909,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _options = __webpack_require__(21);
+	var _options = __webpack_require__(64);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -909,7 +952,7 @@
 	}();
 
 /***/ },
-/* 21 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -922,7 +965,7 @@
 	exports.createRandom30xArray = createRandom30xArray;
 	exports.totalValueCount = totalValueCount;
 
-	var _Model = __webpack_require__(22);
+	var _Model = __webpack_require__(65);
 
 	var options = exports.options = {
 	    pieView: {
@@ -1262,7 +1305,7 @@
 	}
 
 /***/ },
-/* 22 */
+/* 65 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1295,7 +1338,7 @@
 	};
 
 /***/ },
-/* 23 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1305,7 +1348,7 @@
 	});
 	exports.View = undefined;
 
-	var _Model = __webpack_require__(22);
+	var _Model = __webpack_require__(65);
 
 	var View = exports.View = {
 	    renderChart: function renderChart(options) {
@@ -1322,16 +1365,16 @@
 	};
 
 /***/ },
-/* 24 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _markup = __webpack_require__(25);
+	var _markup = __webpack_require__(68);
 
 	var _markup2 = _interopRequireDefault(_markup);
 
-	var _controller = __webpack_require__(26);
+	var _controller = __webpack_require__(69);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1343,10 +1386,10 @@
 	};
 
 /***/ },
-/* 25 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1357,7 +1400,7 @@
 	}
 
 /***/ },
-/* 26 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1396,44 +1439,44 @@
 	};
 
 /***/ },
-/* 27 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(28);
+	var _template = __webpack_require__(71);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(29);
+	var _controller = __webpack_require__(72);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderTitleTaskList = function () {
-	     var el = document.createElement('div');
-	     el.innerHTML = (0, _template2.default)();
-	     document.body.appendChild(el);
-	     _controller.controller.init(el, 'today-list');
-	     /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
-	      if(e.target.id == 'done'){
-	      //EventBus.publish('');
-	      }
-	      if(e.target.id == 'to_do'){
-	      //EventBus.publish('');
-	      }
-	      if(e.target.id == 'select-all'){
-	        }
-	      if(e.target.id == 'deselect-all'){
-	      //EventBus.publish('');
-	      }
-	      });*/
+	  var el = document.createElement('div');
+	  el.innerHTML = (0, _template2.default)();
+	  document.body.appendChild(el);
+	  _controller.controller.init(el, 'today-list');
+	  /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
+	   if(e.target.id == 'done'){
+	   //EventBus.publish('');
+	   }
+	   if(e.target.id == 'to_do'){
+	   //EventBus.publish('');
+	   }
+	   if(e.target.id == 'select-all'){
+	    }
+	   if(e.target.id == 'deselect-all'){
+	   //EventBus.publish('');
+	   }
+	   });*/
 	};
 
 /***/ },
-/* 28 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1444,7 +1487,7 @@
 	}
 
 /***/ },
-/* 29 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1479,20 +1522,20 @@
 	};
 
 /***/ },
-/* 30 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(31);
+	var _template = __webpack_require__(74);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(32);
+	var _Controller = __webpack_require__(75);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(33);
+	var _Model = __webpack_require__(76);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1513,10 +1556,10 @@
 	};
 
 /***/ },
-/* 31 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1544,7 +1587,7 @@
 	}
 
 /***/ },
-/* 32 */
+/* 75 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1616,7 +1659,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 33 */
+/* 76 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1680,20 +1723,20 @@
 	};
 
 /***/ },
-/* 34 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modalAdd = __webpack_require__(35);
+	var _modalAdd = __webpack_require__(78);
 
 	var _modalAdd2 = _interopRequireDefault(_modalAdd);
 
-	var _controller = __webpack_require__(36);
+	var _controller = __webpack_require__(79);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(37);
+	var _view = __webpack_require__(80);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1709,21 +1752,21 @@
 	};
 
 /***/ },
-/* 35 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./Global/img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat!important;\n}\n\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.remove-submit-msg {\n    font: 36px Roboto, sans-serif;\n    color: #8da5b8;\n    width: 90%;\n    margin: 0 auto;\n    text-align: center;\n    margin-bottom: 44%;\n}\n\n.button-default {\n    color: white;\n    width: 38%;\n    padding: 12px 0;\n}\n\n.button-holder-default {\n    width: 73%;\n    display: flex;\n    display: -webkit-flex;\n    margin: 0 auto;\n    justify-content: space-around;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-around;\n}\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
+	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(components/modals/ico-sprite.png) no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(components/modals/ico-sprite.png) no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(components/modals/ico-sprite.png) no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(components/modals/ico-sprite.png) no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(components/modals/ico-sprite.png) no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(components/modals/ico-sprite.png) no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(components/modals/urgency-sprite.png) no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(components/modals/tomato.svg) no-repeat;\n}\n.estimation-range li:hover {\n  background: url(components/modals/tomato_fill.svg) no-repeat;\n}\n.estimated {\n  background: url(components/modals/tomato_fill.svg) no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 36 */
+/* 79 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1779,7 +1822,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 37 */
+/* 80 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1812,20 +1855,20 @@
 	};
 
 /***/ },
-/* 38 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modal = __webpack_require__(39);
+	var _modal = __webpack_require__(82);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _controller = __webpack_require__(40);
+	var _controller = __webpack_require__(83);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(41);
+	var _view = __webpack_require__(84);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1845,21 +1888,21 @@
 	};
 
 /***/ },
-/* 39 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (data) {
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n    border-bottom: 1px solid #5b7284;\n    display: flex;\n    display: -webkit-flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    margin-bottom: 32px;;\n}\n\n.categories-choose-list li {\n    position: relative;\n    padding-left: 5%;\n    display: inline-block;\n    box-sizing: border-box;\n    margin-right: 3%;\n}\n.categories-choose-list input {\n    display: none;\n}\n\n.label1, .label2, .label3, .label4, .label5 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -37px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label1:hover, .text-label:hover ~ .label1 {\n    background: url(./Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n\n.label2:hover, .text-label:hover ~ .label2 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n\n.label3:hover, .text-label:hover ~ .label3 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n\n.label4:hover, .text-label:hover ~ .label4 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n\n.label5:hover, .text-label:hover ~ .label5 {\n    background: url(./Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n\n.text-label {\n    color: #748b9e;\n    display: inline-block;\n    padding-bottom: 9px;\n    font: 16px Roboto, sans-serif;\n    line-height: 16px;\n}\n\n.categories-choose-list label {\n    cursor: pointer;\n}\n\ninput:checked ~ .text-label {\n    color: white;\n}\n\n.categories-choose-list li:hover .text-label {\n    color: white;\n}\n\ninput:checked ~ .label1 {\n    background-position: 0 0;\n}\n\ninput:checked ~ .label2 {\n    background-position: -18px 0;\n}\n\ninput:checked ~ .label3 {\n    background-position: -36px 0;\n}\n\ninput:checked ~ .label4 {\n    background-position: -54px 0;\n}\n\ninput:checked ~ .label5 {\n    background-position: -72px 0;\n}\n\n.categories-choose-list li:hover {\n    border-color: white;\n    color: white;\n}\n\n/*horisontal urgency select*/\n\n.label11, .label22, .label33, .label44 {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: 0;\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -38px;\n    bottom: 8px;\n    line-height: 19px;\n}\n\n.label11:hover, .text-label:hover ~ .label11 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -1px -20px;\n}\n\n.label22:hover, .text-label:hover ~ .label22 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -19px -20px;\n}\n\n.label33:hover, .text-label:hover ~ .label33 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -37px -20px;\n}\n\n.label44:hover, .text-label:hover ~ .label44 {\n    background: url(./Global/img/urgency-sprite.png) no-repeat -55px -20px;\n}\n\ninput:checked ~ .label11 {\n    background-position: -1px -1px;\n}\n\ninput:checked ~ .label22 {\n    background-position: -19px -1px;\n}\n\ninput:checked ~ .label33 {\n    background-position: -37px -1px;\n}\n\ninput:checked ~ .label44 {\n    background-position: -55px -1px;\n}\n\n.modal-interface {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 100%;\n    padding: 0 2.8%;\n    box-sizing: border-box;\n    font-family: icomoon;\n\n}\n\n.modal-interface-confirm, .modal-interface-cancel {\n    float: right;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n.modal-interface-cancel {\n    margin-right: 3%;\n}\n\n.modal-interface button:hover {\n    color: white;\n    cursor: pointer;\n}\n\n.modal-wrap {\n    position: fixed;\n    z-index: 9999999;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n\n.modal-window {\n    font: 14px 'Roboto', sans-serif;\n    background-color: #2a3f50;\n    margin: 6.4% auto;\n    width: 500px;\n    padding: 41px 3%;\n    color: white;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-window-head {\n    font-size: 28px;\n    text-align: center;\n    width: 100%;\n    margin-bottom: 10px;\n}\n\n.modal-input-title {\n    display: block;\n    font: 14px 'Roboto', sans-serif;\n    margin-bottom: 8px;\n    margin-top: 9px;\n}\n\n.modal-input-field {\n    color: #748b9e;\n    border-bottom: 1px solid #425869;\n    font: 16px 'Roboto', sans-serif;\n    padding-bottom: 4px;\n    width: 100%;\n    margin-bottom: 25px;\n}\n\n.modal-input-field:focus {\n    color: white;\n}\n\n.estimation-range {\n    width: 50%;\n    display: block;\n    margin-bottom: 34px;\n}\n\n.estimation-range li {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(\"./Global/img/tomato.svg\") no-repeat;\n}\n\n.estimation-range li:hover {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n.estimated{\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat!important;\n}\n.modal-remove-inner-wrapper {\n    height: 480px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    align-content: flex-start;\n    padding-top: 30%;\n    box-sizing: border-box;\n    position: relative;\n}\n\n.modal-interface-trash {\n    float: left;\n    font-family: icomoon;\n    font-size: 20px;\n    color: #88a0b3;\n}\n\n\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline.fullDate, true, true)) + " class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
+	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(components/modals/ico-sprite.png) no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(components/modals/ico-sprite.png) no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(components/modals/ico-sprite.png) no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(components/modals/ico-sprite.png) no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(components/modals/ico-sprite.png) no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(components/modals/ico-sprite.png) no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(components/modals/urgency-sprite.png) no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(components/modals/urgency-sprite.png) no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(components/modals/tomato.svg) no-repeat;\n}\n.estimation-range li:hover {\n  background: url(components/modals/tomato_fill.svg) no-repeat;\n}\n.estimated {\n  background: url(components/modals/tomato_fill.svg) no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-remove\" class=\"modal-interface-trash\">&#xe912</button><button id=\"modal-confirm-edit\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Edit Task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\"" + (jade.attr("value", data.title, true, true)) + " class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\"" + (jade.attr("value", data.description, true, true)) + " class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\"" + (jade.attr("value", data.deadline.fullDate, true, true)) + " class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 40 */
+/* 83 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1913,7 +1956,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 41 */
+/* 84 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1973,18 +2016,18 @@
 	};
 
 /***/ },
-/* 42 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(43);
+	var _template = __webpack_require__(86);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(29);
+	var _controller = __webpack_require__(72);
 
-	var _filterController = __webpack_require__(44);
+	var _filterController = __webpack_require__(87);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2002,7 +2045,7 @@
 	            //EventBus.publish('');
 	        }
 	        if(e.target.id == 'select-all'){
-	          }
+	         }
 	        if(e.target.id == 'deselect-all'){
 	            //EventBus.publish('');
 	        }
@@ -2010,10 +2053,10 @@
 	};
 
 /***/ },
-/* 43 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2024,7 +2067,7 @@
 	}
 
 /***/ },
-/* 44 */
+/* 87 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2079,22 +2122,22 @@
 	};
 
 /***/ },
-/* 45 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(46);
+	var _template = __webpack_require__(89);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(47);
+	var _Controller = __webpack_require__(90);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(33);
+	var _Model = __webpack_require__(76);
 
-	var _View = __webpack_require__(48);
+	var _View = __webpack_require__(91);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2115,10 +2158,10 @@
 	};
 
 /***/ },
-/* 46 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2145,7 +2188,7 @@
 	}
 
 /***/ },
-/* 47 */
+/* 90 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2232,7 +2275,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 48 */
+/* 91 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2271,20 +2314,20 @@
 	};
 
 /***/ },
-/* 49 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(50);
+	var _template = __webpack_require__(93);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(51);
+	var _controller = __webpack_require__(94);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(52);
+	var _view = __webpack_require__(95);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2295,17 +2338,17 @@
 	};
 
 /***/ },
-/* 50 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(3);
+	var jade = __webpack_require__(46);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (data) {
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n\n.button-holder {\n    width: 27%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-between;\n    min-width: 375px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n\n\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n\n.button-holder {\n    width: 27%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-between;\n    min-width: 375px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n\n\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
 	for(var i =0;i<data.estimation;i++)
 	{
 	buf.push("<li class=\"phase\"></li>");
@@ -2314,7 +2357,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 94 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2385,7 +2428,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 52 */
+/* 95 */
 /***/ function(module, exports) {
 
 	'use strict';

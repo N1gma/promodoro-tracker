@@ -1,6 +1,4 @@
-.button-blue{
-    background-color: #59ABE3;
-}
+@import "../additional/mixins.less";
 
 .button-row-2{
     color: white;
@@ -8,48 +6,25 @@
     padding: 12px 0;
 }
 
+.makeButton(~"blue");
+.makeButton(~"green");
+.makeButton(~"red");
 
-.button-blue:hover,.button-blue:focus{
-    background-color: #368BC5;
-}
-
-.button-blue:active{
-    background-color: #82C7E0;
-}
-
-.button-green{
-    background-color: #1ABC9C;
-}
-
-.button-green:hover,.button-green:focus{
-    background-color: #16A085;
-}
-.button-green:active{
-    background-color: #62D3BD;
-}
-.button-red{
-    background-color: #f15a4a;
-}
-.button-red:hover,.button-red:focus{
-    background-color: #c94d47;
-}
-.button-red:active{
-    background-color: #f99595;
-}
 
 .ico-text-button{
     color: #8da5b8;
     position: relative;
-}
-.ico-text-button:hover{
-    color: white;
+    &:hover{
+        color: white;
+    }
+    &:active{
+        color: #59ABE3;
+    }
+
 }
 
 .interface-container-3 .ico-text-button:hover {
     color: white;
-}
-.ico-text-button:active,.ico-text-button:active{
-    color: #59ABE3;
 }
 
 .tip{
@@ -81,9 +56,11 @@
 .active-tab{
     color: white;
 }
+
 body,html{
     height: 100%;
 }
+
 body{
     background-color: #2a3f50;
 }

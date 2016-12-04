@@ -1,0 +1,132 @@
+@import "../additional/mixins.less";
+
+@media screen and @mobile-max {
+  .center-inputs .submit {
+    width: 100%;
+  }
+
+  body {
+    //settings
+    .button-holder {
+      width: 80%;
+      padding-bottom: 50px;
+      .button-row-2 {
+        width: 187px;
+        padding: 16px 0;
+        max-width: 48%;
+      }
+
+    }
+    .main-content {
+      width: auto;
+      padding-left: 0;
+      min-width: 0;
+      .option {
+        width: 386px;
+        max-width: 90%;
+        margin-right: 0;
+      }
+    }
+    .main-head-title {
+      width: auto;
+      color: white;
+      margin-bottom: 0;
+      position: absolute;
+      top: 34px;
+      left: 36px;
+    }
+    .interface-container-2 {
+      top: -33px;
+    }
+    .categories-choose-wrap {
+      width: 77%;
+      max-width: none;
+      .categories-choose-list {
+        padding-left: 0;
+        li{
+          margin-bottom: 36px;
+        }
+      }
+
+      .label1,.label2,.label3,.label4,.label5{
+        left: -23px;
+      }
+    }
+    //tasklist
+    .task-info-title{
+      font-size: 1rem;
+      p{
+        font-size: 0.8rem;
+      }
+    }
+    .list-header {
+      padding-left: 15px;
+      margin-bottom: 3%;
+      margin-top: 4%;
+    }
+    .list-header-category-mark{
+      left: -7px;
+    }
+    .inner-2-head{
+      padding-top: 38px;
+      .interface-container{
+        margin-bottom: 35px;
+        font-size: 28px;
+        width: 59%;
+      }
+    }
+    //modal
+    .modal-window{
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 41px 9%;
+      overflow-y: auto;
+    }
+    .categories-choose-list {
+      padding-bottom: 8px;
+    }
+    .modal-input-title {
+      margin-bottom: 20px;
+      margin-top: 15px;
+    }
+    .modal-input-field {
+      padding-bottom: 11px;
+      margin-bottom: 25px;
+    }
+    .modal-interface{
+      padding: 6px 9%;
+      .modal-interface-confirm,.modal-interface-cancel,.modal-interface-trash{
+        font-size: 26px;
+      }
+    }
+    //timer
+    .timer-title{
+      position: static;
+      margin-top: 10px;
+    }
+    .phases{
+      width: 50%;
+      .phase {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+  }
+
+}
+
+@media screen and @tablet-max{
+  body{
+    .main-content {
+      width: 100%;
+      max-width: 1200px;
+      min-width: 0;
+    }
+    .interface-container{
+      font-size: 1.5rem;
+    }
+  }
+
+}

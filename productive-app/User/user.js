@@ -30,7 +30,7 @@ var User = {
         database.ref('users/' + account + path).set((function () {
             var newData = {
                 title: document.getElementById('title-input').value,
-                description: document.getElementById('title-input').value,
+                description: document.getElementById('description-input').value,
                 category: (function () {
                     var tag = document.getElementsByClassName('categories-choose-list')[0];
                     for (var i = 0; i < tag.children.length; i++) {

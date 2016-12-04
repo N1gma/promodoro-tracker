@@ -1,0 +1,82 @@
+@import "./variables";
+
+
+.addCategoriesView(@category){
+  .@{category}{
+    .category{
+      border-color:@@category;
+    }
+    .category,.border-category{
+      background-color: @@category;
+    }
+    .list-header{
+      color:@@category;
+    }
+    .list-header-category-mark{
+      @background-position: "@{category}-background-position";
+      background-position: @@background-position;
+    }
+  }
+}
+
+.addUrgencyView(@urgency){
+  .@{urgency}{
+    .urgency{
+      background-color: @@urgency;
+    }
+    .task-info-title{
+      color: @@urgency;
+    }
+  }
+}
+
+.addEstimationView(@estimation){
+  .@{estimation}{
+    .estimation-counter:before{
+      content: @@estimation;
+    }
+  }
+}
+
+
+.makeButton(@color){
+  .button-@{color}{
+    background-color: @@color;
+    &:hover{
+      @active:"@{color}-hover";
+      background-color: @@active;
+    }
+    &:active{
+      @active:"@{color}-active";
+      background-color: @@active;
+    }
+  }
+}
+
+.addNewFont(@font){
+  @font-face{
+    font-family: @font;
+    src: url("../../fonts/@{font}/@{font}.eot");
+    src: url("../../fonts/@{font}/@{font}.eot?#iefix")format("embedded-opentype"),
+    url("../../fonts/@{font}/@{font}.woff") format("woff"),
+    url("../../fonts/@{font}/@{font}.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+  }
+}
+
+.makeLabelsView(@category){
+  @ctg:"@{category}-background-position-uckd";
+  background: url(../../../components/modals/ico-sprite.png) no-repeat @@ctg;
+}
+
+.makeLabelsView-ckd(@category){
+  @ctg:"@{category}-background-position";
+  background: url(../../../components/modals/ico-sprite.png) no-repeat @@ctg;
+}
+
+.makeLabelsView-urgency(@category){
+  @ctg:"@{category}-background-position-urgency-uckd";
+  background: url(../../../components/modals/urgency-sprite.png) no-repeat @@ctg;
+}
+
