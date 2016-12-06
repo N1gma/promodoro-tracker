@@ -1553,6 +1553,7 @@
 	        controller.setEventListeners(el);
 	    });
 	    document.body.appendChild(el);
+	    $('.edit-task').tips('text');
 	};
 
 /***/ },

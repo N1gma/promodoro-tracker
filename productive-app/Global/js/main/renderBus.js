@@ -116,20 +116,15 @@ EventBus.subscribe('reports', function () {
 //----------------------------------
 EventBus.subscribe('taskList', function () {
     Router.clearContent(document.body);
-});
-EventBus.subscribe('taskList', function () {
+
     Router.renderHeaderDetailed()
-});
-EventBus.subscribe('taskList', function () {
+
     Router.renderTitleTaskList()
-});
-EventBus.subscribe('taskList', function () {
+
     Router.renderReportsDaily()
-});
-EventBus.subscribe('taskList', function () {
+
     Router.renderTitleTaskListGlobal()
-});
-EventBus.subscribe('taskList', function () {
+
     Router.renderReportsGlobal()
 });
 //----------------------------------
