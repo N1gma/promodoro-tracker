@@ -1,11 +1,14 @@
 @import "../additional/mixins.less";
 
 @media screen and @mobile-max {
-  .center-inputs .submit {
-    width: 100%;
-  }
-
   body {
+    //login
+    .center-inputs {
+      width: 316px;
+      .submit {
+        width: 100%;
+      }
+    }
     //settings
     .button-holder {
       width: 80%;
@@ -73,6 +76,15 @@
         margin-bottom: 35px;
         font-size: 28px;
         width: 59%;
+      }
+
+    }
+    .task-list-header{
+      img{
+        display: none;
+      }
+      .interface-container{
+        width: 100%;
       }
     }
     //modal

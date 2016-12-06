@@ -283,47 +283,47 @@ body {
 }
 @font-face {
   font-family: icomoon;
-  src: url(./../fonts/icomoon.woff);
+  src: url(./../[1]);
 }
 @font-face {
   font-family: HelveticaLight;
-  src: url(./../fonts/HelveticaLight/HelveticaLight.eot);
-  src: url(./../fonts/HelveticaLight/HelveticaLight.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaLight/HelveticaLight.woff) format("woff"), url(./../fonts/HelveticaLight/HelveticaLight.ttf) format("truetype");
+  src: url(./../[1]);
+  src: url(./../[1]?#iefix) format("embedded-opentype"), url(./../[1]) format("woff"), url(./../[1]) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: HelveticaBold;
-  src: url(./../fonts/HelveticaBold/HelveticaBold.eot);
-  src: url(./../fonts/HelveticaBold/HelveticaBold.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaBold/HelveticaBold.woff) format("woff"), url(./../fonts/HelveticaBold/HelveticaBold.ttf) format("truetype");
+  src: url(./../[1]);
+  src: url(./../[1]?#iefix) format("embedded-opentype"), url(./../[1]) format("woff"), url(./../[1]) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: HelveticaRegular;
-  src: url(./../fonts/HelveticaRegular/HelveticaRegular.eot);
-  src: url(./../fonts/HelveticaRegular/HelveticaRegular.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaRegular/HelveticaRegular.woff) format("woff"), url(./../fonts/HelveticaRegular/HelveticaRegular.ttf) format("truetype");
+  src: url(./../[1]);
+  src: url(./../[1]?#iefix) format("embedded-opentype"), url(./../[1]) format("woff"), url(./../[1]) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: HelveticaMedium;
-  src: url(./../fonts/HelveticaMedium/HelveticaMedium.eot);
-  src: url(./../fonts/HelveticaMedium/HelveticaMedium.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaMedium/HelveticaMedium.woff) format("woff"), url(./../fonts/HelveticaMedium/HelveticaMedium.ttf) format("truetype");
+  src: url(./../[1]);
+  src: url(./../[1]?#iefix) format("embedded-opentype"), url(./../[1]) format("woff"), url(./../[1]) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: Roboto;
-  src: url(./../fonts/Roboto/Roboto.eot);
-  src: url(./../fonts/Roboto/Roboto.eot?#iefix) format("embedded-opentype"), url(./../fonts/Roboto/Roboto.woff) format("woff"), url(./../fonts/Roboto/Roboto.ttf) format("truetype");
+  src: url(./../[1]);
+  src: url(./../[1]?#iefix) format("embedded-opentype"), url(./../[1]) format("woff"), url(./../[1]) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: PTsans;
-  src: url(./../fonts/PTsans/PTsans.eot);
-  src: url(./../fonts/PTsans/PTsans.eot?#iefix) format("embedded-opentype"), url(./../fonts/PTsans/PTsans.woff) format("woff"), url(./../fonts/PTsans/PTsans.ttf) format("truetype");
+  src: url(./../[1]);
+  src: url(./../[1]?#iefix) format("embedded-opentype"), url(./../[1]) format("woff"), url(./../[1]) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -882,7 +882,10 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #fff !important;
 }
 @media screen and (max-width: 768px) {
-  .center-inputs .submit {
+  body .center-inputs {
+    width: 316px;
+  }
+  body .center-inputs .submit {
     width: 100%;
   }
   body .button-holder {
@@ -953,6 +956,12 @@ input:-webkit-autofill:active {
     margin-bottom: 35px;
     font-size: 28px;
     width: 59%;
+  }
+  body .task-list-header img {
+    display: none;
+  }
+  body .task-list-header .interface-container {
+    width: 100%;
   }
   body .modal-window {
     width: 100%;

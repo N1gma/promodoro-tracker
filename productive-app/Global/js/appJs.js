@@ -1396,7 +1396,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -1453,23 +1453,23 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderTitleTaskList = function () {
-	  var el = document.createElement('div');
-	  el.innerHTML = (0, _template2.default)();
-	  document.body.appendChild(el);
-	  _controller.controller.init(el, 'today-list');
-	  /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
-	   if(e.target.id == 'done'){
-	   //EventBus.publish('');
-	   }
-	   if(e.target.id == 'to_do'){
-	   //EventBus.publish('');
-	   }
-	   if(e.target.id == 'select-all'){
-	    }
-	   if(e.target.id == 'deselect-all'){
-	   //EventBus.publish('');
-	   }
-	   });*/
+	     var el = document.createElement('div');
+	     el.innerHTML = (0, _template2.default)();
+	     document.body.appendChild(el);
+	     _controller.controller.init(el, 'today-list');
+	     /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
+	      if(e.target.id == 'done'){
+	      //EventBus.publish('');
+	      }
+	      if(e.target.id == 'to_do'){
+	      //EventBus.publish('');
+	      }
+	      if(e.target.id == 'select-all'){
+	        }
+	      if(e.target.id == 'deselect-all'){
+	      //EventBus.publish('');
+	      }
+	      });*/
 	};
 
 /***/ },
@@ -2045,7 +2045,7 @@
 	            //EventBus.publish('');
 	        }
 	        if(e.target.id == 'select-all'){
-	         }
+	          }
 	        if(e.target.id == 'deselect-all'){
 	            //EventBus.publish('');
 	        }
