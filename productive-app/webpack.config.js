@@ -45,7 +45,7 @@ module.exports = {
             },
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
-                loader: 'file?name=./../[1]&regExp=Global/(.*)'
+                loader: 'file?publicPath=../../&name=[path][name].[ext]'
                 //loader: 'file?name=Global/fonts/[name].[ext]&root="."'
             },
             {

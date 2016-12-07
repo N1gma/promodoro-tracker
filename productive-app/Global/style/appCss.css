@@ -283,47 +283,47 @@ body {
 }
 @font-face {
   font-family: icomoon;
-  src: url(./../fonts/icomoon.woff);
+  src: url(../../Global/fonts/icomoon.woff);
 }
 @font-face {
   font-family: HelveticaLight;
-  src: url(./../fonts/HelveticaLight/HelveticaLight.eot);
-  src: url(./../fonts/HelveticaLight/HelveticaLight.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaLight/HelveticaLight.woff) format("woff"), url(./../fonts/HelveticaLight/HelveticaLight.ttf) format("truetype");
+  src: url(../../Global/fonts/HelveticaLight/HelveticaLight.eot);
+  src: url(../../Global/fonts/HelveticaLight/HelveticaLight.eot?#iefix) format("embedded-opentype"), url(../../Global/fonts/HelveticaLight/HelveticaLight.woff) format("woff"), url(../../Global/fonts/HelveticaLight/HelveticaLight.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: HelveticaBold;
-  src: url(./../fonts/HelveticaBold/HelveticaBold.eot);
-  src: url(./../fonts/HelveticaBold/HelveticaBold.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaBold/HelveticaBold.woff) format("woff"), url(./../fonts/HelveticaBold/HelveticaBold.ttf) format("truetype");
+  src: url(../../Global/fonts/HelveticaBold/HelveticaBold.eot);
+  src: url(../../Global/fonts/HelveticaBold/HelveticaBold.eot?#iefix) format("embedded-opentype"), url(../../Global/fonts/HelveticaBold/HelveticaBold.woff) format("woff"), url(../../Global/fonts/HelveticaBold/HelveticaBold.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: HelveticaRegular;
-  src: url(./../fonts/HelveticaRegular/HelveticaRegular.eot);
-  src: url(./../fonts/HelveticaRegular/HelveticaRegular.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaRegular/HelveticaRegular.woff) format("woff"), url(./../fonts/HelveticaRegular/HelveticaRegular.ttf) format("truetype");
+  src: url(../../Global/fonts/HelveticaRegular/HelveticaRegular.eot);
+  src: url(../../Global/fonts/HelveticaRegular/HelveticaRegular.eot?#iefix) format("embedded-opentype"), url(../../Global/fonts/HelveticaRegular/HelveticaRegular.woff) format("woff"), url(../../Global/fonts/HelveticaRegular/HelveticaRegular.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: HelveticaMedium;
-  src: url(./../fonts/HelveticaMedium/HelveticaMedium.eot);
-  src: url(./../fonts/HelveticaMedium/HelveticaMedium.eot?#iefix) format("embedded-opentype"), url(./../fonts/HelveticaMedium/HelveticaMedium.woff) format("woff"), url(./../fonts/HelveticaMedium/HelveticaMedium.ttf) format("truetype");
+  src: url(../../Global/fonts/HelveticaMedium/HelveticaMedium.eot);
+  src: url(../../Global/fonts/HelveticaMedium/HelveticaMedium.eot?#iefix) format("embedded-opentype"), url(../../Global/fonts/HelveticaMedium/HelveticaMedium.woff) format("woff"), url(../../Global/fonts/HelveticaMedium/HelveticaMedium.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: Roboto;
-  src: url(./../fonts/Roboto/Roboto.eot);
-  src: url(./../fonts/Roboto/Roboto.eot?#iefix) format("embedded-opentype"), url(./../fonts/Roboto/Roboto.woff) format("woff"), url(./../fonts/Roboto/Roboto.ttf) format("truetype");
+  src: url(../../Global/fonts/Roboto/Roboto.eot);
+  src: url(../../Global/fonts/Roboto/Roboto.eot?#iefix) format("embedded-opentype"), url(../../Global/fonts/Roboto/Roboto.woff) format("woff"), url(../../Global/fonts/Roboto/Roboto.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: PTsans;
-  src: url(./../fonts/PTsans/PTsans.eot);
-  src: url(./../fonts/PTsans/PTsans.eot?#iefix) format("embedded-opentype"), url(./../fonts/PTsans/PTsans.woff) format("woff"), url(./../fonts/PTsans/PTsans.ttf) format("truetype");
+  src: url(../../Global/fonts/PTsans/PTsans.eot);
+  src: url(../../Global/fonts/PTsans/PTsans.eot?#iefix) format("embedded-opentype"), url(../../Global/fonts/PTsans/PTsans.woff) format("woff"), url(../../Global/fonts/PTsans/PTsans.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
