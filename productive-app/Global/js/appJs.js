@@ -416,6 +416,9 @@
 	    el.innerHTML = (0, _markup2.default)();
 	    document.body.appendChild(el);
 	    _controller.Controller.initCntrl(el);
+	    $('#reports').tips('Go to Reports');
+	    $('#settings').tips('Go to Settings');
+	    $('#log_out').tips('Sign out', true);
 	};
 
 /***/ },
@@ -1383,6 +1386,11 @@
 	    el.innerHTML = (0, _markup2.default)();
 	    document.body.appendChild(el);
 	    _controller.Controller.initCntrl(el);
+	    $('#addTask').tips('Add new task');
+	    $('#trashOn').tips('Activate delete mode');
+	    $('#reports').tips('Go to Reports');
+	    $('#settings').tips('Go to Settings');
+	    $('#log_out').tips('Sign out', true);
 	};
 
 /***/ },
@@ -1396,7 +1404,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -1553,7 +1561,6 @@
 	        controller.setEventListeners(el);
 	    });
 	    document.body.appendChild(el);
-	    $('.edit-task').tips('text');
 	};
 
 /***/ },
@@ -2154,6 +2161,10 @@
 	        }
 	        controller.removeEventListeners(el);
 	        controller.setEventListeners(el);
+	        $('.urgency').tips('Go to Timer');
+	        $('.edit-task').tips('Edit task');
+	        $('.drop-switch').tips('Go to Global List');
+	        $('.sorted-lists-wrapper').accordeon();
 	    });
 	    document.body.appendChild(el);
 	};
@@ -2169,7 +2180,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (console, data, filterStruct, structure) {
-	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button class=\"drop-switch\"><span>Global list</span></button><ul class=\"global-list\">");
+	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.list-hidden{\n    display: none;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button linked_block=\"accord1\" class=\"drop-switch accordeon-head\"><span>Global list</span></button><ul id=\"accord1\" class=\"global-list\">");
 	console.log(structure)
 	console.log(data)
 	console.log(filterStruct)
@@ -2240,7 +2251,6 @@
 	            var context = this;
 	            el.addEventListener('click', this.listeners.editTask);
 	            el.addEventListener('click', this.listeners.trashDrop);
-	            el.addEventListener('click', this.listeners.showGlobalList);
 	            el.addEventListener('click', this.listeners.moveToDaily);
 	            EventBusLocal.subscribe('filter-tasks', function (type) {
 	                console.log('filter ' + type);
@@ -2304,14 +2314,7 @@
 	                }()
 	            });
 	        }
-	    },
-	    showGlobalList: function showGlobalList(e) {
-	        if (e.target.classList.contains('drop-switch')) {
-	            e.target.innerHTML = '<span>Global list</span>&#xe907';
-	            document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden');
-	        }
 	    }
-
 	};
 
 /***/ },

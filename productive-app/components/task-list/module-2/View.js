@@ -19,12 +19,5 @@ export var view = {
                 })()
             })
         }
-    },
-    showGlobalList: function (e) {
-        if (e.target.classList.contains('drop-switch')) {
-            e.target.innerHTML = '<span>Global list</span>&#xe907';
-            document.getElementsByClassName('global-list')[0].classList.toggle('list-hidden')
-        }
     }
-
 };

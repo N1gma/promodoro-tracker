@@ -31,7 +31,6 @@ export default class Controller {
         var context = this;
         el.addEventListener('click', this.listeners.editTask);
         el.addEventListener('click', this.listeners.trashDrop);
-        el.addEventListener('click', this.listeners.showGlobalList);
         el.addEventListener('click', this.listeners.moveToDaily);
         EventBusLocal.subscribe('filter-tasks', function (type) {
             console.log('filter ' + type)

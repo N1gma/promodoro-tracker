@@ -7,5 +7,10 @@ Router.renderHeaderDetailed = function(){
     el.innerHTML = template1();
     document.body.appendChild(el);
     Controller.initCntrl(el);
+    $('#addTask').tips('Add new task');
+    $('#trashOn').tips('Activate delete mode');
+    $('#reports').tips('Go to Reports');
+    $('#settings').tips('Go to Settings');
+    $('#log_out').tips('Sign out',true);
 };
 

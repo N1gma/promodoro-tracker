@@ -141,10 +141,10 @@ style.
 
 
 .sorted-lists-wrapper
-    button.drop-switch
+    button(linked_block='accord1').drop-switch.accordeon-head
         span Global list
         | 
-    ul.global-list
+    ul.global-list#accord1
       -console.log(structure)
       -console.log(data)
       -console.log(filterStruct)

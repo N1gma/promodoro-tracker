@@ -8,5 +8,8 @@ Router.renderHeader = function(){
     el.innerHTML = template1();
     document.body.appendChild(el);
     Controller.initCntrl(el);
+    $('#reports').tips('Go to Reports');
+    $('#settings').tips('Go to Settings');
+    $('#log_out').tips('Sign out',true);
 };
 

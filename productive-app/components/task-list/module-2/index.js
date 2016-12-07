@@ -17,6 +17,11 @@ Router.renderReportsGlobal = function () {
         }
         controller.removeEventListeners(el);
         controller.setEventListeners(el);
+        $('.urgency').tips('Go to Timer');
+        $('.edit-task').tips('Edit task');
+        $('.drop-switch').tips('Go to Global List');
+        $('.sorted-lists-wrapper').accordeon()
     });
     document.body.appendChild(el);
+
 };

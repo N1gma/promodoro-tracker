@@ -17,5 +17,4 @@ Router.renderReportsDaily = function () {
         controller.setEventListeners(el);
     });
     document.body.appendChild(el);
-    $('#add-task').tips('text');
 };
