@@ -17,11 +17,17 @@ Router.renderReportsGlobal = function () {
         }
         controller.removeEventListeners(el);
         controller.setEventListeners(el);
-        $('.urgency').tips('Go to Timer');
+        $('.urgency').tips('Go to Timer',true);
         $('.edit-task').tips('Edit task');
+        $('.drag-task').tips('Move to Daily');
         $('.drop-switch').tips('Go to Global List');
         $('.sorted-lists-wrapper').accordeon()
     });
     document.body.appendChild(el);
+    $('.urgency').tips('Go to Timer',true);
+    $('.edit-task').tips('Edit task');
+    $('.drag-task').tips('Move to Daily');
+    $('.drop-switch').tips('Go to Global List');
+    $('.sorted-lists-wrapper').accordeon()
 
 };

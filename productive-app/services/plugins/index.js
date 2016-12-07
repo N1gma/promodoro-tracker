@@ -73,26 +73,17 @@
         return this
     };
     $.fn.accordeon = function () {
-        var $accordHeads = $('.accordeon-head');
-        console.log($accordHeads);
-        console.log($(this));
-        $(this).click(function (e) {
-            if (e.target.classList.contains('accordeon-head')) {
-                var link = $(e.target).attr('linked_block');
-                var $link = $('#' + link);
-                if($link.is(':visible')){
-                    $link.slideUp("slow")
-                }else{
-                    $link.slideDown("slow");
-                }
+        var heads = $('.accordeon-head');
+        var listener = function (e) {
+            var link = ('#' + $(e.target).attr('linked_block'));
+            if ($(link).is(':visible')) {
+                $(link).slideUp("slow");
+            } else {
+                $(link).slideDown("slow");
             }
-        });
-        /*$.each($accordHeads,function(index,elem){
-         console.log(elem)
-         })*/
-        /*var targetId = $(this).attr('relativeId');
-         var target = $('#'+targetId);
-         return this;*/
+        };
+        $(this).off('click', listener);
+        $(this).on('click', '.accordeon-head', listener);
         return this
     };
 }(jQuery));
