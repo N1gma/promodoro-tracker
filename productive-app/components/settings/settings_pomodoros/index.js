@@ -1,5 +1,5 @@
 import template from './main.jade'
-import {initComponent1} from './component1'
+import {dataModule} from './dataModule'
 import View from './view.js'
 import Model from './model.js'
 import Controller from './controller.js'
@@ -12,7 +12,7 @@ Router.renderSettingsMain = function () {
     var view = new View(document.getElementsByClassName('timeline-container')[0]);
     var model = new Model();
     var controller = new Controller(model, view);
-    initComponent1();
+    dataModule();
     controller.start();
     function CustomEvent(event, params) {
         params = params || {bubbles: false, cancelable: false, detail: undefined};

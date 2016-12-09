@@ -1,4 +1,4 @@
-import {transformTime} from './component1'
+import {transformTime} from './dataModule'
 export default function View (renderZone){
     this.renderZone = renderZone;
     this.representation = {};

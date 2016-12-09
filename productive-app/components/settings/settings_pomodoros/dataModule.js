@@ -1,4 +1,4 @@
-export function initComponent1() { //data component - inputs
+export function dataModule() { //data component - inputs
     var component = {
         data: {},
         container: document.getElementsByClassName('main-content')[0],

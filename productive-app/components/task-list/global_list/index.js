@@ -1,6 +1,6 @@
 import template from './template1.jade'
 import Controller from './Controller'
-import {tasks} from '../module/Model'
+import {tasks} from '../daily_list/Model'
 import {view} from './View'
 
 
