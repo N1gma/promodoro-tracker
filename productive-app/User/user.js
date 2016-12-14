@@ -3,18 +3,23 @@ var User = {
     settings: {},
     trashData:[],
     reportsData: {},
+    dataSnapShot: {},
     getSettings: function (account, callback) {
         var data = database.ref('users/' + account + '/user_settings');
         data.on('value', function (snapshot) {
-            callback(snapshot.val());
+            User.settings = snapshot.val();
+            callback(User.settings);
         });
     },
-    dataSnapShot: {},
     /*setSettings: function (account, data) {
      database.ref('users/' + account + '/user_settings').set(data);
      },*/
     saveSettings: function () {
         database.ref('users/' + User.currentLogin + '/user_settings').set(User.settings);
+        localStorage.setItem('prodApp', JSON.stringify({
+            dataSnapShot: User.dataSnapShot,
+            settings:User.settings
+        }))
     },
     getData: function (account, data, callback) {
         var info = database.ref('users/' + account + '/' + data);
@@ -114,5 +119,9 @@ var User = {
         };
         console.log(newData);
         database.ref(path).update(newData);
+        localStorage.setItem('prodApp', JSON.stringify({
+            dataSnapShot: User.dataSnapShot,
+            settings:User.settings
+        }))
     }
 };

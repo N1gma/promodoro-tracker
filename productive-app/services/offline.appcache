@@ -1,0 +1,27 @@
+CACHE MANIFEST
+
+CACHE:
+../Global/img/urgency-sprite.png
+../Global/img/ico-sprite.png
+../Global/img/tomato.svg
+../Global/img/tomato_fill.svg
+../Global/img/Logo.svg
+../Global/img/Logo_1.svg
+../Global/img/bg.png
+../Global/fonts/HelveticaBold/HelveticaBold.ttf
+../Global/fonts/HelveticaBold/HelveticaBold.eot
+../Global/fonts/HelveticaBold/HelveticaBold.woff
+../Global/fonts/HelveticaLight/HelveticaLight.ttf
+../Global/fonts/HelveticaLight/HelveticaLight.eot
+../Global/fonts/HelveticaLight/HelveticaLight.woff
+../Global/fonts/PTsans/PTsans.ttf
+../Global/fonts/PTsans/PTsans.eot
+../Global/fonts/PTsans/PTsans.woff
+../Global/fonts/Roboto/Roboto.ttf
+../Global/fonts/Roboto/Roboto.eot
+../Global/fonts/Roboto/Roboto.woff
+../Global/fonts/icomoon.woff
+
+
+NETWORK:
+*
