@@ -1,8 +1,5 @@
 EventBus.subscribe('notification', function (msg) {
-<<<<<<< HEAD
-=======
-    console.log('sadasd')
->>>>>>> 93a67568c966f9f526f8cddb61ea9e856443af87
+
     if (!("Notification" in window)) {
         alert("This browser does not support system notifications");
     }

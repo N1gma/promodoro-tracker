@@ -21,12 +21,6 @@ CACHE:
 ../Global/fonts/Roboto/Roboto.eot
 ../Global/fonts/Roboto/Roboto.woff
 ../Global/fonts/icomoon.woff
-<<<<<<< HEAD
-
-=======
-#../Global/js/appJs.js
-#../services/firebase.js
->>>>>>> 93a67568c966f9f526f8cddb61ea9e856443af87
 
 NETWORK:
 *
