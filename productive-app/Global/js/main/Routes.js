@@ -54,9 +54,8 @@ class Routes {
         EventBus.publish(route.module)
     }
 
-
     bind() {
-        var context = this
+        var context = this;
         window.addEventListener("popstate", function (e) {
             console.log(e.state);
             EventBus.publish(context.routes[e.state.path].module);

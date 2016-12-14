@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (user) {
             User.currentLogin = user.email.slice(0, user.email.search('@'));
-            router.replaceState('pomodoras')
+            router.replaceState('pomodoras');
+            EventBus.publish('initData');
         }
     })
 });

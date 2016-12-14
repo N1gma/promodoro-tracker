@@ -18,7 +18,6 @@ export var Model = {
                 })
             });
         });
-
     }
 
 };

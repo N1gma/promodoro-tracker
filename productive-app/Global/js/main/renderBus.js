@@ -25,22 +25,14 @@ var EventBus = {
 
 EventBus.subscribe('login', function () {
     Router.clearContent(document.body)
-});
-EventBus.subscribe('login', function () {
     Router.renderLog()
 });
 
 //----------------------------------
 EventBus.subscribe('settings', function () {
-    Router.clearContent(document.body)
-});
-EventBus.subscribe('settings', function () {
-    Router.renderHeader()
-});
-EventBus.subscribe('settings', function () {
-    Router.renderTitle_settings_1()
-});
-EventBus.subscribe('settings', function () {
+    Router.clearContent(document.body);
+    Router.renderHeader();
+    Router.renderTitle_settings_1();
     Router.renderSettingsMain()
 });
 EventBus.subscribe('settings', function () {
@@ -69,15 +61,9 @@ EventBus.subscribe('settings', function () {
 //----------------------------------
 EventBus.subscribe('settings-2', function () {
     Router.clearContent(document.body);
-});
-EventBus.subscribe('settings-2', function () {
-    Router.renderHeader()
-});
-EventBus.subscribe('settings-2', function () {
-    Router.renderTitle_settings_1()
-});
-EventBus.subscribe('settings-2', function () {
-    Router.renderSettingsCategories()
+    Router.renderHeader();
+    Router.renderTitle_settings_1();
+    Router.renderSettingsCategories();
 });
 EventBus.subscribe('settings-2', function () {
     var list = [document.createElement('button'), document.createElement('button')];
@@ -96,46 +82,28 @@ EventBus.subscribe('settings-2', function () {
             }
         }
     ];
-    /*list[0].classList.add('button-row-2', 'button-blue');
-     list[0].innerHTML = 'Back';
-     list[1].classList.add('button-row-2', 'button-green');
-     list[1].innerHTML = 'Save';*/
-
     Router.renderButtons(list);
 });
 //----------------------------------
 EventBus.subscribe('reports', function () {
     Router.clearContent(document.body);
-});
-EventBus.subscribe('reports', function () {
-    Router.renderHeader()
-});
-EventBus.subscribe('reports', function () {
-    Router.renderReports()
+    Router.renderHeader();
+    Router.renderReports();
 });
 //----------------------------------
 EventBus.subscribe('taskList', function () {
     Router.clearContent(document.body);
-
-    Router.renderHeaderDetailed()
-
-    Router.renderTitleTaskList()
-
-    Router.renderReportsDaily()
-
-    Router.renderTitleTaskListGlobal()
-
-    Router.renderReportsGlobal()
+    Router.renderHeaderDetailed();
+    Router.renderTitleTaskList();
+    Router.renderReportsDaily();
+    Router.renderTitleTaskListGlobal();
+    Router.renderReportsGlobal();
 });
 //----------------------------------
 EventBus.subscribe('goToTimer', function () {
     Router.clearContent(document.body);
-});
-EventBus.subscribe('goToTimer', function () {
-    Router.renderHeader()
-});
-EventBus.subscribe('goToTimer', function (data) {
-    Router.renderTimer(data)
+    Router.renderHeader();
+    Router.renderTimer(data);
 });
 EventBus.subscribe('goToTimer', function () {
     var list = [document.createElement('button'), document.createElement('button')];
@@ -162,4 +130,19 @@ EventBus.subscribe('goToTimer', function () {
 //----------------------------------
 EventBus.subscribe('no-user', function () {
     EventBus.publish('login')
+});
+//----------------------------------
+EventBus.subscribe('initData',function(){
+    User.getData(User.currentLogin, 'tasks', function (value) {
+        console.log(value);
+        if(!value){
+            User.dataSnapShot = JSON.parse(localStorage.getItem('prodApp')).dataSnapShot;
+        }
+    });
+    User.getSettings(User.currentLogin, function (value) {
+        console.log(value);
+        if(!value){
+            User.dataSnapShot = JSON.parse(localStorage.getItem('prodApp')).settings;
+        }
+    })
 });
