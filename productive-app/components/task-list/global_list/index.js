@@ -23,7 +23,7 @@ Router.renderReportsGlobal = function () {
         $('.drop-switch').tips('Go to Global List');
         $('.sorted-lists-wrapper').accordeon()
     });
-    document.body.appendChild(el);
+    document.getElementById('app-body').appendChild(el);
     $('.urgency').tips('Go to Timer',true);
     $('.edit-task').tips('Edit task');
     $('.drag-task').tips('Move to Daily');

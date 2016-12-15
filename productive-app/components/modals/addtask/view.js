@@ -5,7 +5,7 @@ export var view = {
     },
     modalClose:function (e,el) {
         e.preventDefault();
-        document.body.removeChild(el);
+        document.getElementById('app-body').removeChild(el);
     },
     estimationRangeReview:function (e) {
         if (e.target.tagName.toUpperCase() == 'LI') {

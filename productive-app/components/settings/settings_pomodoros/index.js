@@ -8,7 +8,7 @@ import Controller from './controller.js'
 Router.renderSettingsMain = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
-    document.body.appendChild(el);
+    document.getElementById('app-body').appendChild(el);
     var view = new View(document.getElementsByClassName('timeline-container')[0]);
     var model = new Model();
     var controller = new Controller(model, view);

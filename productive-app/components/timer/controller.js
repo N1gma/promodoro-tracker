@@ -41,7 +41,7 @@ export default class Controller {
         el.innerHTML = template({
             data:this.cycle
         });
-        document.body.appendChild(el);
+        document.getElementById('app-body').appendChild(el);
         this.view.animateTimer(this.timer, this.cycle);
         //this.view.resumeAnimation(this.timer);
     };

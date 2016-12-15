@@ -1,9 +1,9 @@
 var Router = {
     clearContent: function (target) {
-        while (target.firstElementChild) {
-            target.removeChild(target.firstElementChild)
-        }
-        var styleList = document.getElementsByTagName('style');
+            while (target.firstElementChild) {
+                target.removeChild(target.firstElementChild)
+            }
+            //var styleList = document.getElementsByTagName('style');
     },
     renderButtons: function (list) {
         var fragment = document.createDocumentFragment();
@@ -20,6 +20,6 @@ var Router = {
                 list[i].node.addEventListener('click', list[i].listener);
             }
         }
-        document.body.appendChild(fragment);
+        document.getElementById('app-body').appendChild(fragment);
     }
 };

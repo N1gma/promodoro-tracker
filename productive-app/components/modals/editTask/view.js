@@ -14,7 +14,7 @@ export var view = {
     },
     modalClose:function (e,el) {
         e.preventDefault();
-        document.body.removeChild(el);
+        document.getElementById('app-body').removeChild(el);
     },
     modalConfirmEdit:function (e,el,target) {
         e.preventDefault();
@@ -23,7 +23,7 @@ export var view = {
         }
         var keyy = target.parentNode.getAttribute('key');
         User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
-        document.body.removeChild(el);
+        document.getElementById('app-body').removeChild(el);
     },
     modalRemove:function (e,el,target) {
         e.preventDefault();
@@ -32,7 +32,7 @@ export var view = {
         }
         var keyy = target.parentNode.getAttribute('key');
         User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
-        document.body.removeChild(el);
+        document.getElementById('app-body').removeChild(el);
     },
     estimationRangeReview:function (e) {
         if (e.target.tagName.toUpperCase() == 'LI') {

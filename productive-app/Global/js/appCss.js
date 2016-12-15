@@ -59,6 +59,8 @@
 
 	__webpack_require__(42);
 
+	__webpack_require__(44);
+
 /***/ },
 
 /***/ 13:
@@ -97,6 +99,13 @@
 /***/ },
 
 /***/ 42:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 44:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

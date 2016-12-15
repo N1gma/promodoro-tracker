@@ -11,11 +11,15 @@ var User = {
             callback(User.settings);
         });
     },
-    /*setSettings: function (account, data) {
-     database.ref('users/' + account + '/user_settings').set(data);
-     },*/
+
     saveSettings: function () {
-        database.ref('users/' + User.currentLogin + '/user_settings').set(User.settings);
+        database.ref('users/' + User.currentLogin + '/user_settings').set(User.settings)
+            .then(function(){
+                EventBus.publish('notify',{
+                    msg:'Settings saved',
+                    type:'info'
+                })
+            });
         localStorage.setItem('prodApp', JSON.stringify({
             dataSnapShot: User.dataSnapShot,
             settings:User.settings
@@ -29,7 +33,13 @@ var User = {
         });
     },
     setData:function (account, path, data) {
-        database.ref('users/' + account + path).set(data);
+        database.ref('users/' + account + path).set(data)
+            .then(function(){
+                EventBus.publish('notify',{
+                    msg:'Moved to daily list',
+                    type:'info'
+                })
+            });
     },
     setTaskData: function (account, path, node) {
         database.ref('users/' + account + path).set((function () {
@@ -74,10 +84,21 @@ var User = {
             };
             console.log(newData);
             return newData;
-        })());
+        })()).then(function(){
+            EventBus.publish('notify',{
+                msg:'Task edited',
+                type:'info'
+            })
+        })
     },
     deleteTaskData: function (account, path) {
-        database.ref('users/' + account + path).remove();
+        database.ref('users/' + account + path).remove()
+            .then(function(){
+                EventBus.publish('notify',{
+                    msg:'Task deleted',
+                    type:'warning'
+                })
+            })
     },
     updateTasksData: function () {
         var path = 'users/' + User.currentLogin + '/tasks';
@@ -118,7 +139,13 @@ var User = {
             })()
         };
         console.log(newData);
-        database.ref(path).update(newData);
+        database.ref(path).update(newData)
+            .then(function(){
+                EventBus.publish('notify',{
+                    msg:'Task added',
+                    type:'success'
+                })
+            })
         localStorage.setItem('prodApp', JSON.stringify({
             dataSnapShot: User.dataSnapShot,
             settings:User.settings

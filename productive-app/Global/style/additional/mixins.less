@@ -38,6 +38,20 @@
   }
 }
 
+.addNotificationView(@state){
+  .@{state}-pomodora-type{
+    background-color: @@state;
+    .notify-ico{
+      @lightState:"@{state}-light";
+      background-color: @@lightState;
+      &::before{
+        @contentState:"@{state}-ico";
+        content: @@contentState;
+      }
+    }
+  }
+}
+
 
 .makeButton(@color){
   .button-@{color}{

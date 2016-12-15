@@ -5,13 +5,8 @@ var config = {
     storageBucket: "productive-app.appspot.com",
     messagingSenderId: "587753540042"
 };
+
 firebase.initializeApp(config);
 var database = firebase.database();
 
-//firebase.auth().signOut();
-
-
-/*document.getElementById('log_out').addEventListener('click', function (e) {
- firebase.auth().signOut();
- })*/
 

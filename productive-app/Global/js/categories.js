@@ -47,11 +47,11 @@
 
 	"use strict";
 
-	__webpack_require__(96);
+	__webpack_require__(101);
 
 /***/ },
 
-/***/ 96:
+/***/ 101:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

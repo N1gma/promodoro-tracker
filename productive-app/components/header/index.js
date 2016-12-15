@@ -6,7 +6,7 @@ import {Controller} from './controller'
 Router.renderHeader = function(){
     var el = document.createElement('div');
     el.innerHTML = template1();
-    document.body.appendChild(el);
+    document.getElementById('app-body').appendChild(el);
     Controller.initCntrl(el);
     $('#reports').tips('Go to Reports');
     $('#settings').tips('Go to Settings');

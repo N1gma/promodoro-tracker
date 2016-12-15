@@ -16,5 +16,5 @@ Router.renderReportsDaily = function () {
         controller.removeEventListeners(el);
         controller.setEventListeners(el);
     });
-    document.body.appendChild(el);
+    document.getElementById('app-body').appendChild(el);
 };

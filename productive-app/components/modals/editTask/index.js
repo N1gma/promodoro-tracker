@@ -9,7 +9,7 @@ Router.showModalEdit = function (target) {
         el.innerHTML = template({
             data: User.dataSnapShot[key]
         });
-        document.body.appendChild(el);
+        document.getElementById('app-body').appendChild(el);
     });
     controller.init(target);
     $( ".datepicker" ).datepicker({

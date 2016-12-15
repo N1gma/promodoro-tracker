@@ -14,8 +14,7 @@ export default class Controller {
             'modal-confirm-add': function (e) {
                 e.preventDefault();
                 context.view.dropData(function () {
-                    //EventBusLocalTasks.publish('task-added')
-                    document.body.removeChild(context.el);
+                    document.getElementById('app-body').removeChild(context.el);
                 });
             }
 
@@ -23,8 +22,7 @@ export default class Controller {
         this.el.addEventListener('click', function (e) {
             if (listeners[e.target.id]) listeners[e.target.id](e)
         });
-        
-        
+
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
             this.view.estimationRangeReview(e)
         }.bind(context));

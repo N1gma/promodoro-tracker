@@ -9,7 +9,8 @@ module.exports = {
             './components/header/header-2/index.js', './components/title/titleTaskList/index.js',
             './components/task-list/daily_list/index.js', './components/modals/addtask/index.js',
             './components/modals/editTask/index.js', './components/title/titleTaskListGlobal/index.js',
-            './components/task-list/global_list/index.js', './components/timer/index.js'],
+            './components/task-list/global_list/index.js', './components/timer/index.js',
+            './components/notifications/index.js'],
         appCss:'./Global/style/main/commonEntry.js',
         addTask: './components/modals/addtask/style/styleEntry.js',
         categories: './components/settings/settings_categories/style/index.js'

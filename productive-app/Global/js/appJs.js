@@ -44,20 +44,21 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(44);
-	__webpack_require__(48);
-	__webpack_require__(51);
+	__webpack_require__(46);
+	__webpack_require__(50);
 	__webpack_require__(53);
-	__webpack_require__(59);
+	__webpack_require__(55);
 	__webpack_require__(61);
-	__webpack_require__(67);
-	__webpack_require__(70);
-	__webpack_require__(73);
-	__webpack_require__(77);
-	__webpack_require__(81);
-	__webpack_require__(85);
-	__webpack_require__(88);
-	module.exports = __webpack_require__(92);
+	__webpack_require__(63);
+	__webpack_require__(69);
+	__webpack_require__(72);
+	__webpack_require__(75);
+	__webpack_require__(79);
+	__webpack_require__(83);
+	__webpack_require__(87);
+	__webpack_require__(90);
+	__webpack_require__(94);
+	module.exports = __webpack_require__(98);
 
 
 /***/ },
@@ -104,12 +105,14 @@
 /* 41 */,
 /* 42 */,
 /* 43 */,
-/* 44 */
+/* 44 */,
+/* 45 */,
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(45);
+	var _template = __webpack_require__(47);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -118,7 +121,7 @@
 	Router.renderLog = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
 	        e.preventDefault();
 	        EventBus.publish('auth');
@@ -126,10 +129,10 @@
 	};
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -140,7 +143,7 @@
 	}
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -360,7 +363,7 @@
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(47).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(49).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -392,29 +395,29 @@
 
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _markup = __webpack_require__(49);
+	var _markup = __webpack_require__(51);
 
 	var _markup2 = _interopRequireDefault(_markup);
 
-	var _controller = __webpack_require__(50);
+	var _controller = __webpack_require__(52);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderHeader = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _markup2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    _controller.Controller.initCntrl(el);
 	    $('#reports').tips('Go to Reports');
 	    $('#settings').tips('Go to Settings');
@@ -422,10 +425,10 @@
 	};
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -436,7 +439,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -467,12 +470,12 @@
 	};
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _settings = __webpack_require__(52);
+	var _settings = __webpack_require__(54);
 
 	var _settings2 = _interopRequireDefault(_settings);
 
@@ -481,7 +484,7 @@
 	Router.renderTitle_settings_1 = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _settings2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    document.getElementById('pomodoros-settings').addEventListener('click', function (e) {
 	        router.moveTo('pomodoras');
 	    });
@@ -491,10 +494,10 @@
 	};
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -505,26 +508,26 @@
 	}
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _main = __webpack_require__(54);
+	var _main = __webpack_require__(56);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _dataModule = __webpack_require__(55);
+	var _dataModule = __webpack_require__(57);
 
-	var _view = __webpack_require__(56);
+	var _view = __webpack_require__(58);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(57);
+	var _model = __webpack_require__(59);
 
 	var _model2 = _interopRequireDefault(_model);
 
-	var _controller = __webpack_require__(58);
+	var _controller = __webpack_require__(60);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -533,7 +536,7 @@
 	Router.renderSettingsMain = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _main2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    var view = new _view2.default(document.getElementsByClassName('timeline-container')[0]);
 	    var model = new _model2.default();
 	    var controller = new _controller2.default(model, view);
@@ -552,10 +555,10 @@
 	};
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -566,7 +569,7 @@
 	}
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -661,7 +664,7 @@
 	}
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -671,7 +674,7 @@
 	});
 	exports.default = View;
 
-	var _dataModule = __webpack_require__(55);
+	var _dataModule = __webpack_require__(57);
 
 	function View(renderZone) {
 	    this.renderZone = renderZone;
@@ -756,7 +759,7 @@
 	};
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -791,7 +794,7 @@
 	};
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -828,12 +831,12 @@
 	};
 
 /***/ },
-/* 59 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _categories = __webpack_require__(60);
+	var _categories = __webpack_require__(62);
 
 	var _categories2 = _interopRequireDefault(_categories);
 
@@ -842,54 +845,54 @@
 	Router.renderSettingsCategories = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _categories2.default)();
-	    document.body.appendChild(el);
-	};
-
-/***/ },
-/* 60 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(46);
-
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-
-	buf.push("<style>.button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n.label2 {\n  background: url(Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n.label3 {\n  background: url(Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n.label4 {\n  background: url(Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n.label5 {\n  background: url(Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
-	}
-
-/***/ },
-/* 61 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _template = __webpack_require__(62);
-
-	var _template2 = _interopRequireDefault(_template);
-
-	var _Controller = __webpack_require__(63);
-
-	var _View = __webpack_require__(66);
-
-	var _Model = __webpack_require__(65);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	Router.renderReports = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.body.appendChild(el);
-	    var controller = new _Controller.Controller(_Model.Model, _View.View);
-	    controller.initController();
+	    document.getElementById('app-body').appendChild(el);
 	};
 
 /***/ },
 /* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+
+	buf.push("<style>.button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n.label2 {\n  background: url(Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n.label3 {\n  background: url(Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n.label4 {\n  background: url(Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n.label5 {\n  background: url(Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n</style><main class=\"categories-choose-wrap\"><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul></main>");;return buf.join("");
+	}
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _template = __webpack_require__(64);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	var _Controller = __webpack_require__(65);
+
+	var _View = __webpack_require__(68);
+
+	var _Model = __webpack_require__(67);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.renderReports = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _template2.default)();
+	    document.getElementById('app-body').appendChild(el);
+	    var controller = new _Controller.Controller(_Model.Model, _View.View);
+	    controller.initController();
+	};
+
+/***/ },
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -900,7 +903,7 @@
 	}
 
 /***/ },
-/* 63 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -912,7 +915,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _options = __webpack_require__(64);
+	var _options = __webpack_require__(66);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -955,7 +958,7 @@
 	}();
 
 /***/ },
-/* 64 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -968,7 +971,7 @@
 	exports.createRandom30xArray = createRandom30xArray;
 	exports.totalValueCount = totalValueCount;
 
-	var _Model = __webpack_require__(65);
+	var _Model = __webpack_require__(67);
 
 	var options = exports.options = {
 	    pieView: {
@@ -1308,7 +1311,7 @@
 	}
 
 /***/ },
-/* 65 */
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1341,7 +1344,7 @@
 	};
 
 /***/ },
-/* 66 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1351,7 +1354,7 @@
 	});
 	exports.View = undefined;
 
-	var _Model = __webpack_require__(65);
+	var _Model = __webpack_require__(67);
 
 	var View = exports.View = {
 	    renderChart: function renderChart(options) {
@@ -1368,23 +1371,23 @@
 	};
 
 /***/ },
-/* 67 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _markup = __webpack_require__(68);
+	var _markup = __webpack_require__(70);
 
 	var _markup2 = _interopRequireDefault(_markup);
 
-	var _controller = __webpack_require__(69);
+	var _controller = __webpack_require__(71);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderHeaderDetailed = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _markup2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    _controller.Controller.initCntrl(el);
 	    $('#addTask').tips('Add new task');
 	    $('#trashOn').tips('Activate delete mode');
@@ -1394,10 +1397,10 @@
 	};
 
 /***/ },
-/* 68 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1408,7 +1411,7 @@
 	}
 
 /***/ },
-/* 69 */
+/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1447,44 +1450,31 @@
 	};
 
 /***/ },
-/* 70 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(71);
+	var _template = __webpack_require__(73);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(72);
+	var _controller = __webpack_require__(74);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderTitleTaskList = function () {
-	     var el = document.createElement('div');
-	     el.innerHTML = (0, _template2.default)();
-	     document.body.appendChild(el);
-	     _controller.controller.init(el, 'today-list');
-	     /*document.getElementsByClassName('sub-title')[0].addEventListener('click', function (e) {
-	      if(e.target.id == 'done'){
-	      //EventBus.publish('');
-	      }
-	      if(e.target.id == 'to_do'){
-	      //EventBus.publish('');
-	      }
-	      if(e.target.id == 'select-all'){
-	        }
-	      if(e.target.id == 'deselect-all'){
-	      //EventBus.publish('');
-	      }
-	      });*/
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _template2.default)();
+	    document.getElementById('app-body').appendChild(el);
+	    _controller.controller.init(el, 'today-list');
 	};
 
 /***/ },
-/* 71 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1495,7 +1485,7 @@
 	}
 
 /***/ },
-/* 72 */
+/* 74 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1530,20 +1520,20 @@
 	};
 
 /***/ },
-/* 73 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(74);
+	var _template = __webpack_require__(76);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(75);
+	var _Controller = __webpack_require__(77);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(76);
+	var _Model = __webpack_require__(78);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1560,14 +1550,14 @@
 	        controller.removeEventListeners(el);
 	        controller.setEventListeners(el);
 	    });
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	};
 
 /***/ },
-/* 74 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1595,7 +1585,7 @@
 	}
 
 /***/ },
-/* 75 */
+/* 77 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1667,7 +1657,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 76 */
+/* 78 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1731,27 +1721,27 @@
 	};
 
 /***/ },
-/* 77 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modalAdd = __webpack_require__(78);
+	var _modalAdd = __webpack_require__(80);
 
 	var _modalAdd2 = _interopRequireDefault(_modalAdd);
 
-	var _controller = __webpack_require__(79);
+	var _controller = __webpack_require__(81);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(80);
+	var _view = __webpack_require__(82);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.showModalAdd = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _modalAdd2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    var controller = new _controller2.default(_view.view, el);
 	    controller.init();
 	    $(".datepicker").datepicker({
@@ -1760,10 +1750,10 @@
 	};
 
 /***/ },
-/* 78 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1774,7 +1764,7 @@
 	}
 
 /***/ },
-/* 79 */
+/* 81 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1807,8 +1797,7 @@
 	                'modal-confirm-add': function modalConfirmAdd(e) {
 	                    e.preventDefault();
 	                    context.view.dropData(function () {
-	                        //EventBusLocalTasks.publish('task-added')
-	                        document.body.removeChild(context.el);
+	                        document.getElementById('app-body').removeChild(context.el);
 	                    });
 	                }
 
@@ -1830,7 +1819,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 80 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1845,7 +1834,7 @@
 	    },
 	    modalClose: function modalClose(e, el) {
 	        e.preventDefault();
-	        document.body.removeChild(el);
+	        document.getElementById('app-body').removeChild(el);
 	    },
 	    estimationRangeReview: function estimationRangeReview(e) {
 	        if (e.target.tagName.toUpperCase() == 'LI') {
@@ -1863,20 +1852,20 @@
 	};
 
 /***/ },
-/* 81 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modal = __webpack_require__(82);
+	var _modal = __webpack_require__(84);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _controller = __webpack_require__(83);
+	var _controller = __webpack_require__(85);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(84);
+	var _view = __webpack_require__(86);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1887,7 +1876,7 @@
 	        el.innerHTML = (0, _modal2.default)({
 	            data: User.dataSnapShot[key]
 	        });
-	        document.body.appendChild(el);
+	        document.getElementById('app-body').appendChild(el);
 	    });
 	    controller.init(target);
 	    $(".datepicker").datepicker({
@@ -1896,10 +1885,10 @@
 	};
 
 /***/ },
-/* 82 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1910,7 +1899,7 @@
 	}
 
 /***/ },
-/* 83 */
+/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1964,7 +1953,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 84 */
+/* 86 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1988,7 +1977,7 @@
 	    },
 	    modalClose: function modalClose(e, el) {
 	        e.preventDefault();
-	        document.body.removeChild(el);
+	        document.getElementById('app-body').removeChild(el);
 	    },
 	    modalConfirmEdit: function modalConfirmEdit(e, el, target) {
 	        e.preventDefault();
@@ -1997,7 +1986,7 @@
 	        }
 	        var keyy = target.parentNode.getAttribute('key');
 	        User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
-	        document.body.removeChild(el);
+	        document.getElementById('app-body').removeChild(el);
 	    },
 	    modalRemove: function modalRemove(e, el, target) {
 	        e.preventDefault();
@@ -2006,7 +1995,7 @@
 	        }
 	        var keyy = target.parentNode.getAttribute('key');
 	        User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
-	        document.body.removeChild(el);
+	        document.getElementById('app-body').removeChild(el);
 	    },
 	    estimationRangeReview: function estimationRangeReview(e) {
 	        if (e.target.tagName.toUpperCase() == 'LI') {
@@ -2024,47 +2013,34 @@
 	};
 
 /***/ },
-/* 85 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(86);
+	var _template = __webpack_require__(88);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(72);
+	var _controller = __webpack_require__(74);
 
-	var _filterController = __webpack_require__(87);
+	var _filterController = __webpack_require__(89);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Router.renderTitleTaskListGlobal = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    _controller.controller.init(el, 'sorted-list');
 	    _filterController.controllerFilter.init(el);
-	    /*document.getElementsByClassName('sub-title')[1].addEventListener('click', function (e) {
-	        if(e.target.id == 'done'){
-	            //EventBus.publish('');
-	        }
-	        if(e.target.id == 'to_do'){
-	            //EventBus.publish('');
-	        }
-	        if(e.target.id == 'select-all'){
-	          }
-	        if(e.target.id == 'deselect-all'){
-	            //EventBus.publish('');
-	        }
-	    });*/
 	};
 
 /***/ },
-/* 86 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2075,7 +2051,7 @@
 	}
 
 /***/ },
-/* 87 */
+/* 89 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2130,22 +2106,22 @@
 	};
 
 /***/ },
-/* 88 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(89);
+	var _template = __webpack_require__(91);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(90);
+	var _Controller = __webpack_require__(92);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(76);
+	var _Model = __webpack_require__(78);
 
-	var _View = __webpack_require__(91);
+	var _View = __webpack_require__(93);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2167,7 +2143,7 @@
 	        $('.drop-switch').tips('Go to Global List');
 	        $('.sorted-lists-wrapper').accordeon();
 	    });
-	    document.body.appendChild(el);
+	    document.getElementById('app-body').appendChild(el);
 	    $('.urgency').tips('Go to Timer', true);
 	    $('.edit-task').tips('Edit task');
 	    $('.drag-task').tips('Move to Daily');
@@ -2176,10 +2152,10 @@
 	};
 
 /***/ },
-/* 89 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2206,7 +2182,7 @@
 	}
 
 /***/ },
-/* 90 */
+/* 92 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2292,7 +2268,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 91 */
+/* 93 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2324,20 +2300,20 @@
 	};
 
 /***/ },
-/* 92 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(93);
+	var _template = __webpack_require__(95);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(94);
+	var _controller = __webpack_require__(96);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(95);
+	var _view = __webpack_require__(97);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2348,10 +2324,10 @@
 	};
 
 /***/ },
-/* 93 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(46);
+	var jade = __webpack_require__(48);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2367,7 +2343,7 @@
 	}
 
 /***/ },
-/* 94 */
+/* 96 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2426,7 +2402,7 @@
 	            el.innerHTML = template({
 	                data: this.cycle
 	            });
-	            document.body.appendChild(el);
+	            document.getElementById('app-body').appendChild(el);
 	            this.view.animateTimer(this.timer, this.cycle);
 	            //this.view.resumeAnimation(this.timer);
 	        }
@@ -2438,7 +2414,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 95 */
+/* 97 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2475,6 +2451,87 @@
 	        console.log('resumed');
 	    }
 	};
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _template = __webpack_require__(99);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	var _controller = __webpack_require__(100);
+
+	var _controller2 = _interopRequireDefault(_controller);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	Router.addNotification = function (opts) {
+	    var el = document.createElement('li');
+	    el.classList.add(opts.type + '-pomodora-type');
+	    el.innerHTML = (0, _template2.default)(opts);
+	    var controller = new _controller2.default(el);
+	    controller.init();
+	    document.getElementById('notification-body').insertBefore(el, document.getElementById('notification-body').firstElementChild);
+	};
+
+/***/ },
+/* 99 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(48);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (msg) {
+	buf.push("<div class=\"notify-ico\"></div><p class=\"notify-msg\">" + (jade.escape((jade_interp = msg) == null ? '' : jade_interp)) + "</p><button class=\"notify-dismiss\"></button>");}.call(this,"msg" in locals_for_with?locals_for_with.msg:typeof msg!=="undefined"?msg:undefined));;return buf.join("");
+	}
+
+/***/ },
+/* 100 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Controller = function () {
+	    function Controller(el) {
+	        _classCallCheck(this, Controller);
+
+	        this.el = el;
+	    }
+
+	    _createClass(Controller, [{
+	        key: 'init',
+	        value: function init() {
+	            var _this = this;
+
+	            setTimeout(function () {
+	                if (_this.el && _this.el.parentNode) _this.el.parentNode.removeChild(_this.el);
+	            }, 5000);
+	            this.el.addEventListener('click', function (e) {
+	                if (e.target.classList.contains('notify-dismiss')) {
+	                    _this.el.parentNode.removeChild(_this.el);
+	                }
+	            });
+	        }
+	    }]);
+
+	    return Controller;
+	}();
+
+	exports.default = Controller;
 
 /***/ }
 /******/ ]);

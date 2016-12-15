@@ -1,19 +1,12 @@
-
 var EventBus = {
     topics: {},
     subscribe: function (topic, listener) {
-        // create the topic if not yet created
         if (!this.topics[topic]) this.topics[topic] = [];
-
-        // add the listener
         this.topics[topic].push(listener);
     },
 
     publish: function (topic, data) {
-        // return if the topic doesn't exist, or there are no listeners
         if (!this.topics[topic] || this.topics[topic].length < 1) return;
-
-        // send the event to all listeners
         this.topics[topic].forEach(function (listener) {
             listener(data || {});
         });
@@ -21,16 +14,15 @@ var EventBus = {
 };
 
 //---------------------------------
-//var EventBus = new EventBusClass();
 
 EventBus.subscribe('login', function () {
-    Router.clearContent(document.body)
+    Router.clearContent(document.getElementById('app-body'))
     Router.renderLog()
 });
 
 //----------------------------------
 EventBus.subscribe('settings', function () {
-    Router.clearContent(document.body);
+    Router.clearContent(document.getElementById('app-body'));
     Router.renderHeader();
     Router.renderTitle_settings_1();
     Router.renderSettingsMain()
@@ -60,7 +52,7 @@ EventBus.subscribe('settings', function () {
 
 //----------------------------------
 EventBus.subscribe('settings-2', function () {
-    Router.clearContent(document.body);
+    Router.clearContent(document.getElementById('app-body'));
     Router.renderHeader();
     Router.renderTitle_settings_1();
     Router.renderSettingsCategories();
@@ -86,13 +78,13 @@ EventBus.subscribe('settings-2', function () {
 });
 //----------------------------------
 EventBus.subscribe('reports', function () {
-    Router.clearContent(document.body);
+    Router.clearContent(document.getElementById('app-body'));
     Router.renderHeader();
     Router.renderReports();
 });
 //----------------------------------
 EventBus.subscribe('taskList', function () {
-    Router.clearContent(document.body);
+    Router.clearContent(document.getElementById('app-body'));
     Router.renderHeaderDetailed();
     Router.renderTitleTaskList();
     Router.renderReportsDaily();
@@ -101,7 +93,7 @@ EventBus.subscribe('taskList', function () {
 });
 //----------------------------------
 EventBus.subscribe('goToTimer', function () {
-    Router.clearContent(document.body);
+    Router.clearContent(document.getElementById('app-body'));
     Router.renderHeader();
     Router.renderTimer(data);
 });
@@ -131,6 +123,12 @@ EventBus.subscribe('goToTimer', function () {
 EventBus.subscribe('no-user', function () {
     EventBus.publish('login')
 });
+//----------------------------------
+
+EventBus.subscribe('notify', function (opts) {
+    Router.addNotification(opts);
+});
+
 //----------------------------------
 EventBus.subscribe('initData',function(){
     User.getData(User.currentLogin, 'tasks', function (value) {

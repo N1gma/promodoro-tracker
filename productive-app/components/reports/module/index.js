@@ -7,7 +7,7 @@ import {Model} from './Model.js'
 Router.renderReports = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
-    document.body.appendChild(el);
+    document.getElementById('app-body').appendChild(el);
     var controller = new Controller(Model, View);
     controller.initController();
 };
