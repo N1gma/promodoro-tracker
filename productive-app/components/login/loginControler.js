@@ -15,7 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (user) {
             User.currentLogin = user.email.slice(0, user.email.search('@'));
-            router.replaceState('pomodoras');
+            var locate = location.pathname.slice(1);
+            //var lcoateUrl
+            for(var key in router.routes){
+                if(locate == router.routes[key].url){
+                    locate = key;
+                }
+            }
+            if (!router.routes[locate] || locate == 'login' || locate == 'timer') {
+                history.replaceState(locate, locate, '/' + locate);
+                router.replaceState('pomodoras');
+            } else {
+                router.replaceState(locate);
+            }
             EventBus.publish('initData');
         }
     })

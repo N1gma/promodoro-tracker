@@ -26,7 +26,7 @@ class Routes {
             reports: {
                 module: 'reports',
                 name: 'Reports',
-                url: 'reports'
+                url: 'Reports'
             },
             timer: {
                 module: 'goToTimer',
