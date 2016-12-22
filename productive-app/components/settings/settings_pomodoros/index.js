@@ -1,11 +1,11 @@
-import template from './main.jade'
+import template from './template.jade'
 import {dataModule} from './dataModule'
 import View from './view.js'
 import Model from './model.js'
 import Controller from './controller.js'
 
 
-Router.renderSettingsMain = function () {
+Renderer.renderSettingsMain = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);

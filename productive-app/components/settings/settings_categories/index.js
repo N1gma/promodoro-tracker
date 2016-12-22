@@ -1,7 +1,7 @@
-import template from './categories.jade'
+import template from './template.jade'
 
 
-Router.renderSettingsCategories = function(){
+Renderer.renderSettingsCategories = function(){
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);

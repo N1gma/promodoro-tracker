@@ -16,16 +16,16 @@ var EventBus = {
 //---------------------------------
 
 EventBus.subscribe('login', function () {
-    Router.clearContent(document.getElementById('app-body'))
-    Router.renderLog()
+    Renderer.clearContent(document.getElementById('app-body'))
+    Renderer.renderLog()
 });
 
 //----------------------------------
 EventBus.subscribe('settings', function () {
-    Router.clearContent(document.getElementById('app-body'));
-    Router.renderHeader();
-    Router.renderTitle_settings_1();
-    Router.renderSettingsMain()
+    Renderer.clearContent(document.getElementById('app-body'));
+    Renderer.renderHeader();
+    Renderer.renderTitle_settings_1();
+    Renderer.renderSettingsMain()
 });
 EventBus.subscribe('settings', function () {
     var list = [document.createElement('button'), document.createElement('button')];
@@ -47,15 +47,15 @@ EventBus.subscribe('settings', function () {
             }
         }
     ];
-    Router.renderButtons(list)
+    Renderer.renderButtons(list)
 });
 
 //----------------------------------
 EventBus.subscribe('settings-2', function () {
-    Router.clearContent(document.getElementById('app-body'));
-    Router.renderHeader();
-    Router.renderTitle_settings_1();
-    Router.renderSettingsCategories();
+    Renderer.clearContent(document.getElementById('app-body'));
+    Renderer.renderHeader();
+    Renderer.renderTitle_settings_1();
+    Renderer.renderSettingsCategories();
 });
 EventBus.subscribe('settings-2', function () {
     var list = [document.createElement('button'), document.createElement('button')];
@@ -74,30 +74,28 @@ EventBus.subscribe('settings-2', function () {
             }
         }
     ];
-    Router.renderButtons(list);
+    Renderer.renderButtons(list);
 });
 //----------------------------------
 EventBus.subscribe('reports', function () {
-    Router.clearContent(document.getElementById('app-body'));
-    Router.renderHeader();
-    Router.renderReports();
+    Renderer.clearContent(document.getElementById('app-body'));
+    Renderer.renderHeader();
+    Renderer.renderReports();
 });
 //----------------------------------
 EventBus.subscribe('taskList', function () {
-    Router.clearContent(document.getElementById('app-body'));
-    Router.renderHeaderDetailed();
-    Router.renderTitleTaskList();
-    Router.renderReportsDaily();
-    Router.renderTitleTaskListGlobal();
-    Router.renderReportsGlobal();
+    Renderer.clearContent(document.getElementById('app-body'));
+    Renderer.renderHeaderDetailed();
+    Renderer.renderTitleTaskList();
+    Renderer.renderReportsDaily();
+    Renderer.renderTitleTaskListGlobal();
+    Renderer.renderReportsGlobal();
 });
 //----------------------------------
-EventBus.subscribe('goToTimer', function () {
-    Router.clearContent(document.getElementById('app-body'));
-    Router.renderHeader();
-    Router.renderTimer(data);
-});
-EventBus.subscribe('goToTimer', function () {
+EventBus.subscribe('goToTimer', function (data) {
+    Renderer.clearContent(document.getElementById('app-body'));
+    Renderer.renderHeader();
+    Renderer.renderTimer(data);
     var list = [document.createElement('button'), document.createElement('button')];
     list = [
         {
@@ -117,7 +115,7 @@ EventBus.subscribe('goToTimer', function () {
             }
         }
     ];
-    Router.renderButtons(list);
+    Renderer.renderButtons(list);
 });
 //----------------------------------
 EventBus.subscribe('no-user', function () {
@@ -126,7 +124,7 @@ EventBus.subscribe('no-user', function () {
 //----------------------------------
 
 EventBus.subscribe('notify', function (opts) {
-    Router.addNotification(opts);
+    Renderer.addNotification(opts);
 });
 
 //----------------------------------

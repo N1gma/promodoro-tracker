@@ -2,7 +2,7 @@ import template from './template.jade'
 import Controller from './controller'
 
 
-Router.addNotification = function (opts) {
+Renderer.addNotification = function (opts) {
     var el = document.createElement('li');
     el.classList.add(`${opts.type}-pomodora-type`);
     el.innerHTML = template(opts);

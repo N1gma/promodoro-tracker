@@ -6,7 +6,7 @@ export default class Controller {
         this.listeners = {
             editTask: function (e) {
                 if (e.target.classList.contains('edit-task')) {
-                    Router.showModalEdit(e.target);
+                    Renderer.showModalEdit(e.target);
                 }
             },
             trashDrop: function (e) {

@@ -1,5 +1,6 @@
 (function ($) {
     $.fn.tips = function (tip, offset) {
+        var target = $(this);
         if (offset) {
             var offsetTriangle = 85;
             var offset = 90;
@@ -40,7 +41,7 @@
             });
         }
         var $tooltip = $('.tipp');
-        $(this).mouseenter(function (e) {
+        var mouseEnterListener = function (e) {
             if (e.target != $tooltip && e.target != $('.triangle')) {
                 $tooltip.css({
                     top: e.pageY + 12 + 'px',
@@ -52,8 +53,9 @@
                 });
                 $('.tip-text').html(tip);
             }
-            $(this).mousemove(function (e) {
+            target.mousemove(function (e) {
                 if (e.target != $tooltip && e.target != $('.triangle')) {
+                    target.off('mouseenter');
                     $tooltip.css({
                         top: e.pageY + 30 + 'px',
                         left: e.pageX - 10 - offset + 'px'
@@ -63,9 +65,12 @@
                     });
                 }
             })
-        });
-        $(this).mouseleave(function (e) {
-            $(this).off('mousemove');
+
+        };
+        target.mouseenter(mouseEnterListener);
+        target.mouseleave(function (e) {
+            target.off('mousemove');
+            target.mouseenter(mouseEnterListener);
             $tooltip.css({
                 display: 'none'
             })

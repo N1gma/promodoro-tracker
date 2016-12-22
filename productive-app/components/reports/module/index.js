@@ -4,7 +4,7 @@ import {View} from './View'
 import {Model} from './Model.js'
 
 
-Router.renderReports = function () {
+Renderer.renderReports = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);

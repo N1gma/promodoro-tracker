@@ -7,7 +7,7 @@ export default class Controller {
     init(target) {
         var context = this;
         
-        var listeners = { // обьект проектирования поведения
+        var listeners = {
             'modal-close': function (e) {
                 context.view.modalClose(e, context.el);
             },
@@ -20,9 +20,8 @@ export default class Controller {
         };
         this.el.addEventListener('click', function (e) {
             if(listeners[e.target.id]) listeners[e.target.id](e)
-        })
-       
-        
+        });
+
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
             this.view.estimationRangeReview(e)
         }.bind(context));

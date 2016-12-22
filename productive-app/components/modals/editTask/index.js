@@ -1,8 +1,8 @@
-import template from './modal.jade'
+import template from './template.jade'
 import Controller from './controller'
 import {view} from './view'
 
-Router.showModalEdit = function (target) {
+Renderer.showModalEdit = function (target) {
     var el = document.createElement('div');
     var controller = new Controller(el,view);
     controller.view.syncChanges(target,function (key) {

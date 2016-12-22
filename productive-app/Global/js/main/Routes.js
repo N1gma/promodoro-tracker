@@ -43,7 +43,6 @@ class Routes {
             path: page
         }, route.name, route.url);
         EventBus.publish(route.module, data)
-
     };
 
     replaceState(page) {

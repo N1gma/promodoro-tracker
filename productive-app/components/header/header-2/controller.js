@@ -12,7 +12,7 @@ export var Controller = {
 
             },
             'addTask':function () {
-                Router.showModalAdd()
+                Renderer.showModalAdd()
 
             },
             'trashOn':function (e) {

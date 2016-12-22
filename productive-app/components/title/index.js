@@ -1,6 +1,6 @@
-import template from './settings-1.jade'
+import template from './template.jade'
 
-Router.renderTitle_settings_1 = function () {
+Renderer.renderTitle_settings_1 = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);

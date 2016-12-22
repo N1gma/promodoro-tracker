@@ -1,9 +1,9 @@
-import template from './template1.jade'
+import template from './template.jade'
 import Controller from './Controller'
 import {tasks} from './Model'
 
 
-Router.renderReportsDaily = function () {
+Renderer.renderReportsDaily = function () {
     var el = document.createElement('div');
     let controller = new Controller(tasks, EventBusLocal);
     controller.initController(function () {

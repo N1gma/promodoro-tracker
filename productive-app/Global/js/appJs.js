@@ -45,20 +45,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(46);
-	__webpack_require__(50);
-	__webpack_require__(53);
-	__webpack_require__(55);
-	__webpack_require__(61);
-	__webpack_require__(63);
-	__webpack_require__(69);
-	__webpack_require__(72);
-	__webpack_require__(75);
-	__webpack_require__(79);
-	__webpack_require__(83);
-	__webpack_require__(87);
-	__webpack_require__(90);
-	__webpack_require__(94);
-	module.exports = __webpack_require__(98);
+	__webpack_require__(47);
+	__webpack_require__(51);
+	__webpack_require__(54);
+	__webpack_require__(56);
+	__webpack_require__(62);
+	__webpack_require__(64);
+	__webpack_require__(70);
+	__webpack_require__(73);
+	__webpack_require__(76);
+	__webpack_require__(80);
+	__webpack_require__(84);
+	__webpack_require__(88);
+	__webpack_require__(91);
+	__webpack_require__(95);
+	module.exports = __webpack_require__(99);
 
 
 /***/ },
@@ -108,17 +109,33 @@
 /* 44 */,
 /* 45 */,
 /* 46 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Renderer.helpers = {
+	    transformTime: function transformTime(time) {
+	        var hours = '';
+	        var minutes = '';
+	        if (time / 60 >= 1) hours = parseInt(time / 60) + 'h ';
+	        if (parseInt(time % 60) != 0) minutes = parseInt(time % 60) + 'm';
+	        return hours + minutes;
+	    }
+	};
+
+/***/ },
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(47);
+	var _template = __webpack_require__(48);
 
 	var _template2 = _interopRequireDefault(_template);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderLog = function () {
+	Renderer.renderLog = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
@@ -129,10 +146,10 @@
 	};
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -143,7 +160,7 @@
 	}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -363,7 +380,7 @@
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(49).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(50).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -395,40 +412,37 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _markup = __webpack_require__(51);
+	var _template = __webpack_require__(52);
 
-	var _markup2 = _interopRequireDefault(_markup);
+	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(52);
+	var _controller = __webpack_require__(53);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderHeader = function () {
+	Renderer.renderHeader = function () {
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _markup2.default)();
+	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    _controller.Controller.initCntrl(el);
-	    $('#reports').tips('Go to Reports');
-	    $('#settings').tips('Go to Settings');
-	    $('#log_out').tips('Sign out', true);
 	};
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -439,7 +453,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -463,6 +477,9 @@
 	            }
 
 	        };
+	        $('#reports').tips('Go to Reports');
+	        $('#settings').tips('Go to Settings');
+	        $('#log_out').tips('Sign out', true);
 	        el.addEventListener('click', function (e) {
 	            if (listeners[e.target.id]) listeners[e.target.id](e);
 	        });
@@ -470,20 +487,20 @@
 	};
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _settings = __webpack_require__(54);
+	var _template = __webpack_require__(55);
 
-	var _settings2 = _interopRequireDefault(_settings);
+	var _template2 = _interopRequireDefault(_template);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderTitle_settings_1 = function () {
+	Renderer.renderTitle_settings_1 = function () {
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _settings2.default)();
+	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    document.getElementById('pomodoros-settings').addEventListener('click', function (e) {
 	        router.moveTo('pomodoras');
@@ -494,10 +511,10 @@
 	};
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -508,34 +525,34 @@
 	}
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _main = __webpack_require__(56);
+	var _template = __webpack_require__(57);
 
-	var _main2 = _interopRequireDefault(_main);
+	var _template2 = _interopRequireDefault(_template);
 
-	var _dataModule = __webpack_require__(57);
+	var _dataModule = __webpack_require__(58);
 
-	var _view = __webpack_require__(58);
+	var _view = __webpack_require__(59);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(59);
+	var _model = __webpack_require__(60);
 
 	var _model2 = _interopRequireDefault(_model);
 
-	var _controller = __webpack_require__(60);
+	var _controller = __webpack_require__(61);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderSettingsMain = function () {
+	Renderer.renderSettingsMain = function () {
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _main2.default)();
+	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    var view = new _view2.default(document.getElementsByClassName('timeline-container')[0]);
 	    var model = new _model2.default();
@@ -555,10 +572,10 @@
 	};
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -569,7 +586,7 @@
 	}
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -578,7 +595,6 @@
 	    value: true
 	});
 	exports.dataModule = dataModule;
-	exports.transformTime = transformTime;
 	function dataModule() {
 	    //data component - inputs
 	    var component = {
@@ -655,17 +671,9 @@
 	    })();
 	}
 
-	function transformTime(time) {
-	    var hours = '';
-	    var minutes = '';
-	    if (time / 60 >= 1) hours = parseInt(time / 60) + 'h ';
-	    if (parseInt(time % 60) != 0) minutes = parseInt(time % 60) + 'm';
-	    return hours + minutes;
-	}
-
 /***/ },
-/* 58 */
-/***/ function(module, exports, __webpack_require__) {
+/* 59 */
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -673,9 +681,6 @@
 	    value: true
 	});
 	exports.default = View;
-
-	var _dataModule = __webpack_require__(57);
-
 	function View(renderZone) {
 	    this.renderZone = renderZone;
 	    this.representation = {};
@@ -722,13 +727,13 @@
 	    for (var i = 0; i < labelsTotal; i++) {
 	        //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
 	        timePointer += 30;
-	        timeLabel.innerHTML = '<div><span></span>' + (0, _dataModule.transformTime)(timePointer) + '</div>';
+	        timeLabel.innerHTML = '<div><span></span>' + Renderer.helpers.transformTime(timePointer) + '</div>';
 	        timelabelsFragment.appendChild(timeLabel.cloneNode(true));
 	    }
 	    this.representation.bottomLabel.appendChild(timelabelsFragment);
 	    var fullCycle = timeLabel.cloneNode(true);
 	    timePointer = data['WORK TIME'] * data['WORK ITERATION'] + data['SHORT BREAK'] * (data['WORK ITERATION'] - 1) + data['LONG BREAK'];
-	    fullCycle.innerHTML = '<div>Full cycle: ' + (0, _dataModule.transformTime)(timePointer) + '<span></span></div>';
+	    fullCycle.innerHTML = '<div>Full cycle: ' + Renderer.helpers.transformTime(timePointer) + '<span></span></div>';
 	    fullCycle.style.width = timePointer / data.general * 100 + '%';
 	    this.representation.topLabel.style.height = '45px';
 	    this.representation.topLabel.appendChild(fullCycle);
@@ -759,7 +764,7 @@
 	};
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -794,7 +799,7 @@
 	};
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -831,28 +836,28 @@
 	};
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _categories = __webpack_require__(62);
+	var _template = __webpack_require__(63);
 
-	var _categories2 = _interopRequireDefault(_categories);
+	var _template2 = _interopRequireDefault(_template);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderSettingsCategories = function () {
+	Renderer.renderSettingsCategories = function () {
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _categories2.default)();
+	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	};
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -863,24 +868,24 @@
 	}
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(64);
+	var _template = __webpack_require__(65);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(65);
+	var _Controller = __webpack_require__(66);
 
-	var _View = __webpack_require__(68);
+	var _View = __webpack_require__(69);
 
-	var _Model = __webpack_require__(67);
+	var _Model = __webpack_require__(68);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderReports = function () {
+	Renderer.renderReports = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
@@ -889,10 +894,10 @@
 	};
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -903,7 +908,7 @@
 	}
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -915,7 +920,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _options = __webpack_require__(66);
+	var _options = __webpack_require__(67);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -958,7 +963,7 @@
 	}();
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -971,7 +976,7 @@
 	exports.createRandom30xArray = createRandom30xArray;
 	exports.totalValueCount = totalValueCount;
 
-	var _Model = __webpack_require__(67);
+	var _Model = __webpack_require__(68);
 
 	var options = exports.options = {
 	    pieView: {
@@ -1311,7 +1316,7 @@
 	}
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1344,7 +1349,7 @@
 	};
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1354,7 +1359,7 @@
 	});
 	exports.View = undefined;
 
-	var _Model = __webpack_require__(67);
+	var _Model = __webpack_require__(68);
 
 	var View = exports.View = {
 	    renderChart: function renderChart(options) {
@@ -1371,36 +1376,31 @@
 	};
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _markup = __webpack_require__(70);
+	var _template = __webpack_require__(71);
 
-	var _markup2 = _interopRequireDefault(_markup);
+	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(71);
+	var _controller = __webpack_require__(72);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderHeaderDetailed = function () {
+	Renderer.renderHeaderDetailed = function () {
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _markup2.default)();
+	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    _controller.Controller.initCntrl(el);
-	    $('#addTask').tips('Add new task');
-	    $('#trashOn').tips('Activate delete mode');
-	    $('#reports').tips('Go to Reports');
-	    $('#settings').tips('Go to Settings');
-	    $('#log_out').tips('Sign out', true);
 	};
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1411,7 +1411,7 @@
 	}
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1432,7 +1432,7 @@
 	                router.moveTo('reports');
 	            },
 	            'addTask': function addTask() {
-	                Router.showModalAdd();
+	                Renderer.showModalAdd();
 	            },
 	            'trashOn': function trashOn(e) {
 	                if (e.target.classList.contains('active')) {
@@ -1442,7 +1442,11 @@
 	                }
 	            }
 	        };
-
+	        $('#addTask').tips('Add new task');
+	        $('#trashOn').tips('Activate delete mode');
+	        $('#reports').tips('Go to Reports');
+	        $('#settings').tips('Go to Settings');
+	        $('#log_out').tips('Sign out', true);
 	        el.addEventListener('click', function (e) {
 	            if (listeners[e.target.id]) listeners[e.target.id](e);
 	        });
@@ -1450,20 +1454,20 @@
 	};
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(73);
+	var _template = __webpack_require__(74);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(74);
+	var _controller = __webpack_require__(75);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderTitleTaskList = function () {
+	Renderer.renderTitleTaskList = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
@@ -1471,21 +1475,21 @@
 	};
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 140px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n}\n\n.sub-title {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    margin-bottom: 76px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Daily Task List +</h2><div class=\"sub-title\"><div class=\"interface-container-2\"><button id=\"to_do\" class=\"ico-text-button\">To Do</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"done\" class=\"ico-text-button\">Done</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"delete-all\" class=\"ico-text-button\">Delete Checked</button></div></div></div>");;return buf.join("");
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 140px;\n    margin: 0 auto;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n}\n\n.sub-title {\n    padding: 0 6.8%;\n    font: 20px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 17px;\n    margin-bottom: 76px;\n    position: relative;\n    box-sizing: border-box;\n    overflow: hidden;\n}\n\n.interface-container-2 {\n    color: #8da5b8;\n    float: right;\n}\n.left-side{\n    float: left;\n}\n.hidden{\n    display: none;\n}\n\n.interface-container-2 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n}\n\n.ico-text-button-nocontainer {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 10px;\n    font-size: 18px;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Daily Task List<button id=\"addTask-title\" class=\"ico-text-button ico-text-button-nocontainer\"></button></h2><div class=\"sub-title\"><div class=\"interface-container-2\"><button id=\"to_do\" class=\"ico-text-button\">To Do</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"done\" class=\"ico-text-button\">Done</button></div><div class=\"interface-container-2 left-side hidden\"><button id=\"select-all\" class=\"ico-text-button\">Select All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"deselect-all\" class=\"ico-text-button\">Deselect All</button>" + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + " | " + (jade.escape((jade_interp = '') == null ? '' : jade_interp)) + "<button id=\"delete-all\" class=\"ico-text-button\">Delete Checked</button></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1508,6 +1512,9 @@
 	        },
 	        'deselect-all': function deselectAll(dependency) {
 	            EventBusLocal.publish('trash-uncheck-all', dependency);
+	        },
+	        'addTask-title': function addTaskTitle() {
+	            Renderer.showModalAdd();
 	        }
 
 	    },
@@ -1520,24 +1527,24 @@
 	};
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(76);
+	var _template = __webpack_require__(77);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(77);
+	var _Controller = __webpack_require__(78);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(78);
+	var _Model = __webpack_require__(79);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderReportsDaily = function () {
+	Renderer.renderReportsDaily = function () {
 	    var el = document.createElement('div');
 	    var controller = new _Controller2.default(_Model.tasks, EventBusLocal);
 	    controller.initController(function () {
@@ -1554,10 +1561,10 @@
 	};
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1585,7 +1592,7 @@
 	}
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1657,7 +1664,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1721,26 +1728,26 @@
 	};
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modalAdd = __webpack_require__(80);
+	var _template = __webpack_require__(81);
 
-	var _modalAdd2 = _interopRequireDefault(_modalAdd);
+	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(81);
+	var _controller = __webpack_require__(82);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(82);
+	var _view = __webpack_require__(83);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.showModalAdd = function () {
+	Renderer.showModalAdd = function () {
 	    var el = document.createElement('div');
-	    el.innerHTML = (0, _modalAdd2.default)();
+	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    var controller = new _controller2.default(_view.view, el);
 	    controller.init();
@@ -1750,10 +1757,10 @@
 	};
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1764,7 +1771,7 @@
 	}
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1790,7 +1797,7 @@
 	        value: function init() {
 	            var context = this;
 
-	            var listeners = { // обьект проектирования поведения
+	            var listeners = {
 	                'modal-close': function modalClose(e) {
 	                    context.view.modalClose(e, context.el);
 	                },
@@ -1819,7 +1826,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1852,28 +1859,28 @@
 	};
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modal = __webpack_require__(84);
+	var _template = __webpack_require__(85);
 
-	var _modal2 = _interopRequireDefault(_modal);
+	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(85);
+	var _controller = __webpack_require__(86);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(86);
+	var _view = __webpack_require__(87);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.showModalEdit = function (target) {
+	Renderer.showModalEdit = function (target) {
 	    var el = document.createElement('div');
 	    var controller = new _controller2.default(el, _view.view);
 	    controller.view.syncChanges(target, function (key) {
-	        el.innerHTML = (0, _modal2.default)({
+	        el.innerHTML = (0, _template2.default)({
 	            data: User.dataSnapShot[key]
 	        });
 	        document.getElementById('app-body').appendChild(el);
@@ -1885,10 +1892,10 @@
 	};
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1899,7 +1906,7 @@
 	}
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1925,7 +1932,7 @@
 	        value: function init(target) {
 	            var context = this;
 
-	            var listeners = { // обьект проектирования поведения
+	            var listeners = {
 	                'modal-close': function modalClose(e) {
 	                    context.view.modalClose(e, context.el);
 	                },
@@ -1953,7 +1960,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2013,22 +2020,22 @@
 	};
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(88);
+	var _template = __webpack_require__(89);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(74);
+	var _controller = __webpack_require__(75);
 
-	var _filterController = __webpack_require__(89);
+	var _filterController = __webpack_require__(90);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderTitleTaskListGlobal = function () {
+	Renderer.renderTitleTaskListGlobal = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
@@ -2037,10 +2044,10 @@
 	};
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2051,7 +2058,7 @@
 	}
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2106,26 +2113,26 @@
 	};
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(91);
+	var _template = __webpack_require__(92);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(92);
+	var _Controller = __webpack_require__(93);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(78);
+	var _Model = __webpack_require__(79);
 
-	var _View = __webpack_require__(93);
+	var _View = __webpack_require__(94);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderReportsGlobal = function () {
+	Renderer.renderReportsGlobal = function () {
 	    var el = document.createElement('div');
 	    var controller = new _Controller2.default(_Model.tasks, _View.view, EventBusLocal, _template2.default);
 	    controller.initController(function () {
@@ -2152,10 +2159,10 @@
 	};
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2182,7 +2189,7 @@
 	}
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2268,7 +2275,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2300,34 +2307,34 @@
 	};
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(95);
+	var _template = __webpack_require__(96);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(96);
+	var _controller = __webpack_require__(97);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(97);
+	var _view = __webpack_require__(98);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.renderTimer = function (data) {
+	Renderer.renderTimer = function (data) {
 	    var el = document.createElement('div');
 	    var controller = new _controller2.default(data, _view.view);
 	    controller.init(_template2.default, el);
 	};
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2343,7 +2350,7 @@
 	}
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2414,7 +2421,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2453,22 +2460,22 @@
 	};
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(99);
+	var _template = __webpack_require__(100);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(100);
+	var _controller = __webpack_require__(101);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Router.addNotification = function (opts) {
+	Renderer.addNotification = function (opts) {
 	    var el = document.createElement('li');
 	    el.classList.add(opts.type + '-pomodora-type');
 	    el.innerHTML = (0, _template2.default)(opts);
@@ -2478,10 +2485,10 @@
 	};
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(48);
+	var jade = __webpack_require__(49);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2492,7 +2499,7 @@
 	}
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports) {
 
 	'use strict';

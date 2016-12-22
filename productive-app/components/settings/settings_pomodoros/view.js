@@ -1,4 +1,3 @@
-import {transformTime} from './dataModule'
 export default function View (renderZone){
     this.renderZone = renderZone;
     this.representation = {};
@@ -45,13 +44,13 @@ View.prototype.renderComponent = function (data) {
     for (var i = 0; i < labelsTotal; i++) {
         //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
         timePointer += 30;
-        timeLabel.innerHTML = '<div><span></span>' + transformTime(timePointer) + '</div>';
+        timeLabel.innerHTML = '<div><span></span>' + Renderer.helpers.transformTime(timePointer) + '</div>';
         timelabelsFragment.appendChild(timeLabel.cloneNode(true));
     }
     this.representation.bottomLabel.appendChild(timelabelsFragment);
     var fullCycle = timeLabel.cloneNode(true);
     timePointer = (data['WORK TIME'] * data['WORK ITERATION']) + (data['SHORT BREAK'] * (data['WORK ITERATION'] - 1)) + data['LONG BREAK'];
-    fullCycle.innerHTML = '<div>Full cycle: ' + transformTime(timePointer) + '<span></span></div>';
+    fullCycle.innerHTML = '<div>Full cycle: ' + Renderer.helpers.transformTime(timePointer) + '<span></span></div>';
     fullCycle.style.width = (timePointer / data.general) * 100 + '%';
     this.representation.topLabel.style.height = '45px';
     this.representation.topLabel.appendChild(fullCycle);

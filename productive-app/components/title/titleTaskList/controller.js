@@ -13,6 +13,9 @@ export var controller = {
         },
         'deselect-all':function (dependency) {
             EventBusLocal.publish('trash-uncheck-all',dependency)
+        },
+        'addTask-title':function(){
+            Renderer.showModalAdd();
         }
 
 

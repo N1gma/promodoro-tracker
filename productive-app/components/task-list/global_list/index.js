@@ -1,11 +1,11 @@
-import template from './template1.jade'
+import template from './template.jade'
 import Controller from './Controller'
 import {tasks} from '../daily_list/Model'
 import {view} from './View'
 
 
 
-Router.renderReportsGlobal = function () {
+Renderer.renderReportsGlobal = function () {
     var el = document.createElement('div');
     let controller = new Controller(tasks, view, EventBusLocal, template);
     controller.initController(function () {

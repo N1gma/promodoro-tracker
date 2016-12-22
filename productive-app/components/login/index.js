@@ -1,6 +1,6 @@
 import template2 from  './template.jade'
 
-Router.renderLog = function(){
+Renderer.renderLog = function(){
     var el = document.createElement('div');
     el.innerHTML = template2();
     document.getElementById('app-body').appendChild(el);

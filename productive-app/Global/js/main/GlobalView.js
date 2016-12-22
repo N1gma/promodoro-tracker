@@ -1,9 +1,8 @@
-var Router = {
+var Renderer = {
     clearContent: function (target) {
-            while (target.firstElementChild) {
-                target.removeChild(target.firstElementChild)
-            }
-            //var styleList = document.getElementsByTagName('style');
+        while (target.firstElementChild) {
+            target.removeChild(target.firstElementChild)
+        }
     },
     renderButtons: function (list) {
         var fragment = document.createDocumentFragment();

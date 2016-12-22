@@ -1,9 +1,9 @@
-import template from './modalAdd.jade'
+import template from './template.jade'
 import Controller from './controller'
 import {view} from  './view'
 
 
-Router.showModalAdd = function () {
+Renderer.showModalAdd = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);
