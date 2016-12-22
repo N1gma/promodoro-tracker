@@ -14,8 +14,6 @@ module.exports = {
         appCss:'./Global/style/main/commonEntry.js',
         addTask: './components/modals/addtask/style/styleEntry.js',
         categories: './components/settings/settings_categories/style/index.js'
-        //login: './components/login/style/index.js'
-
     },
     output: {
         //path:__dirname + '/Global',

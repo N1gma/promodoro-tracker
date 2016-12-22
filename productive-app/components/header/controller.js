@@ -13,7 +13,10 @@ export var Controller = {
                 router.moveTo('reports')
             }
 
-        }
+        };
+        $('#reports').tips('Go to Reports');
+        $('#settings').tips('Go to Settings');
+        $('#log_out').tips('Sign out',true);
         el.addEventListener('click',function (e) {
             if (listeners[e.target.id]) listeners[e.target.id](e)
         })

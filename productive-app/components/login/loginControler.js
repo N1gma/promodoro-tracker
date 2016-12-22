@@ -5,9 +5,7 @@ function LoginController(view, eBus) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('dom loaded')
     var loginCtrl = new LoginController(new View(EventBus), EventBus);
-
     loginCtrl.eBus.subscribe('auth', loginCtrl.view.auth);
     loginCtrl.eBus.subscribe('logOut', loginCtrl.view.logOut);
     loginCtrl.eBus.publish('login');

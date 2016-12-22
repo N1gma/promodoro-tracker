@@ -7,7 +7,7 @@ export default class Controller {
     init() {
         var context = this;
 
-        var listeners = { // обьект проектирования поведения
+        var listeners = {
             'modal-close': function (e) {
                 context.view.modalClose(e, context.el);
             },

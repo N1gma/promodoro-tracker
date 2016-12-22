@@ -1,4 +1,3 @@
-
 function View(eBus) {
     this.eBus = eBus;
 }
@@ -13,6 +12,10 @@ View.prototype.auth = function (e) {
             for (var i = 0; i < msgs.length; i++) {
                 msgs[i].style.display = 'block';
             }
+            EventBus.publish('notify',{
+                msg:'Invalid login/password',
+                type:'fail'
+            })
     })
 };
 
