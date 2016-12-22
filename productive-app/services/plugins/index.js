@@ -55,7 +55,6 @@
             }
             target.mousemove(function (e) {
                 if (e.target != $tooltip && e.target != $('.triangle')) {
-                    target.off('mouseenter');
                     $tooltip.css({
                         top: e.pageY + 30 + 'px',
                         left: e.pageX - 10 - offset + 'px'
@@ -70,12 +69,11 @@
         target.mouseenter(mouseEnterListener);
         target.mouseleave(function (e) {
             target.off('mousemove');
-            target.mouseenter(mouseEnterListener);
             $tooltip.css({
                 display: 'none'
             })
         });
-        return this
+        return this;
     };
     $.fn.accordeon = function () {
         var heads = $('.accordeon-head');

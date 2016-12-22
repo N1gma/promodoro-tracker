@@ -26,7 +26,7 @@ class Routes {
             reports: {
                 module: 'reports',
                 name: 'Reports',
-                url: 'Reports'
+                url: 'report'
             },
             timer: {
                 module: 'goToTimer',
@@ -34,6 +34,8 @@ class Routes {
                 url: 'timer'
             }
         };
+        this.defaultState = 'tasklist';
+        this.currentState = 'tasklist';
 
     }
 
@@ -42,7 +44,8 @@ class Routes {
         history.pushState({
             path: page
         }, route.name, route.url);
-        EventBus.publish(route.module, data)
+        EventBus.publish(route.module, data);
+        router.currentState = page;
     };
 
     replaceState(page) {
@@ -50,7 +53,13 @@ class Routes {
         history.replaceState({
             path: page
         }, route.name, route.url);
-        EventBus.publish(route.module)
+        EventBus.publish(route.module);
+        return this;
+    }
+
+    resetState(){
+        history.replaceState('random string', 'random string', '/' + 'random string');
+        return this;
     }
 
     bind() {
