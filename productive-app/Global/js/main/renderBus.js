@@ -25,9 +25,7 @@ EventBus.subscribe('settings', function () {
     Renderer.clearContent(document.getElementById('app-body'));
     Renderer.renderHeader();
     Renderer.renderTitle_settings_1();
-    Renderer.renderSettingsMain()
-});
-EventBus.subscribe('settings', function () {
+    Renderer.renderSettingsMain();
     var list = [document.createElement('button'), document.createElement('button')];
     list = [
        {
@@ -56,8 +54,6 @@ EventBus.subscribe('settings-2', function () {
     Renderer.renderHeader();
     Renderer.renderTitle_settings_1();
     Renderer.renderSettingsCategories();
-});
-EventBus.subscribe('settings-2', function () {
     var list = [document.createElement('button'), document.createElement('button')];
     list = [
         {

@@ -17,12 +17,11 @@ export default class Controller {
             }.bind(this),
             goToTimer:function (e) {
                 if (e.target.classList.contains('urgency')) {
-                    router.moveTo('timer', e.target.parentNode.getAttribute('key'))
+                    router.moveTo('timer', e.target.parentNode.getAttribute('key'));
                     //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
                 }
             }
         };
-
     }
 
     initController(callback) {

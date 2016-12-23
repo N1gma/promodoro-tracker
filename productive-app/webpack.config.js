@@ -56,7 +56,6 @@ module.exports = {
 
     },
     plugins: [
-        new ExtractTextPlugin("./Global/style/[name].css"),
-
+        new ExtractTextPlugin("./Global/style/[name].css")
     ]
 };
