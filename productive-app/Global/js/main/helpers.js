@@ -6,6 +6,5 @@ Renderer.helpers = {
         if (parseInt(time % 60) != 0)  minutes = parseInt(time % 60) + 'm';
         return hours + minutes;
     }
-
 };
 

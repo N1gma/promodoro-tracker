@@ -1,3 +1,9 @@
-import Controller  from '../components/task-list/daily_list/Controller.js';
-import {tasks}  from '../components/task-list/daily_list/Model.js';
+// require all `project/test/src/components/**/index.js`
+const testsContext = require.context('../components/', true, /\.js$/);
 
+testsContext.keys().forEach(testsContext);
+
+// require all `project/src/components/**/index.js`
+const componentsContext = require.context('./specs/', true, /\.js$/);
+
+componentsContext.keys().forEach(componentsContext);

@@ -17,7 +17,6 @@ export default class Controller {
                     document.getElementById('app-body').removeChild(context.el);
                 });
             }
-
         };
         this.el.addEventListener('click', function (e) {
             if (listeners[e.target.id]) listeners[e.target.id](e)
@@ -26,6 +25,6 @@ export default class Controller {
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
             this.view.estimationRangeReview(e)
         }.bind(context));
-        console.log(this.el)
+        console.log(this.el);
     }
 }

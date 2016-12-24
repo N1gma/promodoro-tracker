@@ -1,11 +1,6 @@
-var assert = require('assert');
-
-
 describe('router', function () {
-
     it("'s constructor", function () {
         var router = new Routes();
-
         assert.equal(JSON.stringify(router.routes), JSON.stringify({
             login: {
                 module: 'no-user',
@@ -40,6 +35,7 @@ describe('router', function () {
         }));
         assert.equal(router.defaultState, 'tasklist');
     });
+
     describe('its proto', function () {
         var router;
         sinon.spy(EventBus, "publish");

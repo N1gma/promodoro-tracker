@@ -1,4 +1,7 @@
-module.exports = function(config) {
+var assert = require('assert');
+var babelMoreOptions = { presets: 'es2015' };
+
+module.exports = function (config) {
     config.set({
         basePath: '.',
         frameworks: ['mocha','chai','sinon'],
@@ -7,18 +10,16 @@ module.exports = function(config) {
             'User/user.js',
             'components/**/**/*.js',
             'components/**/*.js',
-            'services/notifications.js',
             'tests/specs/*.js'
         ],
-        exclude: [],
         preprocessors: {
-            'components/**/**/*.js' :['babel'],
-            'components/**/*.js':['babel'],
-            'tests/specs/*.js':['babel'],
+            'components/**/**/*.js': ['babel'],
+            'components/**/*.js': ['babel'],
+            'tests/specs/*.js': ['babel'],
             'Global/js/main/helpers.js': ['coverage'],
             'Global/js/main/Routes.js': ['coverage'],
-            'services/notifications.js': ['coverage'],
-            'components/task-list/daily_list/Model.js':['babel','coverage']
+            'components/task-list/daily_list/Model.js': ['coverage'],
+            'components/task-list/daily_list/Controller.js': ['coverage']
         },
         babelPreprocessor: {
             options: {
@@ -26,15 +27,30 @@ module.exports = function(config) {
                 "plugins": ["transform-es2015-modules-umd"]
             }
         },
-        reporters: ['progress', 'coverage'],
         coverageReporter: {
-            type : 'html',
-            dir : 'tests/coverage/'
+            instrumenters: {isparta: require('isparta')},
+            instrumenter: {
+                '**/**/*.js': 'isparta',
+                '**/*.js': 'isparta'
+            },
+            instrumenterOptions: {
+                isparta: { babel : babelMoreOptions }
+            },
+            reporters: [
+                {
+                    type: 'text-summary',
+                },
+                {
+                    type: 'html',
+                    dir: 'tests/coverage/'
+                }
+            ]
         },
+        reporters: ['progress', 'coverage'],
         port: 3003,
         colors: true,
         autoWatch: true,
         singleRun: false,
-        concurrency: Infinity
     });
 };
+

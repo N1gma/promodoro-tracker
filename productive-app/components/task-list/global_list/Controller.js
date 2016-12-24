@@ -33,8 +33,8 @@ export default class Controller {
         el.addEventListener('click', this.listeners.trashDrop);
         el.addEventListener('click', this.listeners.moveToDaily);
         EventBusLocal.subscribe('filter-tasks', function (type) {
-            console.log('filter ' + type)
-            console.log(this)
+            console.log('filter ' + type);
+            console.log(this);
             this.initController(function () {
                 if (context.model.data) {
                     el.innerHTML = context.template({
