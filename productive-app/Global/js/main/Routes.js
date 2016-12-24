@@ -42,10 +42,11 @@ class Routes {
     moveTo(page, data) {
         let route = this.routes[page];
         history.pushState({
-            path: page
+            path: page,
         }, route.name, route.url);
         EventBus.publish(route.module, data);
         router.currentState = page;
+        console.log(history)
     };
 
     replaceState(page) {
@@ -54,6 +55,7 @@ class Routes {
             path: page
         }, route.name, route.url);
         EventBus.publish(route.module);
+        console.log(history)
         return this;
     }
 
