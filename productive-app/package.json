@@ -1,5 +1,4 @@
 {
-  "name": "productive-app",
   "version": "1.0.0",
   "main": "server.js",
   "devDependencies": {
@@ -46,7 +45,8 @@
   },
   "scripts": {
     "test": "karma start karma.conf.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "webpack": "webpack webpack.config2.js"
   },
   "keywords": [],
   "author": "Oleksandr_Chornobai@epam.com",

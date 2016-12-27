@@ -1,15 +1,17 @@
 (function ($) {
     $.fn.tips = function (tip, offset) {
-        var target = $(this);
+        var $target = $(this);
+        var offsetTriangle, $tooltip, $triangle;
         if (offset) {
-            var offsetTriangle = 85;
-            var offset = 90;
+            offsetTriangle = 85;
+            offset = 90;
         } else {
-            var offsetTriangle = 0;
-            var offset = 0;
+            offsetTriangle = 0;
+            offset = 0;
         }
         if (!$('.tipp').length) {
-            var $tooltip = $('<div class="tipp"><span class="triangle"></span><p class="tip-text"></p></div>');
+            $tooltip = $('<div class="tipp"><span class="triangle"></span><p class="tip-text"></p></div>');
+            $triangle = $tooltip.find('.triangle');
             $('body').append($tooltip);
             $tooltip.css({
                 position: 'absolute',
@@ -25,7 +27,7 @@
                 font: '13px HelveticaBold, sans-serif',
                 fontWeight: 'bold'
             });
-            $('.triangle').css({
+            $triangle.css({
                 content: '',
                 display: 'block',
                 width: '0',
@@ -39,36 +41,39 @@
                 left: '8px',
                 top: '-5px'
             });
+        } else {
+            $tooltip = $('.tipp');
         }
-        var $tooltip = $('.tipp');
+        $triangle = $tooltip.find('.triangle');
+        var $tipText = $tooltip.find('.tip-text');
         var mouseEnterListener = function (e) {
-            if (e.target != $tooltip && e.target != $('.triangle')) {
+            if (e.target != $tooltip && e.target != $triangle) {
                 $tooltip.css({
                     top: e.pageY + 12 + 'px',
                     left: e.pageX - 10 - offset + 'px',
                     display: 'block'
                 });
-                $('.triangle').css({
+                $triangle.css({
                     left: 8 + offsetTriangle + 'px'
                 });
-                $('.tip-text').html(tip);
+                $tipText.html(tip);
             }
-            target.mousemove(function (e) {
-                if (e.target != $tooltip && e.target != $('.triangle')) {
+            $target.mousemove(function (e) {
+                if (e.target != $tooltip && e.target != $triangle) {
                     $tooltip.css({
                         top: e.pageY + 30 + 'px',
                         left: e.pageX - 10 - offset + 'px'
                     });
-                    $('.triangle').css({
+                    $triangle.css({
                         left: '8px' + offsetTriangle
                     });
                 }
             })
 
         };
-        target.mouseenter(mouseEnterListener);
-        target.mouseleave(function (e) {
-            target.off('mousemove');
+        $target.mouseenter(mouseEnterListener);
+        $target.mouseleave(function (e) {
+            $target.off('mousemove');
             $tooltip.css({
                 display: 'none'
             })
@@ -76,17 +81,18 @@
         return this;
     };
     $.fn.accordeon = function () {
-        var heads = $('.accordeon-head');
+        var $target = $(this);
+        var heads = $target.find('.accordeon-head');
         var listener = function (e) {
-            var link = ('#' + $(e.target).attr('linked_block'));
-            if ($(link).is(':visible')) {
-                $(link).slideUp("slow");
+            var $link = $('#' + $(e.target).attr('linked_block'));
+            if ($link.is(':visible')) {
+                $link.slideUp("slow");
             } else {
-                $(link).slideDown("slow");
+                $link.slideDown("slow");
             }
         };
-        $(this).off('click', listener);
-        $(this).on('click', '.accordeon-head', listener);
+        $target.off('click', listener);
+        $target.on('click', '.accordeon-head', listener);
         return this
     };
 }(jQuery));

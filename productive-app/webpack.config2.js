@@ -3,7 +3,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        appJs: ['./Global/js/main/helpers.js','./components/login/index.js', './components/header/index.js',
+        appJs: [
+            './services/notification.js','./services/firebase.js','./services/plugins/index.js',
+            './services/pingservice.js','./User/user.js','./Global/js/main/helpers.js',
+            './components/login/index.js', './components/header/index.js',
             './components/title/index.js', './components/settings/settings_pomodoros/index.js',
             './components/settings/settings_categories/index.js', './components/reports/module/index.js',
             './components/header/header-2/index.js', './components/title/titleTaskList/index.js',
@@ -16,7 +19,7 @@ module.exports = {
         categories: './components/settings/settings_categories/style/index.js'
     },
     output: {
-        //path:__dirname + '/Global',
+        //path:'./dist',
         filename: './Global/js/[name].js',
         chunkFilename: "./Global/js/[id].js"
     },
