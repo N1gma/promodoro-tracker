@@ -38,7 +38,7 @@ module.exports = function (config) {
             },
             reporters: [
                 {
-                    type: 'text-summary',
+                    type: 'text-summary'
                 },
                 {
                     type: 'html',
@@ -50,7 +50,7 @@ module.exports = function (config) {
         port: 3003,
         colors: true,
         autoWatch: true,
-        singleRun: false,
+        singleRun: false
     });
 };
 

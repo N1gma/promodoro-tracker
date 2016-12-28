@@ -1,5 +1,6 @@
-class Routes {
 
+
+class Routes {
     constructor() {
 
         this.routes = {
@@ -74,5 +75,7 @@ class Routes {
 
 }
 
-var router = new Routes();
-router.bind();
+(function(){
+    window.router = new Routes();
+    router.bind();
+}());

@@ -1,4 +1,4 @@
-function View(eBus) {
+export default function View(eBus) {
     this.eBus = eBus;
 }
 

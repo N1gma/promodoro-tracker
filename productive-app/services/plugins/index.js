@@ -95,5 +95,5 @@
         $target.on('click', '.accordeon-head', listener);
         return this
     };
-}(jQuery));
+}(window.$));
 

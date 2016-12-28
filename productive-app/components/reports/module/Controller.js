@@ -20,7 +20,6 @@ export class Controller {
                 context.view.renderChart(options.columnViewMonthly);
             }
         });
-
         context.model.patchData(function () {
             options.pieView.series[0].data = context.model.data.pieView;
             options.columnView.series = context.model.data.columnView;

@@ -1,3 +1,5 @@
+import View from './loginView'
+
 function LoginController(view, eBus) {
     this.view = view;
     this.eBus = eBus;
@@ -16,8 +18,10 @@ LoginController.prototype = {
                 User.currentLogin = user.email.slice(0, user.email.search('@'));
                 var locate = location.pathname.slice(1);
                 for(var key in router.routes){
-                    if(locate == router.routes[key].url){
-                        locate = key;
+                    if(router.routes.hasOwnProperty(key)){
+                        if(locate == router.routes[key].url){
+                            locate = key;
+                        }
                     }
                 }
                 if (!router.routes[locate] || locate == 'login' || locate == 'timer') {

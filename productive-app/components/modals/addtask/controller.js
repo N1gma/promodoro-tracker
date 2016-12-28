@@ -3,7 +3,6 @@ export default class Controller {
         this.view = view;
         this.el = el;
     }
-
     init() {
         var context = this;
 

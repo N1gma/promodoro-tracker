@@ -3,7 +3,12 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        appJs: ['./Global/js/main/helpers.js','./components/login/index.js', './components/header/index.js',
+        vendors:['./services/vendors.entry.js','./services/firebase.js'],
+        commonBundle:['./Global/js/main/GlobalView.js', './Global/js/main/helpers.js','./Global/js/main/renderBus.js',
+            './User/user.js','./Global/js/main/eBusLocalTasks.js','./Global/js/main/Routes.js',
+            './services/plugins/index.js','./services/notifications.js','./services/pingservice.js',
+            './services/login/loginControler.js'],
+        componentsBundle: ['./components/login/index.js', './components/header/index.js',
             './components/title/index.js', './components/settings/settings_pomodoros/index.js',
             './components/settings/settings_categories/index.js', './components/reports/module/index.js',
             './components/header/header-2/index.js', './components/title/titleTaskList/index.js',
@@ -11,14 +16,11 @@ module.exports = {
             './components/modals/editTask/index.js', './components/title/titleTaskListGlobal/index.js',
             './components/task-list/global_list/index.js', './components/timer/index.js',
             './components/notifications/index.js'],
-        appCss:'./Global/style/main/commonEntry.js',
-        addTask: './components/modals/addtask/style/styleEntry.js',
-        categories: './components/settings/settings_categories/style/index.js'
+        style:'./Global/style/main/stylesEntry.js'
     },
     output: {
         //path:__dirname + '/Global',
-        filename: './Global/js/[name].js',
-        chunkFilename: "./Global/js/[id].js"
+        filename: './dist/[name].js'
     },
     module: {
         loaders: [
@@ -58,6 +60,6 @@ module.exports = {
 
     },
     plugins: [
-        new ExtractTextPlugin("./Global/style/[name].css")
+        new ExtractTextPlugin("./dist/style.css")
     ]
 };

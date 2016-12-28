@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 var config = {
     apiKey: "AIzaSyAxCZC-gz6f6pCxlPli1c-Vigmj0KVARyg",
     authDomain: "productive-app.firebaseapp.com",
@@ -6,6 +8,9 @@ var config = {
     messagingSenderId: "587753540042"
 };
 
-firebase.initializeApp(config);
-database = firebase.database();
+(function(){
+    window.firebase = firebase.initializeApp(config);
+    window.database = firebase.database();
+}());
+
 
