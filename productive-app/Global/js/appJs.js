@@ -55,11 +55,11 @@
 	__webpack_require__(67);
 	__webpack_require__(70);
 	__webpack_require__(74);
-	__webpack_require__(80);
-	__webpack_require__(84);
-	__webpack_require__(87);
-	__webpack_require__(91);
-	module.exports = __webpack_require__(95);
+	__webpack_require__(79);
+	__webpack_require__(83);
+	__webpack_require__(86);
+	__webpack_require__(90);
+	module.exports = __webpack_require__(94);
 
 
 /***/ },
@@ -172,258 +172,7 @@
 /* 32 */,
 /* 33 */,
 /* 34 */,
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		var blob = new Blob([css], { type: "text/css" });
-
-		var oldSrc = linkElement.href;
-
-		linkElement.href = URL.createObjectURL(blob);
-
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
+/* 35 */,
 /* 36 */,
 /* 37 */,
 /* 38 */,
@@ -2070,10 +1819,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	Renderer.showModalAdd = function () {
-	    console.log(_style2.default);
 	    var el = document.createElement('div');
+	    var elCss = document.createElement('style');
+	    elCss.innerHTML = _style2.default['0'][1];
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
+	    el.appendChild(elCss);
 	    var controller = new _controller2.default(_view.view, el);
 	    controller.init();
 	    $(".datepicker").datepicker({
@@ -2092,7 +1843,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(Global/img/ico-sprite.png) no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(Global/img/ico-sprite.png) no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(Global/img/ico-sprite.png) no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(Global/img/ico-sprite.png) no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(Global/img/ico-sprite.png) no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(Global/img/ico-sprite.png) no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(Global/img/urgency-sprite.png) no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(Global/img/urgency-sprite.png) no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(Global/img/urgency-sprite.png) no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(Global/img/urgency-sprite.png) no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(Global/img/urgency-sprite.png) no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(Global/img/tomato.svg) no-repeat;\n}\n.estimation-range li:hover {\n  background: url(Global/img/tomato_fill.svg) no-repeat;\n}\n.estimated {\n  background: url(Global/img/tomato_fill.svg) no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n</style><div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
+	buf.push("<div class=\"modal-wrap\"><form class=\"modal-window\"><div class=\"modal-interface\"><button id=\"modal-confirm-add\" class=\"modal-interface-confirm\">&#xe90f</button><button id=\"modal-close\" class=\"modal-interface-cancel\">&#xe910</button></div><h2 class=\"modal-window-head\">Add task</h2><label for=\"title-input\" class=\"modal-input-title\">TITLE</label><input id=\"title-input\" type=\"text\" placeholder=\"Add title here\" class=\"modal-input-field\"><label for=\"description-input\" class=\"modal-input-title\">DESCRIPTION</label><input id=\"description-input\" type=\"text\" placeholder=\"Add description here\" class=\"modal-input-field\"><h3 class=\"modal-input-title\">CATEGORY</h3><ul class=\"categories-choose-list\"><li><input id=\"work\" type=\"radio\" value=\"Work\" name=\"ctg1\"><label for=\"work\" class=\"text-label\">Work</label><label for=\"work\" class=\"label1\"></label></li><li><input id=\"education\" type=\"radio\" value=\"Education\" name=\"ctg1\"><label for=\"education\" class=\"text-label\">Education</label><label for=\"education\" class=\"label2\"></label></li><li><input id=\"hobby\" type=\"radio\" value=\"Hobby\" name=\"ctg1\"><label for=\"hobby\" class=\"text-label\">Hobby</label><label for=\"hobby\" class=\"label3\"></label></li><li><input id=\"sport\" type=\"radio\" value=\"Sport\" name=\"ctg1\"><label for=\"sport\" class=\"text-label\">Sport</label><label for=\"sport\" class=\"label4\"></label></li><li><input id=\"other\" type=\"radio\" value=\"Other\" name=\"ctg1\"><label for=\"other\" class=\"text-label\">Other</label><label for=\"other\" class=\"label5\"></label></li></ul><label for=\"deadline-input\" class=\"modal-input-title\">DEADLINE</label><input id=\"deadline-input\" type=\"text\" placeholder=\"Set date\" class=\"datepicker modal-input-field\"><h3 class=\"modal-input-title\">ESTIMATION</h3><ul class=\"estimation-range\"><li></li><li></li><li></li><li></li><li></li></ul><h3 class=\"modal-input-title\">PRIORITY</h3><ul class=\"categories-choose-list\"><li><input id=\"urgent\" type=\"radio\" value=\"Urgent\" name=\"ctg11\"><label for=\"urgent\" class=\"text-label\">Urgent</label><label for=\"urgent\" class=\"label11\"></label></li><li><input id=\"high\" type=\"radio\" value=\"High\" name=\"ctg11\"><label for=\"high\" class=\"text-label\">High</label><label for=\"high\" class=\"label22\"></label></li><li><input id=\"middle\" type=\"radio\" value=\"Middle\" name=\"ctg11\"><label for=\"middle\" class=\"text-label\">Middle</label><label for=\"middle\" class=\"label33\"></label></li><li><input id=\"low\" type=\"radio\" value=\"Low\" name=\"ctg11\"><label for=\"low\" class=\"text-label\">Low</label><label for=\"low\" class=\"label44\"></label></li></ul></form></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -2186,32 +1937,6 @@
 /* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(79);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(35)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./style.less", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./style.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
-
 	exports = module.exports = __webpack_require__(6)();
 	// imports
 
@@ -2223,20 +1948,20 @@
 
 
 /***/ },
-/* 80 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(81);
+	var _template = __webpack_require__(80);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(82);
+	var _controller = __webpack_require__(81);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(83);
+	var _view = __webpack_require__(82);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2256,7 +1981,7 @@
 	};
 
 /***/ },
-/* 81 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(43);
@@ -2270,7 +1995,7 @@
 	}
 
 /***/ },
-/* 82 */
+/* 81 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2324,7 +2049,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 83 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2384,18 +2109,18 @@
 	};
 
 /***/ },
-/* 84 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(85);
+	var _template = __webpack_require__(84);
 
 	var _template2 = _interopRequireDefault(_template);
 
 	var _controller = __webpack_require__(69);
 
-	var _filterController = __webpack_require__(86);
+	var _filterController = __webpack_require__(85);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2408,7 +2133,7 @@
 	};
 
 /***/ },
-/* 85 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(43);
@@ -2422,7 +2147,7 @@
 	}
 
 /***/ },
-/* 86 */
+/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2477,22 +2202,22 @@
 	};
 
 /***/ },
-/* 87 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(88);
+	var _template = __webpack_require__(87);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(89);
+	var _Controller = __webpack_require__(88);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
 	var _Model = __webpack_require__(73);
 
-	var _View = __webpack_require__(90);
+	var _View = __webpack_require__(89);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2523,7 +2248,7 @@
 	};
 
 /***/ },
-/* 88 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(43);
@@ -2553,7 +2278,7 @@
 	}
 
 /***/ },
-/* 89 */
+/* 88 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2639,7 +2364,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 90 */
+/* 89 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2671,20 +2396,20 @@
 	};
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(92);
+	var _template = __webpack_require__(91);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(93);
+	var _controller = __webpack_require__(92);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(94);
+	var _view = __webpack_require__(93);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2695,7 +2420,7 @@
 	};
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(43);
@@ -2714,7 +2439,7 @@
 	}
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2785,7 +2510,7 @@
 	exports.default = Controller;
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2824,16 +2549,16 @@
 	};
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(96);
+	var _template = __webpack_require__(95);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(97);
+	var _controller = __webpack_require__(96);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -2849,7 +2574,7 @@
 	};
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(43);
@@ -2863,7 +2588,7 @@
 	}
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports) {
 
 	'use strict';
