@@ -6,11 +6,11 @@ export var Controller = {
             },
             'settings': function (e) {
                 //EventBus.publish('settings')
-                router.moveTo('pomodoras')
+                app.router.moveTo('pomodoras');
             },
             'reports': function () {
                 //EventBus.publish('reports');
-                router.moveTo('reports')
+                app.router.moveTo('reports');
             }
 
         };
@@ -18,7 +18,9 @@ export var Controller = {
         $('#settings').tips('Go to Settings');
         $('#log_out').tips('Sign out',true);
         el.addEventListener('click',function (e) {
-            if (listeners[e.target.id]) listeners[e.target.id](e)
-        })
+            if (listeners[e.target.id]){
+                listeners[e.target.id](e);
+            }
+        });
     }
 };

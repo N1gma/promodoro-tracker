@@ -2,21 +2,24 @@ export default class Controller {
     constructor(source, view) {
         this.view = view;
         this.sourceKey = source;
-        this.cycle = {}
+        this.cycle = {};
         this.listeners= {
             'pause':function (type,target) {
-                controllerFilter.activateTab(target)
-                EventBusLocal.publish('filter-tasks', type)
+                controllerFilter.activateTab(target);
+                app.EventBusLocal.publish('filter-tasks', type);
             },
             'resume':function (type,target) {
-                controllerFilter.activateTab(target)
-                EventBusLocal.publish('filter-tasks', type)
+                controllerFilter.activateTab(target);
+                app.EventBusLocal.publish('filter-tasks', type);
             }
-        }
+        };
     }
 
 
     init(template, el) {
+        var User = window.app.User;
+        var EventBusLocal = window.app.EventBusLocal;
+
         var context = this;
         this.timer = {
             container: document.getElementsByClassName('graph-container')[0],
@@ -44,6 +47,6 @@ export default class Controller {
         document.getElementById('app-body').appendChild(el);
         this.view.animateTimer(this.timer, this.cycle);
         //this.view.resumeAnimation(this.timer);
-    };
+    }
 
 }

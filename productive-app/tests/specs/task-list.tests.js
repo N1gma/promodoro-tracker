@@ -2,6 +2,10 @@ import {tasks as model}  from './../../components/task-list/daily_list/Model.js'
 import Controller  from './../../components/task-list/daily_list/Controller.js';
 
 var assert = require('assert');
+
+var User = app.User;
+var EventBusLocal = app.EventBusLocal;
+
 var tasks = {
     "-KXalbMvKlpVVEw8qu9a": {
         "category": "other",

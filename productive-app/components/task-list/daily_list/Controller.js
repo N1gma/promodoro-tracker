@@ -6,18 +6,18 @@ export default class Controller {
         this.listeners = {
             editTask: function (e) {
                 if (e.target.classList.contains('edit-task')) {
-                    Renderer.showModalEdit(e.target);
+                    app.Renderer.showModalEdit(e.target);
                 }
             },
             trashDrop: function (e) {
                 this.eBusLocal.publish('trash-drop', {
                     e: e,
                     context: this
-                })
+                });
             }.bind(this),
             goToTimer:function (e) {
                 if (e.target.classList.contains('urgency')) {
-                    router.moveTo('timer', e.target.parentNode.getAttribute('key'));
+                    app.router.moveTo('timer', e.target.parentNode.getAttribute('key'));
                     //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
                 }
             }
@@ -25,7 +25,7 @@ export default class Controller {
     }
 
     initController(callback) {
-        EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
+        app.EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
         this.model.patchList(callback);
         //this.view.showList
     }

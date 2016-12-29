@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Global/js/main/renderBus.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Global/js/main/renderBus.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
+ */
+class CEventBus {
+    constructor() {
+        /**
+         * @memberOf CEventBus
+         */
+        this.topics = {};
+        /**
+         * @memberOf CEventBus
+         * @param {String} topic
+         * @param {function} listener
+         * @instance
+         */
+        this.subscribe = function (topic, listener) {
+            if (!this.topics[topic]) {
+                this.topics[topic] = [];
+            }
+            this.topics[topic].push(listener);
+        };
+        /**
+         * @memberOf CEventBus
+         * @param {String} topic
+         * @param [data]
+         * @instance
+         */
+        this.publish = function (topic, data) {
+            if (!this.topics[topic] || this.topics[topic].length &lt; 1){
+                return;
+            }
+            this.topics[topic].forEach(function (listener) {
+                listener(data || {});
+            });
+        };
+    }
+}
+
+//---------------------------------
+
+
+(function () {
+    window.app.EventBus = new CEventBus();
+    var EventBus = window.app.EventBus;
+    /*var Renderer = window.app.Renderer;
+     var User = window.app.User;
+     var app.EventBusLocal = window.app.app.EventBusLocal;*/
+
+    EventBus.subscribe('login', function () {
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderLog();
+    });
+
+//----------------------------------
+    EventBus.subscribe('settings', function () {
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderHeader();
+        Renderer.renderTitle_settings_1();
+        Renderer.renderSettingsMain();
+        var list = [document.createElement('button'), document.createElement('button')];
+        list = [
+            {
+                node: document.createElement('button'),
+                class: ['button-row-2', 'button-green'],
+                innerHtml: 'Save',
+                listener: function () {
+                    app.User.saveSettings();
+                }
+            },
+            {
+                node: document.createElement('button'),
+                class: ['button-row-2', 'button-blue'],
+                innerHtml: 'Next',
+                listener: function () {
+                    app.router.moveTo('tasklist');
+                }
+            }
+        ];
+        Renderer.renderButtons(list);
+    });
+
+//----------------------------------
+    EventBus.subscribe('settings-2', function () {
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderHeader();
+        Renderer.renderTitle_settings_1();
+        Renderer.renderSettingsCategories();
+        var list = [document.createElement('button'), document.createElement('button')];
+        list = [
+            {
+                node: document.createElement('button'),
+                class: ['button-row-2', 'button-blue'],
+                innerHtml: 'Back'
+
+            }, {
+                node: document.createElement('button'),
+                class: ['button-row-2', 'button-green'],
+                innerHtml: 'Save',
+                listener: function () {
+                    User.saveSettings();
+                }
+            }
+        ];
+        Renderer.renderButtons(list);
+    });
+//----------------------------------
+    EventBus.subscribe('reports', function () {
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderHeader();
+        Renderer.renderReports();
+    });
+//----------------------------------
+    EventBus.subscribe('taskList', function () {
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderHeaderDetailed();
+        Renderer.renderTitleTaskList();
+        Renderer.renderReportsDaily();
+        Renderer.renderTitleTaskListGlobal();
+        Renderer.renderReportsGlobal();
+    });
+//----------------------------------
+    EventBus.subscribe('goToTimer', function (data) {
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderHeader();
+        Renderer.renderTimer(data);
+        var list = [document.createElement('button'), document.createElement('button')];
+        list = [
+            {
+                node: document.createElement('button'),
+                class: ['button-row-2', 'button-red'],
+                innerHtml: 'Fail Pomodora',
+                listener: function () {
+                    app.EventBusLocal.publish('time-stopped');
+                }
+
+            }, {
+                node: document.createElement('button'),
+                class: ['button-row-2', 'button-green'],
+                innerHtml: 'Finish Pomodora',
+                listener: function () {
+                    app.EventBusLocal.publish('time-resumed');
+                }
+            }
+        ];
+        Renderer.renderButtons(list);
+    });
+//----------------------------------
+    EventBus.subscribe('no-user', function () {
+        app.EventBus.publish('login');
+    });
+//----------------------------------
+
+    EventBus.subscribe('notify', function (opts) {
+        app.Renderer.addNotification(opts);
+    });
+
+//----------------------------------
+    EventBus.subscribe('initData', function () {
+        var User = window.app.User;
+        User.getData(User.currentLogin, 'tasks', function (value) {
+            console.log(value);
+            if (!value) {
+                User.dataSnapShot = JSON.parse(localStorage.getItem('prodApp')).dataSnapShot;
+            }
+        });
+        User.getSettings(User.currentLogin, function (value) {
+            console.log(value);
+            if (!value) {
+                User.dataSnapShot = JSON.parse(localStorage.getItem('prodApp')).settings;
+            }
+        });
+    });
+
+}());
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Thu Dec 29 2016 19:54:02 GMT+0200 (FLE Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

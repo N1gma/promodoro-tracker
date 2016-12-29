@@ -6,15 +6,15 @@ export var view = {
         }
         timer.timeout = setInterval(function () {
             timer.count++;
-            console.log(timer.count)
-        }, 1000)
+            console.log(timer.count);
+        }, 1000);
     },
     pauseAnimation(timer) {
         for (var i = 0; i < timer.timerControlElements.length; i++) {
             timer.timerControlElements[i].style.animationPlayState = 'paused';
         }
         clearInterval(timer.timeout);
-        console.log('paused')
+        console.log('paused');
     },
     resumeAnimation (timer) {
         for (var i = 0; i < timer.timerControlElements.length; i++) {
@@ -22,8 +22,8 @@ export var view = {
         }
         timer.timeout = setInterval(function () {
             timer.count++;
-            console.log(timer.count)
+            console.log(timer.count);
         }, 1000);
-        console.log('resumed')
+        console.log('resumed');
     }
 };

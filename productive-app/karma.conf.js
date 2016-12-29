@@ -49,8 +49,8 @@ module.exports = function (config) {
         reporters: ['progress', 'coverage'],
         port: 3003,
         colors: true,
-        autoWatch: true,
-        singleRun: false
+        singleRun: true,
+        browsers: ['Chrome']
     });
 };
 

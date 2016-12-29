@@ -1,11 +1,16 @@
-import template from './template.jade'
-import {dataModule} from './dataModule'
-import View from './view.js'
-import Model from './model.js'
-import Controller from './controller.js'
+import template from './template.jade';
+import {dataModule} from './dataModule';
+import View from './view.js';
+import Model from './model.js';
+import Controller from './controller.js';
 
-
-Renderer.renderSettingsMain = function () {
+/**
+ * Method which render settings-pomodoros in main page block
+ *
+ * @memberOf app.Renderer
+ * @instance
+ */
+app.Renderer.renderSettingsMain = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);

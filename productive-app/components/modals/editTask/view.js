@@ -1,6 +1,8 @@
+var User = window.app.User;
+
 export var view = {
     syncChanges: function (target, callback) {
-        while (target.parentNode.classList.contains('task') == false) {
+        while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var key = target.parentNode.getAttribute('key');
@@ -18,7 +20,7 @@ export var view = {
     },
     modalConfirmEdit:function (e,el,target) {
         e.preventDefault();
-        while (target.parentNode.classList.contains('task') == false) {
+        while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var keyy = target.parentNode.getAttribute('key');
@@ -27,7 +29,7 @@ export var view = {
     },
     modalRemove:function (e,el,target) {
         e.preventDefault();
-        while (target.parentNode.classList.contains('task') == false) {
+        while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var keyy = target.parentNode.getAttribute('key');
@@ -35,12 +37,12 @@ export var view = {
         document.getElementById('app-body').removeChild(el);
     },
     estimationRangeReview:function (e) {
-        if (e.target.tagName.toUpperCase() == 'LI') {
+        if (e.target.tagName.toUpperCase() === 'LI') {
             var parent = e.currentTarget;
             for (var i = 0; i < parent.children.length; i++) {
                 parent.children[i].classList.remove('estimated');
             }
-            for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
+            for (var i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
                 parent.children[i].classList.add('estimated');
             }
             e.target.classList.add('estimated');

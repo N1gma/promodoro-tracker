@@ -9,7 +9,7 @@ export var view = {
             var key = target.parentNode.getAttribute('key');
             var currentDate = new Date();
             var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            User.setData(User.currentLogin, '/tasks/' + key + '/deadline', {
+            app.User.setData(app.User.currentLogin, '/tasks/' + key + '/deadline', {
                 day: currentDate.getDate(),
                 month: monthArray[parseInt(currentDate.getMonth(),10)],
                 year: currentDate.getFullYear(),
@@ -17,7 +17,7 @@ export var view = {
                     return monthArray[parseInt(currentDate.getMonth(),10)] + ' ' +
                         currentDate.getDate()+', '+currentDate.getFullYear();
                 })()
-            })
+            });
         }
     }
 };

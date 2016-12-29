@@ -26,7 +26,6 @@ View.prototype.clearComponent = function () {
             this.renderZone.children[i].removeChild(this.renderZone.children[i].firstChild);
         }
     }
-
     return this;
 };
 
@@ -44,13 +43,13 @@ View.prototype.renderComponent = function (data) {
     for (var i = 0; i < labelsTotal; i++) {
         //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
         timePointer += 30;
-        timeLabel.innerHTML = '<div><span></span>' + Renderer.helpers.transformTime(timePointer) + '</div>';
+        timeLabel.innerHTML = '<div><span></span>' + app.Renderer.helpers.transformTime(timePointer) + '</div>';
         timelabelsFragment.appendChild(timeLabel.cloneNode(true));
     }
     this.representation.bottomLabel.appendChild(timelabelsFragment);
     var fullCycle = timeLabel.cloneNode(true);
     timePointer = (data['WORK TIME'] * data['WORK ITERATION']) + (data['SHORT BREAK'] * (data['WORK ITERATION'] - 1)) + data['LONG BREAK'];
-    fullCycle.innerHTML = '<div>Full cycle: ' + Renderer.helpers.transformTime(timePointer) + '<span></span></div>';
+    fullCycle.innerHTML = '<div>Full cycle: ' + app.Renderer.helpers.transformTime(timePointer) + '<span></span></div>';
     fullCycle.style.width = (timePointer / data.general) * 100 + '%';
     this.representation.topLabel.style.height = '45px';
     this.representation.topLabel.appendChild(fullCycle);
@@ -62,14 +61,14 @@ View.prototype.renderComponent = function (data) {
             work.classList.add('work');
             work.style.width = data['WORK TIME'] / data.general * 100 + '%';
             mainFragment.appendChild(work);
-            if (i != data['WORK ITERATION'] - 1) {
+            if (i !== data['WORK ITERATION'] - 1) {
                 var breakk = document.createElement('div');
                 breakk.classList.add('breakk');
                 breakk.style.width = data['SHORT BREAK'] / data.general * 100 + '%';
                 mainFragment.appendChild(breakk);
             }
         }
-        if (j != 1) {
+        if (j !== 1) {
             var longbreakk = document.createElement('div');
             longbreakk.classList.add('longbreakk');
             longbreakk.style.width = data['LONG BREAK'] / data.general * 100 + '%';

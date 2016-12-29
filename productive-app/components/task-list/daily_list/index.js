@@ -1,11 +1,16 @@
-import template from './template.jade'
-import Controller from './Controller'
-import {tasks} from './Model'
+import template from './template.jade';
+import Controller from './Controller';
+import {tasks} from './Model';
 
-
-Renderer.renderReportsDaily = function () {
+/**
+ * Method which add daily task-list to page
+ *
+ * @memberOf app.Renderer
+ * @instance
+ */
+app.Renderer.renderReportsDaily = function () {
     var el = document.createElement('div');
-    let controller = new Controller(tasks, EventBusLocal);
+    let controller = new Controller(tasks, app.EventBusLocal);
     controller.initController(function () {
         if(controller.model.data){
             el.innerHTML = template({

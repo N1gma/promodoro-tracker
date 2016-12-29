@@ -1,8 +1,10 @@
-
-
+/**
+ * Router class
+ *
+ * @class
+ */
 class Routes {
     constructor() {
-
         this.routes = {
             login: {
                 module: 'no-user',
@@ -40,42 +42,65 @@ class Routes {
 
     }
 
+    /**
+     * Push history state and render another page state
+     *
+     * @memberOf Routes
+     * @param {String} page
+     * @param {Object} [data]
+     */
     moveTo(page, data) {
         let route = this.routes[page];
         history.pushState({
-            path: page,
+            path: page
         }, route.name, route.url);
-        EventBus.publish(route.module, data);
-        router.currentState = page;
-        console.log(history)
-    };
-
+        app.EventBus.publish(route.module, data);
+        this.currentState = page;
+        console.log(history);
+    }
+    /**
+     * Replace history state and render another page state
+     *
+     * @memberOf Routes
+     * @param {String} page
+     * @returns {Routes}
+     */
     replaceState(page) {
         let route = this.routes[page];
         history.replaceState({
             path: page
         }, route.name, route.url);
-        EventBus.publish(route.module);
-        console.log(history)
+        app.EventBus.publish(route.module);
+        console.log(history);
         return this;
     }
-
+    /**
+     * Replace null history state with approvable  state (so button back or forward wont trigger
+     * page reload)
+     *
+     * @memberOf Routes
+     * @returns {Routes}
+     */
     resetState(){
         history.replaceState('random string', 'random string', '/' + 'random string');
         return this;
     }
-
+    /**
+     * Add popstate event listener
+     *
+     * @memberOf Routes
+     */
     bind() {
         var context = this;
         window.addEventListener("popstate", function (e) {
             console.log(e.state);
-            EventBus.publish(context.routes[e.state.path].module);
+            app.EventBus.publish(context.routes[e.state.path].module);
         });
     }
 
 }
 
 (function(){
-    window.router = new Routes();
-    router.bind();
+    window.app.router = new Routes();
+    window.app.router.bind();
 }());

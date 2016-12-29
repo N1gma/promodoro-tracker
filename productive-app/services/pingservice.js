@@ -7,7 +7,7 @@ window.addEventListener("offline", function(e) {
     EventBus.publish('notify',{
         msg:'Gone offline',
         type:'fail'
-    })
+    });
 });
 
 window.addEventListener("online", function(e) {
@@ -19,5 +19,5 @@ window.addEventListener("online", function(e) {
     EventBus.publish('notify',{
         msg:'Gone online',
         type:'success'
-    })
+    });
 });

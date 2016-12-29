@@ -5,21 +5,21 @@ export var Controller = {
                 firebase.auth().signOut();
             },
             'settings': function (e) {
-                router.moveTo('pomodoras')
+                app.router.moveTo('pomodoras');
             },
             'reports': function () {
-                router.moveTo('reports')
+                app.router.moveTo('reports');
 
             },
             'addTask':function () {
-                Renderer.showModalAdd()
+                app.Renderer.showModalAdd();
 
             },
             'trashOn':function (e) {
                 if(e.target.classList.contains('active')){
-                    EventBusLocal.publish('trash-off', e.target)
+                    app.EventBusLocal.publish('trash-off', e.target);
                 }else{
-                    EventBusLocal.publish('trash-on', e.target)
+                    app.EventBusLocal.publish('trash-on', e.target);
                 }
             }
         };
@@ -29,7 +29,9 @@ export var Controller = {
         $('#settings').tips('Go to Settings');
         $('#log_out').tips('Sign out',true);
         el.addEventListener('click',function (e) {
-            if (listeners[e.target.id]) listeners[e.target.id](e)
-        })
+            if (listeners[e.target.id]){
+                listeners[e.target.id](e);
+            }
+        });
     }
 };

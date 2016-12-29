@@ -1,3 +1,4 @@
+var Renderer = app.Renderer;
 describe('helpers', function () {
     it("'transform ", function () {
         sinon.spy(Renderer.helpers,'transformTime');

@@ -5,6 +5,7 @@ export var Model = {
         columnViewMonthly: ''
     },
     patchData: function (callback) {
+        var User = window.app.User;
         User.getData(User.currentLogin, 'reports/pieView', function (value) {
             Model.data.pieView = value;
             console.log(Model.data.pieView);
@@ -15,7 +16,7 @@ export var Model = {
                     Model.data.columnViewMonthly = value;
                     console.log(Model.data.columnViewMonthly);
                     callback();
-                })
+                });
             });
         });
     }

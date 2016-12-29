@@ -86,13 +86,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderLog = function () {
+	/**
+	 * Method which render login page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderLog = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
 	        e.preventDefault();
-	        EventBus.publish('auth');
+	        app.EventBus.publish('auth');
 	    });
 	};
 
@@ -107,7 +113,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>body {\n    background: url(\"./Global/img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n\n</style><div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
+	buf.push("<style>body {\n    background: url(\"./Global/img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n</style><div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -382,11 +388,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderHeader = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.getElementById('app-body').appendChild(el);
-	    _controller.Controller.initCntrl(el);
+	/**
+	 * Method which append default header to page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderHeader = function () {
+	  var el = document.createElement('div');
+	  el.innerHTML = (0, _template2.default)();
+	  document.getElementById('app-body').appendChild(el);
+	  _controller.Controller.initCntrl(el);
 	};
 
 /***/ },
@@ -420,11 +432,11 @@
 	            },
 	            'settings': function settings(e) {
 	                //EventBus.publish('settings')
-	                router.moveTo('pomodoras');
+	                app.router.moveTo('pomodoras');
 	            },
 	            'reports': function reports() {
 	                //EventBus.publish('reports');
-	                router.moveTo('reports');
+	                app.router.moveTo('reports');
 	            }
 
 	        };
@@ -432,7 +444,9 @@
 	        $('#settings').tips('Go to Settings');
 	        $('#log_out').tips('Sign out', true);
 	        el.addEventListener('click', function (e) {
-	            if (listeners[e.target.id]) listeners[e.target.id](e);
+	            if (listeners[e.target.id]) {
+	                listeners[e.target.id](e);
+	            }
 	        });
 	    }
 	};
@@ -449,15 +463,21 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderTitle_settings_1 = function () {
+	/**
+	 * Method which add default title-header
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderTitle_settings_1 = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    document.getElementById('pomodoros-settings').addEventListener('click', function (e) {
-	        router.moveTo('pomodoras');
+	        app.router.moveTo('pomodoras');
 	    });
 	    document.getElementById('categories-settings').addEventListener('click', function (e) {
-	        router.moveTo('categories');
+	        app.router.moveTo('categories');
 	    });
 	};
 
@@ -501,7 +521,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderSettingsMain = function () {
+	/**
+	 * Method which render settings-pomodoros in main page block
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderSettingsMain = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
@@ -559,7 +585,7 @@
 	                data[dataTitles[i].innerHTML] = parseInt(inputValues[i].value);
 	            }
 	            data.general = (data['WORK TIME'] * data['WORK ITERATION'] + data['SHORT BREAK'] * (data['WORK ITERATION'] - 1)) * 2 + data['LONG BREAK'];
-	            User.settings = data;
+	            app.User.settings = data;
 	            return data;
 	        },
 	        eventFires: new CustomEvent('input-changed', {
@@ -612,7 +638,7 @@
 	    };
 
 	    (function syncInputs() {
-	        User.getSettings(User.currentLogin, function (values) {
+	        app.User.getSettings(app.User.currentLogin, function (values) {
 	            var inputs = document.getElementsByClassName('select-field');
 	            var titles = document.getElementsByClassName('opt-title');
 	            for (var i = 0; i < inputs.length; i++) {
@@ -660,7 +686,6 @@
 	            this.renderZone.children[i].removeChild(this.renderZone.children[i].firstChild);
 	        }
 	    }
-
 	    return this;
 	};
 
@@ -678,13 +703,13 @@
 	    for (var i = 0; i < labelsTotal; i++) {
 	        //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
 	        timePointer += 30;
-	        timeLabel.innerHTML = '<div><span></span>' + Renderer.helpers.transformTime(timePointer) + '</div>';
+	        timeLabel.innerHTML = '<div><span></span>' + app.Renderer.helpers.transformTime(timePointer) + '</div>';
 	        timelabelsFragment.appendChild(timeLabel.cloneNode(true));
 	    }
 	    this.representation.bottomLabel.appendChild(timelabelsFragment);
 	    var fullCycle = timeLabel.cloneNode(true);
 	    timePointer = data['WORK TIME'] * data['WORK ITERATION'] + data['SHORT BREAK'] * (data['WORK ITERATION'] - 1) + data['LONG BREAK'];
-	    fullCycle.innerHTML = '<div>Full cycle: ' + Renderer.helpers.transformTime(timePointer) + '<span></span></div>';
+	    fullCycle.innerHTML = '<div>Full cycle: ' + app.Renderer.helpers.transformTime(timePointer) + '<span></span></div>';
 	    fullCycle.style.width = timePointer / data.general * 100 + '%';
 	    this.representation.topLabel.style.height = '45px';
 	    this.representation.topLabel.appendChild(fullCycle);
@@ -696,14 +721,14 @@
 	            work.classList.add('work');
 	            work.style.width = data['WORK TIME'] / data.general * 100 + '%';
 	            mainFragment.appendChild(work);
-	            if (i != data['WORK ITERATION'] - 1) {
+	            if (i !== data['WORK ITERATION'] - 1) {
 	                var breakk = document.createElement('div');
 	                breakk.classList.add('breakk');
 	                breakk.style.width = data['SHORT BREAK'] / data.general * 100 + '%';
 	                mainFragment.appendChild(breakk);
 	            }
 	        }
-	        if (j != 1) {
+	        if (j !== 1) {
 	            var longbreakk = document.createElement('div');
 	            longbreakk.classList.add('longbreakk');
 	            longbreakk.style.width = data['LONG BREAK'] / data.general * 100 + '%';
@@ -734,6 +759,7 @@
 	}
 
 	Model.prototype.setDefaultData = function () {
+	    var User = window.app.User;
 	    var context = this;
 	    User.getSettings(User.currentLogin, function (value) {
 	        context.data = value;
@@ -802,7 +828,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderSettingsCategories = function () {
+	/**
+	 * Method which render settings-categories in main page block
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderSettingsCategories = function () {
 	    var el = document.createElement('div');
 	    var elCss = document.createElement('style');
 	    elCss.innerHTML = _style2.default['0'][1];
@@ -899,7 +931,7 @@
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "Global/img/ico-sprite.png";
+	module.exports = __webpack_require__.p + "./Global/img/ico-sprite.png?sourceMap";
 
 /***/ },
 /* 34 */
@@ -919,12 +951,18 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderReports = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.getElementById('app-body').appendChild(el);
-	    var controller = new _Controller.Controller(_Model.Model, _View.View);
-	    controller.initController();
+	/**
+	 * Method which render report page graph
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderReports = function () {
+	  var el = document.createElement('div');
+	  el.innerHTML = (0, _template2.default)();
+	  document.getElementById('app-body').appendChild(el);
+	  var controller = new _Controller.Controller(_Model.Model, _View.View);
+	  controller.initController();
 	};
 
 /***/ },
@@ -972,13 +1010,13 @@
 	            var context = this;
 	            document.getElementsByClassName('interface-container-2')[0].addEventListener('click', function (e) {
 	                context.view.activateTab(e);
-	                if (e.target.id == 'day_tab') {
+	                if (e.target.id === 'day_tab') {
 	                    context.view.renderChart(_options.options.pieView);
 	                }
-	                if (e.target.id == 'week_tab') {
+	                if (e.target.id === 'week_tab') {
 	                    context.view.renderChart(_options.options.columnView);
 	                }
-	                if (e.target.id == 'month_tab') {
+	                if (e.target.id === 'month_tab') {
 	                    context.view.renderChart(_options.options.columnViewMonthly);
 	                }
 	            });
@@ -1364,6 +1402,7 @@
 	        columnViewMonthly: ''
 	    },
 	    patchData: function patchData(callback) {
+	        var User = window.app.User;
 	        User.getData(User.currentLogin, 'reports/pieView', function (value) {
 	            Model.data.pieView = value;
 	            console.log(Model.data.pieView);
@@ -1422,11 +1461,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderHeaderDetailed = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.getElementById('app-body').appendChild(el);
-	    _controller.Controller.initCntrl(el);
+	/**
+	 * Method which append task-list header to page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderHeaderDetailed = function () {
+	  var el = document.createElement('div');
+	  el.innerHTML = (0, _template2.default)();
+	  document.getElementById('app-body').appendChild(el);
+	  _controller.Controller.initCntrl(el);
 	};
 
 /***/ },
@@ -1459,19 +1504,19 @@
 	                firebase.auth().signOut();
 	            },
 	            'settings': function settings(e) {
-	                router.moveTo('pomodoras');
+	                app.router.moveTo('pomodoras');
 	            },
 	            'reports': function reports() {
-	                router.moveTo('reports');
+	                app.router.moveTo('reports');
 	            },
 	            'addTask': function addTask() {
-	                Renderer.showModalAdd();
+	                app.Renderer.showModalAdd();
 	            },
 	            'trashOn': function trashOn(e) {
 	                if (e.target.classList.contains('active')) {
-	                    EventBusLocal.publish('trash-off', e.target);
+	                    app.EventBusLocal.publish('trash-off', e.target);
 	                } else {
-	                    EventBusLocal.publish('trash-on', e.target);
+	                    app.EventBusLocal.publish('trash-on', e.target);
 	                }
 	            }
 	        };
@@ -1481,7 +1526,9 @@
 	        $('#settings').tips('Go to Settings');
 	        $('#log_out').tips('Sign out', true);
 	        el.addEventListener('click', function (e) {
-	            if (listeners[e.target.id]) listeners[e.target.id](e);
+	            if (listeners[e.target.id]) {
+	                listeners[e.target.id](e);
+	            }
 	        });
 	    }
 	};
@@ -1500,11 +1547,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderTitleTaskList = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.getElementById('app-body').appendChild(el);
-	    _controller.controller.init(el, 'today-list');
+	/**
+	 * Method which add daily task-list title-header
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderTitleTaskList = function () {
+	  var el = document.createElement('div');
+	  el.innerHTML = (0, _template2.default)();
+	  document.getElementById('app-body').appendChild(el);
+	  _controller.controller.init(el, 'today-list');
 	};
 
 /***/ },
@@ -1533,6 +1586,8 @@
 	var controller = exports.controller = {
 	    listeners: {
 	        'delete-all': function deleteAll() {
+	            var User = window.app.User;
+	            var EventBusLocal = window.app.EventBusLocal;
 	            var trash = document.getElementById('trashOn');
 	            for (var i = 0; i < User.trashData.length; i++) {
 	                User.deleteTaskData(User.currentLogin, '/tasks/' + User.trashData[i]);
@@ -1541,19 +1596,21 @@
 	            EventBusLocal.publish('trash-refresh', trash);
 	        },
 	        'select-all': function selectAll(dependency) {
-	            EventBusLocal.publish('trash-check-all', dependency);
+	            app.EventBusLocal.publish('trash-check-all', dependency);
 	        },
 	        'deselect-all': function deselectAll(dependency) {
-	            EventBusLocal.publish('trash-uncheck-all', dependency);
+	            app.EventBusLocal.publish('trash-uncheck-all', dependency);
 	        },
 	        'addTask-title': function addTaskTitle() {
-	            Renderer.showModalAdd();
+	            app.Renderer.showModalAdd();
 	        }
 
 	    },
 	    init: function init(el, dependency) {
 	        el.addEventListener('click', function (e) {
-	            if (controller.listeners[e.target.id]) controller.listeners[e.target.id](dependency);
+	            if (controller.listeners[e.target.id]) {
+	                controller.listeners[e.target.id](dependency);
+	            }
 	        });
 	    }
 
@@ -1577,9 +1634,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderReportsDaily = function () {
+	/**
+	 * Method which add daily task-list to page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderReportsDaily = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_Model.tasks, EventBusLocal);
+	    var controller = new _Controller2.default(_Model.tasks, app.EventBusLocal);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
@@ -1648,7 +1711,7 @@
 	        this.listeners = {
 	            editTask: function editTask(e) {
 	                if (e.target.classList.contains('edit-task')) {
-	                    Renderer.showModalEdit(e.target);
+	                    app.Renderer.showModalEdit(e.target);
 	                }
 	            },
 	            trashDrop: function (e) {
@@ -1659,7 +1722,7 @@
 	            }.bind(this),
 	            goToTimer: function goToTimer(e) {
 	                if (e.target.classList.contains('urgency')) {
-	                    router.moveTo('timer', e.target.parentNode.getAttribute('key'));
+	                    app.router.moveTo('timer', e.target.parentNode.getAttribute('key'));
 	                    //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
 	                }
 	            }
@@ -1669,7 +1732,7 @@
 	    _createClass(Controller, [{
 	        key: 'initController',
 	        value: function initController(callback) {
-	            EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
+	            app.EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
 	            this.model.patchList(callback);
 	            //this.view.showList
 	        }
@@ -1708,8 +1771,8 @@
 	var tasks = exports.tasks = {
 	    data: {},
 	    patchList: function patchList(callback) {
-	        User.getData(User.currentLogin, 'tasks', function (value) {
-	            if (!value || value == []) {
+	        app.User.getData(app.User.currentLogin, 'tasks', function (value) {
+	            if (!value || value === []) {
 	                console.log('empty list');
 	            } else {
 	                tasks.data = value;
@@ -1718,8 +1781,8 @@
 	        });
 	    },
 	    checkTrashBuffer: function checkTrashBuffer(key) {
-	        for (var i = 0; i < User.trashData.length; i++) {
-	            if (User.trashData[i] == key) {
+	        for (var i = 0; i < app.User.trashData.length; i++) {
+	            if (app.User.trashData[i] === key) {
 	                return false;
 	            }
 	        }
@@ -1743,7 +1806,7 @@
 	        var structure = [];
 	        for (var key in data) {
 	            if (!this.compareDates(data[key].deadline)) {
-	                if (data[key].priority == type) {
+	                if (data[key].priority === type) {
 	                    structure.push(key);
 	                }
 	            }
@@ -1756,7 +1819,7 @@
 	    compareDates: function compareDates(date) {
 	        var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	        var currentDate = new Date();
-	        return monthArray[parseInt(currentDate.getMonth(), 10)] == date.month && parseInt(currentDate.getDate(), 10) == date.day && parseInt(currentDate.getFullYear(), 10) == date.year;
+	        return monthArray[parseInt(currentDate.getMonth(), 10)] === date.month && parseInt(currentDate.getDate(), 10) === date.day && parseInt(currentDate.getFullYear(), 10) === date.year;
 	    }
 	};
 
@@ -1782,7 +1845,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.showModalAdd = function () {
+	/**
+	 * Method which show add-task modal on page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.showModalAdd = function () {
 	    var el = document.createElement('div');
 	    var elCss = document.createElement('style');
 	    elCss.innerHTML = _style2.default['0'][1];
@@ -1849,13 +1918,14 @@
 	                }
 	            };
 	            this.el.addEventListener('click', function (e) {
-	                if (listeners[e.target.id]) listeners[e.target.id](e);
+	                if (listeners[e.target.id]) {
+	                    listeners[e.target.id](e);
+	                }
 	            });
 
 	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
 	                this.view.estimationRangeReview(e);
 	            }.bind(context));
-	            console.log(this.el);
 	        }
 	    }]);
 
@@ -1883,12 +1953,12 @@
 	        document.getElementById('app-body').removeChild(el);
 	    },
 	    estimationRangeReview: function estimationRangeReview(e) {
-	        if (e.target.tagName.toUpperCase() == 'LI') {
+	        if (e.target.tagName.toUpperCase() === 'LI') {
 	            var parent = e.currentTarget;
 	            for (var i = 0; i < parent.children.length; i++) {
 	                parent.children[i].classList.remove('estimated');
 	            }
-	            for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
+	            for (var i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
 	                parent.children[i].classList.add('estimated');
 	            }
 	            e.target.classList.add('estimated');
@@ -1915,19 +1985,19 @@
 /* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "Global/img/urgency-sprite.png";
+	module.exports = __webpack_require__.p + "./Global/img/urgency-sprite.png?sourceMap";
 
 /***/ },
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "Global/img/tomato.svg";
+	module.exports = __webpack_require__.p + "./Global/img/tomato.svg?sourceMap";
 
 /***/ },
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "Global/img/tomato_fill.svg";
+	module.exports = __webpack_require__.p + "./Global/img/tomato_fill.svg?sourceMap";
 
 /***/ },
 /* 58 */
@@ -1951,7 +2021,14 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.showModalEdit = function (target) {
+	/**
+	 * Method which show edit-task modal on page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.showModalEdit = function (target) {
+	    var User = window.app.User;
 	    var el = document.createElement('div');
 	    var elCss = document.createElement('style');
 	    elCss.innerHTML = _style2.default['0'][1];
@@ -2022,7 +2099,9 @@
 	                }
 	            };
 	            this.el.addEventListener('click', function (e) {
-	                if (listeners[e.target.id]) listeners[e.target.id](e);
+	                if (listeners[e.target.id]) {
+	                    listeners[e.target.id](e);
+	                }
 	            });
 
 	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
@@ -2046,9 +2125,11 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	var User = window.app.User;
+
 	var view = exports.view = {
 	    syncChanges: function syncChanges(target, callback) {
-	        while (target.parentNode.classList.contains('task') == false) {
+	        while (target.parentNode.classList.contains('task') === false) {
 	            target = target.parentNode;
 	        }
 	        var key = target.parentNode.getAttribute('key');
@@ -2066,7 +2147,7 @@
 	    },
 	    modalConfirmEdit: function modalConfirmEdit(e, el, target) {
 	        e.preventDefault();
-	        while (target.parentNode.classList.contains('task') == false) {
+	        while (target.parentNode.classList.contains('task') === false) {
 	            target = target.parentNode;
 	        }
 	        var keyy = target.parentNode.getAttribute('key');
@@ -2075,7 +2156,7 @@
 	    },
 	    modalRemove: function modalRemove(e, el, target) {
 	        e.preventDefault();
-	        while (target.parentNode.classList.contains('task') == false) {
+	        while (target.parentNode.classList.contains('task') === false) {
 	            target = target.parentNode;
 	        }
 	        var keyy = target.parentNode.getAttribute('key');
@@ -2083,12 +2164,12 @@
 	        document.getElementById('app-body').removeChild(el);
 	    },
 	    estimationRangeReview: function estimationRangeReview(e) {
-	        if (e.target.tagName.toUpperCase() == 'LI') {
+	        if (e.target.tagName.toUpperCase() === 'LI') {
 	            var parent = e.currentTarget;
 	            for (var i = 0; i < parent.children.length; i++) {
 	                parent.children[i].classList.remove('estimated');
 	            }
-	            for (var i = 0, j = 0; parent.children[i] != e.target; i++, j++) {
+	            for (var i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
 	                parent.children[i].classList.add('estimated');
 	            }
 	            e.target.classList.add('estimated');
@@ -2113,12 +2194,18 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderTitleTaskListGlobal = function () {
-	    var el = document.createElement('div');
-	    el.innerHTML = (0, _template2.default)();
-	    document.getElementById('app-body').appendChild(el);
-	    _controller.controller.init(el, 'sorted-list');
-	    _filterController.controllerFilter.init(el);
+	/**
+	 * Method which add global-list title-header
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderTitleTaskListGlobal = function () {
+	  var el = document.createElement('div');
+	  el.innerHTML = (0, _template2.default)();
+	  document.getElementById('app-body').appendChild(el);
+	  _controller.controller.init(el, 'sorted-list');
+	  _filterController.controllerFilter.init(el);
 	};
 
 /***/ },
@@ -2148,23 +2235,23 @@
 	    listeners: {
 	        'all': function all(type, target) {
 	            controllerFilter.activateTab(target);
-	            EventBusLocal.publish('filter-tasks', type);
+	            app.EventBusLocal.publish('filter-tasks', type);
 	        },
 	        'urgent': function urgent(type, target) {
 	            controllerFilter.activateTab(target);
-	            EventBusLocal.publish('filter-tasks', type);
+	            app.EventBusLocal.publish('filter-tasks', type);
 	        },
 	        'high': function high(type, target) {
 	            controllerFilter.activateTab(target);
-	            EventBusLocal.publish('filter-tasks', type);
+	            app.EventBusLocal.publish('filter-tasks', type);
 	        },
 	        'middle': function middle(type, target) {
 	            controllerFilter.activateTab(target);
-	            EventBusLocal.publish('filter-tasks', type);
+	            app.EventBusLocal.publish('filter-tasks', type);
 	        },
 	        'low': function low(type, target) {
 	            controllerFilter.activateTab(target);
-	            EventBusLocal.publish('filter-tasks', type);
+	            app.EventBusLocal.publish('filter-tasks', type);
 	        }
 
 	    },
@@ -2175,8 +2262,8 @@
 	            var identifier = e.target.id.slice(0, -1);
 	            if (context.listeners[identifier]) {
 	                context.listeners[identifier](identifier, e.target);
-	                EventBusLocal.publish('trash-off', document.getElementById('trashOn'));
-	                EventBusLocal.publish('trash-refresh');
+	                app.EventBusLocal.publish('trash-off', document.getElementById('trashOn'));
+	                app.EventBusLocal.publish('trash-refresh');
 	            }
 	        });
 	    },
@@ -2210,9 +2297,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderReportsGlobal = function () {
+	/**
+	 * Method which add daily global-list to page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderReportsGlobal = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_Model.tasks, _View.view, EventBusLocal, _template2.default);
+	    var controller = new _Controller2.default(_Model.tasks, _View.view, app.EventBusLocal, _template2.default);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
@@ -2284,7 +2377,6 @@
 	    function Controller(model, view, eBusLocal, template) {
 	        _classCallCheck(this, Controller);
 
-	        //this.view = view;
 	        this.template = template;
 	        this.model = model;
 	        this.view = view;
@@ -2292,7 +2384,7 @@
 	        this.listeners = {
 	            editTask: function editTask(e) {
 	                if (e.target.classList.contains('edit-task')) {
-	                    Renderer.showModalEdit(e.target);
+	                    app.Renderer.showModalEdit(e.target);
 	                }
 	            },
 	            trashDrop: function (e) {
@@ -2303,7 +2395,6 @@
 	            }.bind(this),
 	            showGlobalList: this.view.showGlobalList,
 	            moveToDaily: this.view.moveToDaily
-
 	        };
 	    }
 
@@ -2319,7 +2410,7 @@
 	            el.addEventListener('click', this.listeners.editTask);
 	            el.addEventListener('click', this.listeners.trashDrop);
 	            el.addEventListener('click', this.listeners.moveToDaily);
-	            EventBusLocal.subscribe('filter-tasks', function (type) {
+	            app.EventBusLocal.subscribe('filter-tasks', function (type) {
 	                console.log('filter ' + type);
 	                console.log(this);
 	                this.initController(function () {
@@ -2342,8 +2433,7 @@
 	            for (var key in this.listeners) {
 	                el.removeEventListener('click', this.listeners[key]);
 	            }
-	            EventBusLocal.unsubscribe('filter-tasks');
-	            console.log(EventBusLocal);
+	            app.EventBusLocal.unsubscribe('filter-tasks');
 	        }
 	    }]);
 
@@ -2372,7 +2462,7 @@
 	            var key = target.parentNode.getAttribute('key');
 	            var currentDate = new Date();
 	            var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-	            User.setData(User.currentLogin, '/tasks/' + key + '/deadline', {
+	            app.User.setData(app.User.currentLogin, '/tasks/' + key + '/deadline', {
 	                day: currentDate.getDate(),
 	                month: monthArray[parseInt(currentDate.getMonth(), 10)],
 	                year: currentDate.getFullYear(),
@@ -2402,10 +2492,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.renderTimer = function (data) {
-	    var el = document.createElement('div');
-	    var controller = new _controller2.default(data, _view.view);
-	    controller.init(_template2.default, el);
+	/**
+	 * Method which show timer on page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.renderTimer = function (data) {
+	  var el = document.createElement('div');
+	  var controller = new _controller2.default(data, _view.view);
+	  controller.init(_template2.default, el);
 	};
 
 /***/ },
@@ -2451,11 +2547,11 @@
 	        this.listeners = {
 	            'pause': function pause(type, target) {
 	                controllerFilter.activateTab(target);
-	                EventBusLocal.publish('filter-tasks', type);
+	                app.EventBusLocal.publish('filter-tasks', type);
 	            },
 	            'resume': function resume(type, target) {
 	                controllerFilter.activateTab(target);
-	                EventBusLocal.publish('filter-tasks', type);
+	                app.EventBusLocal.publish('filter-tasks', type);
 	            }
 	        };
 	    }
@@ -2463,6 +2559,9 @@
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init(template, el) {
+	            var User = window.app.User;
+	            var EventBusLocal = window.app.EventBusLocal;
+
 	            var context = this;
 	            this.timer = {
 	                container: document.getElementsByClassName('graph-container')[0],
@@ -2553,7 +2652,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	Renderer.addNotification = function (opts) {
+	/**
+	 * Method which append notification to bottom notify list
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 */
+	app.Renderer.addNotification = function (opts) {
 	    var el = document.createElement('li');
 	    el.classList.add(opts.type + '-pomodora-type');
 	    el.innerHTML = (0, _template2.default)(opts);
@@ -2603,7 +2708,9 @@
 	            var _this = this;
 
 	            setTimeout(function () {
-	                if (_this.el && _this.el.parentNode) _this.el.parentNode.removeChild(_this.el);
+	                if (_this.el && _this.el.parentNode) {
+	                    _this.el.parentNode.removeChild(_this.el);
+	                }
 	            }, 5000);
 	            this.el.addEventListener('click', function (e) {
 	                if (e.target.classList.contains('notify-dismiss')) {

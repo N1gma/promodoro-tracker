@@ -1,24 +1,50 @@
-(function(){
-    window.EventBusLocal = {
-        topics: {},
+/**
+ * @class
+ */
+class CEventBusLocal {
+    constructor() {
+        this.topics = {};
+    }
 
-        subscribe: function (topic, listener) {
-            if (!this.topics[topic]) this.topics[topic] = [];
-            this.topics[topic].push(listener);
-        },
-
-        publish: function (topic, data) {
-            if (!this.topics[topic] || this.topics[topic].length < 1) return;
-            this.topics[topic].forEach(function (listener) {
-                listener(data || {});
-            });
-        },
-
-        unsubscribe: function (topic) {
-            delete this.topics[topic];
+    /**
+     * @memberOf CEventBusLocal
+     * @param {String} topic
+     * @param {function} listener
+     */
+    subscribe(topic, listener) {
+        if (!this.topics[topic]) {
+            this.topics[topic] = [];
         }
-    };
+        this.topics[topic].push(listener);
+    }
 
+    /**
+     * @memberOf CEventBusLocal
+     * @param {String} topic
+     * @param  [data]
+     */
+    publish(topic, data) {
+        if (!this.topics[topic] || this.topics[topic].length < 1) {
+            return;
+        }
+        this.topics[topic].forEach(function (listener) {
+            listener(data || {});
+        });
+    }
+
+    /**
+     * @memberOf CEventBusLocal
+     * @param {String} topic
+     */
+    unsubscribe(topic) {
+        delete this.topics[topic];
+    }
+}
+
+(function () {
+    window.app.EventBusLocal = new CEventBusLocal();
+    var EventBusLocal = window.app.EventBusLocal;
+    var User = window.app.User;
     EventBusLocal.subscribe('trash-drop', function (data) {
         var e = data.e;
         var context = data.context;
@@ -33,7 +59,7 @@
                 } else {
                     document.getElementsByClassName('trash-counter')[0].style.display = 'none';
                 }
-                console.log(User.trashData)
+                console.log(User.trashData);
             }
         } else if (e.target.classList.contains('toogled') && e.target.parentNode.classList.contains('trash')) {
             e.target.innerHTML = '&#xe912;';
@@ -45,7 +71,7 @@
             } else {
                 document.getElementsByClassName('trash-counter')[0].style.display = 'none';
             }
-            console.log(User.trashData)
+            console.log(User.trashData);
         }
     });
 
@@ -56,8 +82,7 @@
                 elems[i].firstElementChild.innerHTML = '&#xe910;';
                 elems[i].firstElementChild.classList.add('toogled');
                 var key = elems[i].getAttribute('key');
-                console.log(key)
-                if (User.trashData.indexOf(key) == -1) {
+                if (User.trashData.indexOf(key) === -1) {
                     User.trashData.push(key);
                     if (User.trashData.length > 0) {
                         document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
@@ -65,11 +90,11 @@
                     } else {
                         document.getElementsByClassName('trash-counter')[0].style.display = 'none';
                     }
-                    console.log(User.trashData)
+                    console.log(User.trashData);
                 }
             }
         }
-    })
+    });
 
     EventBusLocal.subscribe('trash-uncheck-all', function (dependency) {
         var elems = document.getElementsByClassName('task');
@@ -78,20 +103,20 @@
                 elems[i].firstElementChild.innerHTML = '&#xe912;';
                 elems[i].firstElementChild.classList.remove('toogled');
                 var key = elems[i].getAttribute('key');
-                console.log(key)
-                if (User.trashData.indexOf(key) != -1) {
-                    User.trashData.splice(User.trashData.indexOf(key),1);
+                console.log(key);
+                if (User.trashData.indexOf(key) !== -1) {
+                    User.trashData.splice(User.trashData.indexOf(key), 1);
                     if (User.trashData.length > 0) {
                         document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
                         document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
                     } else {
                         document.getElementsByClassName('trash-counter')[0].style.display = 'none';
                     }
-                    console.log(User.trashData)
+                    console.log(User.trashData);
                 }
             }
         }
-    })
+    });
 
     EventBusLocal.subscribe('trash-refresh', function (e) {
         document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
@@ -100,17 +125,16 @@
     });
 
 
-
     EventBusLocal.subscribe('trash-on', function (target) {
         var tasks = document.getElementsByClassName('task');
-        target.classList.add('active')
+        target.classList.add('active');
 
         for (var i = 0; i < tasks.length; i++) {
             tasks[i].classList.add('trash');
         }
 
         var labels = document.getElementsByClassName('left-side');
-        for (var i = 0; i < labels.length; i++) {
+        for (i = 0; i < labels.length; i++) {
             labels[i].classList.remove('hidden');
 
         }
@@ -123,16 +147,11 @@
         for (var i = 0; i < tasks.length; i++) {
             tasks[i].classList.remove('trash');
         }
-
         var labels = document.getElementsByClassName('left-side');
-        for (var i = 0; i < labels.length; i++) {
-
+        for (i = 0; i < labels.length; i++) {
             labels[i].classList.add('hidden');
         }
-        //EventBusLocal.publish('trash-refresh')
     });
-
-
 }());
 
 

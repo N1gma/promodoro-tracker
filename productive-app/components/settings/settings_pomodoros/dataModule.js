@@ -11,7 +11,7 @@ export function dataModule() { //data component - inputs
             }
             data.general = (data['WORK TIME'] * data['WORK ITERATION'] + (data['SHORT BREAK'] *
                 (data['WORK ITERATION'] - 1))) * 2 + data['LONG BREAK'];
-            User.settings =  data;
+            app.User.settings =  data;
             return data;
         },
         eventFires: new CustomEvent('input-changed', {
@@ -65,13 +65,13 @@ export function dataModule() { //data component - inputs
     };
 
     (function syncInputs() {
-        User.getSettings(User.currentLogin, function (values) {
+        app.User.getSettings(app.User.currentLogin, function (values) {
             var inputs = document.getElementsByClassName('select-field');
             var titles = document.getElementsByClassName('opt-title');
             for(var i =0;i<inputs.length;i++){
                 inputs[i].value = values[titles[i].innerHTML] + inputs[i].descriptor.metrics;
             }
-        })
-    })()
+        });
+    })();
 }
 

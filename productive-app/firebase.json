@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "dist"
+  },
+  "database": {
+    "rules": "conf.json"
+  },
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}

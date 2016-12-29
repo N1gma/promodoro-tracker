@@ -12,19 +12,21 @@ export default class Controller {
                 context.view.modalClose(e, context.el);
             },
             'modal-confirm-edit' : function (e) {
-                context.view.modalConfirmEdit(e,context.el,target)
+                context.view.modalConfirmEdit(e,context.el,target);
             },
             'modal-remove':function (e) {
-                context.view.modalRemove(e,context.el,target)
+                context.view.modalRemove(e,context.el,target);
             }
         };
         this.el.addEventListener('click', function (e) {
-            if(listeners[e.target.id]) listeners[e.target.id](e)
+            if(listeners[e.target.id]) {
+                listeners[e.target.id](e);
+            }
         });
 
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-            this.view.estimationRangeReview(e)
+            this.view.estimationRangeReview(e);
         }.bind(context));
-        console.log(this.el)
+        console.log(this.el);
     }
 }

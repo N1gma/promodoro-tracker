@@ -1,8 +1,15 @@
-export default function View(eBus) {
+/**
+ * @param {CEventBus} eBus
+ * @constructor
+ */
+function loginView(eBus) {
     this.eBus = eBus;
 }
-
-View.prototype.auth = function (e) {
+/**
+ * memberOf loginView
+ * @param {Event} e
+ */
+loginView.prototype.auth = function (e) {
     var context = this;
     var val1 = document.getElementById('name_input').value;
     var val2 = document.getElementById('pw_input').value;
@@ -12,16 +19,19 @@ View.prototype.auth = function (e) {
             for (var i = 0; i < msgs.length; i++) {
                 msgs[i].style.display = 'block';
             }
-            EventBus.publish('notify',{
+            app.EventBus.publish('notify',{
                 msg:'Invalid login/password',
                 type:'fail'
-            })
-    })
+            });
+    });
 };
-
-View.prototype.logOut = function(){
+/**
+ * memberOf loginView
+ */
+loginView.prototype.logOut = function(){
     firebase.auth().signOut();
 };
 
+export default loginView;
 
 

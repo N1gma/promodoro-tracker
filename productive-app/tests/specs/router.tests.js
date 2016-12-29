@@ -1,6 +1,9 @@
+var router = app.router;
+var EventBus = app.EventBus;
+var Renderer = app.Renderer;
+
 describe('router', function () {
     it("'s constructor", function () {
-        var router = new Routes();
         assert.equal(JSON.stringify(router.routes), JSON.stringify({
             login: {
                 module: 'no-user',

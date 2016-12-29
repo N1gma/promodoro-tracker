@@ -1,10 +1,35 @@
 (function(){
-    window.Renderer = {
+    /**
+     * @namespace app
+     * @type {{}}
+     */
+    window.app = {};
+    /**
+     * Global page render mechanism
+     *
+     * @memberOf app
+     * @namespace Renderer
+     */
+    window.app.Renderer = {
+        /**
+         * Clears a content of chosen container
+         *
+         * @memberOf app.Renderer
+         * @param {HTMLElement} target
+         * @instance
+         */
         clearContent: function (target) {
             while (target.firstElementChild) {
-                target.removeChild(target.firstElementChild)
+                target.removeChild(target.firstElementChild);
             }
         },
+        /**
+         * Renders a buttons
+         *
+         * @memberOf app.Renderer
+         * @param {Array} list
+         * @instance
+         */
         renderButtons: function (list) {
             var fragment = document.createDocumentFragment();
             var container = document.createElement('div');
@@ -22,5 +47,5 @@
             }
             document.getElementById('app-body').appendChild(fragment);
         }
-    }
+    };
 }());

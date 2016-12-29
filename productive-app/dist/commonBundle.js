@@ -65,12 +65,37 @@
 	'use strict';
 
 	(function () {
-	    window.Renderer = {
+	    /**
+	     * @namespace app
+	     * @type {{}}
+	     */
+	    window.app = {};
+	    /**
+	     * Global page render mechanism
+	     *
+	     * @memberOf app
+	     * @namespace Renderer
+	     */
+	    window.app.Renderer = {
+	        /**
+	         * Clears a content of chosen container
+	         *
+	         * @memberOf app.Renderer
+	         * @param {HTMLElement} target
+	         * @instance
+	         */
 	        clearContent: function clearContent(target) {
 	            while (target.firstElementChild) {
 	                target.removeChild(target.firstElementChild);
 	            }
 	        },
+	        /**
+	         * Renders a buttons
+	         *
+	         * @memberOf app.Renderer
+	         * @param {Array} list
+	         * @instance
+	         */
 	        renderButtons: function renderButtons(list) {
 	            var fragment = document.createDocumentFragment();
 	            var container = document.createElement('div');
@@ -97,12 +122,28 @@
 
 	'use strict';
 
-	Renderer.helpers = {
+	/**
+	 * memberOf app.Renderer
+	 * @namespace
+	 */
+	app.Renderer.helpers = {
+	    /**
+	     * Transforms Minutes in Minutes/Hours+'h' + Minutes%Hours+'m' (130 -> 2h 10m)
+	     *
+	     * memberOf app.Renderer
+	     * @instance
+	     * returns {String}
+	     * @param {Number} time
+	     */
 	    transformTime: function transformTime(time) {
 	        var hours = '';
 	        var minutes = '';
-	        if (time / 60 >= 1) hours = parseInt(time / 60) + 'h ';
-	        if (parseInt(time % 60) != 0) minutes = parseInt(time % 60) + 'm';
+	        if (time / 60 >= 1) {
+	            hours = parseInt(time / 60) + 'h ';
+	        }
+	        if (parseInt(time % 60) !== 0) {
+	            minutes = parseInt(time % 60) + 'm';
+	        }
 	        return hours + minutes;
 	    }
 	};
@@ -113,31 +154,65 @@
 
 	'use strict';
 
-	(function () {
-	    window.EventBus = {
-	        topics: {},
-	        subscribe: function subscribe(topic, listener) {
-	            if (!this.topics[topic]) this.topics[topic] = [];
-	            this.topics[topic].push(listener);
-	        },
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	        publish: function publish(topic, data) {
-	            if (!this.topics[topic] || this.topics[topic].length < 1) return;
-	            this.topics[topic].forEach(function (listener) {
-	                listener(data || {});
-	            });
+	/**
+	 * @class
+	 */
+	var CEventBus = function CEventBus() {
+	    _classCallCheck(this, CEventBus);
+
+	    /**
+	     * @memberOf CEventBus
+	     */
+	    this.topics = {};
+	    /**
+	     * @memberOf CEventBus
+	     * @param {String} topic
+	     * @param {function} listener
+	     * @instance
+	     */
+	    this.subscribe = function (topic, listener) {
+	        if (!this.topics[topic]) {
+	            this.topics[topic] = [];
 	        }
+	        this.topics[topic].push(listener);
 	    };
+	    /**
+	     * @memberOf CEventBus
+	     * @param {String} topic
+	     * @param [data]
+	     * @instance
+	     */
+	    this.publish = function (topic, data) {
+	        if (!this.topics[topic] || this.topics[topic].length < 1) {
+	            return;
+	        }
+	        this.topics[topic].forEach(function (listener) {
+	            listener(data || {});
+	        });
+	    };
+	};
 
-	    //---------------------------------
+	//---------------------------------
+
+
+	(function () {
+	    window.app.EventBus = new CEventBus();
+	    var EventBus = window.app.EventBus;
+	    /*var Renderer = window.app.Renderer;
+	     var User = window.app.User;
+	     var app.EventBusLocal = window.app.app.EventBusLocal;*/
 
 	    EventBus.subscribe('login', function () {
+	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderLog();
 	    });
 
 	    //----------------------------------
 	    EventBus.subscribe('settings', function () {
+	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderTitle_settings_1();
@@ -148,14 +223,14 @@
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Save',
 	            listener: function listener() {
-	                User.saveSettings();
+	                app.User.saveSettings();
 	            }
 	        }, {
 	            node: document.createElement('button'),
 	            class: ['button-row-2', 'button-blue'],
 	            innerHtml: 'Next',
 	            listener: function listener() {
-	                router.moveTo('tasklist');
+	                app.router.moveTo('tasklist');
 	            }
 	        }];
 	        Renderer.renderButtons(list);
@@ -163,6 +238,7 @@
 
 	    //----------------------------------
 	    EventBus.subscribe('settings-2', function () {
+	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderTitle_settings_1();
@@ -185,12 +261,14 @@
 	    });
 	    //----------------------------------
 	    EventBus.subscribe('reports', function () {
+	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderReports();
 	    });
 	    //----------------------------------
 	    EventBus.subscribe('taskList', function () {
+	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeaderDetailed();
 	        Renderer.renderTitleTaskList();
@@ -200,6 +278,7 @@
 	    });
 	    //----------------------------------
 	    EventBus.subscribe('goToTimer', function (data) {
+	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderTimer(data);
@@ -209,7 +288,7 @@
 	            class: ['button-row-2', 'button-red'],
 	            innerHtml: 'Fail Pomodora',
 	            listener: function listener() {
-	                EventBusLocal.publish('time-stopped');
+	                app.EventBusLocal.publish('time-stopped');
 	            }
 
 	        }, {
@@ -217,23 +296,24 @@
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Finish Pomodora',
 	            listener: function listener() {
-	                EventBusLocal.publish('time-resumed');
+	                app.EventBusLocal.publish('time-resumed');
 	            }
 	        }];
 	        Renderer.renderButtons(list);
 	    });
 	    //----------------------------------
 	    EventBus.subscribe('no-user', function () {
-	        EventBus.publish('login');
+	        app.EventBus.publish('login');
 	    });
 	    //----------------------------------
 
 	    EventBus.subscribe('notify', function (opts) {
-	        Renderer.addNotification(opts);
+	        app.Renderer.addNotification(opts);
 	    });
 
 	    //----------------------------------
 	    EventBus.subscribe('initData', function () {
+	        var User = window.app.User;
 	        User.getData(User.currentLogin, 'tasks', function (value) {
 	            console.log(value);
 	            if (!value) {
@@ -255,49 +335,116 @@
 
 	'use strict';
 
-	(function () {
-	    window.User = {
-	        currentLogin: '',
-	        settings: {},
-	        trashData: [],
-	        reportsData: {},
-	        dataSnapShot: {},
-	        getSettings: function getSettings(account, callback) {
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	 * @class
+	 */
+	var UserClass = function () {
+	    function UserClass() {
+	        _classCallCheck(this, UserClass);
+
+	        this.currentLogin = '';
+	        this.settings = {};
+	        this.trashData = [];
+	        this.reportsData = {};
+	        this.dataSnapShot = {};
+	    }
+
+	    /**
+	     * Get settings from firebase User profile
+	     *
+	     * @memberOf UserClass
+	     * @param {String} account
+	     * @param {function} callback callback to execute after success GET req
+	     */
+
+
+	    _createClass(UserClass, [{
+	        key: 'getSettings',
+	        value: function getSettings(account, callback) {
 	            var data = database.ref('users/' + account + '/user_settings');
 	            data.on('value', function (snapshot) {
-	                User.settings = snapshot.val();
-	                callback(User.settings);
-	            });
-	        },
+	                this.settings = snapshot.val();
+	                callback(this.settings);
+	            }.bind(this));
+	        }
 
-	        saveSettings: function saveSettings() {
-	            database.ref('users/' + User.currentLogin + '/user_settings').set(User.settings).then(function () {
-	                EventBus.publish('notify', {
+	        /**
+	         * Save settings in firebase User profile
+	         *
+	         * @memberOf UserClass
+	         */
+
+	    }, {
+	        key: 'saveSettings',
+	        value: function saveSettings() {
+	            var context = this;
+	            database.ref('users/' + this.currentLogin + '/user_settings').set(this.settings).then(function () {
+	                app.EventBus.publish('notify', {
 	                    msg: 'Settings saved',
 	                    type: 'info'
 	                });
 	            });
 	            localStorage.setItem('prodApp', JSON.stringify({
-	                dataSnapShot: User.dataSnapShot,
-	                settings: User.settings
+	                dataSnapShot: context.dataSnapShot,
+	                settings: context.settings
 	            }));
-	        },
-	        getData: function getData(account, data, callback) {
+	        }
+
+	        /**
+	         * Get requested data from firebase User profile
+	         *
+	         * @memberOf UserClass
+	         * @param {String} account
+	         * @param {String} data
+	         * @param {function} callback callback to execute after success GET req
+	         */
+
+	    }, {
+	        key: 'getData',
+	        value: function getData(account, data, callback) {
 	            var info = database.ref('users/' + account + '/' + data);
 	            info.on('value', function (snapshot) {
-	                User.dataSnapShot = snapshot.val();
-	                callback(User.dataSnapShot);
-	            });
-	        },
-	        setData: function setData(account, path, data) {
+	                this.dataSnapShot = snapshot.val();
+	                callback(this.dataSnapShot);
+	            }.bind(this));
+	        }
+
+	        /**
+	         * Set task data in firebase tasks User profile after moving to daily
+	         *
+	         * @memberOf UserClass
+	         * @param {String} account
+	         * @param {String} path
+	         * @param {String} data
+	         */
+
+	    }, {
+	        key: 'setData',
+	        value: function setData(account, path, data) {
 	            database.ref('users/' + account + path).set(data).then(function () {
-	                EventBus.publish('notify', {
+	                app.EventBus.publish('notify', {
 	                    msg: 'Moved to daily list',
 	                    type: 'info'
 	                });
 	            });
-	        },
-	        setTaskData: function setTaskData(account, path, node) {
+	        }
+
+	        /**
+	         * Set task data in firebase tasks User profile after edit
+	         *
+	         * @memberOf UserClass
+	         * @param {String} account
+	         * @param {String} path
+	         * @param {HTMLElement} [node]
+	         */
+
+	    }, {
+	        key: 'setTaskData',
+	        value: function setTaskData(account, path, node) {
 	            database.ref('users/' + account + path).set(function () {
 	                var newData = {
 	                    title: document.getElementById('title-input').value,
@@ -324,7 +471,9 @@
 	                    estimation: function () {
 	                        var parent = document.getElementsByClassName('estimation-range')[0];
 	                        for (var i = 0, j = 0; parent.children[i]; i++) {
-	                            if (parent.children[i].classList.contains('estimated')) j++;
+	                            if (parent.children[i].classList.contains('estimated')) {
+	                                j++;
+	                            }
 	                        }
 	                        return 'estimate-' + j;
 	                    }(),
@@ -341,22 +490,43 @@
 	                console.log(newData);
 	                return newData;
 	            }()).then(function () {
-	                EventBus.publish('notify', {
+	                app.EventBus.publish('notify', {
 	                    msg: 'Task edited',
 	                    type: 'info'
 	                });
 	            });
-	        },
-	        deleteTaskData: function deleteTaskData(account, path) {
+	        }
+
+	        /**
+	         * Delete task  in firebase tasks User profile
+	         *
+	         * @memberOf UserClass
+	         * @param {String} account
+	         * @param {String} path
+	         */
+
+	    }, {
+	        key: 'deleteTaskData',
+	        value: function deleteTaskData(account, path) {
 	            database.ref('users/' + account + path).remove().then(function () {
-	                EventBus.publish('notify', {
+	                app.EventBus.publish('notify', {
 	                    msg: 'Task deleted',
 	                    type: 'warning'
 	                });
 	            });
-	        },
-	        updateTasksData: function updateTasksData() {
-	            var path = 'users/' + User.currentLogin + '/tasks';
+	        }
+
+	        /**
+	         * Add task  in firebase tasks User profile after task add from modal
+	         *
+	         * @memberOf UserClass
+	         */
+
+	    }, {
+	        key: 'updateTasksData',
+	        value: function updateTasksData() {
+	            var context = this;
+	            var path = 'users/' + this.currentLogin + '/tasks';
 	            var newKey = database.ref().child(path).push().key;
 	            path += '/' + newKey;
 	            var newData = {
@@ -371,7 +541,6 @@
 	                        }
 	                    }
 	                }(),
-	                //deadline: document.getElementById('deadline-input').value,
 	                deadline: function () {
 	                    var date = document.getElementById('deadline-input').value;
 	                    var obj = {
@@ -393,19 +562,24 @@
 	                    }
 	                }()
 	            };
-	            console.log(newData);
 	            database.ref(path).update(newData).then(function () {
-	                EventBus.publish('notify', {
+	                app.EventBus.publish('notify', {
 	                    msg: 'Task added',
 	                    type: 'success'
 	                });
 	            });
 	            localStorage.setItem('prodApp', JSON.stringify({
-	                dataSnapShot: User.dataSnapShot,
-	                settings: User.settings
+	                dataSnapShot: context.dataSnapShot,
+	                settings: context.settings
 	            }));
 	        }
-	    };
+	    }]);
+
+	    return UserClass;
+	}();
+
+	(function () {
+	    window.app.User = new UserClass();
 	})();
 
 /***/ },
@@ -414,27 +588,72 @@
 
 	'use strict';
 
-	(function () {
-	    window.EventBusLocal = {
-	        topics: {},
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	        subscribe: function subscribe(topic, listener) {
-	            if (!this.topics[topic]) this.topics[topic] = [];
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	 * @class
+	 */
+	var CEventBusLocal = function () {
+	    function CEventBusLocal() {
+	        _classCallCheck(this, CEventBusLocal);
+
+	        this.topics = {};
+	    }
+
+	    /**
+	     * @memberOf CEventBusLocal
+	     * @param {String} topic
+	     * @param {function} listener
+	     */
+
+
+	    _createClass(CEventBusLocal, [{
+	        key: 'subscribe',
+	        value: function subscribe(topic, listener) {
+	            if (!this.topics[topic]) {
+	                this.topics[topic] = [];
+	            }
 	            this.topics[topic].push(listener);
-	        },
+	        }
 
-	        publish: function publish(topic, data) {
-	            if (!this.topics[topic] || this.topics[topic].length < 1) return;
+	        /**
+	         * @memberOf CEventBusLocal
+	         * @param {String} topic
+	         * @param  [data]
+	         */
+
+	    }, {
+	        key: 'publish',
+	        value: function publish(topic, data) {
+	            if (!this.topics[topic] || this.topics[topic].length < 1) {
+	                return;
+	            }
 	            this.topics[topic].forEach(function (listener) {
 	                listener(data || {});
 	            });
-	        },
+	        }
 
-	        unsubscribe: function unsubscribe(topic) {
+	        /**
+	         * @memberOf CEventBusLocal
+	         * @param {String} topic
+	         */
+
+	    }, {
+	        key: 'unsubscribe',
+	        value: function unsubscribe(topic) {
 	            delete this.topics[topic];
 	        }
-	    };
+	    }]);
 
+	    return CEventBusLocal;
+	}();
+
+	(function () {
+	    window.app.EventBusLocal = new CEventBusLocal();
+	    var EventBusLocal = window.app.EventBusLocal;
+	    var User = window.app.User;
 	    EventBusLocal.subscribe('trash-drop', function (data) {
 	        var e = data.e;
 	        var context = data.context;
@@ -472,8 +691,7 @@
 	                elems[i].firstElementChild.innerHTML = '&#xe910;';
 	                elems[i].firstElementChild.classList.add('toogled');
 	                var key = elems[i].getAttribute('key');
-	                console.log(key);
-	                if (User.trashData.indexOf(key) == -1) {
+	                if (User.trashData.indexOf(key) === -1) {
 	                    User.trashData.push(key);
 	                    if (User.trashData.length > 0) {
 	                        document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
@@ -495,7 +713,7 @@
 	                elems[i].firstElementChild.classList.remove('toogled');
 	                var key = elems[i].getAttribute('key');
 	                console.log(key);
-	                if (User.trashData.indexOf(key) != -1) {
+	                if (User.trashData.indexOf(key) !== -1) {
 	                    User.trashData.splice(User.trashData.indexOf(key), 1);
 	                    if (User.trashData.length > 0) {
 	                        document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
@@ -524,7 +742,7 @@
 	        }
 
 	        var labels = document.getElementsByClassName('left-side');
-	        for (var i = 0; i < labels.length; i++) {
+	        for (i = 0; i < labels.length; i++) {
 	            labels[i].classList.remove('hidden');
 	        }
 	    });
@@ -536,13 +754,10 @@
 	        for (var i = 0; i < tasks.length; i++) {
 	            tasks[i].classList.remove('trash');
 	        }
-
 	        var labels = document.getElementsByClassName('left-side');
-	        for (var i = 0; i < labels.length; i++) {
-
+	        for (i = 0; i < labels.length; i++) {
 	            labels[i].classList.add('hidden');
 	        }
-	        //EventBusLocal.publish('trash-refresh')
 	    });
 	})();
 
@@ -556,6 +771,11 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	/**
+	 * Router class
+	 *
+	 * @class
+	 */
 	var Routes = function () {
 	    function Routes() {
 	        _classCallCheck(this, Routes);
@@ -596,6 +816,15 @@
 	        this.currentState = 'tasklist';
 	    }
 
+	    /**
+	     * Push history state and render another page state
+	     *
+	     * @memberOf Routes
+	     * @param {String} page
+	     * @param {Object} [data]
+	     */
+
+
 	    _createClass(Routes, [{
 	        key: 'moveTo',
 	        value: function moveTo(page, data) {
@@ -603,10 +832,18 @@
 	            history.pushState({
 	                path: page
 	            }, route.name, route.url);
-	            EventBus.publish(route.module, data);
-	            router.currentState = page;
+	            app.EventBus.publish(route.module, data);
+	            this.currentState = page;
 	            console.log(history);
 	        }
+	        /**
+	         * Replace history state and render another page state
+	         *
+	         * @memberOf Routes
+	         * @param {String} page
+	         * @returns {Routes}
+	         */
+
 	    }, {
 	        key: 'replaceState',
 	        value: function replaceState(page) {
@@ -614,23 +851,37 @@
 	            history.replaceState({
 	                path: page
 	            }, route.name, route.url);
-	            EventBus.publish(route.module);
+	            app.EventBus.publish(route.module);
 	            console.log(history);
 	            return this;
 	        }
+	        /**
+	         * Replace null history state with approvable  state (so button back or forward wont trigger
+	         * page reload)
+	         *
+	         * @memberOf Routes
+	         * @returns {Routes}
+	         */
+
 	    }, {
 	        key: 'resetState',
 	        value: function resetState() {
 	            history.replaceState('random string', 'random string', '/' + 'random string');
 	            return this;
 	        }
+	        /**
+	         * Add popstate event listener
+	         *
+	         * @memberOf Routes
+	         */
+
 	    }, {
 	        key: 'bind',
 	        value: function bind() {
 	            var context = this;
 	            window.addEventListener("popstate", function (e) {
 	                console.log(e.state);
-	                EventBus.publish(context.routes[e.state.path].module);
+	                app.EventBus.publish(context.routes[e.state.path].module);
 	            });
 	        }
 	    }]);
@@ -639,8 +890,8 @@
 	}();
 
 	(function () {
-	    window.router = new Routes();
-	    router.bind();
+	    window.app.router = new Routes();
+	    window.app.router.bind();
 	})();
 
 /***/ },
@@ -697,37 +948,41 @@
 	        }
 	        $triangle = $tooltip.find('.triangle');
 	        var $tipText = $tooltip.find('.tip-text');
-	        var mouseEnterListener = function mouseEnterListener(e) {
-	            if (e.target != $tooltip && e.target != $triangle) {
-	                $tooltip.css({
-	                    top: e.pageY + 12 + 'px',
-	                    left: e.pageX - 10 - offset + 'px',
-	                    display: 'block'
-	                });
-	                $triangle.css({
-	                    left: 8 + offsetTriangle + 'px'
-	                });
-	                $tipText.html(tip);
-	            }
-	            $target.mousemove(function (e) {
-	                if (e.target != $tooltip && e.target != $triangle) {
+	        var listeners = {
+	            mouseEnterListener: function mouseEnterListener(e) {
+	                if (e.target !== $tooltip && e.target !== $triangle) {
 	                    $tooltip.css({
-	                        top: e.pageY + 30 + 'px',
-	                        left: e.pageX - 10 - offset + 'px'
+	                        top: e.pageY + 12 + 'px',
+	                        left: e.pageX - 10 - offset + 'px',
+	                        display: 'block'
 	                    });
 	                    $triangle.css({
-	                        left: '8px' + offsetTriangle
+	                        left: 8 + offsetTriangle + 'px'
 	                    });
+	                    $tipText.html(tip);
 	                }
-	            });
+	                $target.mousemove(function (e) {
+	                    if (e.target !== $tooltip && e.target !== $triangle) {
+	                        $tooltip.css({
+	                            top: e.pageY + 30 + 'px',
+	                            left: e.pageX - 10 - offset + 'px'
+	                        });
+	                        $triangle.css({
+	                            left: '8px' + offsetTriangle
+	                        });
+	                    }
+	                });
+	            },
+	            offVision: function offVision(e) {
+	                $target.off('mousemove');
+	                $tooltip.css({
+	                    display: 'none'
+	                });
+	            }
 	        };
-	        $target.mouseenter(mouseEnterListener);
-	        $target.mouseleave(function (e) {
-	            $target.off('mousemove');
-	            $tooltip.css({
-	                display: 'none'
-	            });
-	        });
+	        $target.mouseenter(listeners.mouseEnterListener);
+	        $target.mouseleave(listeners.offVision);
+	        $target.click(listeners.offVision);
 	        return this;
 	    };
 	    $.fn.accordeon = function () {
@@ -742,7 +997,7 @@
 	            }
 	        };
 	        $target.off('click', listener);
-	        $target.on('click', '.accordeon-head', listener);
+	        $target.on('click', heads, listener);
 	        return this;
 	    };
 	})(window.$);
@@ -823,17 +1078,30 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 *
+	 * @param {loginView} view
+	 * @param {CEventBus} eBus
+	 * @constructor
+	 */
 	function LoginController(view, eBus) {
 	    this.view = view;
 	    this.eBus = eBus;
 	}
 
 	LoginController.prototype = {
+	    /**
+	     * @memberOf LoginController
+	     * @instance
+	     */
 	    init: function init() {
 	        this.eBus.subscribe('auth', this.view.auth);
 	        this.eBus.subscribe('logOut', this.view.logOut);
 	        this.eBus.publish('login');
 	        firebase.auth().onAuthStateChanged(function (user) {
+	            var EventBus = window.app.EventBus;
+	            var router = window.app.router;
+	            var User = window.app.User;
 	            if (!user) {
 	                router.replaceState('login');
 	            }
@@ -842,12 +1110,12 @@
 	                var locate = location.pathname.slice(1);
 	                for (var key in router.routes) {
 	                    if (router.routes.hasOwnProperty(key)) {
-	                        if (locate == router.routes[key].url) {
+	                        if (locate === router.routes[key].url) {
 	                            locate = key;
 	                        }
 	                    }
 	                }
-	                if (!router.routes[locate] || locate == 'login' || locate == 'timer') {
+	                if (!router.routes[locate] || locate === 'login' || locate === 'timer') {
 	                    router.resetState().replaceState(router.defaultState);
 	                } else {
 	                    router.replaceState(router.currentState).moveTo(locate);
@@ -859,8 +1127,8 @@
 	};
 
 	document.addEventListener('DOMContentLoaded', function () {
-	    var loginCtrl = new LoginController(new _loginView2.default(EventBus), EventBus);
-	    loginCtrl.init();
+	    app.loginCtrl = new LoginController(new _loginView2.default(app.EventBus), app.EventBus);
+	    app.loginCtrl.init();
 	});
 
 /***/ },
@@ -872,12 +1140,18 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = View;
-	function View(eBus) {
+	/**
+	 * @param {CEventBus} eBus
+	 * @constructor
+	 */
+	function loginView(eBus) {
 	    this.eBus = eBus;
 	}
-
-	View.prototype.auth = function (e) {
+	/**
+	 * memberOf loginView
+	 * @param {Event} e
+	 */
+	loginView.prototype.auth = function (e) {
 	    var context = this;
 	    var val1 = document.getElementById('name_input').value;
 	    var val2 = document.getElementById('pw_input').value;
@@ -886,16 +1160,20 @@
 	        for (var i = 0; i < msgs.length; i++) {
 	            msgs[i].style.display = 'block';
 	        }
-	        EventBus.publish('notify', {
+	        app.EventBus.publish('notify', {
 	            msg: 'Invalid login/password',
 	            type: 'fail'
 	        });
 	    });
 	};
-
-	View.prototype.logOut = function () {
+	/**
+	 * memberOf loginView
+	 */
+	loginView.prototype.logOut = function () {
 	    firebase.auth().signOut();
 	};
+
+	exports.default = loginView;
 
 /***/ }
 /******/ ]);

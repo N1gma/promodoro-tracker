@@ -8,6 +8,7 @@ export default function Model() {
 }
 
 Model.prototype.setDefaultData = function () {
+    var User = window.app.User;
     var context = this;
     User.getSettings(User.currentLogin, function (value) {
         context.data = value;

@@ -55,11 +55,31 @@ module.exports = {
             }
         ],
         preLoaders: [
-
+            {
+                test: /\.js$/, // include .js files
+                exclude: /node_modules/, // exclude any and all files in the node_modules folder
+                loader: "jshint-loader"
+            }
         ]
 
     },
     plugins: [
         new ExtractTextPlugin("./dist/style.css")
-    ]
+    ],
+    jshint: {
+        // any jshint option http://www.jshint.com/docs/options/
+        // i. e.
+        camelcase: true,
+        "curly": true,
+        "eqeqeq": true,
+        // jshint errors are displayed by default as warnings
+        // set emitErrors to true to display them as errors
+        emitErrors: false,
+
+        // jshint to not interrupt the compilation
+        // if you want any file with jshint errors to fail
+        // set failOnHint to true
+        failOnHint: false,
+        esversion: 6
+    }
 };

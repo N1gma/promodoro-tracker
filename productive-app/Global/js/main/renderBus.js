@@ -1,28 +1,60 @@
-(function(){
-    window.EventBus = {
-        topics: {},
-        subscribe: function (topic, listener) {
-            if (!this.topics[topic]) this.topics[topic] = [];
+/**
+ * @class
+ */
+class CEventBus {
+    constructor() {
+        /**
+         * @memberOf CEventBus
+         */
+        this.topics = {};
+        /**
+         * @memberOf CEventBus
+         * @param {String} topic
+         * @param {function} listener
+         * @instance
+         */
+        this.subscribe = function (topic, listener) {
+            if (!this.topics[topic]) {
+                this.topics[topic] = [];
+            }
             this.topics[topic].push(listener);
-        },
-
-        publish: function (topic, data) {
-            if (!this.topics[topic] || this.topics[topic].length < 1) return;
+        };
+        /**
+         * @memberOf CEventBus
+         * @param {String} topic
+         * @param [data]
+         * @instance
+         */
+        this.publish = function (topic, data) {
+            if (!this.topics[topic] || this.topics[topic].length < 1){
+                return;
+            }
             this.topics[topic].forEach(function (listener) {
                 listener(data || {});
             });
-        }
-    };
+        };
+    }
+}
 
 //---------------------------------
 
+
+(function () {
+    window.app.EventBus = new CEventBus();
+    var EventBus = window.app.EventBus;
+    /*var Renderer = window.app.Renderer;
+     var User = window.app.User;
+     var app.EventBusLocal = window.app.app.EventBusLocal;*/
+
     EventBus.subscribe('login', function () {
-        Renderer.clearContent(document.getElementById('app-body'))
-        Renderer.renderLog()
+        var Renderer = window.app.Renderer;
+        Renderer.clearContent(document.getElementById('app-body'));
+        Renderer.renderLog();
     });
 
 //----------------------------------
     EventBus.subscribe('settings', function () {
+        var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
         Renderer.renderTitle_settings_1();
@@ -34,7 +66,7 @@
                 class: ['button-row-2', 'button-green'],
                 innerHtml: 'Save',
                 listener: function () {
-                    User.saveSettings();
+                    app.User.saveSettings();
                 }
             },
             {
@@ -42,15 +74,16 @@
                 class: ['button-row-2', 'button-blue'],
                 innerHtml: 'Next',
                 listener: function () {
-                    router.moveTo('tasklist')
+                    app.router.moveTo('tasklist');
                 }
             }
         ];
-        Renderer.renderButtons(list)
+        Renderer.renderButtons(list);
     });
 
 //----------------------------------
     EventBus.subscribe('settings-2', function () {
+        var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
         Renderer.renderTitle_settings_1();
@@ -75,12 +108,14 @@
     });
 //----------------------------------
     EventBus.subscribe('reports', function () {
+        var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
         Renderer.renderReports();
     });
 //----------------------------------
     EventBus.subscribe('taskList', function () {
+        var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeaderDetailed();
         Renderer.renderTitleTaskList();
@@ -90,6 +125,7 @@
     });
 //----------------------------------
     EventBus.subscribe('goToTimer', function (data) {
+        var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
         Renderer.renderTimer(data);
@@ -99,8 +135,8 @@
                 node: document.createElement('button'),
                 class: ['button-row-2', 'button-red'],
                 innerHtml: 'Fail Pomodora',
-                listener:function () {
-                    EventBusLocal.publish('time-stopped')
+                listener: function () {
+                    app.EventBusLocal.publish('time-stopped');
                 }
 
             }, {
@@ -108,7 +144,7 @@
                 class: ['button-row-2', 'button-green'],
                 innerHtml: 'Finish Pomodora',
                 listener: function () {
-                    EventBusLocal.publish('time-resumed')
+                    app.EventBusLocal.publish('time-resumed');
                 }
             }
         ];
@@ -116,27 +152,30 @@
     });
 //----------------------------------
     EventBus.subscribe('no-user', function () {
-        EventBus.publish('login')
+        app.EventBus.publish('login');
     });
 //----------------------------------
 
     EventBus.subscribe('notify', function (opts) {
-        Renderer.addNotification(opts);
+        app.Renderer.addNotification(opts);
     });
 
 //----------------------------------
-    EventBus.subscribe('initData',function(){
+    EventBus.subscribe('initData', function () {
+        var User = window.app.User;
         User.getData(User.currentLogin, 'tasks', function (value) {
             console.log(value);
-            if(!value){
+            if (!value) {
                 User.dataSnapShot = JSON.parse(localStorage.getItem('prodApp')).dataSnapShot;
             }
         });
         User.getSettings(User.currentLogin, function (value) {
             console.log(value);
-            if(!value){
+            if (!value) {
                 User.dataSnapShot = JSON.parse(localStorage.getItem('prodApp')).settings;
             }
-        })
+        });
     });
+
 }());
+

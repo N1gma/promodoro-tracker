@@ -18,12 +18,13 @@ export default class Controller {
             }
         };
         this.el.addEventListener('click', function (e) {
-            if (listeners[e.target.id]) listeners[e.target.id](e)
+            if (listeners[e.target.id]) {
+                listeners[e.target.id](e);
+            }
         });
 
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-            this.view.estimationRangeReview(e)
+            this.view.estimationRangeReview(e);
         }.bind(context));
-        console.log(this.el);
     }
 }

@@ -1,4 +1,5 @@
-import {Model} from './Model'
+import {Model} from './Model';
+
 export var options = {
     pieView: {
         chart: {
@@ -300,8 +301,7 @@ function columnWeekly() {
         name: 'Failed',
         data: [3, 6, 4, 4, 3],
         stack: 'failed'
-    }
-    ]
+    }];
 }
 export function columnMonthly() {
     return [{
@@ -320,8 +320,7 @@ export function columnMonthly() {
     }, {
         name: 'Failed',
         data: createRandom30xArray()
-    }
-    ]
+    }];
 }
 
 export function createRandom30xArray() {

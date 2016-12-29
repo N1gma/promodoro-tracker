@@ -46,38 +46,41 @@
         }
         $triangle = $tooltip.find('.triangle');
         var $tipText = $tooltip.find('.tip-text');
-        var mouseEnterListener = function (e) {
-            if (e.target != $tooltip && e.target != $triangle) {
-                $tooltip.css({
-                    top: e.pageY + 12 + 'px',
-                    left: e.pageX - 10 - offset + 'px',
-                    display: 'block'
-                });
-                $triangle.css({
-                    left: 8 + offsetTriangle + 'px'
-                });
-                $tipText.html(tip);
-            }
-            $target.mousemove(function (e) {
-                if (e.target != $tooltip && e.target != $triangle) {
+        var listeners = {
+            mouseEnterListener: function(e){
+                if (e.target !== $tooltip && e.target !== $triangle) {
                     $tooltip.css({
-                        top: e.pageY + 30 + 'px',
-                        left: e.pageX - 10 - offset + 'px'
+                        top: e.pageY + 12 + 'px',
+                        left: e.pageX - 10 - offset + 'px',
+                        display: 'block'
                     });
                     $triangle.css({
-                        left: '8px' + offsetTriangle
+                        left: 8 + offsetTriangle + 'px'
                     });
+                    $tipText.html(tip);
                 }
-            })
-
+                $target.mousemove(function (e) {
+                    if (e.target !== $tooltip && e.target !== $triangle) {
+                        $tooltip.css({
+                            top: e.pageY + 30 + 'px',
+                            left: e.pageX - 10 - offset + 'px'
+                        });
+                        $triangle.css({
+                            left: '8px' + offsetTriangle
+                        });
+                    }
+                });
+            },
+            offVision: function (e) {
+                $target.off('mousemove');
+                $tooltip.css({
+                    display: 'none'
+                });
+            }
         };
-        $target.mouseenter(mouseEnterListener);
-        $target.mouseleave(function (e) {
-            $target.off('mousemove');
-            $tooltip.css({
-                display: 'none'
-            })
-        });
+        $target.mouseenter(listeners.mouseEnterListener);
+        $target.mouseleave(listeners.offVision);
+        $target.click(listeners.offVision);
         return this;
     };
     $.fn.accordeon = function () {
@@ -92,8 +95,8 @@
             }
         };
         $target.off('click', listener);
-        $target.on('click', '.accordeon-head', listener);
-        return this
+        $target.on('click', heads, listener);
+        return this;
     };
 }(window.$));
 

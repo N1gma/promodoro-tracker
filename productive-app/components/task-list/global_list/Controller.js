@@ -1,6 +1,5 @@
 export default class Controller {
     constructor(model, view, eBusLocal, template) {
-        //this.view = view;
         this.template = template;
         this.model = model;
         this.view = view;
@@ -8,18 +7,17 @@ export default class Controller {
         this.listeners = {
             editTask: function (e) {
                 if (e.target.classList.contains('edit-task')) {
-                    Renderer.showModalEdit(e.target);
+                    app.Renderer.showModalEdit(e.target);
                 }
             },
             trashDrop: function (e) {
                 this.eBusLocal.publish('trash-drop', {
                     e: e,
                     context: this
-                })
+                });
             }.bind(this),
             showGlobalList: this.view.showGlobalList,
             moveToDaily: this.view.moveToDaily
-
         };
     }
 
@@ -32,7 +30,7 @@ export default class Controller {
         el.addEventListener('click', this.listeners.editTask);
         el.addEventListener('click', this.listeners.trashDrop);
         el.addEventListener('click', this.listeners.moveToDaily);
-        EventBusLocal.subscribe('filter-tasks', function (type) {
+        app.EventBusLocal.subscribe('filter-tasks', function (type) {
             console.log('filter ' + type);
             console.log(this);
             this.initController(function () {
@@ -45,7 +43,7 @@ export default class Controller {
                 }
                 context.removeEventListeners(el);
                 context.setEventListeners(el);
-            })
+            });
         }.bind(this));
 
     }
@@ -53,10 +51,9 @@ export default class Controller {
     removeEventListeners(el) {
         var context = this;
         for (var key in this.listeners) {
-            el.removeEventListener('click', this.listeners[key])
+            el.removeEventListener('click', this.listeners[key]);
         }
-        EventBusLocal.unsubscribe('filter-tasks');
-        console.log(EventBusLocal)
+        app.EventBusLocal.unsubscribe('filter-tasks');
     }
 }
 

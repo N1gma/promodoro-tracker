@@ -2,11 +2,11 @@ var controller2 = {
     listeners: {
         'pause':function (type,target) {
             controllerFilter.activateTab(target)
-            EventBusLocal.publish('filter-tasks', type)
+            app.EventBusLocal.publish('filter-tasks', type)
         },
         'resume':function (type,target) {
             controllerFilter.activateTab(target)
-            EventBusLocal.publish('filter-tasks', type)
+            app.EventBusLocal.publish('filter-tasks', type)
         }
     },
     init:function (el) {
