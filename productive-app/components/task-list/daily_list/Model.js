@@ -1,5 +1,12 @@
-export var tasks = {
+export var tasks;
+tasks = {
     data: {},
+    /**
+     * refresh task list data
+     *
+     * @memberOf DailyList.tasks
+     * @param {function} callback
+     */
     patchList: function (callback) {
         app.User.getData(app.User.currentLogin, 'tasks', function (value) {
             if (!value || value === []) {
@@ -10,6 +17,13 @@ export var tasks = {
             callback();
         });
     },
+    /**
+     * check if task in trash
+     *
+     * @memberOf DailyList.tasks
+     * @param {string} key - task ID
+     * @returns {boolean}
+     */
     checkTrashBuffer: function (key) {
         for (var i = 0; i < app.User.trashData.length; i++) {
             if (app.User.trashData[i] === key) {
@@ -18,6 +32,13 @@ export var tasks = {
         }
         return true;
     },
+    /**
+     * compare dates to render
+     *
+     * @memberOf DailyList.tasks
+     * @param {string} data
+     * @returns {Object}
+     */
     getStruct: function (data) {
         var structure = {};
         for (var key in data) {
@@ -33,6 +54,14 @@ export var tasks = {
         }
         return structure;
     },
+    /**
+     * filters tasks to render
+     *
+     * @memberOf DailyList.tasks
+     * @param {string} data
+     * @param {string} type
+     * @returns {Object}
+     */
     getFilterStruct: function (data, type) {
         var structure = [];
         for (var key in data) {
@@ -48,6 +77,13 @@ export var tasks = {
             list: structure
         };
     },
+    /**
+     * compare dates
+     *
+     * @memberOf DailyList.tasks
+     * @param {Object} date
+     * @returns {Boolean}
+     */
     compareDates: function (date) {
         var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var currentDate = new Date();

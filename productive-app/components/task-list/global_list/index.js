@@ -9,6 +9,7 @@ import {view} from './View';
  *
  * @memberOf app.Renderer
  * @instance
+ * @namespace GlobalList
  */
 app.Renderer.renderReportsGlobal = function () {
     var el = document.createElement('div');

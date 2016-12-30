@@ -1,6 +1,5 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
 module.exports = {
     entry: {
         vendors:['./services/vendors.entry.js','./services/firebase.js'],
@@ -70,8 +69,8 @@ module.exports = {
         // any jshint option http://www.jshint.com/docs/options/
         // i. e.
         camelcase: true,
-        "curly": true,
-        "eqeqeq": true,
+        curly: true,
+        eqeqeq: true,
         // jshint errors are displayed by default as warnings
         // set emitErrors to true to display them as errors
         emitErrors: false,

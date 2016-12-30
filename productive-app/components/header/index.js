@@ -1,11 +1,13 @@
 import template from  './template.jade';
 import {Controller} from './controller';
-
+/**
+ * @namespace Header
+ * @memberOf app.Renderer
+ */
 /**
  * Method which append default header to page
  *
  * @memberOf app.Renderer
- * @instance
  */
 app.Renderer.renderHeader = function(){
     var el = document.createElement('div');

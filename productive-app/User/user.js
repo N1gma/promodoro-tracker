@@ -215,5 +215,9 @@ class UserClass {
 }
 
 (function () {
-    window.app.User = new UserClass();
+    /**
+     * @memberOf app
+     * @type {UserClass}
+     */
+    app.User = new UserClass();
 }());

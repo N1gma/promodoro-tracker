@@ -1,7 +1,10 @@
 import template from './template.jade';
 import Controller from './Controller';
 import {tasks} from './Model';
-
+/**
+ * @namespace
+ * @memberOf app.Renderer
+ */
 /**
  * Method which add daily task-list to page
  *

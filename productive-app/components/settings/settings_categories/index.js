@@ -1,6 +1,9 @@
 import template from './template.jade';
 import css from '!!css-loader!less-loader!./style/style.less';
-
+/**
+ * @namespace SettingsCategories
+ * @memberOf app.Renderer
+ */
 /**
  * Method which render settings-categories in main page block
  *

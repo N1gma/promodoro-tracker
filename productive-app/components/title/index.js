@@ -6,7 +6,7 @@ import template from './template.jade';
  * @memberOf app.Renderer
  * @instance
  */
-app.Renderer.renderTitle_settings_1 = function () {
+app.Renderer.renderTitleSettings = function () {
     var el = document.createElement('div');
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);

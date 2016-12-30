@@ -1,4 +1,9 @@
 export var Controller = {
+    /**
+     * @memberOf app.Renderer.HeaderDetailed
+     * @instance
+     * @param el
+     */
     initCntrl: function (el) {
         var listeners = { // обьект проектирования поведения
             'log_out': function (e) {

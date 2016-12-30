@@ -1,4 +1,8 @@
-export default class Controller{
+/**
+ * @class
+ * @memberOf Notifications
+ */
+class Controller{
     constructor(el){
         this.el=el;
     }
@@ -15,3 +19,5 @@ export default class Controller{
         });
     }
 }
+
+export default Controller;

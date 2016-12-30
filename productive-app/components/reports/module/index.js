@@ -2,7 +2,10 @@ import template from './template.jade';
 import {Controller} from './Controller';
 import {View} from './View';
 import {Model} from './Model.js';
-
+/**
+ * @namespace Reports
+ * @memberOf app.Renderer
+ */
 /**
  * Method which render report page graph
  *

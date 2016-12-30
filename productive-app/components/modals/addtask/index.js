@@ -2,7 +2,10 @@ import template from './template.jade';
 import Controller from './controller';
 import {view} from  './view';
 import css from '!!css-loader!less-loader!./style/style.less';
-
+/**
+ * @namespace ModalAddTask
+ * @memberOf app.Renderer
+ */
 /**
  * Method which show add-task modal on page
  *

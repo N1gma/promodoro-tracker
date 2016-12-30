@@ -1,46 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
-
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-
-
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
+webpackJsonp([0],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -198,7 +156,11 @@
 
 
 	(function () {
-	    window.app.EventBus = new CEventBus();
+	    /**
+	     * @memberOf app
+	     * @type {CEventBus}
+	     */
+	    app.EventBus = new CEventBus();
 	    var EventBus = window.app.EventBus;
 	    /*var Renderer = window.app.Renderer;
 	     var User = window.app.User;
@@ -215,7 +177,7 @@
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
-	        Renderer.renderTitle_settings_1();
+	        Renderer.renderTitleSettings();
 	        Renderer.renderSettingsMain();
 	        var list = [document.createElement('button'), document.createElement('button')];
 	        list = [{
@@ -241,7 +203,7 @@
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
-	        Renderer.renderTitle_settings_1();
+	        Renderer.renderTitleSettings();
 	        Renderer.renderSettingsCategories();
 	        var list = [document.createElement('button'), document.createElement('button')];
 	        list = [{
@@ -579,7 +541,11 @@
 	}();
 
 	(function () {
-	    window.app.User = new UserClass();
+	    /**
+	     * @memberOf app
+	     * @type {UserClass}
+	     */
+	    app.User = new UserClass();
 	})();
 
 /***/ },
@@ -651,7 +617,11 @@
 	}();
 
 	(function () {
-	    window.app.EventBusLocal = new CEventBusLocal();
+	    /**
+	     * @memberOf app
+	     * @type {CEventBusLocal}
+	     */
+	    app.EventBusLocal = new CEventBusLocal();
 	    var EventBusLocal = window.app.EventBusLocal;
 	    var User = window.app.User;
 	    EventBusLocal.subscribe('trash-drop', function (data) {
@@ -890,8 +860,12 @@
 	}();
 
 	(function () {
-	    window.app.router = new Routes();
-	    window.app.router.bind();
+	    /**
+	     * @memberOf app
+	     * @type {Routes}
+	     */
+	    app.router = new Routes();
+	    app.router.bind();
 	})();
 
 /***/ },
@@ -1048,7 +1022,7 @@
 	        title: 'msg',
 	        icon: 'Global/img/question-mark.png'
 	    });
-	    EventBus.publish('notify', {
+	    app.EventBus.publish('notify', {
 	        msg: 'Gone offline',
 	        type: 'fail'
 	    });
@@ -1060,7 +1034,7 @@
 	        title: 'msg',
 	        icon: 'Global/img/question-mark.png'
 	    });
-	    EventBus.publish('notify', {
+	    app.EventBus.publish('notify', {
 	        msg: 'Gone online',
 	        type: 'success'
 	    });
@@ -1127,6 +1101,10 @@
 	};
 
 	document.addEventListener('DOMContentLoaded', function () {
+	    /**
+	     * @memberOf app
+	     * @type {LoginController}
+	     */
 	    app.loginCtrl = new LoginController(new _loginView2.default(app.EventBus), app.EventBus);
 	    app.loginCtrl.init();
 	});
@@ -1176,4 +1154,4 @@
 	exports.default = loginView;
 
 /***/ }
-/******/ ]);
+]);

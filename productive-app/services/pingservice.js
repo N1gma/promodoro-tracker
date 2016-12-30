@@ -4,7 +4,7 @@ window.addEventListener("offline", function(e) {
         title:'msg',
         icon: 'Global/img/question-mark.png'
     });
-    EventBus.publish('notify',{
+    app.EventBus.publish('notify',{
         msg:'Gone offline',
         type:'fail'
     });
@@ -16,7 +16,7 @@ window.addEventListener("online", function(e) {
         title:'msg',
         icon: 'Global/img/question-mark.png'
     });
-    EventBus.publish('notify',{
+    app.EventBus.publish('notify',{
         msg:'Gone online',
         type:'success'
     });

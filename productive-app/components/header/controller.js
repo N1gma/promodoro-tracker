@@ -1,4 +1,8 @@
 export var Controller = {
+    /**
+     * @memberOf  @memberOf app.Renderer.Header
+     * @param {HTMLElement} el
+     */
     initCntrl: function (el) {
         var listeners = { // обьект проектирования поведения
             'log_out': function (e) {
@@ -24,3 +28,4 @@ export var Controller = {
         });
     }
 };
+

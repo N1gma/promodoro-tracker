@@ -1,4 +1,8 @@
-export default class Controller {
+/**
+ * @class
+ * @memberOf @memberOf app.Renderer.ModalAddTask
+ */
+class Controller {
     constructor(view, el) {
         this.view = view;
         this.el = el;
@@ -28,3 +32,5 @@ export default class Controller {
         }.bind(context));
     }
 }
+
+export default Controller;

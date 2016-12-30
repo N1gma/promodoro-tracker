@@ -40,7 +40,11 @@ class CEventBus {
 
 
 (function () {
-    window.app.EventBus = new CEventBus();
+    /**
+     * @memberOf app
+     * @type {CEventBus}
+     */
+    app.EventBus = new CEventBus();
     var EventBus = window.app.EventBus;
     /*var Renderer = window.app.Renderer;
      var User = window.app.User;
@@ -57,7 +61,7 @@ class CEventBus {
         var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
-        Renderer.renderTitle_settings_1();
+        Renderer.renderTitleSettings();
         Renderer.renderSettingsMain();
         var list = [document.createElement('button'), document.createElement('button')];
         list = [
@@ -86,7 +90,7 @@ class CEventBus {
         var Renderer = window.app.Renderer;
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
-        Renderer.renderTitle_settings_1();
+        Renderer.renderTitleSettings();
         Renderer.renderSettingsCategories();
         var list = [document.createElement('button'), document.createElement('button')];
         list = [

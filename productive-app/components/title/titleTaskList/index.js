@@ -6,6 +6,7 @@ import {controller} from './controller';
  *
  * @memberOf app.Renderer
  * @instance
+ * @namespace taskListTitle
  */
 app.Renderer.renderTitleTaskList = function () {
     var el = document.createElement('div');

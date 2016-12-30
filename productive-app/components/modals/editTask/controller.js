@@ -6,7 +6,6 @@ export default class Controller {
 
     init(target) {
         var context = this;
-        
         var listeners = {
             'modal-close': function (e) {
                 context.view.modalClose(e, context.el);

@@ -48,6 +48,10 @@ LoginController.prototype = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+    /**
+     * @memberOf app
+     * @type {LoginController}
+     */
     app.loginCtrl = new LoginController(new loginView(app.EventBus), app.EventBus);
     app.loginCtrl .init();
 });

@@ -1,46 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
-
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-
-
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
+webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -90,7 +48,6 @@
 	 * Method which render login page
 	 *
 	 * @memberOf app.Renderer
-	 * @instance
 	 */
 	app.Renderer.renderLog = function () {
 	    var el = document.createElement('div');
@@ -389,10 +346,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
+	 * @namespace Header
+	 * @memberOf app.Renderer
+	 */
+	/**
 	 * Method which append default header to page
 	 *
 	 * @memberOf app.Renderer
-	 * @instance
 	 */
 	app.Renderer.renderHeader = function () {
 	  var el = document.createElement('div');
@@ -425,6 +385,10 @@
 	    value: true
 	});
 	var Controller = exports.Controller = {
+	    /**
+	     * @memberOf  @memberOf app.Renderer.Header
+	     * @param {HTMLElement} el
+	     */
 	    initCntrl: function initCntrl(el) {
 	        var listeners = { // обьект проектирования поведения
 	            'log_out': function log_out(e) {
@@ -469,7 +433,7 @@
 	 * @memberOf app.Renderer
 	 * @instance
 	 */
-	app.Renderer.renderTitle_settings_1 = function () {
+	app.Renderer.renderTitleSettings = function () {
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
@@ -521,6 +485,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @namespace SettingsPomodoros
+	 * @memberOf app.Renderer
+	 */
 	/**
 	 * Method which render settings-pomodoros in main page block
 	 *
@@ -700,7 +668,7 @@
 	    var timeLabel = document.createElement('div');
 	    timeLabel.classList.add('timelabel');
 	    timeLabel.style.width = labelWidth;
-	    for (var i = 0; i < labelsTotal; i++) {
+	    for (var _i = 0; _i < labelsTotal; _i++) {
 	        //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
 	        timePointer += 30;
 	        timeLabel.innerHTML = '<div><span></span>' + app.Renderer.helpers.transformTime(timePointer) + '</div>';
@@ -829,18 +797,22 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
+	 * @namespace SettingsCategories
+	 * @memberOf app.Renderer
+	 */
+	/**
 	 * Method which render settings-categories in main page block
 	 *
 	 * @memberOf app.Renderer
 	 * @instance
 	 */
 	app.Renderer.renderSettingsCategories = function () {
-	    var el = document.createElement('div');
-	    var elCss = document.createElement('style');
-	    elCss.innerHTML = _style2.default['0'][1];
-	    el.innerHTML = (0, _template2.default)();
-	    document.getElementById('app-body').appendChild(el);
-	    el.appendChild(elCss);
+	  var el = document.createElement('div');
+	  var elCss = document.createElement('style');
+	  elCss.innerHTML = _style2.default['0'][1];
+	  el.innerHTML = (0, _template2.default)();
+	  document.getElementById('app-body').appendChild(el);
+	  el.appendChild(elCss);
 	};
 
 /***/ },
@@ -951,6 +923,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @namespace Reports
+	 * @memberOf app.Renderer
+	 */
 	/**
 	 * Method which render report page graph
 	 *
@@ -1462,10 +1438,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
+	 * @namespace HeaderDetailed
+	 * @memberOf app.Renderer
+	 */
+	/**
 	 * Method which append task-list header to page
 	 *
 	 * @memberOf app.Renderer
-	 * @instance
 	 */
 	app.Renderer.renderHeaderDetailed = function () {
 	  var el = document.createElement('div');
@@ -1498,6 +1477,11 @@
 	    value: true
 	});
 	var Controller = exports.Controller = {
+	    /**
+	     * @memberOf app.Renderer.HeaderDetailed
+	     * @instance
+	     * @param el
+	     */
 	    initCntrl: function initCntrl(el) {
 	        var listeners = { // обьект проектирования поведения
 	            'log_out': function log_out(e) {
@@ -1552,6 +1536,7 @@
 	 *
 	 * @memberOf app.Renderer
 	 * @instance
+	 * @namespace taskListTitle
 	 */
 	app.Renderer.renderTitleTaskList = function () {
 	  var el = document.createElement('div');
@@ -1635,6 +1620,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
+	 * @namespace
+	 * @memberOf app.Renderer
+	 */
+	/**
 	 * Method which add daily task-list to page
 	 *
 	 * @memberOf app.Renderer
@@ -1701,6 +1690,10 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	/**
+	 * @class
+	 * @memberOf DailyList
+	 */
 	var Controller = function () {
 	    function Controller(model, eBusLocal) {
 	        _classCallCheck(this, Controller);
@@ -1729,6 +1722,11 @@
 	        };
 	    }
 
+	    /**
+	     * @param {function} callback
+	     */
+
+
 	    _createClass(Controller, [{
 	        key: 'initController',
 	        value: function initController(callback) {
@@ -1736,6 +1734,10 @@
 	            this.model.patchList(callback);
 	            //this.view.showList
 	        }
+	        /**
+	         * @param {HTMLElement} el
+	         */
+
 	    }, {
 	        key: 'setEventListeners',
 	        value: function setEventListeners(el) {
@@ -1744,6 +1746,10 @@
 	            el.addEventListener('click', this.listeners.trashDrop);
 	            el.addEventListener('click', this.listeners.goToTimer);
 	        }
+	        /**
+	         * @param {HTMLElement} el
+	         */
+
 	    }, {
 	        key: 'removeEventListeners',
 	        value: function removeEventListeners(el) {
@@ -1768,8 +1774,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var tasks = exports.tasks = {
+	var tasks = exports.tasks = undefined;
+	exports.tasks = tasks = {
 	    data: {},
+	    /**
+	     * refresh task list data
+	     *
+	     * @memberOf DailyList.tasks
+	     * @param {function} callback
+	     */
 	    patchList: function patchList(callback) {
 	        app.User.getData(app.User.currentLogin, 'tasks', function (value) {
 	            if (!value || value === []) {
@@ -1780,6 +1793,13 @@
 	            callback();
 	        });
 	    },
+	    /**
+	     * check if task in trash
+	     *
+	     * @memberOf DailyList.tasks
+	     * @param {string} key - task ID
+	     * @returns {boolean}
+	     */
 	    checkTrashBuffer: function checkTrashBuffer(key) {
 	        for (var i = 0; i < app.User.trashData.length; i++) {
 	            if (app.User.trashData[i] === key) {
@@ -1788,6 +1808,13 @@
 	        }
 	        return true;
 	    },
+	    /**
+	     * compare dates to render
+	     *
+	     * @memberOf DailyList.tasks
+	     * @param {string} data
+	     * @returns {Object}
+	     */
 	    getStruct: function getStruct(data) {
 	        var structure = {};
 	        for (var key in data) {
@@ -1802,6 +1829,14 @@
 	        }
 	        return structure;
 	    },
+	    /**
+	     * filters tasks to render
+	     *
+	     * @memberOf DailyList.tasks
+	     * @param {string} data
+	     * @param {string} type
+	     * @returns {Object}
+	     */
 	    getFilterStruct: function getFilterStruct(data, type) {
 	        var structure = [];
 	        for (var key in data) {
@@ -1816,6 +1851,13 @@
 	            list: structure
 	        };
 	    },
+	    /**
+	     * compare dates
+	     *
+	     * @memberOf DailyList.tasks
+	     * @param {Object} date
+	     * @returns {Boolean}
+	     */
 	    compareDates: function compareDates(date) {
 	        var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	        var currentDate = new Date();
@@ -1845,6 +1887,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @namespace ModalAddTask
+	 * @memberOf app.Renderer
+	 */
 	/**
 	 * Method which show add-task modal on page
 	 *
@@ -1893,6 +1939,10 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	/**
+	 * @class
+	 * @memberOf @memberOf app.Renderer.ModalAddTask
+	 */
 	var Controller = function () {
 	    function Controller(view, el) {
 	        _classCallCheck(this, Controller);
@@ -1943,22 +1993,46 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var view = exports.view = {
+	var view = exports.view = undefined;
+	/**
+	 * @memberOf @memberOf app.Renderer.ModalAddTask
+	 * @namespace
+	 */
+	exports.view = view = {
+	    /**Updates task data after edit
+	     *
+	     * @memberOf app.Renderer.ModalAddTask.view
+	     * @param {function} callback
+	     */
 	    dropData: function dropData(callback) {
-	        User.updateTasksData();
+	        app.User.updateTasksData();
 	        callback();
 	    },
+	    /**
+	     * Close modal window
+	     *
+	     * @memberOf app.Renderer.ModalAddTask.view
+	     * @param {Event} e
+	     * @param {HTMLElement} el
+	     */
 	    modalClose: function modalClose(e, el) {
 	        e.preventDefault();
 	        document.getElementById('app-body').removeChild(el);
 	    },
+	    /**
+	     * Calculate and represent estimation pomodoras visual
+	     *
+	     * @memberOf app.Renderer.ModalAddTask.view
+	     * @param {Event} e
+	     */
 	    estimationRangeReview: function estimationRangeReview(e) {
 	        if (e.target.tagName.toUpperCase() === 'LI') {
+	            var i, j;
 	            var parent = e.currentTarget;
-	            for (var i = 0; i < parent.children.length; i++) {
+	            for (i = 0; i < parent.children.length; i++) {
 	                parent.children[i].classList.remove('estimated');
 	            }
-	            for (var i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
+	            for (i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
 	                parent.children[i].classList.add('estimated');
 	            }
 	            e.target.classList.add('estimated');
@@ -2021,6 +2095,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @namespace ModalEditTask
+	 * @memberOf app.Renderer
+	 */
 	/**
 	 * Method which show edit-task modal on page
 	 *
@@ -2086,7 +2164,6 @@
 	        key: 'init',
 	        value: function init(target) {
 	            var context = this;
-
 	            var listeners = {
 	                'modal-close': function modalClose(e) {
 	                    context.view.modalClose(e, context.el);
@@ -2126,8 +2203,19 @@
 	    value: true
 	});
 	var User = window.app.User;
-
-	var view = exports.view = {
+	var view = exports.view = undefined;
+	/**
+	 * @namespace
+	 * @memberOf ModalEditTask
+	 */
+	exports.view = view = {
+	    /**
+	     * sync estimation
+	     *
+	     * @memberOf ModalEditTask.view
+	     * @param {HTMLElement|Node} target
+	     * @param {function} callback
+	     */
 	    syncChanges: function syncChanges(target, callback) {
 	        while (target.parentNode.classList.contains('task') === false) {
 	            target = target.parentNode;
@@ -2141,10 +2229,25 @@
 	            document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
 	        }
 	    },
+	    /**
+	     * Close modal window
+	     *
+	     * @memberOf ModalEditTask.view
+	     * @param {Event} e
+	     * @param {HTMLElement} el
+	     */
 	    modalClose: function modalClose(e, el) {
 	        e.preventDefault();
 	        document.getElementById('app-body').removeChild(el);
 	    },
+	    /**
+	     * Edit task confirmation
+	     *
+	     * @memberOf ModalEditTask.view
+	     * @param {Event} e
+	     * @param {HTMLElement} el
+	     * @param {HTMLElement|Node} target
+	     */
 	    modalConfirmEdit: function modalConfirmEdit(e, el, target) {
 	        e.preventDefault();
 	        while (target.parentNode.classList.contains('task') === false) {
@@ -2154,6 +2257,14 @@
 	        User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
 	        document.getElementById('app-body').removeChild(el);
 	    },
+	    /**
+	     * Deleting task in edit process
+	     *
+	     * @memberOf ModalEditTask.view
+	     * @param {Event} e
+	     * @param {HTMLElement} el
+	     * @param {HTMLElement|Node} target
+	     */
 	    modalRemove: function modalRemove(e, el, target) {
 	        e.preventDefault();
 	        while (target.parentNode.classList.contains('task') === false) {
@@ -2163,13 +2274,18 @@
 	        User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
 	        document.getElementById('app-body').removeChild(el);
 	    },
+	    /**
+	     * @memberOf ModalEditTask.view
+	     * @param {Event} e
+	     */
 	    estimationRangeReview: function estimationRangeReview(e) {
 	        if (e.target.tagName.toUpperCase() === 'LI') {
+	            var i, j;
 	            var parent = e.currentTarget;
-	            for (var i = 0; i < parent.children.length; i++) {
+	            for (i = 0; i < parent.children.length; i++) {
 	                parent.children[i].classList.remove('estimated');
 	            }
-	            for (var i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
+	            for (i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
 	                parent.children[i].classList.add('estimated');
 	            }
 	            e.target.classList.add('estimated');
@@ -2199,6 +2315,7 @@
 	 *
 	 * @memberOf app.Renderer
 	 * @instance
+	 * @namespace globalListTitle
 	 */
 	app.Renderer.renderTitleTaskListGlobal = function () {
 	  var el = document.createElement('div');
@@ -2302,6 +2419,7 @@
 	 *
 	 * @memberOf app.Renderer
 	 * @instance
+	 * @namespace GlobalList
 	 */
 	app.Renderer.renderReportsGlobal = function () {
 	    var el = document.createElement('div');
@@ -2497,6 +2615,7 @@
 	 *
 	 * @memberOf app.Renderer
 	 * @instance
+	 * @namespace Timer
 	 */
 	app.Renderer.renderTimer = function (data) {
 	  var el = document.createElement('div');
@@ -2653,18 +2772,22 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
+	 * @namespace Notifications
+	 * @memberOf app.Renderer
+	 */
+	/**
 	 * Method which append notification to bottom notify list
 	 *
 	 * @memberOf app.Renderer
 	 * @instance
 	 */
 	app.Renderer.addNotification = function (opts) {
-	    var el = document.createElement('li');
-	    el.classList.add(opts.type + '-pomodora-type');
-	    el.innerHTML = (0, _template2.default)(opts);
-	    var controller = new _controller2.default(el);
-	    controller.init();
-	    document.getElementById('notification-body').insertBefore(el, document.getElementById('notification-body').firstElementChild);
+	  var el = document.createElement('li');
+	  el.classList.add(opts.type + '-pomodora-type');
+	  el.innerHTML = (0, _template2.default)(opts);
+	  var controller = new _controller2.default(el);
+	  controller.init();
+	  document.getElementById('notification-body').insertBefore(el, document.getElementById('notification-body').firstElementChild);
 	};
 
 /***/ },
@@ -2695,6 +2818,10 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	/**
+	 * @class
+	 * @memberOf Notifications
+	 */
 	var Controller = function () {
 	    function Controller(el) {
 	        _classCallCheck(this, Controller);
@@ -2726,4 +2853,4 @@
 	exports.default = Controller;
 
 /***/ }
-/******/ ]);
+]);

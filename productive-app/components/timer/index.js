@@ -7,6 +7,7 @@ import {view} from  './view';
  *
  * @memberOf app.Renderer
  * @instance
+ * @namespace Timer
  */
 app.Renderer.renderTimer = function (data) {
     var el = document.createElement('div');

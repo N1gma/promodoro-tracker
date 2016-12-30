@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/', {
 
 app.get('*', function (req, res) {
     var slicedUrl = req.url.slice(1, req.url.length);
-    fs.createReadStream('./index.html').pipe(res);
+    fs.createReadStream('./dist/index.html').pipe(res);
 });
 
 

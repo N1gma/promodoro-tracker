@@ -3,7 +3,10 @@ import {dataModule} from './dataModule';
 import View from './view.js';
 import Model from './model.js';
 import Controller from './controller.js';
-
+/**
+ * @namespace SettingsPomodoros
+ * @memberOf app.Renderer
+ */
 /**
  * Method which render settings-pomodoros in main page block
  *

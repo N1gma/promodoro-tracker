@@ -1,6 +1,9 @@
 import template from './template.jade';
 import Controller from './controller';
-
+/**
+ * @namespace Notifications
+ * @memberOf app.Renderer
+ */
 /**
  * Method which append notification to bottom notify list
  *

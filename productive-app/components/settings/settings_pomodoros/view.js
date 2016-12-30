@@ -40,7 +40,7 @@ View.prototype.renderComponent = function (data) {
     var timeLabel = document.createElement('div');
     timeLabel.classList.add('timelabel');
     timeLabel.style.width = labelWidth;
-    for (var i = 0; i < labelsTotal; i++) {
+    for (let i = 0; i < labelsTotal; i++) {
         //timePointer += data['WORK TIME'] + data['SHORT BREAK'];
         timePointer += 30;
         timeLabel.innerHTML = '<div><span></span>' + app.Renderer.helpers.transformTime(timePointer) + '</div>';

@@ -1,9 +1,10 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpack = require("webpack");
 
 
 module.exports = {
     entry: {
-        vendors: ['./services/vendors.entry.js','./services/firebase.js','./services/jquery-ui.js'],
+        vendors: ['jquery','./services/plugins/jquery-ui.min.js','./services/vendors.entry.js','./services/firebase.js'],
         commonBundle: ['./Global/js/main/GlobalView.js', './Global/js/main/helpers.js','./Global/js/main/renderBus.js',
             './User/user.js','./Global/js/main/eBusLocalTasks.js','./Global/js/main/Routes.js',
             './services/plugins/index.js','./services/notifications.js','./services/pingservice.js',
@@ -57,13 +58,14 @@ module.exports = {
         preLoaders: [
             {
                 test: /\.js$/,
-                exclude: [/services/, /node_modules/],
+                exclude: [/\.min\.js$/, /node_modules/],
                 loader: "jshint-loader"
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("./dist/style.css")
+        new ExtractTextPlugin("./dist/style.css"),
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendors", /* filename= */"./dist/vendors.js")
     ],
     jshint: {
         camelcase: true,

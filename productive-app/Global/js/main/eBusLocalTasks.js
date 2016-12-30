@@ -42,7 +42,11 @@ class CEventBusLocal {
 }
 
 (function () {
-    window.app.EventBusLocal = new CEventBusLocal();
+    /**
+     * @memberOf app
+     * @type {CEventBusLocal}
+     */
+    app.EventBusLocal = new CEventBusLocal();
     var EventBusLocal = window.app.EventBusLocal;
     var User = window.app.User;
     EventBusLocal.subscribe('trash-drop', function (data) {

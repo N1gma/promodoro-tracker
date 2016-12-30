@@ -4,7 +4,6 @@ import template from  './template.jade';
  * Method which render login page
  *
  * @memberOf app.Renderer
- * @instance
  */
 app.Renderer.renderLog = function(){
     var el = document.createElement('div');

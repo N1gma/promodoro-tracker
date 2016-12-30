@@ -101,6 +101,10 @@ class Routes {
 }
 
 (function(){
-    window.app.router = new Routes();
-    window.app.router.bind();
+    /**
+     * @memberOf app
+     * @type {Routes}
+     */
+    app.router = new Routes();
+    app.router.bind();
 }());

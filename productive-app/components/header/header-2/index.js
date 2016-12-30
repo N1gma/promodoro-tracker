@@ -1,11 +1,13 @@
 import template1 from  './template.jade';
 import {Controller} from './controller';
-
+/**
+ * @namespace HeaderDetailed
+ * @memberOf app.Renderer
+ */
 /**
  * Method which append task-list header to page
  *
  * @memberOf app.Renderer
- * @instance
  */
 app.Renderer.renderHeaderDetailed = function(){
     var el = document.createElement('div');

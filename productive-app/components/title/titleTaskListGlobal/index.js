@@ -7,6 +7,7 @@ import {controllerFilter} from  './filter-controller';
  *
  * @memberOf app.Renderer
  * @instance
+ * @namespace globalListTitle
  */
 app.Renderer.renderTitleTaskListGlobal = function () {
     var el = document.createElement('div');

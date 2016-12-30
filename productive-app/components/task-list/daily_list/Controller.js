@@ -1,4 +1,8 @@
-export default class Controller {
+/**
+ * @class
+ * @memberOf DailyList
+ */
+class Controller {
     constructor(model, eBusLocal) {
         //this.view = view;
         this.model = model;
@@ -24,19 +28,26 @@ export default class Controller {
         };
     }
 
+    /**
+     * @param {function} callback
+     */
     initController(callback) {
         app.EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
         this.model.patchList(callback);
         //this.view.showList
     }
-
+    /**
+     * @param {HTMLElement} el
+     */
     setEventListeners(el) {
         var context = this;
         el.addEventListener('click', this.listeners.editTask);
         el.addEventListener('click', this.listeners.trashDrop);
         el.addEventListener('click', this.listeners.goToTimer);
     }
-
+    /**
+     * @param {HTMLElement} el
+     */
     removeEventListeners(el) {
         var context = this;
         for (var key in this.listeners) {
@@ -45,4 +56,5 @@ export default class Controller {
     }
 }
 
+export default Controller;
 
