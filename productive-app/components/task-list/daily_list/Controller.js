@@ -21,7 +21,7 @@ class Controller {
             }.bind(this),
             goToTimer:function (e) {
                 if (e.target.classList.contains('urgency')) {
-                    app.router.moveTo('timer', e.target.parentNode.getAttribute('key'));
+                    app.router.moveTo('timer', e.target.parentNode);
                     //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
                 }
             }

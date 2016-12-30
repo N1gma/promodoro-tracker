@@ -1,6 +1,7 @@
 import template from './template.jade';
 import Controller from './controller';
-import {view} from  './view';
+import View from  './view';
+import Model from './model';
 
 /**
  * Method which show timer on page
@@ -9,8 +10,10 @@ import {view} from  './view';
  * @instance
  * @namespace Timer
  */
-app.Renderer.renderTimer = function (data) {
+app.Renderer.renderTimer = function (elem) {
     var el = document.createElement('div');
-    var controller = new Controller(data,view);
+    var model = new Model(elem);
+    var view = new View(model);
+    var controller = new Controller(view, model);
     controller.init(template,el);
 };

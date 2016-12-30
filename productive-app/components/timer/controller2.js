@@ -1,12 +1,12 @@
 var controller2 = {
     listeners: {
         'pause':function (type,target) {
-            controllerFilter.activateTab(target)
-            app.EventBusLocal.publish('filter-tasks', type)
+            controllerFilter.activateTab(target);
+            app.EventBusLocal.publish('time-stopped', type)
         },
         'resume':function (type,target) {
-            controllerFilter.activateTab(target)
-            app.EventBusLocal.publish('filter-tasks', type)
+            controllerFilter.activateTab(target);
+            app.EventBusLocal.publish('time-resumed', type)
         }
     },
     init:function (el) {
@@ -15,6 +15,6 @@ var controller2 = {
             if(context.listeners[identifier]){
                 context.listeners[identifier](identifier,e.target);
             }
-        })
+        });
     }
-}
+};

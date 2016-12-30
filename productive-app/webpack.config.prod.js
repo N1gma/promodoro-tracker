@@ -65,12 +65,18 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("./dist/style.css"),
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendors", /* filename= */"./dist/vendors.js")
+        new webpack.optimize.CommonsChunkPlugin("vendors", "./dist/vendors.js"),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            mangle: true
+        })
     ],
     jshint: {
         camelcase: true,
-        "curly": true,
-        "eqeqeq": true,
+        curly: true,
+        eqeqeq: true,
         emitErrors: false,
         failOnHint: false,
         esversion: 6

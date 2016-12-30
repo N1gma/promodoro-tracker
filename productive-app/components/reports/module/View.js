@@ -5,11 +5,13 @@ export var View ={
         var chart = new Highcharts.Chart(options);
     },
     activateTab:function (e) {
-        for (var i = 0; i < e.currentTarget.children.length; i++) {
-            if (e.currentTarget.children[i].classList.contains('active-tab')) {
-                e.currentTarget.children[i].classList.remove('active-tab');
+        if(e.target.tagName.toUpperCase() === 'BUTTON'){
+            for (var i = 0; i < e.currentTarget.children.length; i++) {
+                if (e.currentTarget.children[i].classList.contains('active-tab')) {
+                    e.currentTarget.children[i].classList.remove('active-tab');
+                }
             }
+            e.target.classList.add('active-tab');
         }
-        e.target.classList.add('active-tab');
     }
 };
