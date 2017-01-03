@@ -16,11 +16,16 @@
          *
          * @memberOf app.Renderer
          * @param {HTMLElement} target
+         * @param {boolean} [selfDestruction]
          * @instance
          */
-        clearContent: function (target) {
-            while (target.firstElementChild) {
-                target.removeChild(target.firstElementChild);
+        clearContent: function (target,selfDestruction) {
+            if(selfDestruction){
+                target.parentNode.removeChild(target);
+            }else{
+                while (target.firstElementChild) {
+                    target.removeChild(target.firstElementChild);
+                }
             }
         },
         /**
@@ -28,12 +33,17 @@
          *
          * @memberOf app.Renderer
          * @param {Array} list
+         * @param {String} [holderClass]
          * @instance
          */
-        renderButtons: function (list) {
+        renderButtons: function (list,holderClass) {
             var fragment = document.createDocumentFragment();
             var container = document.createElement('div');
-            container.classList.add('button-holder');
+            if(holderClass){
+                container.classList.add(holderClass);
+            }else{
+                container.classList.add('button-holder');
+            }
             fragment.appendChild(container);
             for (var i = 0; i < list.length; i++) {
                 for (var j = 0; j < list[i].class.length; j++) {

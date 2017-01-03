@@ -54,7 +54,7 @@
   "scripts": {
     "start": "webpack --config webpack.config.dev.js && karma start karma.conf.js",
     "test": "karma start karma.conf.js",
-    "static": "node server.js",
+    "static": "node dev/server.js",
     "docs": "jsdoc -r -c conf.json",
     "prod": "webpack --config webpack.config.prod.js && jsdoc -r -c conf.json && karma start karma.conf.js"
   },

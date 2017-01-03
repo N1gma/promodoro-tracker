@@ -1,8 +1,8 @@
+
 export default class Controller {
     constructor(view, model) {
         this.view = view;
         this.model = model;
-        this.cycle = {};
         this.listeners = {
             'pause':function (type,target) {
                 controllerFilter.activateTab(target);
@@ -15,14 +15,20 @@ export default class Controller {
         };
     }
 
-    init(template, el) {
+    init() {
         var EventBusLocal = app.EventBusLocal;
         var context = this;
-        for(var i = 0;i<this.model.estimation;i++){
-            this.model.cycle.push('task');
-            this.model.cycle.push('break');
-        }
-        EventBusLocal.subscribe('time-stopped', function(){
+        console.log(this);
+        EventBusLocal.subscribe('first-start', function(){
+            context.view.startCycle();
+        });
+        EventBusLocal.subscribe('timer-progress', function(type){
+            context.model = context.model.getNewModel(type);
+            context.view.model = context.model;
+            context.view.newCycle();
+        });
+        this.generateCycle();
+       /* EventBusLocal.subscribe('time-stopped', function(){
             context.view.pauseAnimation(context.model.timer);
         });
         EventBusLocal.subscribe('time-resumed', function(){
@@ -36,13 +42,17 @@ export default class Controller {
                 count: 0,
                 finished: false
             };
-            this.view.animateTimer();
         });
-        el.innerHTML = template({
-            data: this.model
-        });
-        document.getElementById('app-body').appendChild(el);
-        this.view.animateTimer('work');
+        this.view.startCycle();*/
+    }
+    generateCycle(){
+        var cycle = this.view.cycle;
+        for(var i = 0;i<this.model.estimation;i++){
+            cycle.push('work');
+            cycle.push('break');
+        }
+        cycle.splice(-1,1);
+        app.EventBusLocal.publish('first-start');
     }
 }
 

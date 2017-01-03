@@ -40,11 +40,16 @@ webpackJsonp([0],[
 	         *
 	         * @memberOf app.Renderer
 	         * @param {HTMLElement} target
+	         * @param {boolean} [selfDestruction]
 	         * @instance
 	         */
-	        clearContent: function clearContent(target) {
-	            while (target.firstElementChild) {
-	                target.removeChild(target.firstElementChild);
+	        clearContent: function clearContent(target, selfDestruction) {
+	            if (selfDestruction) {
+	                target.parentNode.removeChild(target);
+	            } else {
+	                while (target.firstElementChild) {
+	                    target.removeChild(target.firstElementChild);
+	                }
 	            }
 	        },
 	        /**
@@ -52,12 +57,17 @@ webpackJsonp([0],[
 	         *
 	         * @memberOf app.Renderer
 	         * @param {Array} list
+	         * @param {String} [holderClass]
 	         * @instance
 	         */
-	        renderButtons: function renderButtons(list) {
+	        renderButtons: function renderButtons(list, holderClass) {
 	            var fragment = document.createDocumentFragment();
 	            var container = document.createElement('div');
-	            container.classList.add('button-holder');
+	            if (holderClass) {
+	                container.classList.add(holderClass);
+	            } else {
+	                container.classList.add('button-holder');
+	            }
 	            fragment.appendChild(container);
 	            for (var i = 0; i < list.length; i++) {
 	                for (var j = 0; j < list[i].class.length; j++) {
@@ -244,24 +254,25 @@ webpackJsonp([0],[
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderTimer(data);
-	        var list = [document.createElement('button'), document.createElement('button')];
-	        list = [{
-	            node: document.createElement('button'),
-	            class: ['button-row-2', 'button-red'],
-	            innerHtml: 'Fail Pomodora',
-	            listener: function listener() {
-	                app.EventBusLocal.publish('time-stopped');
+	        /*var list = [document.createElement('button'), document.createElement('button')];
+	        list = [
+	            {
+	                node: document.createElement('button'),
+	                class: ['button-row-2', 'button-red'],
+	                innerHtml: 'Fail Pomodora',
+	                listener: function () {
+	                    app.EventBusLocal.publish('time-stopped');
+	                }
+	              }, {
+	                node: document.createElement('button'),
+	                class: ['button-row-2', 'button-green'],
+	                innerHtml: 'Finish Pomodora',
+	                listener: function () {
+	                    app.EventBusLocal.publish('time-resumed');
+	                }
 	            }
-
-	        }, {
-	            node: document.createElement('button'),
-	            class: ['button-row-2', 'button-green'],
-	            innerHtml: 'Finish Pomodora',
-	            listener: function listener() {
-	                app.EventBusLocal.publish('time-resumed');
-	            }
-	        }];
-	        Renderer.renderButtons(list);
+	        ];
+	        Renderer.renderButtons(list);*/
 	    });
 	    //----------------------------------
 	    EventBus.subscribe('no-user', function () {

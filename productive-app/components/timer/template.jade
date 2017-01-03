@@ -211,13 +211,8 @@ style.
     .category {
         background-color: transparent !important;
     }
-
-    .button-holder {
-        width: 27%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        min-width: 375px;
+    .centered-inner{
+        line-height: 120px;
     }
 
     @keyframes rota {
@@ -276,6 +271,9 @@ main.main-wrapper
                 .mask.set-able
             .timer-inner-circle
                 .timer-time
-                    | #{data.work}
-                    p.timer-estimate-points min
+                    -if(data.time)
+                     | #{data.time}
+                     p.timer-estimate-points min
+                    -if(data.text)
+                     p.timer-estimate-points.centered-inner #{data.text}
 

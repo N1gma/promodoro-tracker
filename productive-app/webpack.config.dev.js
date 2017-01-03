@@ -53,19 +53,19 @@ module.exports = {
                 test: /\.(png|jpg|svg)$/,
                 loader: 'file?name=./Global/img/[name].[ext]?sourceMap'
             }
-        ],
+        ]/*,
         preLoaders: [
             {
                 test: /\.js$/,
                 exclude: [/\.min\.js$/, /node_modules/],
                 loader: "jshint-loader"
             }
-        ]
+        ]*/
     },
     plugins: [
         new ExtractTextPlugin("./dev/style.css"),
         new webpack.optimize.CommonsChunkPlugin("vendors", "./dev/vendors.js")
-    ],
+    ]/*,
     jshint: {
         camelcase: true,
         "curly": true,
@@ -73,5 +73,5 @@ module.exports = {
         emitErrors: false,
         failOnHint: false,
         esversion: 6
-    }
+    }*/
 };

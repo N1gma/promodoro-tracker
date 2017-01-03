@@ -211,6 +211,20 @@
   width: 44%;
   padding: 12px 0;
 }
+.button-holder {
+  width: 27%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  min-width: 375px;
+}
+.button-holder-centered {
+  width: 27%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  min-width: 375px;
+}
 .button-blue {
   background-color: #59ABE3;
 }
@@ -1065,7 +1079,8 @@ input:-webkit-autofill:active {
   font: 16px 'Roboto', sans-serif;
   color: white;
   font-weight: bold;
-  line-height: 52px;
+  line-height: 52px!important;
+  vertical-align: middle;
 }
 .notify-dismiss {
   color: white;

@@ -133,7 +133,7 @@ class CEventBus {
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
         Renderer.renderTimer(data);
-        var list = [document.createElement('button'), document.createElement('button')];
+        /*var list = [document.createElement('button'), document.createElement('button')];
         list = [
             {
                 node: document.createElement('button'),
@@ -152,7 +152,7 @@ class CEventBus {
                 }
             }
         ];
-        Renderer.renderButtons(list);
+        Renderer.renderButtons(list);*/
     });
 //----------------------------------
     EventBus.subscribe('no-user', function () {

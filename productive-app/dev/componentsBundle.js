@@ -1414,14 +1414,14 @@ webpackJsonp([1],[
 	        var chart = new Highcharts.Chart(options);
 	    },
 	    activateTab: function activateTab(e) {
-	        if (e.target.tagName.toUpperCase === 'BUTTON') {}
-
-	        for (var i = 0; i < e.currentTarget.children.length; i++) {
-	            if (e.currentTarget.children[i].classList.contains('active-tab')) {
-	                e.currentTarget.children[i].classList.remove('active-tab');
+	        if (e.target.tagName.toUpperCase() === 'BUTTON') {
+	            for (var i = 0; i < e.currentTarget.children.length; i++) {
+	                if (e.currentTarget.children[i].classList.contains('active-tab')) {
+	                    e.currentTarget.children[i].classList.remove('active-tab');
+	                }
 	            }
+	            e.target.classList.add('active-tab');
 	        }
-	        e.target.classList.add('active-tab');
 	    }
 	};
 
@@ -2600,21 +2600,19 @@ webpackJsonp([1],[
 
 	'use strict';
 
-	var _template = __webpack_require__(70);
-
-	var _template2 = _interopRequireDefault(_template);
-
-	var _controller = __webpack_require__(71);
+	var _controller = __webpack_require__(70);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(72);
+	var _view = __webpack_require__(71);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(73);
+	var _model = __webpack_require__(72);
 
-	var _model2 = _interopRequireDefault(_model);
+	var _template = __webpack_require__(73);
+
+	var _template2 = _interopRequireDefault(_template);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2626,34 +2624,14 @@ webpackJsonp([1],[
 	 * @namespace Timer
 	 */
 	app.Renderer.renderTimer = function (elem) {
-	  var el = document.createElement('div');
-	  var model = new _model2.default(elem);
+	  var model = new _model.StartModel(elem, _template2.default);
 	  var view = new _view2.default(model);
 	  var controller = new _controller2.default(view, model);
-	  controller.init(_template2.default, el);
+	  controller.init();
 	};
 
 /***/ },
 /* 70 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(16);
-
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-	;var locals_for_with = (locals || {});(function (data) {
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n    cursor: default;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n\n.button-holder {\n    width: 27%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-between;\n    min-width: 375px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
-	for(var i =0;i<data.estimation;i++)
-	{
-	buf.push("<li class=\"phase\"></li>");
-	}
-	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div class=\"time-wrapper\"><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\"><div class=\"timer-time\">" + (jade.escape((jade_interp = data.work) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div></div></div></div></main>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
-	}
-
-/***/ },
-/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2672,7 +2650,6 @@ webpackJsonp([1],[
 
 	        this.view = view;
 	        this.model = model;
-	        this.cycle = {};
 	        this.listeners = {
 	            'pause': function pause(type, target) {
 	                controllerFilter.activateTab(target);
@@ -2687,34 +2664,46 @@ webpackJsonp([1],[
 
 	    _createClass(Controller, [{
 	        key: 'init',
-	        value: function init(template, el) {
+	        value: function init() {
 	            var EventBusLocal = app.EventBusLocal;
 	            var context = this;
+	            console.log(this);
+	            EventBusLocal.subscribe('first-start', function () {
+	                context.view.startCycle();
+	            });
+	            EventBusLocal.subscribe('timer-progress', function (type) {
+	                context.model = context.model.getNewModel(type);
+	                context.view.model = context.model;
+	                context.view.newCycle();
+	            });
+	            this.generateCycle();
+	            /* EventBusLocal.subscribe('time-stopped', function(){
+	                 context.view.pauseAnimation(context.model.timer);
+	             });
+	             EventBusLocal.subscribe('time-resumed', function(){
+	                 context.view.resumeAnimation(context.model.timer);
+	             });
+	             EventBusLocal.subscribe('reanimate-timer', function(){
+	                 context.model.timer = {
+	                     container: document.getElementsByClassName('graph-container')[0],
+	                     timerControlElements: document.getElementsByClassName('set-able'),
+	                     timeout: {},
+	                     count: 0,
+	                     finished: false
+	                 };
+	             });
+	             this.view.startCycle();*/
+	        }
+	    }, {
+	        key: 'generateCycle',
+	        value: function generateCycle() {
+	            var cycle = this.view.cycle;
 	            for (var i = 0; i < this.model.estimation; i++) {
-	                this.model.cycle.push('task');
-	                this.model.cycle.push('break');
+	                cycle.push('work');
+	                cycle.push('break');
 	            }
-	            EventBusLocal.subscribe('time-stopped', function () {
-	                context.view.pauseAnimation(context.model.timer);
-	            });
-	            EventBusLocal.subscribe('time-resumed', function () {
-	                context.view.resumeAnimation(context.model.timer);
-	            });
-	            EventBusLocal.subscribe('reanimate-timer', function () {
-	                context.model.timer = {
-	                    container: document.getElementsByClassName('graph-container')[0],
-	                    timerControlElements: document.getElementsByClassName('set-able'),
-	                    timeout: {},
-	                    count: 0,
-	                    finished: false
-	                };
-	                this.view.animateTimer();
-	            });
-	            el.innerHTML = template({
-	                data: this.model
-	            });
-	            document.getElementById('app-body').appendChild(el);
-	            this.view.animateTimer('work');
+	            cycle.splice(-1, 1);
+	            app.EventBusLocal.publish('first-start');
 	        }
 	    }]);
 
@@ -2740,7 +2729,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 72 */
+/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2758,40 +2747,91 @@ webpackJsonp([1],[
 	        _classCallCheck(this, View);
 
 	        this.model = model;
+	        this.buttonsHolder = '';
+	        this.cycle = [];
+	        this.cycleStep = 0;
 	    }
 
 	    _createClass(View, [{
-	        key: 'animateTimer',
-	        value: function animateTimer(type) {
-	            var timer = this.model.timer;
-	            var time = this.model.work;
-	            for (var i = 0; i < timer.timerControlElements.length; i++) {
-	                timer.timerControlElements[i].style.animationDuration = time /** 60*/ + 's';
-	                timer.timerControlElements[i].style.animationPlayState = 'running';
-	            }
-	            this.model.interval();
+	        key: 'startCycle',
+	        value: function startCycle() {
+	            this.model.elem.innerHTML = this.model.template({
+	                data: this.model
+	            });
+	            document.getElementById('app-body').appendChild(this.model.elem);
+	            this.buttonsHolder = 'button-holder-centered';
+	            app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
+	            /*let timer = this.model.timer;
+	             let time = this.model.work;
+	             for (var i = 0; i < timer.timerControlElements.length; i++) {
+	             timer.timerControlElements[i].style.animationDuration = time/** 60*/
+	            +'s';
+	            /*timer.timerControlElements[i].style.animationPlayState = 'running';
+	             }
+	             this.model.interval();*/
 	        }
 	    }, {
-	        key: 'pauseAnimation',
-	        value: function pauseAnimation() {
+	        key: 'newCycle',
+	        value: function newCycle() {
 	            var timer = this.model.timer;
+	            var time = this.model.time;
+	            this.model.elem.innerHTML = this.model.template({
+	                data: this.model
+	            });
+	            console.log(this.model);
+	            this.resetButtonInterface(this.buttonsHolder);
 	            for (var i = 0; i < timer.timerControlElements.length; i++) {
-	                timer.timerControlElements[i].style.animationPlayState = 'paused';
+	                timer.timerControlElements[i].style.animationDuration = time /**60*/ + 's';
+	                timer.timerControlElements[i].style.animationPlayState = 'running';
 	            }
-	            clearInterval(timer.timeout);
+	            this.countdownStart();
+	        }
+	    }, {
+	        key: 'countdownStart',
+	        value: function countdownStart() {
+	            var context = this;
+	            var timer = this.model.timer;
+	            var max = this.model.time;
+	            timer.timeout = setInterval(function () {
+	                if (timer.count > max || timer.count === max) {
+	                    clearInterval(timer.timeout);
+	                    //app.router.moveTo('tasklist');
+	                    //this.elem.classList.add('done');
+	                    context.cycleStep++;
+	                    app.EventBusLocal.publish('timer-progress', context.cycle[context.cycleStep]);
+	                    return true;
+	                } else {
+	                    timer.count++;
+	                    console.log(timer.count);
+	                }
+	            }, 1000);
+	        }
+	    }, {
+	        key: 'resetButtonInterface',
+	        value: function resetButtonInterface(container) {
+	            //this.buttonsHolder = container;
+	            app.Renderer.clearContent(document.getElementsByClassName(container)[0], true);
+	            app.Renderer.renderButtons(this.model.buttonsList);
+	            this.buttonsHolder = 'button-holder';
+	        }
 
-	            console.log('paused');
-	        }
-	    }, {
-	        key: 'resumeAnimation',
-	        value: function resumeAnimation() {
-	            var timer = this.model.timer;
-	            for (var i = 0; i < timer.timerControlElements.length; i++) {
-	                timer.timerControlElements[i].style.animationPlayState = 'running';
-	            }
-	            this.model.interval();
-	            console.log('resumed');
-	        }
+	        /*pauseAnimation() {
+	         let timer = this.model.timer;
+	         for (var i = 0; i < timer.timerControlElements.length; i++) {
+	         timer.timerControlElements[i].style.animationPlayState = 'paused';
+	         }
+	         clearInterval(timer.timeout);
+	           console.log('paused');
+	         }
+	         resumeAnimation () {
+	         let timer = this.model.timer;
+	         for (var i = 0; i < timer.timerControlElements.length; i++) {
+	         timer.timerControlElements[i].style.animationPlayState = 'running';
+	         }
+	         this.model.interval();
+	         console.log('resumed');
+	         }*/
+
 	    }]);
 
 	    return View;
@@ -2800,7 +2840,7 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 73 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2811,12 +2851,14 @@ webpackJsonp([1],[
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Model = function () {
-	    function Model(elem) {
-	        _classCallCheck(this, Model);
-
+	var timerModel = function () {
+	    /*constructor(elem){
 	        this.elem = elem;
 	        this.elem.key = elem.getAttribute('key');
 	        this.timer = {
@@ -2826,53 +2868,163 @@ webpackJsonp([1],[
 	            count: 0,
 	            finished: false
 	        };
-	        /*this.workTimer = {
-	            time: app.User.settings['WORK TIME'],
-	            category: app.User.dataSnapShot[sourceKey].category
-	        };
-	        this.breakTimer = {
-	            time: app.User.settings['BREAK TIME'],
-	            category: app.User.dataSnapShot[sourceKey].category
-	        };*/
 	        this.cycle = [];
 	        this.break = app.User.settings['BREAK TIME'];
 	        this.work = app.User.settings['WORK TIME'];
 	        this.estimation = parseInt(app.User.dataSnapShot[this.elem.key].estimation.slice(-1), 10);
 	        this.title = app.User.dataSnapShot[this.elem.key].title;
 	        this.category = app.User.dataSnapShot[this.elem.key].category;
-	    }
+	    }*/
+	    function timerModel(elem, template) {
+	        _classCallCheck(this, timerModel);
 
-	    _createClass(Model, [{
-	        key: 'timerCheck',
-	        value: function timerCheck(timer, max) {
-	            var a = 1 == true ? 'a' : 'b';
-	            if (timer.count > max || timer.count === max) {
-	                clearInterval(timer.timeout);
-	                app.router.moveTo('tasklist');
-	                //this.elem.classList.add('done');
-	                //app.EventBusLocal.publish('reanimate-timer');
-	                return true;
-	            }
+	        this.elem = elem;
+	        this.template = template;
+	        this.elem.key = elem.getAttribute('key');
+	        this.timer = {
+	            //animationDuration: ,
+	            container: document.getElementsByClassName('graph-container')[0],
+	            timerControlElements: document.getElementsByClassName('set-able'),
+	            timeout: {},
+	            count: 0
+	        };
+	        this.estimation = parseInt(app.User.dataSnapShot[this.elem.key].estimation.slice(-1), 10);
+	        this.title = app.User.dataSnapShot[this.elem.key].title;
+	        this.category = app.User.dataSnapShot[this.elem.key].category;
+	    }
+	    /*timerCheck (timer, max){
+	        if(timer.count > max || timer.count === max){
+	            clearInterval(timer.timeout);
+	            app.router.moveTo('tasklist');
+	            //this.elem.classList.add('done');
+	            //app.EventBusLocal.publish('reanimate-timer');
+	            return true;
 	        }
-	    }, {
-	        key: 'interval',
-	        value: function interval() {
-	            var context = this;
-	            this.timer.timeout = setInterval(function () {
-	                if (context.timerCheck(context.timer, context.work)) {
-	                    return true;
-	                } else {
-	                    context.timer.count++;
-	                    console.log(context.timer.count);
-	                }
-	            }, 1000);
+	    }*/
+
+
+	    _createClass(timerModel, [{
+	        key: 'getNewModel',
+	        value: function getNewModel(type) {
+	            return type === 'work' ? new WorkModel(this.elem, this.template) : new BreakModel(this.elem, this.template);
 	        }
 	    }]);
 
-	    return Model;
+	    return timerModel;
 	}();
 
-	exports.default = Model;
+	var StartModel = exports.StartModel = function (_timerModel) {
+	    _inherits(StartModel, _timerModel);
+
+	    function StartModel(elem, template) {
+	        _classCallCheck(this, StartModel);
+
+	        var _this = _possibleConstructorReturn(this, (StartModel.__proto__ || Object.getPrototypeOf(StartModel)).call(this, elem, template));
+
+	        _this.text = 'Lets do it!';
+	        _this.buttonsList = [{
+	            node: document.createElement('button'),
+	            class: ['button-row-2', 'button-green'],
+	            innerHtml: 'Start',
+	            listener: function listener() {
+	                app.EventBusLocal.publish('timer-progress', 'work');
+	            }
+	        }];
+	        return _this;
+	    }
+
+	    return StartModel;
+	}(timerModel);
+
+	var WorkModel = exports.WorkModel = function (_timerModel2) {
+	    _inherits(WorkModel, _timerModel2);
+
+	    function WorkModel(elem, template) {
+	        _classCallCheck(this, WorkModel);
+
+	        var _this2 = _possibleConstructorReturn(this, (WorkModel.__proto__ || Object.getPrototypeOf(WorkModel)).call(this, elem, template));
+
+	        _this2.time = app.User.settings['WORK TIME'];
+	        _this2.buttonsList = [{
+	            node: document.createElement('button'),
+	            class: ['button-row-2', 'button-red'],
+	            innerHtml: 'Fail Pomodora',
+	            listener: function listener() {
+	                app.EventBusLocal.publish('time-stopped');
+	            }
+
+	        }, {
+	            node: document.createElement('button'),
+	            class: ['button-row-2', 'button-green'],
+	            innerHtml: 'Finish Pomodora',
+	            listener: function listener() {
+	                app.EventBusLocal.publish('time-resumed');
+	            }
+	        }];
+	        return _this2;
+	    }
+
+	    return WorkModel;
+	}(timerModel);
+
+	var BreakModel = exports.BreakModel = function (_timerModel3) {
+	    _inherits(BreakModel, _timerModel3);
+
+	    function BreakModel(elem, template) {
+	        _classCallCheck(this, BreakModel);
+
+	        var _this3 = _possibleConstructorReturn(this, (BreakModel.__proto__ || Object.getPrototypeOf(BreakModel)).call(this, elem, template));
+
+	        _this3.time = app.User.settings['SHORT BREAK'];
+	        _this3.buttonsList = [{
+	            node: document.createElement('button'),
+	            class: ['button-row-2', 'button-green'],
+	            innerHtml: 'Start Pomodora',
+	            listener: function listener() {
+	                app.EventBusLocal.publish('time-stopped');
+	            }
+
+	        }, {
+	            node: document.createElement('button'),
+	            class: ['button-row-2', 'button-blue'],
+	            innerHtml: 'Finish Task',
+	            listener: function listener() {
+	                app.EventBusLocal.publish('time-resumed');
+	            }
+	        }];
+	        return _this3;
+	    }
+
+	    return BreakModel;
+	}(timerModel);
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(16);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (data) {
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n    cursor: default;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n.centered-inner{\n    line-height: 120px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
+	for(var i =0;i<data.estimation;i++)
+	{
+	buf.push("<li class=\"phase\"></li>");
+	}
+	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div class=\"time-wrapper\"><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\"><div class=\"timer-time\">");
+	if(data.time)
+	{
+	buf.push("" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p>");
+	}
+	if(data.text)
+	{
+	buf.push("<p class=\"timer-estimate-points centered-inner\">" + (jade.escape((jade_interp = data.text) == null ? '' : jade_interp)) + "</p>");
+	}
+	buf.push("</div></div></div></div></main>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
+	}
 
 /***/ },
 /* 74 */
