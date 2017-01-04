@@ -39,7 +39,8 @@ export default class Controller {
             cycle.push('break');
             cycle.push('break-over');
         }
-        cycle.splice(-1,2);
+        cycle.splice(-2,2);
+        console.log(cycle);
         app.EventBusLocal.publish('first-start');
     }
 }

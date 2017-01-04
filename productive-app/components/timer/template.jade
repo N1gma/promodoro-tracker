@@ -121,8 +121,8 @@ style.
     }
 
     .timer-inner-circle {
-        height: 150px;
-        width: 150px;
+        height: 170px;
+        width: 170px;
         margin: auto;
         position: absolute;
         top: 0;
@@ -145,54 +145,10 @@ style.
         margin: auto;
         position: absolute;
         text-align: center;
-        line-height: 102px;
+        line-height: 125px;
         cursor: default;
     }
 
-    .break-timer-time {
-        line-height: 120px;
-    }
-    .break .timer-estimate-points{
-        position: absolute;
-        bottom: 3px;
-        line-height: 27px;
-        font-size: 24px;
-        width: 100%;
-    }
-
-    .timer-break-title {
-        position: absolute;
-        top: -6px;
-        line-height: 24px;
-        font-size: 20px;
-        width: 100%;
-        font-family: "Helvetica", sans-serif;
-    }
-    .task-over .break-over-inner-content{
-        position: absolute;
-        width: 100%;
-        font-family: "HelveticaNeue", sans-serif;
-        line-height: 54px;
-        font-size: 30px;
-        bottom: -3px;
-    }
-    .break-over-inner-content{
-        position: absolute;
-        bottom: 16px;
-        width: 100%;
-        font-family: "HelveticaNeue", sans-serif;
-        line-height: 54px;
-        font-size: 30px;
-    }
-
-    .timer-estimate-points {
-        position: absolute;
-        bottom: 10px;
-        line-height: 24px;
-        font-size: 24px;
-        width: 100%;
-        font-family: "HelveticaNeue" ,sans-serif;
-    }
 
     .time-wrapper {
         width: 250px;
@@ -221,6 +177,9 @@ style.
         border-right: none;
         animation: rota 10s linear;
         animation-play-state: paused;
+        border-right: none;
+        left: 0;
+        top: 0;
     }
 
     .filler {
@@ -230,6 +189,7 @@ style.
         animation: fill 10s steps(1, end);
         animation-play-state: paused;
         left: 50%;
+        top: 0;
         opacity: 0;
     }
 
@@ -242,26 +202,83 @@ style.
         background: inherit;
         animation: mask 10s steps(1, end);
         animation-play-state: paused;
-        border-radius: 50% 0 0 50%;
+        border-radius: 100% 0 0 100%;
     }
 
-    .break-over .mask,.task-over .mask {
-        opacity: 0;
-        animation: none;
-    }
-
-    .break-over .filler,.task-over .filler {
-        opacity: 1;
-        animation: none;
-    }
 
     .category {
         background-color: transparent !important;
     }
-    .start-inner-content{
-        line-height: 132px;
-        font-size:30px;
+
+    /*specs*/
+    .timer-estimate-points {
+        position: absolute;
+        bottom: 26px;
+        line-height: 24px;
+        font-size: 24px;
+        width: 100%;
+        font-family: "HelveticaNeue", sans-serif;
     }
+
+    .start-inner-content {
+        line-height: 149px;
+        font-size: 30px;
+        position: absolute;
+        bottom: 13px;
+        width: 100%;
+        font-family: "HelveticaNeue", sans-serif;
+    }
+
+    .break-timer-time {
+        line-height: 120px;
+    }
+
+    .break .timer-estimate-points {
+        position: absolute;
+        bottom: 20px;
+        line-height: 27px;
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .timer-break-title {
+        position: absolute;
+        top: 6px;
+        line-height: 24px;
+        font-size: 20px;
+        width: 100%;
+        font-family: "Helvetica", sans-serif;
+    }
+
+    .break-over-inner-content {
+        position: absolute;
+        bottom: 26px;
+        width: 100%;
+        font-family: "HelveticaNeue", sans-serif;
+        line-height: 54px;
+        font-size: 30px;
+    }
+
+    .task-over .break-over-inner-content {
+        position: absolute;
+        width: 100%;
+        font-family: "HelveticaNeue", sans-serif;
+        line-height: 54px;
+        font-size: 30px;
+        bottom: 8px;
+    }
+
+    .break-over .mask, .task-over .mask {
+        opacity: 0;
+        animation: none;
+    }
+
+    .break-over .filler, .task-over .filler {
+        opacity: 1;
+        animation: none;
+    }
+
+    /*anims*/
 
     @keyframes rota {
         0% {
@@ -271,6 +288,7 @@ style.
             transform: rotate(360deg);
         }
     }
+
 
     @keyframes fill {
         0% {
@@ -300,8 +318,6 @@ style.
         100% {
             transform: scale(1, 1);
         }
-
-
     }
 
 
@@ -322,10 +338,10 @@ main.main-wrapper
                 .rotator.circle.set-able
                 .filler.circle.set-able
                 .mask.set-able
-            .timer-inner-circle
+            .timer-inner-circle(class=data.type)
                 -if(data.type === 'start')
                  .timer-time
-                    p.timer-estimate-points.start-inner-content Lets do it!
+                    p.start-inner-content Lets do it!
                 -if(data.type === 'work')
                  .timer-time
                     | #{data.time}
