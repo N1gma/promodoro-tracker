@@ -50,7 +50,7 @@ style.
         margin: 0 5px;
     }
 
-    .phase-done {
+    .phase-resolved {
         background: url("./Global/img/tomato_fill.svg") no-repeat;
     }
 
@@ -149,12 +149,49 @@ style.
         cursor: default;
     }
 
+    .break-timer-time {
+        line-height: 120px;
+    }
+    .break .timer-estimate-points{
+        position: absolute;
+        bottom: 3px;
+        line-height: 27px;
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .timer-break-title {
+        position: absolute;
+        top: -6px;
+        line-height: 24px;
+        font-size: 20px;
+        width: 100%;
+        font-family: "Helvetica", sans-serif;
+    }
+    .task-over .break-over-inner-content{
+        position: absolute;
+        width: 100%;
+        font-family: "HelveticaNeue", sans-serif;
+        line-height: 54px;
+        font-size: 30px;
+        bottom: -3px;
+    }
+    .break-over-inner-content{
+        position: absolute;
+        bottom: 16px;
+        width: 100%;
+        font-family: "HelveticaNeue", sans-serif;
+        line-height: 54px;
+        font-size: 30px;
+    }
+
     .timer-estimate-points {
         position: absolute;
         bottom: 10px;
         line-height: 24px;
         font-size: 24px;
         width: 100%;
+        font-family: "HelveticaNeue" ,sans-serif;
     }
 
     .time-wrapper {
@@ -208,11 +245,22 @@ style.
         border-radius: 50% 0 0 50%;
     }
 
+    .break-over .mask,.task-over .mask {
+        opacity: 0;
+        animation: none;
+    }
+
+    .break-over .filler,.task-over .filler {
+        opacity: 1;
+        animation: none;
+    }
+
     .category {
         background-color: transparent !important;
     }
-    .centered-inner{
-        line-height: 120px;
+    .start-inner-content{
+        line-height: 132px;
+        font-size:30px;
     }
 
     @keyframes rota {
@@ -252,6 +300,8 @@ style.
         100% {
             transform: scale(1, 1);
         }
+
+
     }
 
 
@@ -261,19 +311,37 @@ style.
         | #{data.title}
 main.main-wrapper
     ul.phases.phase-add-active
-        -for(var i =0;i<data.estimation;i++)
-           li.phase
+        -for(var i =0;i<data.cycle.length;i++)
+         -if(data.cycle[i]==='work')
+            li.phase
+         -else if(data.cycle[i]==='resolved' || data.cycle[i]==='failed')
+            li.phase(class='phase-' + data.cycle[i])
     .graph-container(class=data.category)
         .timer-outer-circle.category
-            .time-wrapper
+            .time-wrapper(class=data.type)
                 .rotator.circle.set-able
                 .filler.circle.set-able
                 .mask.set-able
             .timer-inner-circle
-                .timer-time
-                    -if(data.time)
+                -if(data.type === 'start')
+                 .timer-time
+                    p.timer-estimate-points.start-inner-content Lets do it!
+                -if(data.type === 'work')
+                 .timer-time
+                    | #{data.time}
+                    p.timer-estimate-points min
+                -if(data.type === 'break')
+                 .timer-time
+                     p.timer-break-title BREAK
                      | #{data.time}
                      p.timer-estimate-points min
-                    -if(data.text)
-                     p.timer-estimate-points.centered-inner #{data.text}
+                -if(data.type === 'break-over')
+                 .timer-time
+                     p.break-over-inner-content Break is over
+                -if(data.type === 'task-over')
+                 .timer-time
+                     p.break-over-inner-content You Completed Task
+
+
+
 

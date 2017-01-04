@@ -4,80 +4,81 @@ export default class View {
         this.buttonsHolder = '';
         this.cycle = [];
         this.cycleStep = 0;
+        this.step = 1;
     }
 
     startCycle() {
+        this.model.cycle = this.cycle;
         this.model.elem.innerHTML = this.model.template({
             data: this.model
         });
         document.getElementById('app-body').appendChild(this.model.elem);
         this.buttonsHolder = 'button-holder-centered';
         app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
-        /*let timer = this.model.timer;
-         let time = this.model.work;
-         for (var i = 0; i < timer.timerControlElements.length; i++) {
-         timer.timerControlElements[i].style.animationDuration = time/** 60*/
-        +'s';
-        /*timer.timerControlElements[i].style.animationPlayState = 'running';
-         }
-         this.model.interval();*/
     }
 
     newCycle() {
-        let timer = this.model.timer;
-        let time = this.model.time;
+        var timer = this.model.timer;
+        var context = this;
+        this.model.cycle = this.cycle;
         this.model.elem.innerHTML = this.model.template({
             data: this.model
         });
         this.resetButtonInterface(this.buttonsHolder);
-        for (var i = 0; i < timer.timerControlElements.length; i++) {
-            timer.timerControlElements[i].style.animationDuration = time/**60*/ +'s';
-            timer.timerControlElements[i].style.animationPlayState = 'running';
+        if(this.model.time){
+            let time = this.model.time;
+            for (var i = 0; i < timer.timerControlElements.length; i++) {
+                timer.timerControlElements[i].style.animationDuration = time/**60*/ +'s';
+                timer.timerControlElements[i].style.animationPlayState = 'running';
+            }
+            timer.timeout = setInterval(context.timesOut.bind(context), 1000);
         }
-        this.countdownStart();
+    }
+    stateProgress(){
+        this.resolvePomodora(this.model.status);
+        if(this.cycleCheck()){
+            this.cycleStep++;
+        }else{
+            app.EventBusLocal.publish('timer-progress','task-over');
+        }
     }
 
-    countdownStart() {
-        var context = this;
+    timesOut(){
         var timer = this.model.timer;
         var max = this.model.time;
-        timer.timeout = setInterval(function () {
-            if (timer.count > max || timer.count === max) {
-                clearInterval(timer.timeout);
-                //app.router.moveTo('tasklist');
-                //this.elem.classList.add('done');
-                context.cycleStep++;
+        var context = this;
+        if (timer.count > max || timer.count === max) {
+            clearInterval(timer.timeout);
+            this.resolvePomodora(this.model.status);
+            this.cycleStep = this.cycleStep + this.step;
+            if(this.cycleCheck()){
+                this.step = 1;
                 app.EventBusLocal.publish('timer-progress',context.cycle[context.cycleStep]);
                 return true;
-            } else {
-                timer.count++;
-                console.log(timer.count);
+            }else{
+                app.EventBusLocal.publish('timer-progress','task-over');
             }
-        }, 1000);
+        } else {
+            timer.count++;
+            console.log(timer.count);
+        }
+    }
+
+    cycleCheck(){
+        return this.cycleStep <= this.cycle.length-1;
     }
 
     resetButtonInterface(container){
-        //this.buttonsHolder = container;
+        this.buttonsHolder = this.model.buttonsHolder || 'button-holder';
         app.Renderer.clearContent(document.getElementsByClassName(container)[0], true);
-        app.Renderer.renderButtons(this.model.buttonsList);
-        this.buttonsHolder = 'button-holder';
+        if(this.model.buttonsList){
+            app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
+        }
     }
 
-    /*pauseAnimation() {
-     let timer = this.model.timer;
-     for (var i = 0; i < timer.timerControlElements.length; i++) {
-     timer.timerControlElements[i].style.animationPlayState = 'paused';
-     }
-     clearInterval(timer.timeout);
-
-     console.log('paused');
-     }
-     resumeAnimation () {
-     let timer = this.model.timer;
-     for (var i = 0; i < timer.timerControlElements.length; i++) {
-     timer.timerControlElements[i].style.animationPlayState = 'running';
-     }
-     this.model.interval();
-     console.log('resumed');
-     }*/
+    resolvePomodora(status) {
+        if (status) {
+            this.cycle[this.cycleStep] = status;
+        }
+    }
 }

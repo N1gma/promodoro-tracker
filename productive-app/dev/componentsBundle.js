@@ -2650,16 +2650,7 @@ webpackJsonp([1],[
 
 	        this.view = view;
 	        this.model = model;
-	        this.listeners = {
-	            'pause': function pause(type, target) {
-	                controllerFilter.activateTab(target);
-	                app.EventBusLocal.publish('time-stopped', type);
-	            },
-	            'resume': function resume(type, target) {
-	                controllerFilter.activateTab(target);
-	                app.EventBusLocal.publish('time-resumed', type);
-	            }
-	        };
+	        this.results = [];
 	    }
 
 	    _createClass(Controller, [{
@@ -2676,23 +2667,18 @@ webpackJsonp([1],[
 	                context.view.model = context.model;
 	                context.view.newCycle();
 	            });
+	            EventBusLocal.subscribe('state-progress', function () {
+	                context.view.stateProgress();
+	            });
+	            EventBusLocal.subscribe('timer-terminate', function (step) {
+	                context.model.timer.count = context.model.time;
+	                context.view.step = step;
+	                context.view.timesOut();
+	            });
+	            EventBusLocal.subscribe('finish-task', function (type) {
+	                app.router.moveTo('task-list');
+	            });
 	            this.generateCycle();
-	            /* EventBusLocal.subscribe('time-stopped', function(){
-	                 context.view.pauseAnimation(context.model.timer);
-	             });
-	             EventBusLocal.subscribe('time-resumed', function(){
-	                 context.view.resumeAnimation(context.model.timer);
-	             });
-	             EventBusLocal.subscribe('reanimate-timer', function(){
-	                 context.model.timer = {
-	                     container: document.getElementsByClassName('graph-container')[0],
-	                     timerControlElements: document.getElementsByClassName('set-able'),
-	                     timeout: {},
-	                     count: 0,
-	                     finished: false
-	                 };
-	             });
-	             this.view.startCycle();*/
 	        }
 	    }, {
 	        key: 'generateCycle',
@@ -2701,30 +2687,15 @@ webpackJsonp([1],[
 	            for (var i = 0; i < this.model.estimation; i++) {
 	                cycle.push('work');
 	                cycle.push('break');
+	                cycle.push('break-over');
 	            }
-	            cycle.splice(-1, 1);
+	            cycle.splice(-1, 2);
 	            app.EventBusLocal.publish('first-start');
 	        }
 	    }]);
 
 	    return Controller;
 	}();
-
-	/*var promiseTimeout = new Promise((resolve, reject) => {
-	       setTimeout(resolve, time);
-	    });*/
-
-	/*promiseTimeout(500)
-	    .then(() => {
-	        console.log('Timeout expired!');
-	        // do something
-	        return promiseTimeout(1000);
-	    })
-	    .then(() => {
-	        // do another stuff
-
-	    });*/
-
 
 	exports.default = Controller;
 
@@ -2750,88 +2721,92 @@ webpackJsonp([1],[
 	        this.buttonsHolder = '';
 	        this.cycle = [];
 	        this.cycleStep = 0;
+	        this.step = 1;
 	    }
 
 	    _createClass(View, [{
 	        key: 'startCycle',
 	        value: function startCycle() {
+	            this.model.cycle = this.cycle;
 	            this.model.elem.innerHTML = this.model.template({
 	                data: this.model
 	            });
 	            document.getElementById('app-body').appendChild(this.model.elem);
 	            this.buttonsHolder = 'button-holder-centered';
 	            app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
-	            /*let timer = this.model.timer;
-	             let time = this.model.work;
-	             for (var i = 0; i < timer.timerControlElements.length; i++) {
-	             timer.timerControlElements[i].style.animationDuration = time/** 60*/
-	            +'s';
-	            /*timer.timerControlElements[i].style.animationPlayState = 'running';
-	             }
-	             this.model.interval();*/
 	        }
 	    }, {
 	        key: 'newCycle',
 	        value: function newCycle() {
 	            var timer = this.model.timer;
-	            var time = this.model.time;
+	            var context = this;
+	            this.model.cycle = this.cycle;
 	            this.model.elem.innerHTML = this.model.template({
 	                data: this.model
 	            });
-	            console.log(this.model);
 	            this.resetButtonInterface(this.buttonsHolder);
-	            for (var i = 0; i < timer.timerControlElements.length; i++) {
-	                timer.timerControlElements[i].style.animationDuration = time /**60*/ + 's';
-	                timer.timerControlElements[i].style.animationPlayState = 'running';
+	            if (this.model.time) {
+	                var time = this.model.time;
+	                for (var i = 0; i < timer.timerControlElements.length; i++) {
+	                    timer.timerControlElements[i].style.animationDuration = time /**60*/ + 's';
+	                    timer.timerControlElements[i].style.animationPlayState = 'running';
+	                }
+	                timer.timeout = setInterval(context.timesOut.bind(context), 1000);
 	            }
-	            this.countdownStart();
 	        }
 	    }, {
-	        key: 'countdownStart',
-	        value: function countdownStart() {
-	            var context = this;
+	        key: 'stateProgress',
+	        value: function stateProgress() {
+	            this.resolvePomodora(this.model.status);
+	            if (this.cycleCheck()) {
+	                this.cycleStep++;
+	            } else {
+	                app.EventBusLocal.publish('timer-progress', 'task-over');
+	            }
+	        }
+	    }, {
+	        key: 'timesOut',
+	        value: function timesOut() {
 	            var timer = this.model.timer;
 	            var max = this.model.time;
-	            timer.timeout = setInterval(function () {
-	                if (timer.count > max || timer.count === max) {
-	                    clearInterval(timer.timeout);
-	                    //app.router.moveTo('tasklist');
-	                    //this.elem.classList.add('done');
-	                    context.cycleStep++;
+	            var context = this;
+	            if (timer.count > max || timer.count === max) {
+	                clearInterval(timer.timeout);
+	                this.resolvePomodora(this.model.status);
+	                this.cycleStep = this.cycleStep + this.step;
+	                if (this.cycleCheck()) {
+	                    this.step = 1;
 	                    app.EventBusLocal.publish('timer-progress', context.cycle[context.cycleStep]);
 	                    return true;
 	                } else {
-	                    timer.count++;
-	                    console.log(timer.count);
+	                    app.EventBusLocal.publish('timer-progress', 'task-over');
 	                }
-	            }, 1000);
+	            } else {
+	                timer.count++;
+	                console.log(timer.count);
+	            }
+	        }
+	    }, {
+	        key: 'cycleCheck',
+	        value: function cycleCheck() {
+	            return this.cycleStep <= this.cycle.length - 1;
 	        }
 	    }, {
 	        key: 'resetButtonInterface',
 	        value: function resetButtonInterface(container) {
-	            //this.buttonsHolder = container;
+	            this.buttonsHolder = this.model.buttonsHolder || 'button-holder';
 	            app.Renderer.clearContent(document.getElementsByClassName(container)[0], true);
-	            app.Renderer.renderButtons(this.model.buttonsList);
-	            this.buttonsHolder = 'button-holder';
+	            if (this.model.buttonsList) {
+	                app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
+	            }
 	        }
-
-	        /*pauseAnimation() {
-	         let timer = this.model.timer;
-	         for (var i = 0; i < timer.timerControlElements.length; i++) {
-	         timer.timerControlElements[i].style.animationPlayState = 'paused';
-	         }
-	         clearInterval(timer.timeout);
-	           console.log('paused');
-	         }
-	         resumeAnimation () {
-	         let timer = this.model.timer;
-	         for (var i = 0; i < timer.timerControlElements.length; i++) {
-	         timer.timerControlElements[i].style.animationPlayState = 'running';
-	         }
-	         this.model.interval();
-	         console.log('resumed');
-	         }*/
-
+	    }, {
+	        key: 'resolvePomodora',
+	        value: function resolvePomodora(status) {
+	            if (status) {
+	                this.cycle[this.cycleStep] = status;
+	            }
+	        }
 	    }]);
 
 	    return View;
@@ -2857,32 +2832,15 @@ webpackJsonp([1],[
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var timerModel = function () {
-	    /*constructor(elem){
-	        this.elem = elem;
-	        this.elem.key = elem.getAttribute('key');
-	        this.timer = {
-	            container: document.getElementsByClassName('graph-container')[0],
-	            timerControlElements: document.getElementsByClassName('set-able'),
-	            timeout: {},
-	            count: 0,
-	            finished: false
-	        };
-	        this.cycle = [];
-	        this.break = app.User.settings['BREAK TIME'];
-	        this.work = app.User.settings['WORK TIME'];
-	        this.estimation = parseInt(app.User.dataSnapShot[this.elem.key].estimation.slice(-1), 10);
-	        this.title = app.User.dataSnapShot[this.elem.key].title;
-	        this.category = app.User.dataSnapShot[this.elem.key].category;
-	    }*/
-	    function timerModel(elem, template) {
-	        _classCallCheck(this, timerModel);
+	var TimerModel = function () {
+	    //static results = [];
+	    function TimerModel(elem, template) {
+	        _classCallCheck(this, TimerModel);
 
 	        this.elem = elem;
 	        this.template = template;
 	        this.elem.key = elem.getAttribute('key');
 	        this.timer = {
-	            //animationDuration: ,
 	            container: document.getElementsByClassName('graph-container')[0],
 	            timerControlElements: document.getElementsByClassName('set-able'),
 	            timeout: {},
@@ -2892,36 +2850,32 @@ webpackJsonp([1],[
 	        this.title = app.User.dataSnapShot[this.elem.key].title;
 	        this.category = app.User.dataSnapShot[this.elem.key].category;
 	    }
-	    /*timerCheck (timer, max){
-	        if(timer.count > max || timer.count === max){
-	            clearInterval(timer.timeout);
-	            app.router.moveTo('tasklist');
-	            //this.elem.classList.add('done');
-	            //app.EventBusLocal.publish('reanimate-timer');
-	            return true;
-	        }
-	    }*/
 
-
-	    _createClass(timerModel, [{
+	    _createClass(TimerModel, [{
 	        key: 'getNewModel',
 	        value: function getNewModel(type) {
-	            return type === 'work' ? new WorkModel(this.elem, this.template) : new BreakModel(this.elem, this.template);
+	            var types = {
+	                'work': new WorkModel(this.elem, this.template),
+	                'break-over': new BreakOverModel(this.elem, this.template),
+	                'task-over': new TaskEndModel(this.elem, this.template),
+	                'break': new BreakModel(this.elem, this.template)
+	            };
+	            return types[type];
 	        }
 	    }]);
 
-	    return timerModel;
+	    return TimerModel;
 	}();
 
-	var StartModel = exports.StartModel = function (_timerModel) {
-	    _inherits(StartModel, _timerModel);
+	var StartModel = exports.StartModel = function (_TimerModel) {
+	    _inherits(StartModel, _TimerModel);
 
 	    function StartModel(elem, template) {
 	        _classCallCheck(this, StartModel);
 
 	        var _this = _possibleConstructorReturn(this, (StartModel.__proto__ || Object.getPrototypeOf(StartModel)).call(this, elem, template));
 
-	        _this.text = 'Lets do it!';
+	        _this.type = 'start';
 	        _this.buttonsList = [{
 	            node: document.createElement('button'),
 	            class: ['button-row-2', 'button-green'],
@@ -2934,54 +2888,83 @@ webpackJsonp([1],[
 	    }
 
 	    return StartModel;
-	}(timerModel);
+	}(TimerModel);
 
-	var WorkModel = exports.WorkModel = function (_timerModel2) {
-	    _inherits(WorkModel, _timerModel2);
+	var WorkModel = function (_TimerModel2) {
+	    _inherits(WorkModel, _TimerModel2);
 
 	    function WorkModel(elem, template) {
 	        _classCallCheck(this, WorkModel);
 
 	        var _this2 = _possibleConstructorReturn(this, (WorkModel.__proto__ || Object.getPrototypeOf(WorkModel)).call(this, elem, template));
 
+	        _this2.type = 'work';
 	        _this2.time = app.User.settings['WORK TIME'];
+	        _this2.status = 'resolved';
 	        _this2.buttonsList = [{
 	            node: document.createElement('button'),
 	            class: ['button-row-2', 'button-red'],
 	            innerHtml: 'Fail Pomodora',
-	            listener: function listener() {
-	                app.EventBusLocal.publish('time-stopped');
-	            }
-
+	            listener: function () {
+	                this.status = 'failed';
+	                console.log(this);
+	                app.EventBusLocal.publish('timer-terminate', 1);
+	            }.bind(_this2)
 	        }, {
 	            node: document.createElement('button'),
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Finish Pomodora',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('time-resumed');
+	                app.EventBusLocal.publish('timer-terminate', 1);
 	            }
 	        }];
 	        return _this2;
 	    }
 
 	    return WorkModel;
-	}(timerModel);
+	}(TimerModel);
 
-	var BreakModel = exports.BreakModel = function (_timerModel3) {
-	    _inherits(BreakModel, _timerModel3);
+	var BreakModel = function (_TimerModel3) {
+	    _inherits(BreakModel, _TimerModel3);
 
 	    function BreakModel(elem, template) {
 	        _classCallCheck(this, BreakModel);
 
 	        var _this3 = _possibleConstructorReturn(this, (BreakModel.__proto__ || Object.getPrototypeOf(BreakModel)).call(this, elem, template));
 
+	        _this3.type = 'break';
 	        _this3.time = app.User.settings['SHORT BREAK'];
+	        _this3.buttonsHolder = 'button-holder-centered';
 	        _this3.buttonsList = [{
 	            node: document.createElement('button'),
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Start Pomodora',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('time-stopped');
+	                app.EventBusLocal.publish('timer-terminate', 2);
+	            }
+	        }];
+	        return _this3;
+	    }
+
+	    return BreakModel;
+	}(TimerModel);
+
+	var BreakOverModel = function (_TimerModel4) {
+	    _inherits(BreakOverModel, _TimerModel4);
+
+	    function BreakOverModel(elem, template) {
+	        _classCallCheck(this, BreakOverModel);
+
+	        var _this4 = _possibleConstructorReturn(this, (BreakOverModel.__proto__ || Object.getPrototypeOf(BreakOverModel)).call(this, elem, template));
+
+	        _this4.type = 'break-over';
+	        _this4.buttonsList = [{
+	            node: document.createElement('button'),
+	            class: ['button-row-2', 'button-green'],
+	            innerHtml: 'Start Pomodora',
+	            listener: function listener() {
+	                app.EventBusLocal.publish('state-progress');
+	                app.EventBusLocal.publish('timer-progress', 'work');
 	            }
 
 	        }, {
@@ -2989,14 +2972,29 @@ webpackJsonp([1],[
 	            class: ['button-row-2', 'button-blue'],
 	            innerHtml: 'Finish Task',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('time-resumed');
+	                app.EventBusLocal.publish('timer-progress', 'task-over');
 	            }
 	        }];
-	        return _this3;
+	        return _this4;
 	    }
 
-	    return BreakModel;
-	}(timerModel);
+	    return BreakOverModel;
+	}(TimerModel);
+
+	var TaskEndModel = function (_TimerModel5) {
+	    _inherits(TaskEndModel, _TimerModel5);
+
+	    function TaskEndModel(elem, template) {
+	        _classCallCheck(this, TaskEndModel);
+
+	        var _this5 = _possibleConstructorReturn(this, (TaskEndModel.__proto__ || Object.getPrototypeOf(TaskEndModel)).call(this, elem, template));
+
+	        _this5.type = 'task-over';
+	        return _this5;
+	    }
+
+	    return TaskEndModel;
+	}(TimerModel);
 
 /***/ },
 /* 73 */
@@ -3009,21 +3007,40 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (data) {
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-done {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n    cursor: default;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.category {\n    background-color: transparent !important;\n}\n.centered-inner{\n    line-height: 120px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
-	for(var i =0;i<data.estimation;i++)
+	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-resolved {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 150px;\n    width: 150px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 102px;\n    cursor: default;\n}\n\n.break-timer-time {\n    line-height: 120px;\n}\n.break .timer-estimate-points{\n    position: absolute;\n    bottom: 3px;\n    line-height: 27px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.timer-break-title {\n    position: absolute;\n    top: -6px;\n    line-height: 24px;\n    font-size: 20px;\n    width: 100%;\n    font-family: \"Helvetica\", sans-serif;\n}\n.task-over .break-over-inner-content{\n    position: absolute;\n    width: 100%;\n    font-family: \"HelveticaNeue\", sans-serif;\n    line-height: 54px;\n    font-size: 30px;\n    bottom: -3px;\n}\n.break-over-inner-content{\n    position: absolute;\n    bottom: 16px;\n    width: 100%;\n    font-family: \"HelveticaNeue\", sans-serif;\n    line-height: 54px;\n    font-size: 30px;\n}\n\n.timer-estimate-points {\n    position: absolute;\n    bottom: 10px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n    font-family: \"HelveticaNeue\" ,sans-serif;\n}\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 50% 0 0 50%;\n}\n\n.break-over .mask,.task-over .mask {\n    opacity: 0;\n    animation: none;\n}\n\n.break-over .filler,.task-over .filler {\n    opacity: 1;\n    animation: none;\n}\n\n.category {\n    background-color: transparent !important;\n}\n.start-inner-content{\n    line-height: 132px;\n    font-size:30px;\n}\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n\n\n}\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
+	for(var i =0;i<data.cycle.length;i++)
+	{
+	if(data.cycle[i]==='work')
 	{
 	buf.push("<li class=\"phase\"></li>");
 	}
-	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div class=\"time-wrapper\"><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\"><div class=\"timer-time\">");
-	if(data.time)
+	else if(data.cycle[i]==='resolved' || data.cycle[i]==='failed')
 	{
-	buf.push("" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p>");
+	buf.push("<li" + (jade.cls(['phase','phase-' + data.cycle[i]], [null,true])) + "></li>");
 	}
-	if(data.text)
+	}
+	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div" + (jade.cls(['time-wrapper',data.type], [null,true])) + "><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div class=\"timer-inner-circle\">");
+	if(data.type === 'start')
 	{
-	buf.push("<p class=\"timer-estimate-points centered-inner\">" + (jade.escape((jade_interp = data.text) == null ? '' : jade_interp)) + "</p>");
+	buf.push("<div class=\"timer-time\"><p class=\"timer-estimate-points start-inner-content\">Lets do it!</p></div>");
 	}
-	buf.push("</div></div></div></div></main>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
+	if(data.type === 'work')
+	{
+	buf.push("<div class=\"timer-time\">" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div>");
+	}
+	if(data.type === 'break')
+	{
+	buf.push("<div class=\"timer-time\"><p class=\"timer-break-title\">BREAK</p>" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div>");
+	}
+	if(data.type === 'break-over')
+	{
+	buf.push("<div class=\"timer-time\"><p class=\"break-over-inner-content\">Break is over</p></div>");
+	}
+	if(data.type === 'task-over')
+	{
+	buf.push("<div class=\"timer-time\"><p class=\"break-over-inner-content\">You Completed Task</p></div>");
+	}
+	buf.push("</div></div></div></main>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
