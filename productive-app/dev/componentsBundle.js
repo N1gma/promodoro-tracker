@@ -9,14 +9,14 @@ webpackJsonp([1],[
 	__webpack_require__(29);
 	__webpack_require__(34);
 	__webpack_require__(40);
-	__webpack_require__(43);
-	__webpack_require__(46);
-	__webpack_require__(50);
-	__webpack_require__(58);
-	__webpack_require__(62);
-	__webpack_require__(65);
-	__webpack_require__(69);
-	module.exports = __webpack_require__(74);
+	__webpack_require__(44);
+	__webpack_require__(47);
+	__webpack_require__(51);
+	__webpack_require__(59);
+	__webpack_require__(63);
+	__webpack_require__(66);
+	__webpack_require__(70);
+	module.exports = __webpack_require__(75);
 
 
 /***/ },
@@ -1437,6 +1437,12 @@ webpackJsonp([1],[
 
 	var _controller = __webpack_require__(42);
 
+	var _controller2 = _interopRequireDefault(_controller);
+
+	var _view = __webpack_require__(43);
+
+	var _view2 = _interopRequireDefault(_view);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -1452,7 +1458,8 @@ webpackJsonp([1],[
 	  var el = document.createElement('div');
 	  el.innerHTML = (0, _template2.default)();
 	  document.getElementById('app-body').appendChild(el);
-	  _controller.Controller.initCntrl(el);
+	  var controller = new _controller2.default(el, new _view2.default(el));
+	  controller.init();
 	};
 
 /***/ },
@@ -1466,7 +1473,7 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head main-head-shadow-on task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"reports\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 19px;\n    left: 6.8%;\n    display: none;\n}\n\n.main-head {\n    position: absolute;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n    height: 112px;\n}\n\n.fixed-main-head{\n    position: fixed;\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n.fixed-main-head .logo{\n    display: block;\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"reports\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
@@ -1478,58 +1485,123 @@ webpackJsonp([1],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var Controller = exports.Controller = {
-	    /**
-	     * @memberOf app.Renderer.HeaderDetailed
-	     * @instance
-	     * @param el
-	     */
-	    initCntrl: function initCntrl(el) {
-	        var listeners = { // обьект проектирования поведения
-	            'log_out': function log_out(e) {
-	                firebase.auth().signOut();
-	            },
-	            'settings': function settings(e) {
-	                app.router.moveTo('pomodoras');
-	            },
-	            'reports': function reports() {
-	                app.router.moveTo('reports');
-	            },
-	            'addTask': function addTask() {
-	                app.Renderer.showModalAdd();
-	            },
-	            'trashOn': function trashOn(e) {
-	                if (e.target.classList.contains('active')) {
-	                    app.EventBusLocal.publish('trash-off', e.target);
-	                } else {
-	                    app.EventBusLocal.publish('trash-on', e.target);
-	                }
-	            }
-	        };
-	        $('#addTask').tips('Add new task');
-	        $('#trashOn').tips('Activate delete mode');
-	        $('#reports').tips('Go to Reports');
-	        $('#settings').tips('Go to Settings');
-	        $('#log_out').tips('Sign out', true);
-	        el.addEventListener('click', function (e) {
-	            if (listeners[e.target.id]) {
-	                listeners[e.target.id](e);
-	            }
-	        });
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	 * @class
+	 * @memberOf app.Renderer.HeaderDetailed
+	 * @instance
+	 */
+	var Controller = function () {
+	    function Controller(el, view) {
+	        _classCallCheck(this, Controller);
+
+	        this.el = el;
+	        this.view = view;
 	    }
-	};
+
+	    _createClass(Controller, [{
+	        key: 'init',
+	        value: function init() {
+	            var context = this;
+	            var listeners = {
+	                'log_out': function log_out(e) {
+	                    firebase.auth().signOut();
+	                },
+	                'settings': function settings(e) {
+	                    app.router.moveTo('pomodoras');
+	                },
+	                'reports': function reports() {
+	                    app.router.moveTo('reports');
+	                },
+	                'addTask': function addTask() {
+	                    app.Renderer.showModalAdd();
+	                },
+	                'trashOn': function trashOn(e) {
+	                    if (e.target.classList.contains('active')) {
+	                        app.EventBusLocal.publish('trash-off', e.target);
+	                    } else {
+	                        app.EventBusLocal.publish('trash-on', e.target);
+	                    }
+	                }
+	            };
+	            $('#addTask').tips('Add new task');
+	            $('#trashOn').tips('Activate delete mode');
+	            $('#reports').tips('Go to Reports');
+	            $('#settings').tips('Go to Settings');
+	            $('#log_out').tips('Sign out', true);
+	            this.el.addEventListener('click', function (e) {
+	                if (listeners[e.target.id]) {
+	                    listeners[e.target.id](e);
+	                }
+	            });
+	            $(window).on("scroll", function (e) {
+	                if ($(this).scrollTop() > 94) {
+	                    context.view.fixHeader();
+	                } else {
+	                    context.view.unfixHeader();
+	                }
+	            });
+	        }
+	    }]);
+
+	    return Controller;
+	}();
+
+	exports.default = Controller;
 
 /***/ },
 /* 43 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var View = function () {
+	    function View(el) {
+	        _classCallCheck(this, View);
+
+	        this.$header = $(el).find('.main-head');
+	    }
+
+	    _createClass(View, [{
+	        key: "fixHeader",
+	        value: function fixHeader() {
+	            this.$header.addClass("fixed-main-head");
+	        }
+	    }, {
+	        key: "unfixHeader",
+	        value: function unfixHeader() {
+	            this.$header.removeClass("fixed-main-head");
+	        }
+	    }]);
+
+	    return View;
+	}();
+
+	exports.default = View;
+
+/***/ },
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(44);
+	var _template = __webpack_require__(45);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(45);
+	var _controller = __webpack_require__(46);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1548,7 +1620,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -1562,7 +1634,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1604,20 +1676,20 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(47);
+	var _template = __webpack_require__(48);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(48);
+	var _Controller = __webpack_require__(49);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(49);
+	var _Model = __webpack_require__(50);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1648,7 +1720,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -1679,7 +1751,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1768,7 +1840,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1868,22 +1940,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(51);
+	var _template = __webpack_require__(52);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(52);
+	var _controller = __webpack_require__(53);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(53);
+	var _view = __webpack_require__(54);
 
-	var _style = __webpack_require__(54);
+	var _style = __webpack_require__(55);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -1914,7 +1986,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -1928,7 +2000,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1987,7 +2059,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2044,7 +2116,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(32)();
@@ -2052,46 +2124,46 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, "/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(55) + ") no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(" + __webpack_require__(55) + ") no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(" + __webpack_require__(55) + ") no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(" + __webpack_require__(55) + ") no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(" + __webpack_require__(55) + ") no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(56) + ") no-repeat;\n}\n.estimation-range li:hover {\n  background: url(" + __webpack_require__(57) + ") no-repeat;\n}\n.estimated {\n  background: url(" + __webpack_require__(57) + ") no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n", ""]);
+	exports.push([module.id, "/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(56) + ") no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(57) + ") no-repeat;\n}\n.estimation-range li:hover {\n  background: url(" + __webpack_require__(58) + ") no-repeat;\n}\n.estimated {\n  background: url(" + __webpack_require__(58) + ") no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/urgency-sprite.png?sourceMap";
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato.svg?sourceMap";
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato_fill.svg?sourceMap";
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(59);
+	var _template = __webpack_require__(60);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(60);
+	var _controller = __webpack_require__(61);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(61);
+	var _view = __webpack_require__(62);
 
-	var _style = __webpack_require__(54);
+	var _style = __webpack_require__(55);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -2127,7 +2199,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -2141,7 +2213,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2196,7 +2268,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2297,18 +2369,18 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(63);
+	var _template = __webpack_require__(64);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(45);
+	var _controller = __webpack_require__(46);
 
-	var _filterController = __webpack_require__(64);
+	var _filterController = __webpack_require__(65);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2328,7 +2400,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -2342,7 +2414,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2397,22 +2469,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(66);
+	var _template = __webpack_require__(67);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(67);
+	var _Controller = __webpack_require__(68);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(49);
+	var _Model = __webpack_require__(50);
 
-	var _View = __webpack_require__(68);
+	var _View = __webpack_require__(69);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2450,7 +2522,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -2480,7 +2552,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2563,7 +2635,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2595,22 +2667,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _controller = __webpack_require__(70);
+	var _controller = __webpack_require__(71);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(71);
+	var _view = __webpack_require__(72);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(72);
+	var _model = __webpack_require__(73);
 
-	var _template = __webpack_require__(73);
+	var _template = __webpack_require__(74);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -2631,7 +2703,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2701,7 +2773,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2816,7 +2888,7 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2998,7 +3070,7 @@ webpackJsonp([1],[
 	}(TimerModel);
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -3045,16 +3117,16 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(75);
+	var _template = __webpack_require__(76);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(76);
+	var _controller = __webpack_require__(77);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -3080,7 +3152,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(16);
@@ -3094,7 +3166,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	'use strict';

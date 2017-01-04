@@ -3,19 +3,25 @@ style.
         min-width: 241px;
         width: 17%;
         position: absolute;
-        top: 15px;
+        top: 19px;
         left: 6.8%;
+        display: none;
     }
 
     .main-head {
-        position: fixed;
+        position: absolute;
         width: 100%;
         background-color: #2a3f50;
         z-index: 9999;
+        height: 112px;
     }
 
-    .main-head-shadow-on {
+    .fixed-main-head{
+        position: fixed;
         box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);
+    }
+    .fixed-main-head .logo{
+        display: block;
     }
 
     .inner-head {
@@ -66,7 +72,7 @@ style.
     }
 
 
-header.main-head.main-head-shadow-on.task-list-header
+header.main-head.task-list-header
     .inner-head
         .inner-2-head
             a(href='reports')
@@ -76,7 +82,6 @@ header.main-head.main-head-shadow-on.task-list-header
                 button#trashOn.ico-text-button
                     | 
                     span.trash-counter
-
                 button#reports.ico-text-button &#xe90c;
                 button#settings.ico-text-button  &#xe90b;
                 button#log_out.ico-text-button  &#xe908;

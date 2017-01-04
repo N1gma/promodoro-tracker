@@ -1,11 +1,16 @@
-export var Controller = {
-    /**
-     * @memberOf app.Renderer.HeaderDetailed
-     * @instance
-     * @param el
-     */
-    initCntrl: function (el) {
-        var listeners = { // обьект проектирования поведения
+/**
+ * @class
+ * @memberOf app.Renderer.HeaderDetailed
+ * @instance
+ */
+class Controller  {
+    constructor(el,view){
+        this.el = el;
+        this.view = view;
+    }
+    init () {
+        var context = this;
+        var listeners = {
             'log_out': function (e) {
                 firebase.auth().signOut();
             },
@@ -33,10 +38,19 @@ export var Controller = {
         $('#reports').tips('Go to Reports');
         $('#settings').tips('Go to Settings');
         $('#log_out').tips('Sign out',true);
-        el.addEventListener('click',function (e) {
+        this.el.addEventListener('click',function (e) {
             if (listeners[e.target.id]){
                 listeners[e.target.id](e);
             }
         });
+        $(window).on("scroll", function(e) {
+            if ($(this).scrollTop() > 94) {
+                context.view.fixHeader();
+            } else {
+                context.view.unfixHeader();
+            }
+        });
     }
-};
+}
+
+export default Controller;
