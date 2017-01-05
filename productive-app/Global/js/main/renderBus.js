@@ -120,6 +120,7 @@ class CEventBus {
 //----------------------------------
     EventBus.subscribe('taskList', function () {
         var Renderer = window.app.Renderer;
+        app.EventBusLocal.topics = {};
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeaderDetailed();
         Renderer.renderTitleTaskList();
@@ -130,29 +131,10 @@ class CEventBus {
 //----------------------------------
     EventBus.subscribe('goToTimer', function (data) {
         var Renderer = window.app.Renderer;
+        app.EventBusLocalTimer.topics = {};
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeader();
         Renderer.renderTimer(data);
-        /*var list = [document.createElement('button'), document.createElement('button')];
-        list = [
-            {
-                node: document.createElement('button'),
-                class: ['button-row-2', 'button-red'],
-                innerHtml: 'Fail Pomodora',
-                listener: function () {
-                    app.EventBusLocal.publish('time-stopped');
-                }
-
-            }, {
-                node: document.createElement('button'),
-                class: ['button-row-2', 'button-green'],
-                innerHtml: 'Finish Pomodora',
-                listener: function () {
-                    app.EventBusLocal.publish('time-resumed');
-                }
-            }
-        ];
-        Renderer.renderButtons(list);*/
     });
 //----------------------------------
     EventBus.subscribe('no-user', function () {

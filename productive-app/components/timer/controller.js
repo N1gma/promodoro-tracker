@@ -1,46 +1,63 @@
-
-export default class Controller {
+class Controller {
     constructor(view, model) {
         this.view = view;
         this.model = model;
         this.results = [];
     }
 
-    init() {
-        var EventBusLocal = app.EventBusLocal;
+    init(cycle) {
+        var EventBusLocalTimer = app.EventBusLocalTimer;
         var context = this;
-        console.log(this);
-        EventBusLocal.subscribe('first-start', function(){
-            context.view.startCycle();
-        });
-        EventBusLocal.subscribe('timer-progress', function(type){
+        this.view.cycle = this.generateCycle(cycle);
+        EventBusLocalTimer.timer = this.view.timer;
+        EventBusLocalTimer.subscribe('timer-progress', function(type){
             context.model = context.model.getNewModel(type);
             context.view.model = context.model;
             context.view.newCycle();
         });
-        EventBusLocal.subscribe('state-progress', function(){
+        EventBusLocalTimer.subscribe('state-progress', function(){
             context.view.stateProgress();
         });
-        EventBusLocal.subscribe('timer-terminate', function(step){
-            context.model.timer.count = context.model.time;
+        EventBusLocalTimer.subscribe('timer-terminate', function(step){
+            context.view.timer.count = context.model.time;
             context.view.step = step;
             context.view.timesOut();
         });
-        EventBusLocal.subscribe('finish-task', function(type){
+        EventBusLocalTimer.subscribe('finish-task', function(type){
             app.router.moveTo('task-list');
         });
-        this.generateCycle();
+        this.model.elem.addEventListener('click', function(e){
+            if(e.target.id ==='addPomodoro'){
+                var cycle = context.view.cycle;
+                cycle.push('break');
+                cycle.push('break-over');
+                cycle.push('work');
+                var el = document.createElement('li');
+                el.classList.add('phase');
+                document.getElementsByClassName('phases')[0]
+                    .insertBefore(el, e.target);
+            }
+        });
+        context.view.startCycle();
     }
 
-    generateCycle(){
-        var cycle = this.view.cycle;
-        for(var i = 0;i<this.model.estimation;i++){
-            cycle.push('work');
-            cycle.push('break');
-            cycle.push('break-over');
+    generateCycle(cycle){
+        //var context = this;
+        if(cycle){
+            var newCycle = app.Renderer.helpers.objectToArray(cycle);
+            this.view.cycleStep = newCycle.indexOf('work');
+            return newCycle;
+        }else{
+            cycle = [];
+            for(var i = 0;i<this.model.estimation;i++){
+                cycle.push('work');
+                cycle.push('break');
+                cycle.push('break-over');
+            }
+            cycle.splice(-2,2);
+            return cycle;
         }
-        cycle.splice(-2,2);
-        console.log(cycle);
-        app.EventBusLocal.publish('first-start');
     }
 }
+
+export default Controller;

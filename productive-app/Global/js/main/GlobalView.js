@@ -27,6 +27,9 @@
                     target.removeChild(target.firstElementChild);
                 }
             }
+            if(app.EventBusLocalTimer.timer){
+                clearInterval(app.EventBusLocalTimer.timer.timeout)
+            }
         },
         /**
          * Renders a buttons

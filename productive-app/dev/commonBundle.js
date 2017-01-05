@@ -11,7 +11,8 @@ webpackJsonp([0],[
 	__webpack_require__(9);
 	__webpack_require__(10);
 	__webpack_require__(11);
-	module.exports = __webpack_require__(12);
+	__webpack_require__(12);
+	module.exports = __webpack_require__(13);
 
 
 /***/ },
@@ -50,6 +51,9 @@ webpackJsonp([0],[
 	                while (target.firstElementChild) {
 	                    target.removeChild(target.firstElementChild);
 	                }
+	            }
+	            if (app.EventBusLocalTimer.timer) {
+	                clearInterval(app.EventBusLocalTimer.timer.timeout);
 	            }
 	        },
 	        /**
@@ -113,6 +117,22 @@ webpackJsonp([0],[
 	            minutes = parseInt(time % 60) + 'm';
 	        }
 	        return hours + minutes;
+	    },
+	    arrayToObject: function arrayToObject(array) {
+	        var obj = {};
+	        for (var i = 0; i < array.length; i++) {
+	            obj[i] = array[i];
+	        }
+	        return obj;
+	    },
+	    objectToArray: function objectToArray(obj) {
+	        var arr = [];
+	        for (var key in obj) {
+	            if (obj.hasOwnProperty(key)) {
+	                arr.push(obj[key]);
+	            }
+	        }
+	        return arr;
 	    }
 	};
 
@@ -241,6 +261,7 @@ webpackJsonp([0],[
 	    //----------------------------------
 	    EventBus.subscribe('taskList', function () {
 	        var Renderer = window.app.Renderer;
+	        app.EventBusLocal.topics = {};
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeaderDetailed();
 	        Renderer.renderTitleTaskList();
@@ -251,28 +272,10 @@ webpackJsonp([0],[
 	    //----------------------------------
 	    EventBus.subscribe('goToTimer', function (data) {
 	        var Renderer = window.app.Renderer;
+	        app.EventBusLocalTimer.topics = {};
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderTimer(data);
-	        /*var list = [document.createElement('button'), document.createElement('button')];
-	        list = [
-	            {
-	                node: document.createElement('button'),
-	                class: ['button-row-2', 'button-red'],
-	                innerHtml: 'Fail Pomodora',
-	                listener: function () {
-	                    app.EventBusLocal.publish('time-stopped');
-	                }
-	              }, {
-	                node: document.createElement('button'),
-	                class: ['button-row-2', 'button-green'],
-	                innerHtml: 'Finish Pomodora',
-	                listener: function () {
-	                    app.EventBusLocal.publish('time-resumed');
-	                }
-	            }
-	        ];
-	        Renderer.renderButtons(list);*/
 	    });
 	    //----------------------------------
 	    EventBus.subscribe('no-user', function () {
@@ -404,6 +407,11 @@ webpackJsonp([0],[
 	                    type: 'info'
 	                });
 	            });
+	        }
+	    }, {
+	        key: 'saveData',
+	        value: function saveData(account, path, data) {
+	            database.ref('users/' + account + path).update(data);
 	        }
 
 	        /**
@@ -746,6 +754,82 @@ webpackJsonp([0],[
 /* 8 */
 /***/ function(module, exports) {
 
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	 * @class
+	 */
+	var CEventBusLocalTimer = function () {
+	    function CEventBusLocalTimer() {
+	        _classCallCheck(this, CEventBusLocalTimer);
+
+	        this.topics = {};
+	    }
+
+	    /**
+	     * @memberOf CEventBusLocal
+	     * @param {String} topic
+	     * @param {function} listener
+	     */
+
+
+	    _createClass(CEventBusLocalTimer, [{
+	        key: "subscribe",
+	        value: function subscribe(topic, listener) {
+	            if (!this.topics[topic]) {
+	                this.topics[topic] = [];
+	            }
+	            this.topics[topic].push(listener);
+	        }
+
+	        /**
+	         * @memberOf CEventBusLocal
+	         * @param {String} topic
+	         * @param  [data]
+	         */
+
+	    }, {
+	        key: "publish",
+	        value: function publish(topic, data) {
+	            if (!this.topics[topic] || this.topics[topic].length < 1) {
+	                return;
+	            }
+	            this.topics[topic].forEach(function (listener) {
+	                listener(data || {});
+	            });
+	        }
+
+	        /**
+	         * @memberOf CEventBusLocal
+	         * @param {String} topic
+	         */
+
+	    }, {
+	        key: "unsubscribe",
+	        value: function unsubscribe(topic) {
+	            delete this.topics[topic];
+	        }
+	    }]);
+
+	    return CEventBusLocalTimer;
+	}();
+
+	(function () {
+	    /**
+	     * @memberOf app
+	     * @type {CEventBusLocal}
+	     */
+	    app.EventBusLocalTimer = new CEventBusLocalTimer();
+	})();
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -815,7 +899,6 @@ webpackJsonp([0],[
 	            }, route.name, route.url);
 	            app.EventBus.publish(route.module, data);
 	            this.currentState = page;
-	            console.log(history);
 	        }
 	        /**
 	         * Replace history state and render another page state
@@ -880,7 +963,7 @@ webpackJsonp([0],[
 	})();
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -988,7 +1071,7 @@ webpackJsonp([0],[
 	})(window.$);
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1022,7 +1105,7 @@ webpackJsonp([0],[
 	})();
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1052,12 +1135,12 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _loginView = __webpack_require__(13);
+	var _loginView = __webpack_require__(14);
 
 	var _loginView2 = _interopRequireDefault(_loginView);
 
@@ -1121,7 +1204,7 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	'use strict';

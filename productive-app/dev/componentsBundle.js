@@ -2,21 +2,21 @@ webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(14);
-	__webpack_require__(18);
-	__webpack_require__(21);
-	__webpack_require__(23);
-	__webpack_require__(29);
-	__webpack_require__(34);
-	__webpack_require__(40);
-	__webpack_require__(44);
-	__webpack_require__(47);
-	__webpack_require__(51);
-	__webpack_require__(59);
-	__webpack_require__(63);
-	__webpack_require__(66);
-	__webpack_require__(70);
-	module.exports = __webpack_require__(75);
+	__webpack_require__(15);
+	__webpack_require__(19);
+	__webpack_require__(22);
+	__webpack_require__(24);
+	__webpack_require__(30);
+	__webpack_require__(35);
+	__webpack_require__(41);
+	__webpack_require__(45);
+	__webpack_require__(48);
+	__webpack_require__(52);
+	__webpack_require__(60);
+	__webpack_require__(64);
+	__webpack_require__(67);
+	__webpack_require__(71);
+	module.exports = __webpack_require__(78);
 
 
 /***/ },
@@ -33,12 +33,13 @@ webpackJsonp([1],[
 /* 11 */,
 /* 12 */,
 /* 13 */,
-/* 14 */
+/* 14 */,
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(15);
+	var _template = __webpack_require__(16);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -60,10 +61,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -74,7 +75,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -294,7 +295,7 @@ webpackJsonp([1],[
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(17).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(18).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -326,22 +327,22 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(19);
+	var _template = __webpack_require__(20);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(20);
+	var _controller = __webpack_require__(21);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -362,10 +363,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -376,7 +377,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -416,12 +417,12 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(22);
+	var _template = __webpack_require__(23);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -446,10 +447,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -460,26 +461,26 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(24);
+	var _template = __webpack_require__(25);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _dataModule = __webpack_require__(25);
+	var _dataModule = __webpack_require__(26);
 
-	var _view = __webpack_require__(26);
+	var _view = __webpack_require__(27);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(27);
+	var _model = __webpack_require__(28);
 
 	var _model2 = _interopRequireDefault(_model);
 
-	var _controller = __webpack_require__(28);
+	var _controller = __webpack_require__(29);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -517,10 +518,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -531,7 +532,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -617,7 +618,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -708,7 +709,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -744,7 +745,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -781,16 +782,16 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(30);
+	var _template = __webpack_require__(31);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _style = __webpack_require__(31);
+	var _style = __webpack_require__(32);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -816,10 +817,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -830,21 +831,21 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(33)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -19px;\n}\n.label2 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -18px -19px;\n}\n.label3 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -36px -19px;\n}\n.label4 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -54px -19px;\n}\n.label5 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n", ""]);
+	exports.push([module.id, ".button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(" + __webpack_require__(34) + ") no-repeat 0 -19px;\n}\n.label2 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -18px -19px;\n}\n.label3 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -36px -19px;\n}\n.label4 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -54px -19px;\n}\n.label5 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	/*
@@ -900,26 +901,26 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/ico-sprite.png?sourceMap";
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(35);
+	var _template = __webpack_require__(36);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(36);
+	var _Controller = __webpack_require__(37);
 
-	var _View = __webpack_require__(39);
+	var _View = __webpack_require__(40);
 
-	var _Model = __webpack_require__(38);
+	var _Model = __webpack_require__(39);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -942,10 +943,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -956,7 +957,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -968,7 +969,7 @@ webpackJsonp([1],[
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _options = __webpack_require__(37);
+	var _options = __webpack_require__(38);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1010,7 +1011,7 @@ webpackJsonp([1],[
 	}();
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1023,7 +1024,7 @@ webpackJsonp([1],[
 	exports.createRandom30xArray = createRandom30xArray;
 	exports.totalValueCount = totalValueCount;
 
-	var _Model = __webpack_require__(38);
+	var _Model = __webpack_require__(39);
 
 	var options = exports.options = {
 	    pieView: {
@@ -1363,7 +1364,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1397,7 +1398,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1407,7 +1408,7 @@ webpackJsonp([1],[
 	});
 	exports.View = undefined;
 
-	var _Model = __webpack_require__(38);
+	var _Model = __webpack_require__(39);
 
 	var View = exports.View = {
 	    renderChart: function renderChart(options) {
@@ -1426,20 +1427,20 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(41);
+	var _template = __webpack_require__(42);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(42);
+	var _controller = __webpack_require__(43);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(43);
+	var _view = __webpack_require__(44);
 
 	var _view2 = _interopRequireDefault(_view);
 
@@ -1463,10 +1464,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1477,7 +1478,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1554,7 +1555,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1592,16 +1593,16 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(45);
+	var _template = __webpack_require__(46);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(46);
+	var _controller = __webpack_require__(47);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1620,10 +1621,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1634,7 +1635,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1676,20 +1677,20 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(48);
+	var _template = __webpack_require__(49);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(49);
+	var _Controller = __webpack_require__(50);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(50);
+	var _Model = __webpack_require__(51);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1720,10 +1721,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -1751,7 +1752,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1840,7 +1841,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1940,22 +1941,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(52);
+	var _template = __webpack_require__(53);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(53);
+	var _controller = __webpack_require__(54);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(54);
+	var _view = __webpack_require__(55);
 
-	var _style = __webpack_require__(55);
+	var _style = __webpack_require__(56);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -1986,10 +1987,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2000,7 +2001,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2059,7 +2060,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2116,54 +2117,54 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(33)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(" + __webpack_require__(33) + ") no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(" + __webpack_require__(33) + ") no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(56) + ") no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(" + __webpack_require__(56) + ") no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(57) + ") no-repeat;\n}\n.estimation-range li:hover {\n  background: url(" + __webpack_require__(58) + ") no-repeat;\n}\n.estimated {\n  background: url(" + __webpack_require__(58) + ") no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n", ""]);
+	exports.push([module.id, "/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(34) + ") no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(" + __webpack_require__(34) + ") no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(" + __webpack_require__(34) + ") no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(57) + ") no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(" + __webpack_require__(57) + ") no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(" + __webpack_require__(57) + ") no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(" + __webpack_require__(57) + ") no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(" + __webpack_require__(57) + ") no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 9999999;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(58) + ") no-repeat;\n}\n.estimation-range li:hover {\n  background: url(" + __webpack_require__(59) + ") no-repeat;\n}\n.estimated {\n  background: url(" + __webpack_require__(59) + ") no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/urgency-sprite.png?sourceMap";
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato.svg?sourceMap";
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato_fill.svg?sourceMap";
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(60);
+	var _template = __webpack_require__(61);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(61);
+	var _controller = __webpack_require__(62);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(62);
+	var _view = __webpack_require__(63);
 
-	var _style = __webpack_require__(55);
+	var _style = __webpack_require__(56);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -2199,10 +2200,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2213,7 +2214,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2268,7 +2269,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2369,18 +2370,18 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(64);
+	var _template = __webpack_require__(65);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(46);
+	var _controller = __webpack_require__(47);
 
-	var _filterController = __webpack_require__(65);
+	var _filterController = __webpack_require__(66);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2400,10 +2401,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2414,7 +2415,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2469,22 +2470,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(67);
+	var _template = __webpack_require__(68);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(68);
+	var _Controller = __webpack_require__(69);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(50);
+	var _Model = __webpack_require__(51);
 
-	var _View = __webpack_require__(69);
+	var _View = __webpack_require__(70);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2522,10 +2523,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -2552,7 +2553,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2635,7 +2636,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2667,24 +2668,28 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _controller = __webpack_require__(71);
+	var _controller = __webpack_require__(72);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(72);
+	var _view = __webpack_require__(73);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(73);
+	var _model = __webpack_require__(74);
 
-	var _template = __webpack_require__(74);
+	var _template = __webpack_require__(75);
 
 	var _template2 = _interopRequireDefault(_template);
+
+	var _style = __webpack_require__(76);
+
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2695,15 +2700,20 @@ webpackJsonp([1],[
 	 * @instance
 	 * @namespace Timer
 	 */
-	app.Renderer.renderTimer = function (elem) {
-	  var model = new _model.StartModel(elem, _template2.default);
-	  var view = new _view2.default(model);
-	  var controller = new _controller2.default(view, model);
-	  controller.init();
+	app.Renderer.renderTimer = function (target) {
+	    var elCss = document.createElement('style');
+	    elCss.innerHTML = _style2.default['0'][1];
+	    var timer = document.createElement('div');
+	    timer.key = target.getAttribute('key');
+	    var cycle = app.User.dataSnapShot[timer.key].cycle || undefined;
+	    var model = new _model.StartModel(timer);
+	    var view = new _view2.default(model, _template2.default, elCss);
+	    var controller = new _controller2.default(view, model);
+	    controller.init(cycle);
 	};
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2727,43 +2737,58 @@ webpackJsonp([1],[
 
 	    _createClass(Controller, [{
 	        key: 'init',
-	        value: function init() {
-	            var EventBusLocal = app.EventBusLocal;
+	        value: function init(cycle) {
+	            var EventBusLocalTimer = app.EventBusLocalTimer;
 	            var context = this;
-	            console.log(this);
-	            EventBusLocal.subscribe('first-start', function () {
-	                context.view.startCycle();
-	            });
-	            EventBusLocal.subscribe('timer-progress', function (type) {
+	            this.view.cycle = this.generateCycle(cycle);
+	            EventBusLocalTimer.timer = this.view.timer;
+	            EventBusLocalTimer.subscribe('timer-progress', function (type) {
 	                context.model = context.model.getNewModel(type);
 	                context.view.model = context.model;
 	                context.view.newCycle();
 	            });
-	            EventBusLocal.subscribe('state-progress', function () {
+	            EventBusLocalTimer.subscribe('state-progress', function () {
 	                context.view.stateProgress();
 	            });
-	            EventBusLocal.subscribe('timer-terminate', function (step) {
-	                context.model.timer.count = context.model.time;
+	            EventBusLocalTimer.subscribe('timer-terminate', function (step) {
+	                context.view.timer.count = context.model.time;
 	                context.view.step = step;
 	                context.view.timesOut();
 	            });
-	            EventBusLocal.subscribe('finish-task', function (type) {
+	            EventBusLocalTimer.subscribe('finish-task', function (type) {
 	                app.router.moveTo('task-list');
 	            });
-	            this.generateCycle();
+	            this.model.elem.addEventListener('click', function (e) {
+	                if (e.target.id === 'addPomodoro') {
+	                    var cycle = context.view.cycle;
+	                    cycle.push('break');
+	                    cycle.push('break-over');
+	                    cycle.push('work');
+	                    var el = document.createElement('li');
+	                    el.classList.add('phase');
+	                    document.getElementsByClassName('phases')[0].insertBefore(el, e.target);
+	                }
+	            });
+	            context.view.startCycle();
 	        }
 	    }, {
 	        key: 'generateCycle',
-	        value: function generateCycle() {
-	            var cycle = this.view.cycle;
-	            for (var i = 0; i < this.model.estimation; i++) {
-	                cycle.push('work');
-	                cycle.push('break');
-	                cycle.push('break-over');
+	        value: function generateCycle(cycle) {
+	            //var context = this;
+	            if (cycle) {
+	                var newCycle = app.Renderer.helpers.objectToArray(cycle);
+	                this.view.cycleStep = newCycle.indexOf('work');
+	                return newCycle;
+	            } else {
+	                cycle = [];
+	                for (var i = 0; i < this.model.estimation; i++) {
+	                    cycle.push('work');
+	                    cycle.push('break');
+	                    cycle.push('break-over');
+	                }
+	                cycle.splice(-2, 2);
+	                return cycle;
 	            }
-	            cycle.splice(-2, 2);
-	            console.log(cycle);
-	            app.EventBusLocal.publish('first-start');
 	        }
 	    }]);
 
@@ -2773,7 +2798,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2787,23 +2812,28 @@ webpackJsonp([1],[
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var View = function () {
-	    function View(model) {
+	    function View(model, template, css) {
 	        _classCallCheck(this, View);
 
 	        this.model = model;
+	        this.template = template;
+	        this.css = css;
 	        this.buttonsHolder = '';
-	        this.cycle = [];
 	        this.cycleStep = 0;
 	        this.step = 1;
+	        this.timer = {
+	            container: document.getElementsByClassName('graph-container')[0],
+	            timerControlElements: document.getElementsByClassName('set-able'),
+	            timeout: {},
+	            count: 0
+	        };
 	    }
 
 	    _createClass(View, [{
 	        key: 'startCycle',
 	        value: function startCycle() {
 	            this.model.cycle = this.cycle;
-	            this.model.elem.innerHTML = this.model.template({
-	                data: this.model
-	            });
+	            this.createTimer();
 	            document.getElementById('app-body').appendChild(this.model.elem);
 	            this.buttonsHolder = 'button-holder-centered';
 	            app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
@@ -2811,12 +2841,11 @@ webpackJsonp([1],[
 	    }, {
 	        key: 'newCycle',
 	        value: function newCycle() {
-	            var timer = this.model.timer;
+	            var timer = this.timer;
+	            timer.count = 0;
 	            var context = this;
 	            this.model.cycle = this.cycle;
-	            this.model.elem.innerHTML = this.model.template({
-	                data: this.model
-	            });
+	            this.createTimer();
 	            this.resetButtonInterface(this.buttonsHolder);
 	            if (this.model.time) {
 	                var time = this.model.time;
@@ -2834,13 +2863,13 @@ webpackJsonp([1],[
 	            if (this.cycleCheck()) {
 	                this.cycleStep++;
 	            } else {
-	                app.EventBusLocal.publish('timer-progress', 'task-over');
+	                app.EventBusLocalTimer.publish('timer-progress', 'task-over');
 	            }
 	        }
 	    }, {
 	        key: 'timesOut',
 	        value: function timesOut() {
-	            var timer = this.model.timer;
+	            var timer = this.timer;
 	            var max = this.model.time;
 	            var context = this;
 	            if (timer.count > max || timer.count === max) {
@@ -2849,10 +2878,10 @@ webpackJsonp([1],[
 	                this.cycleStep = this.cycleStep + this.step;
 	                if (this.cycleCheck()) {
 	                    this.step = 1;
-	                    app.EventBusLocal.publish('timer-progress', context.cycle[context.cycleStep]);
+	                    app.EventBusLocalTimer.publish('timer-progress', context.cycle[context.cycleStep]);
 	                    return true;
 	                } else {
-	                    app.EventBusLocal.publish('timer-progress', 'task-over');
+	                    app.EventBusLocalTimer.publish('timer-progress', 'task-over');
 	                }
 	            } else {
 	                timer.count++;
@@ -2878,7 +2907,17 @@ webpackJsonp([1],[
 	        value: function resolvePomodora(status) {
 	            if (status) {
 	                this.cycle[this.cycleStep] = status;
+	                this.model.saveCycle(this.cycle);
+	                console.log(app.User.dataSnapShot[this.model.key]);
 	            }
+	        }
+	    }, {
+	        key: 'createTimer',
+	        value: function createTimer() {
+	            this.model.elem.innerHTML = this.template({
+	                data: this.model
+	            });
+	            this.model.elem.appendChild(this.css);
 	        }
 	    }]);
 
@@ -2888,7 +2927,7 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2907,33 +2946,32 @@ webpackJsonp([1],[
 
 	var TimerModel = function () {
 	    //static results = [];
-	    function TimerModel(elem, template) {
+	    function TimerModel(elem) {
 	        _classCallCheck(this, TimerModel);
 
 	        this.elem = elem;
-	        this.template = template;
-	        this.elem.key = elem.getAttribute('key');
-	        this.timer = {
-	            container: document.getElementsByClassName('graph-container')[0],
-	            timerControlElements: document.getElementsByClassName('set-able'),
-	            timeout: {},
-	            count: 0
-	        };
-	        this.estimation = parseInt(app.User.dataSnapShot[this.elem.key].estimation.slice(-1), 10);
-	        this.title = app.User.dataSnapShot[this.elem.key].title;
-	        this.category = app.User.dataSnapShot[this.elem.key].category;
+	        this.key = elem.key;
+	        this.estimation = parseInt(app.User.dataSnapShot[this.key].estimation.slice(-1), 10);
+	        this.title = app.User.dataSnapShot[this.key].title;
+	        this.category = app.User.dataSnapShot[this.key].category;
 	    }
 
 	    _createClass(TimerModel, [{
 	        key: 'getNewModel',
 	        value: function getNewModel(type) {
 	            var types = {
-	                'work': new WorkModel(this.elem, this.template),
-	                'break-over': new BreakOverModel(this.elem, this.template),
-	                'task-over': new TaskEndModel(this.elem, this.template),
-	                'break': new BreakModel(this.elem, this.template)
+	                'work': new WorkModel(this.elem),
+	                'break-over': new BreakOverModel(this.elem),
+	                'task-over': new TaskEndModel(this.elem),
+	                'break': new BreakModel(this.elem)
 	            };
 	            return types[type];
+	        }
+	    }, {
+	        key: 'saveCycle',
+	        value: function saveCycle(cycle) {
+	            var cycleObj = app.Renderer.helpers.arrayToObject(cycle);
+	            app.User.saveData(app.User.currentLogin, '/tasks/' + this.key + '/cycle', cycleObj);
 	        }
 	    }]);
 
@@ -2943,10 +2981,10 @@ webpackJsonp([1],[
 	var StartModel = exports.StartModel = function (_TimerModel) {
 	    _inherits(StartModel, _TimerModel);
 
-	    function StartModel(elem, template) {
+	    function StartModel(elem) {
 	        _classCallCheck(this, StartModel);
 
-	        var _this = _possibleConstructorReturn(this, (StartModel.__proto__ || Object.getPrototypeOf(StartModel)).call(this, elem, template));
+	        var _this = _possibleConstructorReturn(this, (StartModel.__proto__ || Object.getPrototypeOf(StartModel)).call(this, elem));
 
 	        _this.type = 'start';
 	        _this.buttonsList = [{
@@ -2954,7 +2992,7 @@ webpackJsonp([1],[
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Start',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('timer-progress', 'work');
+	                app.EventBusLocalTimer.publish('timer-progress', 'work');
 	            }
 	        }];
 	        return _this;
@@ -2966,10 +3004,10 @@ webpackJsonp([1],[
 	var WorkModel = function (_TimerModel2) {
 	    _inherits(WorkModel, _TimerModel2);
 
-	    function WorkModel(elem, template) {
+	    function WorkModel(elem) {
 	        _classCallCheck(this, WorkModel);
 
-	        var _this2 = _possibleConstructorReturn(this, (WorkModel.__proto__ || Object.getPrototypeOf(WorkModel)).call(this, elem, template));
+	        var _this2 = _possibleConstructorReturn(this, (WorkModel.__proto__ || Object.getPrototypeOf(WorkModel)).call(this, elem));
 
 	        _this2.type = 'work';
 	        _this2.time = app.User.settings['WORK TIME'];
@@ -2980,15 +3018,14 @@ webpackJsonp([1],[
 	            innerHtml: 'Fail Pomodora',
 	            listener: function () {
 	                this.status = 'failed';
-	                console.log(this);
-	                app.EventBusLocal.publish('timer-terminate', 1);
+	                app.EventBusLocalTimer.publish('timer-terminate', 1);
 	            }.bind(_this2)
 	        }, {
 	            node: document.createElement('button'),
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Finish Pomodora',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('timer-terminate', 1);
+	                app.EventBusLocalTimer.publish('timer-terminate', 1);
 	            }
 	        }];
 	        return _this2;
@@ -3000,10 +3037,10 @@ webpackJsonp([1],[
 	var BreakModel = function (_TimerModel3) {
 	    _inherits(BreakModel, _TimerModel3);
 
-	    function BreakModel(elem, template) {
+	    function BreakModel(elem) {
 	        _classCallCheck(this, BreakModel);
 
-	        var _this3 = _possibleConstructorReturn(this, (BreakModel.__proto__ || Object.getPrototypeOf(BreakModel)).call(this, elem, template));
+	        var _this3 = _possibleConstructorReturn(this, (BreakModel.__proto__ || Object.getPrototypeOf(BreakModel)).call(this, elem));
 
 	        _this3.type = 'break';
 	        _this3.time = app.User.settings['SHORT BREAK'];
@@ -3013,7 +3050,7 @@ webpackJsonp([1],[
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Start Pomodora',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('timer-terminate', 2);
+	                app.EventBusLocalTimer.publish('timer-terminate', 2);
 	            }
 	        }];
 	        return _this3;
@@ -3025,10 +3062,10 @@ webpackJsonp([1],[
 	var BreakOverModel = function (_TimerModel4) {
 	    _inherits(BreakOverModel, _TimerModel4);
 
-	    function BreakOverModel(elem, template) {
+	    function BreakOverModel(elem) {
 	        _classCallCheck(this, BreakOverModel);
 
-	        var _this4 = _possibleConstructorReturn(this, (BreakOverModel.__proto__ || Object.getPrototypeOf(BreakOverModel)).call(this, elem, template));
+	        var _this4 = _possibleConstructorReturn(this, (BreakOverModel.__proto__ || Object.getPrototypeOf(BreakOverModel)).call(this, elem));
 
 	        _this4.type = 'break-over';
 	        _this4.buttonsList = [{
@@ -3036,8 +3073,8 @@ webpackJsonp([1],[
 	            class: ['button-row-2', 'button-green'],
 	            innerHtml: 'Start Pomodora',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('state-progress');
-	                app.EventBusLocal.publish('timer-progress', 'work');
+	                app.EventBusLocalTimer.publish('state-progress');
+	                app.EventBusLocalTimer.publish('timer-progress', 'work');
 	            }
 
 	        }, {
@@ -3045,7 +3082,7 @@ webpackJsonp([1],[
 	            class: ['button-row-2', 'button-blue'],
 	            innerHtml: 'Finish Task',
 	            listener: function listener() {
-	                app.EventBusLocal.publish('timer-progress', 'task-over');
+	                app.EventBusLocalTimer.publish('timer-progress', 'task-over');
 	            }
 	        }];
 	        return _this4;
@@ -3057,10 +3094,10 @@ webpackJsonp([1],[
 	var TaskEndModel = function (_TimerModel5) {
 	    _inherits(TaskEndModel, _TimerModel5);
 
-	    function TaskEndModel(elem, template) {
+	    function TaskEndModel(elem) {
 	        _classCallCheck(this, TaskEndModel);
 
-	        var _this5 = _possibleConstructorReturn(this, (TaskEndModel.__proto__ || Object.getPrototypeOf(TaskEndModel)).call(this, elem, template));
+	        var _this5 = _possibleConstructorReturn(this, (TaskEndModel.__proto__ || Object.getPrototypeOf(TaskEndModel)).call(this, elem));
 
 	        _this5.type = 'task-over';
 	        return _this5;
@@ -3070,17 +3107,17 @@ webpackJsonp([1],[
 	}(TimerModel);
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (data) {
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n    padding-top: 91px;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    letter-spacing: 1px;\n}\n\n.sub-title {\n    font: 18px \"Roboto\", sans-serif;\n    text-align: center;\n    width: 100%;\n    color: #8198ab;\n    margin-top: 21px;\n    position: relative;\n}\n\n/*timer*/\n\n.main-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n.phases {\n    width: 10%;\n    /* padding: 0 6.8%; */\n    box-sizing: border-box;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    position: relative;\n}\n\n.phase {\n    width: 28px;\n    height: 23px;\n    display: inline-block;\n    background: url(./Global/img/tomato.svg) no-repeat;\n    margin: 0 5px;\n}\n\n.phase-resolved {\n    background: url(\"./Global/img/tomato_fill.svg\") no-repeat;\n}\n\n.phase-failed {\n    background: url(\"./Global/img/tomato-failed.svg\") no-repeat;\n}\n\n.phase-add-active .phase-add {\n    display: inline-block;\n}\n\n.phase-add {\n    font-family: icomoon;\n    position: absolute;\n    right: -10px;\n    color: #8ca4b7;\n    line-height: 25px;\n    cursor: pointer;\n    display: none;\n}\n\n.phase-add:hover {\n    color: white;\n}\n\n.graph-container {\n    padding-top: 32px;\n}\n\n.back {\n    font-family: icomoon;\n    position: absolute;\n    left: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.forward {\n    font-family: icomoon;\n    position: absolute;\n    right: 27px;\n    top: 50%;\n    bottom: 50%;\n    font-size: 41px;\n    cursor: pointer;\n    display: none;\n}\n\n.move-on .back, .move-on .forward {\n    display: inline-block;\n}\n\n/*graph*/\n.timer-outer-circle {\n    height: 300px;\n    width: 300px;\n    margin: 0 auto;\n    background-color: #2a3f50;\n    border: 8px solid #2a3f50;\n    border-radius: 50%;\n    display: flex;\n    position: relative;\n    animation: init 1.5s linear;\n    margin-bottom: 39px;\n}\n\n.timer-inner-circle {\n    height: 170px;\n    width: 170px;\n    margin: auto;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    color: white;\n    z-index: 99999;\n}\n\n.timer-time {\n    font-size: 100px;\n    display: inline-block;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    position: absolute;\n    text-align: center;\n    line-height: 125px;\n    cursor: default;\n}\n\n\n.time-wrapper {\n    width: 250px;\n    height: 250px;\n    position: relative;\n    background-color: #2a3f50;\n    border-radius: 50%;\n    left: 0;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    margin: auto;\n}\n\n.circle {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    background: #8da5b8;\n    transform-origin: 100% 50%;\n}\n\n.rotator {\n    border-radius: 100% 0 0 100% / 50% 0 0 50%;\n    z-index: 200;\n    border-right: none;\n    animation: rota 10s linear;\n    animation-play-state: paused;\n    border-right: none;\n    left: 0;\n    top: 0;\n}\n\n.filler {\n    border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n    z-index: 100;\n    border-left: none;\n    animation: fill 10s steps(1, end);\n    animation-play-state: paused;\n    left: 50%;\n    top: 0;\n    opacity: 0;\n}\n\n.mask {\n    width: 50%;\n    height: 100%;\n    position: absolute;\n    z-index: 300;\n    opacity: 1;\n    background: inherit;\n    animation: mask 10s steps(1, end);\n    animation-play-state: paused;\n    border-radius: 100% 0 0 100%;\n}\n\n\n.category {\n    background-color: transparent !important;\n}\n\n/*specs*/\n.timer-estimate-points {\n    position: absolute;\n    bottom: 26px;\n    line-height: 24px;\n    font-size: 24px;\n    width: 100%;\n    font-family: \"HelveticaNeue\", sans-serif;\n}\n\n.start-inner-content {\n    line-height: 149px;\n    font-size: 30px;\n    position: absolute;\n    bottom: 13px;\n    width: 100%;\n    font-family: \"HelveticaNeue\", sans-serif;\n}\n\n.break-timer-time {\n    line-height: 120px;\n}\n\n.break .timer-estimate-points {\n    position: absolute;\n    bottom: 20px;\n    line-height: 27px;\n    font-size: 24px;\n    width: 100%;\n}\n\n.timer-break-title {\n    position: absolute;\n    top: 6px;\n    line-height: 24px;\n    font-size: 20px;\n    width: 100%;\n    font-family: \"Helvetica\", sans-serif;\n}\n\n.break-over-inner-content {\n    position: absolute;\n    bottom: 26px;\n    width: 100%;\n    font-family: \"HelveticaNeue\", sans-serif;\n    line-height: 54px;\n    font-size: 30px;\n}\n\n.task-over .break-over-inner-content {\n    position: absolute;\n    width: 100%;\n    font-family: \"HelveticaNeue\", sans-serif;\n    line-height: 54px;\n    font-size: 30px;\n    bottom: 8px;\n}\n\n.break-over .mask, .task-over .mask {\n    opacity: 0;\n    animation: none;\n}\n\n.break-over .filler, .task-over .filler {\n    opacity: 1;\n    animation: none;\n}\n\n/*anims*/\n\n@keyframes rota {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n\n\n@keyframes fill {\n    0% {\n        opacity: 0;\n    }\n    50%, 100% {\n        opacity: 1;\n    }\n}\n\n@keyframes mask {\n    0% {\n        opacity: 1;\n    }\n    50%, 100% {\n        opacity: 0;\n    }\n}\n\n@keyframes init {\n    0% {\n        transform: scale(0, 0);\n    }\n    50% {\n        transform: scale(0, 0);\n    }\n    100% {\n        transform: scale(1, 1);\n    }\n}\n\n</style><div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
+	buf.push("<div class=\"wrapper\"><h2 class=\"main-head-title timer-title\">1.Creating a New Design</h2><div class=\"sub-title\">" + (jade.escape((jade_interp = data.title) == null ? '' : jade_interp)) + "</div></div><main class=\"main-wrapper\"><ul class=\"phases phase-add-active\">");
 	for(var i =0;i<data.cycle.length;i++)
 	{
 	if(data.cycle[i]==='work')
@@ -3092,41 +3129,61 @@ webpackJsonp([1],[
 	buf.push("<li" + (jade.cls(['phase','phase-' + data.cycle[i]], [null,true])) + "></li>");
 	}
 	}
-	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div" + (jade.cls(['time-wrapper',data.type], [null,true])) + "><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div" + (jade.cls(['timer-inner-circle',data.type], [null,true])) + ">");
+	buf.push("<li id=\"addPomodoro\" class=\"button ico-text-button ico-text-button-nocontainer\"></li></ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div" + (jade.cls(['time-wrapper',data.type], [null,true])) + "><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div" + (jade.cls(['timer-inner-circle',data.type], [null,true])) + ">");
 	if(data.type === 'start')
 	{
-	buf.push("<div class=\"timer-time\"><p class=\"start-inner-content\">Lets do it!</p></div>");
+	buf.push("<div class=\"timer-time\"><p class=\"inner-1\">Lets do it!</p></div>");
 	}
 	if(data.type === 'work')
 	{
-	buf.push("<div class=\"timer-time\">" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div>");
+	buf.push("<div class=\"timer-time\">" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"inner-2\">min</p></div>");
 	}
 	if(data.type === 'break')
 	{
-	buf.push("<div class=\"timer-time\"><p class=\"timer-break-title\">BREAK</p>" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"timer-estimate-points\">min</p></div>");
+	buf.push("<div class=\"timer-time\"><p class=\"inner-1\">BREAK</p>" + (jade.escape((jade_interp = data.time) == null ? '' : jade_interp)) + "<p class=\"inner-2\">min</p></div>");
 	}
 	if(data.type === 'break-over')
 	{
-	buf.push("<div class=\"timer-time\"><p class=\"break-over-inner-content\">Break is over</p></div>");
+	buf.push("<div class=\"timer-time\"><p class=\"inner-1\">Break is over</p></div>");
 	}
 	if(data.type === 'task-over')
 	{
-	buf.push("<div class=\"timer-time\"><p class=\"break-over-inner-content\">You Completed Task</p></div>");
+	buf.push("<div class=\"timer-time\"><p class=\"inner-1\">You Completed Task</p></div>");
 	}
 	buf.push("</div></div></div></main>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 75 */
+/* 76 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(33)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n  padding-bottom: 2.2%;\n  padding-top: 91px;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n  letter-spacing: 1px;\n}\n.sub-title {\n  font: 18px \"Roboto\", sans-serif;\n  text-align: center;\n  width: 100%;\n  color: #8198ab;\n  margin-top: 21px;\n  position: relative;\n}\n/*timer*/\n.main-wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n}\n.phases {\n  /* padding: 0 6.8%; */\n  box-sizing: border-box;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  position: relative;\n}\n.phase {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(58) + ") no-repeat;\n  margin: 0 5px;\n}\n.phase-resolved {\n  background: url(" + __webpack_require__(59) + ") no-repeat;\n}\n.phase-failed {\n  background: url(" + __webpack_require__(77) + ") no-repeat;\n}\n.ico-text-button-nocontainer {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 10px;\n  font-size: 18px;\n  line-height: 24px;\n}\n.phase-add-active .phase-add {\n  display: inline-block;\n}\n.phase-add {\n  font-family: icomoon;\n  position: absolute;\n  right: -10px;\n  color: #8ca4b7;\n  line-height: 25px;\n  cursor: pointer;\n  display: none;\n}\n.phase-add:hover {\n  color: white;\n}\n.graph-container {\n  padding-top: 32px;\n}\n.back {\n  font-family: icomoon;\n  position: absolute;\n  left: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.forward {\n  font-family: icomoon;\n  position: absolute;\n  right: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.move-on .back,\n.move-on .forward {\n  display: inline-block;\n}\n/*graph*/\n.timer-outer-circle {\n  height: 300px;\n  width: 300px;\n  margin: 0 auto;\n  background-color: #2a3f50;\n  border: 8px solid #2a3f50;\n  border-radius: 50%;\n  display: flex;\n  position: relative;\n  animation: init 1.5s linear;\n  margin-bottom: 39px;\n  box-shadow: 0 5px 83px 17px #152b3b;\n}\n.timer-inner-circle {\n  height: 170px;\n  width: 170px;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  color: white;\n  z-index: 99999;\n}\n.timer-time {\n  font-size: 100px;\n  display: inline-block;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  position: absolute;\n  text-align: center;\n  line-height: 125px;\n  cursor: default;\n}\n.time-wrapper {\n  width: 250px;\n  height: 250px;\n  position: relative;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n}\n.circle {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  background: #8da5b8;\n  transform-origin: 100% 50%;\n}\n.rotator {\n  border-radius: 100% 0 0 100% / 50% 0 0 50%;\n  z-index: 200;\n  animation: rota 10s linear;\n  animation-play-state: paused;\n  border-right: none;\n  left: 0;\n  top: 0;\n}\n.filler {\n  border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n  z-index: 100;\n  border-left: none;\n  animation: fill 10s steps(1, end);\n  animation-play-state: paused;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n}\n.mask {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  z-index: 300;\n  opacity: 1;\n  background: inherit;\n  animation: mask 10s steps(1, end);\n  animation-play-state: paused;\n  border-radius: 100% 0 0 100%;\n}\n.category {\n  background-color: transparent !important;\n}\n/*specs*/\n.start .inner-1 {\n  line-height: 149px;\n  font-size: 30px;\n  position: absolute;\n  bottom: 13px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.work .inner-2 {\n  position: absolute;\n  bottom: 26px;\n  line-height: 24px;\n  font-size: 24px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.break .inner-1 {\n  position: absolute;\n  top: 6px;\n  line-height: 24px;\n  font-size: 20px;\n  width: 100%;\n  font-family: \"Helvetica\", sans-serif;\n}\n.break .inner-2 {\n  position: absolute;\n  bottom: 20px;\n  line-height: 27px;\n  font-size: 24px;\n  width: 100%;\n}\n.break-timer-time {\n  line-height: 120px;\n}\n.break-over .inner-1 {\n  position: absolute;\n  bottom: 26px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n}\n.task-over .inner-1 {\n  position: absolute;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n  bottom: 8px;\n}\n.break-over .mask,\n.task-over .mask {\n  opacity: 0;\n  animation: none;\n}\n.break-over .filler,\n.task-over .filler {\n  opacity: 1;\n  animation: none;\n}\n/*anims*/\n@keyframes rota {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes fill {\n  0% {\n    opacity: 0;\n  }\n  50%,\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes mask {\n  0% {\n    opacity: 1;\n  }\n  50%,\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes init {\n  0% {\n    transform: scale(0, 0);\n  }\n  50% {\n    transform: scale(0, 0);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "./Global/img/tomato-failed.svg?sourceMap";
+
+/***/ },
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(76);
+	var _template = __webpack_require__(79);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(77);
+	var _controller = __webpack_require__(80);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -3152,10 +3209,10 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 76 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(16);
+	var jade = __webpack_require__(17);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -3166,7 +3223,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 77 */
+/* 80 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -56,7 +56,6 @@ class Routes {
         }, route.name, route.url);
         app.EventBus.publish(route.module, data);
         this.currentState = page;
-        console.log(history);
     }
     /**
      * Replace history state and render another page state

@@ -78,6 +78,9 @@ class UserClass {
                 });
             });
     }
+    saveData(account, path, data){
+        database.ref('users/' + account + path).update(data);
+    }
 
     /**
      * Set task data in firebase tasks User profile after edit

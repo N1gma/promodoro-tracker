@@ -21,6 +21,22 @@ app.Renderer.helpers = {
             minutes = parseInt(time % 60) + 'm';
         }
         return hours + minutes;
+    },
+    arrayToObject(array){
+        var obj = {};
+        for(var i = 0;i<array.length;i++){
+            obj[i] = array[i];
+        }
+        return obj;
+    },
+    objectToArray(obj){
+        var arr = [];
+        for(var key in obj){
+            if(obj.hasOwnProperty(key)){
+                arr.push(obj[key]);
+            }
+        }
+        return arr;
     }
 };
 

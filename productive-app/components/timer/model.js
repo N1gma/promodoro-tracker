@@ -1,33 +1,30 @@
 class TimerModel  {
     //static results = [];
-    constructor(elem,template){
+    constructor(elem){
         this.elem = elem;
-        this.template = template;
-        this.elem.key = elem.getAttribute('key');
-        this.timer = {
-            container: document.getElementsByClassName('graph-container')[0],
-            timerControlElements: document.getElementsByClassName('set-able'),
-            timeout: {},
-            count: 0
-        };
-        this.estimation = parseInt(app.User.dataSnapShot[this.elem.key].estimation.slice(-1), 10);
-        this.title = app.User.dataSnapShot[this.elem.key].title;
-        this.category = app.User.dataSnapShot[this.elem.key].category;
+        this.key = elem.key;
+        this.estimation = parseInt(app.User.dataSnapShot[this.key].estimation.slice(-1), 10);
+        this.title = app.User.dataSnapShot[this.key].title;
+        this.category = app.User.dataSnapShot[this.key].category;
     }
     getNewModel(type){
         var types = {
-            'work':  new WorkModel(this.elem, this.template),
-            'break-over': new BreakOverModel(this.elem, this.template),
-            'task-over': new TaskEndModel(this.elem, this.template),
-            'break' : new BreakModel(this.elem, this.template)
+            'work':  new WorkModel(this.elem),
+            'break-over': new BreakOverModel(this.elem),
+            'task-over': new TaskEndModel(this.elem),
+            'break' : new BreakModel(this.elem)
         };
        return types[type];
+    }
+    saveCycle(cycle) {
+        var cycleObj = app.Renderer.helpers.arrayToObject(cycle);
+        app.User.saveData(app.User.currentLogin, '/tasks/'+ this.key+'/cycle', cycleObj);
     }
 }
 
 export class StartModel extends TimerModel{
-    constructor(elem,template) {
-        super(elem,template);
+    constructor(elem) {
+        super(elem);
         this.type = 'start';
         this.buttonsList = [
             {
@@ -35,7 +32,7 @@ export class StartModel extends TimerModel{
                 class: ['button-row-2', 'button-green'],
                 innerHtml: 'Start',
                 listener: function () {
-                    app.EventBusLocal.publish('timer-progress','work');
+                    app.EventBusLocalTimer.publish('timer-progress','work');
                 }
             }
         ];
@@ -43,8 +40,8 @@ export class StartModel extends TimerModel{
 }
 
 class WorkModel extends TimerModel{
-    constructor(elem,template){
-        super(elem,template);
+    constructor(elem){
+        super(elem);
         this.type = 'work';
         this.time = app.User.settings['WORK TIME'];
         this.status = 'resolved';
@@ -55,8 +52,7 @@ class WorkModel extends TimerModel{
                 innerHtml: 'Fail Pomodora',
                 listener: function () {
                     this.status = 'failed';
-                    console.log(this);
-                    app.EventBusLocal.publish('timer-terminate',1);
+                    app.EventBusLocalTimer.publish('timer-terminate',1);
                 }.bind(this)
             },
             {
@@ -64,7 +60,7 @@ class WorkModel extends TimerModel{
                 class: ['button-row-2', 'button-green'],
                 innerHtml: 'Finish Pomodora',
                 listener: function () {
-                    app.EventBusLocal.publish('timer-terminate',1);
+                    app.EventBusLocalTimer.publish('timer-terminate',1);
                 }
             }
         ];
@@ -72,8 +68,8 @@ class WorkModel extends TimerModel{
 }
 
 class BreakModel extends TimerModel{
-    constructor(elem,template){
-        super(elem,template);
+    constructor(elem){
+        super(elem);
         this.type = 'break';
         this.time = app.User.settings['SHORT BREAK'];
         this.buttonsHolder = 'button-holder-centered';
@@ -83,7 +79,7 @@ class BreakModel extends TimerModel{
                 class: ['button-row-2', 'button-green'],
                 innerHtml: 'Start Pomodora',
                 listener: function () {
-                    app.EventBusLocal.publish('timer-terminate',2);
+                    app.EventBusLocalTimer.publish('timer-terminate',2);
                 }
             }
         ];
@@ -91,8 +87,8 @@ class BreakModel extends TimerModel{
 }
 
 class BreakOverModel extends TimerModel{
-    constructor(elem,template){
-        super(elem,template);
+    constructor(elem){
+        super(elem);
         this.type = 'break-over';
         this.buttonsList = [
             {
@@ -100,8 +96,8 @@ class BreakOverModel extends TimerModel{
                 class: ['button-row-2', 'button-green'],
                 innerHtml: 'Start Pomodora',
                 listener: function () {
-                    app.EventBusLocal.publish('state-progress');
-                    app.EventBusLocal.publish('timer-progress','work');
+                    app.EventBusLocalTimer.publish('state-progress');
+                    app.EventBusLocalTimer.publish('timer-progress','work');
                 }
 
             },
@@ -110,7 +106,7 @@ class BreakOverModel extends TimerModel{
                 class: ['button-row-2', 'button-blue'],
                 innerHtml: 'Finish Task',
                 listener: function () {
-                    app.EventBusLocal.publish('timer-progress','task-over');
+                    app.EventBusLocalTimer.publish('timer-progress','task-over');
                 }
             }
         ];
@@ -118,8 +114,8 @@ class BreakOverModel extends TimerModel{
 }
 
 class TaskEndModel extends TimerModel{
-    constructor(elem,template){
-        super(elem,template);
+    constructor(elem){
+        super(elem);
         this.type = 'task-over';
     }
 }

@@ -1,6 +1,7 @@
 import template from './template.jade';
 import Controller from './Controller';
 import {tasks} from './Model';
+
 /**
  * @namespace
  * @memberOf app.Renderer

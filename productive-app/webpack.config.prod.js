@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         vendors: ['jquery','./services/plugins/jquery-ui.min.js','./services/vendors.entry.js','./services/firebase.js'],
         commonBundle: ['./Global/js/main/GlobalView.js', './Global/js/main/helpers.js','./Global/js/main/renderBus.js',
-            './User/user.js','./Global/js/main/eBusLocalTasks.js','./Global/js/main/Routes.js',
+            './User/user.js','./Global/js/main/eBusLocalTasks.js','./Global/js/main/eBusLocalTimer.js','./Global/js/main/Routes.js',
             './services/plugins/index.js','./services/notifications.js','./services/pingservice.js',
             './services/login/loginControler.js'],
         componentsBundle: ['./components/login/index.js', './components/header/index.js',
