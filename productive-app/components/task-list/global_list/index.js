@@ -35,5 +35,4 @@ app.Renderer.renderReportsGlobal = function () {
     $('.drag-task').tips('Move to Daily');
     $('.drop-switch').tips('Go to Global List');
     $('.sorted-lists-wrapper').accordeon();
-
 };

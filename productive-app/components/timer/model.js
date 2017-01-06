@@ -1,5 +1,4 @@
 class TimerModel  {
-    //static results = [];
     constructor(elem){
         this.elem = elem;
         this.key = elem.key;

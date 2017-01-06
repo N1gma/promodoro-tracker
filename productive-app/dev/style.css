@@ -145,11 +145,12 @@
   text-align: center;
 }
 .date {
-  color: gray;
+  color: #a2a2a2;
   text-align: center;
   width: 8%;
   font-size: 11px;
   min-width: 88px;
+  font-weight: bold;
 }
 .task-info {
   display: flex;
@@ -159,7 +160,7 @@
   padding-left: 10px;
 }
 .task-info h2 {
-  font-size: 19px;
+  font: 19px "HelveticaNeue", sans-serif;
   color: red;
   display: block;
   height: 50%;
@@ -173,7 +174,7 @@
   height: 50%;
   line-height: 25px;
   text-align: left;
-  font-size: 16px ;
+  font: 16px "HelveticaNeue", sans-serif;
 }
 .urgency {
   font-family: icomoon;

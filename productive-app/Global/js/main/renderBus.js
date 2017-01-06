@@ -120,7 +120,6 @@ class CEventBus {
 //----------------------------------
     EventBus.subscribe('taskList', function () {
         var Renderer = window.app.Renderer;
-        app.EventBusLocal.topics = {};
         Renderer.clearContent(document.getElementById('app-body'));
         Renderer.renderHeaderDetailed();
         Renderer.renderTitleTaskList();
@@ -162,6 +161,5 @@ class CEventBus {
             }
         });
     });
-
 }());
 

@@ -1664,16 +1664,16 @@ webpackJsonp([1],[
 	        'addTask-title': function addTaskTitle() {
 	            app.Renderer.showModalAdd();
 	        }
-
 	    },
+
 	    init: function init(el, dependency) {
 	        el.addEventListener('click', function (e) {
 	            if (controller.listeners[e.target.id]) {
 	                controller.listeners[e.target.id](dependency);
 	            }
 	        });
+	        $('#addTask-title').tips('Add new task');
 	    }
-
 	};
 
 /***/ },
@@ -1791,7 +1791,6 @@ webpackJsonp([1],[
 	            goToTimer: function goToTimer(e) {
 	                if (e.target.classList.contains('urgency')) {
 	                    app.router.moveTo('timer', e.target.parentNode);
-	                    //EventBus.publish('goToTimer', e.target.parentNode.getAttribute('key'))
 	                }
 	            }
 	        };
@@ -2532,11 +2531,8 @@ webpackJsonp([1],[
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
-	;var locals_for_with = (locals || {});(function (console, data, filterStruct, structure) {
-	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n.drop-switch span:hover,.drop-switch:hover{\n    color: white;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n}\n\n\n\n\n\n</style><div class=\"sorted-lists-wrapper\"><button linked_block=\"accord1\" class=\"drop-switch accordeon-head\"><span>Global list</span></button><ul id=\"accord1\" class=\"global-list\">");
-	console.log(structure)
-	console.log(data)
-	console.log(filterStruct)
+	;var locals_for_with = (locals || {});(function (data, filterStruct, structure) {
+	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n.drop-switch span:hover,.drop-switch:hover{\n    color: white;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n    font-family: 'PTSans', sans-serif;\n    margin-left: 4px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n    font-family: 'HelveticaNeue', sans-serif;\n    margin-left: 3px;\n}\n\n</style><div class=\"sorted-lists-wrapper\"><button linked_block=\"accord1\" class=\"drop-switch accordeon-head\"><span>Global list</span></button><ul id=\"accord1\" class=\"global-list\">");
 	for(var type in structure)
 	{
 	buf.push("<li><ul" + (jade.cls(['sorted-list',type], [null,true])) + "><li class=\"list-header\"><span class=\"list-header-category-mark\"></span>" + (jade.escape((jade_interp = type.toUpperCase()) == null ? '' : jade_interp)) + "</li>");
@@ -2549,7 +2545,7 @@ webpackJsonp([1],[
 	}
 	buf.push("</ul></li>");
 	}
-	buf.push("</ul></div>");}.call(this,"console" in locals_for_with?locals_for_with.console:typeof console!=="undefined"?console:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"filterStruct" in locals_for_with?locals_for_with.filterStruct:typeof filterStruct!=="undefined"?filterStruct:undefined,"structure" in locals_for_with?locals_for_with.structure:typeof structure!=="undefined"?structure:undefined));;return buf.join("");
+	buf.push("</ul></div>");}.call(this,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"filterStruct" in locals_for_with?locals_for_with.filterStruct:typeof filterStruct!=="undefined"?filterStruct:undefined,"structure" in locals_for_with?locals_for_with.structure:typeof structure!=="undefined"?structure:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -2774,7 +2770,6 @@ webpackJsonp([1],[
 	    }, {
 	        key: 'generateCycle',
 	        value: function generateCycle(cycle) {
-	            //var context = this;
 	            if (cycle) {
 	                var newCycle = app.Renderer.helpers.objectToArray(cycle);
 	                this.view.cycleStep = newCycle.indexOf('work');
@@ -2945,7 +2940,6 @@ webpackJsonp([1],[
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var TimerModel = function () {
-	    //static results = [];
 	    function TimerModel(elem) {
 	        _classCallCheck(this, TimerModel);
 

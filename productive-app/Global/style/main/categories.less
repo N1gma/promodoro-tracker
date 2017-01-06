@@ -24,115 +24,119 @@
 
 /*states*/
 
-.today-list .done,.sorted-list .done{
-    background-color: #d4d9dc;
+.today-list .done, .sorted-list .done {
+  background-color: #d4d9dc;
 }
 
-.done .task-info-title{
+.done {
+  .task-info-title {
     text-decoration: line-through;
-}
-.done .task-buttons-container{
+  }
+  .task-buttons-container {
     visibility: hidden;
+  }
 }
-.trash .category{
-    width: 88px;
-    font-size: 44px;
-    cursor: pointer;
+
+.trash .category {
+  width: 88px;
+  font-size: 44px;
+  cursor: pointer;
 }
 
 /*variables*/
 
-.border-category{
-    height: 119%;
-    background-color: black;
-    width: 1%;
-    position: absolute;
-    left: 0;
-    top: -17px;
-    display: none;
-}
-.sorted-list .border-category{
-    display: block;
+.border-category {
+  height: 119%;
+  background-color: black;
+  width: 1%;
+  position: absolute;
+  left: 0;
+  top: -17px;
+  display: none;
 }
 
-.category{
-    height: 100%;
-    background-color: black;
-    width: 1%;
-    position: absolute;
-    color: white;
-    font-family: icomoon;
-    font-size: 0;
-    text-align: center;
+.sorted-list .border-category {
+  display: block;
+}
+
+.category {
+  height: 100%;
+  background-color: black;
+  width: 1%;
+  position: absolute;
+  color: white;
+  font-family: icomoon;
+  font-size: 0;
+  text-align: center;
 
 }
 
-.date{
-    color: gray;
-    text-align: center;
-    width: 8%;
-    font-size: 11px;
-    min-width: 88px;
+.date {
+  color: #a2a2a2;
+  text-align: center;
+  width: 8%;
+  font-size: 11px;
+  min-width: 88px;
+  font-weight: bold;
 }
 
-.task-info{
-    display: flex;
-    flex-wrap: wrap;
-    width: 84.8%;
-    position: relative;
-    padding-left: 10px;
-}
-
-.task-info h2{
-    font-size: 19px;
+.task-info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 84.8%;
+  position: relative;
+  padding-left: 10px;
+  h2 {
+    font: 19px "HelveticaNeue", sans-serif;
     color: red;
     display: block;
     height: 50%;
     line-height: 57px;
     width: 100%;
     text-align: left;
-}
-.task-info p{
+  }
+  p {
     color: gray;
     display: inline-block;
     height: 50%;
     line-height: 25px;
     text-align: left;
-    font-size: 16px ;
+    font: 16px "HelveticaNeue", sans-serif;
+  }
 }
 
-.urgency{
-    font-family: icomoon;
-    color: white;
-    width: 7.2%;
-    font-size: 49px;
-    text-align: center;
-    line-height: 87px;
-    position: relative;
-    background-color: black;
-    cursor: pointer;
-    min-width: 88px;
+.urgency {
+  font-family: icomoon;
+  color: white;
+  width: 7.2%;
+  font-size: 49px;
+  text-align: center;
+  line-height: 87px;
+  position: relative;
+  background-color: black;
+  cursor: pointer;
+  min-width: 88px;
 }
 
-.urgency::before{
-    content:'\e90e';
+.urgency::before {
+  content: '\e90e';
 }
 
-.urgency:hover:before{
-    content:'\e90d';
+.urgency:hover:before {
+  content: '\e90d';
 }
 
-.urgency:hover .estimation-counter{
-    visibility: hidden;
+.urgency:hover .estimation-counter {
+  visibility: hidden;
 }
 
-.estimation-counter{
-    position: absolute;
-    left: 0;
-    color: white;
-    top: 0;
-    right: 0;
-    font-size: 30px;
-    bottom: 0;
-    cursor: pointer;
+.estimation-counter {
+  position: absolute;
+  left: 0;
+  color: white;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  bottom: 0;
+  cursor: pointer;
 }

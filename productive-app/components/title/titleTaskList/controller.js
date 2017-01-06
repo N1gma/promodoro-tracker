@@ -19,15 +19,14 @@ export var controller = {
         'addTask-title':function(){
             app.Renderer.showModalAdd();
         }
-
-
     },
+
     init:function (el,dependency) {
         el.addEventListener('click', function (e) {
             if(controller.listeners[e.target.id]){
                 controller.listeners[e.target.id](dependency);
             }
         });
+        $('#addTask-title').tips('Add new task');
     }
-            
 };
