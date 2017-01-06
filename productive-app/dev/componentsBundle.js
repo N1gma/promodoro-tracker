@@ -12,11 +12,11 @@ webpackJsonp([1],[
 	__webpack_require__(45);
 	__webpack_require__(48);
 	__webpack_require__(52);
-	__webpack_require__(60);
-	__webpack_require__(64);
-	__webpack_require__(67);
-	__webpack_require__(71);
-	module.exports = __webpack_require__(78);
+	__webpack_require__(61);
+	__webpack_require__(65);
+	__webpack_require__(68);
+	__webpack_require__(72);
+	module.exports = __webpack_require__(79);
 
 
 /***/ },
@@ -1959,6 +1959,10 @@ webpackJsonp([1],[
 
 	var _style2 = _interopRequireDefault(_style);
 
+	var _Model = __webpack_require__(60);
+
+	var _Model2 = _interopRequireDefault(_Model);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -1978,7 +1982,7 @@ webpackJsonp([1],[
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
 	    el.appendChild(elCss);
-	    var controller = new _controller2.default(_view.view, el);
+	    var controller = new _controller2.default(_view.view, el, new _Model2.default(el));
 	    controller.init();
 	    $(".datepicker").datepicker({
 	        dateFormat: "MM dd, yy"
@@ -2018,11 +2022,12 @@ webpackJsonp([1],[
 	 * @memberOf @memberOf app.Renderer.ModalAddTask
 	 */
 	var Controller = function () {
-	    function Controller(view, el) {
+	    function Controller(view, el, model) {
 	        _classCallCheck(this, Controller);
 
 	        this.view = view;
 	        this.el = el;
+	        this.model = model;
 	    }
 
 	    _createClass(Controller, [{
@@ -2050,6 +2055,8 @@ webpackJsonp([1],[
 	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
 	                this.view.estimationRangeReview(e);
 	            }.bind(context));
+
+	            this.model.validateInit();
 	        }
 	    }]);
 
@@ -2149,19 +2156,71 @@ webpackJsonp([1],[
 
 /***/ },
 /* 60 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Model = function () {
+	    function Model(el) {
+	        _classCallCheck(this, Model);
+
+	        this.el = el;
+	    }
+
+	    _createClass(Model, [{
+	        key: "validateInit",
+	        value: function validateInit() {
+	            /*console.log('dasd')
+	            var $modal = $(this.el);
+	            var controls = [];
+	            var $inputs = $modal.find('.modal-input-field');
+	            var $radioLists = $modal.find('.categories-choose-list');
+	            var $estimation = $modal.find('.estimation-range');
+	            $inputs.on('change', function (e) {
+	                $inputs.validate();
+	            });
+	            $inputs.validate = function(){
+	                var switcher  = true;
+	                for(var i = 0 ;i < $inputs.length;i++){
+	                    if(!$inputs[i].value.length > 0) {
+	                        $($inputs[i]).addClass('error-field');
+	                        switcher = false;
+	                    }
+	                    $($inputs[i]).removeClass('error-field');
+	                }
+	                return switcher;
+	            }*/
+	        }
+	    }]);
+
+	    return Model;
+	}();
+
+	exports.default = Model;
+
+/***/ },
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(61);
+	var _template = __webpack_require__(62);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(62);
+	var _controller = __webpack_require__(63);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(63);
+	var _view = __webpack_require__(64);
 
 	var _style = __webpack_require__(56);
 
@@ -2199,7 +2258,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(17);
@@ -2213,7 +2272,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2268,7 +2327,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2369,18 +2428,18 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(65);
+	var _template = __webpack_require__(66);
 
 	var _template2 = _interopRequireDefault(_template);
 
 	var _controller = __webpack_require__(47);
 
-	var _filterController = __webpack_require__(66);
+	var _filterController = __webpack_require__(67);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2400,7 +2459,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(17);
@@ -2414,7 +2473,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2469,22 +2528,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(68);
+	var _template = __webpack_require__(69);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(69);
+	var _Controller = __webpack_require__(70);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
 	var _Model = __webpack_require__(51);
 
-	var _View = __webpack_require__(70);
+	var _View = __webpack_require__(71);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2522,7 +2581,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(17);
@@ -2549,7 +2608,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2632,7 +2691,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2664,26 +2723,26 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _controller = __webpack_require__(72);
+	var _controller = __webpack_require__(73);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(73);
+	var _view = __webpack_require__(74);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(74);
+	var _model = __webpack_require__(75);
 
-	var _template = __webpack_require__(75);
+	var _template = __webpack_require__(76);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _style = __webpack_require__(76);
+	var _style = __webpack_require__(77);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -2709,7 +2768,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2793,7 +2852,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2922,7 +2981,7 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3101,7 +3160,7 @@ webpackJsonp([1],[
 	}(TimerModel);
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(17);
@@ -3148,7 +3207,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -3156,28 +3215,28 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, ".wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n  padding-bottom: 2.2%;\n  padding-top: 91px;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n  letter-spacing: 1px;\n}\n.sub-title {\n  font: 18px \"Roboto\", sans-serif;\n  text-align: center;\n  width: 100%;\n  color: #8198ab;\n  margin-top: 21px;\n  position: relative;\n}\n/*timer*/\n.main-wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n}\n.phases {\n  /* padding: 0 6.8%; */\n  box-sizing: border-box;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  position: relative;\n}\n.phase {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(58) + ") no-repeat;\n  margin: 0 5px;\n}\n.phase-resolved {\n  background: url(" + __webpack_require__(59) + ") no-repeat;\n}\n.phase-failed {\n  background: url(" + __webpack_require__(77) + ") no-repeat;\n}\n.ico-text-button-nocontainer {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 10px;\n  font-size: 18px;\n  line-height: 24px;\n}\n.phase-add-active .phase-add {\n  display: inline-block;\n}\n.phase-add {\n  font-family: icomoon;\n  position: absolute;\n  right: -10px;\n  color: #8ca4b7;\n  line-height: 25px;\n  cursor: pointer;\n  display: none;\n}\n.phase-add:hover {\n  color: white;\n}\n.graph-container {\n  padding-top: 32px;\n}\n.back {\n  font-family: icomoon;\n  position: absolute;\n  left: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.forward {\n  font-family: icomoon;\n  position: absolute;\n  right: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.move-on .back,\n.move-on .forward {\n  display: inline-block;\n}\n/*graph*/\n.timer-outer-circle {\n  height: 300px;\n  width: 300px;\n  margin: 0 auto;\n  background-color: #2a3f50;\n  border: 8px solid #2a3f50;\n  border-radius: 50%;\n  display: flex;\n  position: relative;\n  animation: init 1.5s linear;\n  margin-bottom: 39px;\n  box-shadow: 0 5px 83px 17px #152b3b;\n}\n.timer-inner-circle {\n  height: 170px;\n  width: 170px;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  color: white;\n  z-index: 99999;\n}\n.timer-time {\n  font-size: 100px;\n  display: inline-block;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  position: absolute;\n  text-align: center;\n  line-height: 125px;\n  cursor: default;\n}\n.time-wrapper {\n  width: 250px;\n  height: 250px;\n  position: relative;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n}\n.circle {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  background: #8da5b8;\n  transform-origin: 100% 50%;\n}\n.rotator {\n  border-radius: 100% 0 0 100% / 50% 0 0 50%;\n  z-index: 200;\n  animation: rota 10s linear;\n  animation-play-state: paused;\n  border-right: none;\n  left: 0;\n  top: 0;\n}\n.filler {\n  border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n  z-index: 100;\n  border-left: none;\n  animation: fill 10s steps(1, end);\n  animation-play-state: paused;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n}\n.mask {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  z-index: 300;\n  opacity: 1;\n  background: inherit;\n  animation: mask 10s steps(1, end);\n  animation-play-state: paused;\n  border-radius: 100% 0 0 100%;\n}\n.category {\n  background-color: transparent !important;\n}\n/*specs*/\n.start .inner-1 {\n  line-height: 149px;\n  font-size: 30px;\n  position: absolute;\n  bottom: 13px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.work .inner-2 {\n  position: absolute;\n  bottom: 26px;\n  line-height: 24px;\n  font-size: 24px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.break .inner-1 {\n  position: absolute;\n  top: 6px;\n  line-height: 24px;\n  font-size: 20px;\n  width: 100%;\n  font-family: \"Helvetica\", sans-serif;\n}\n.break .inner-2 {\n  position: absolute;\n  bottom: 20px;\n  line-height: 27px;\n  font-size: 24px;\n  width: 100%;\n}\n.break-timer-time {\n  line-height: 120px;\n}\n.break-over .inner-1 {\n  position: absolute;\n  bottom: 26px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n}\n.task-over .inner-1 {\n  position: absolute;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n  bottom: 8px;\n}\n.break-over .mask,\n.task-over .mask {\n  opacity: 0;\n  animation: none;\n}\n.break-over .filler,\n.task-over .filler {\n  opacity: 1;\n  animation: none;\n}\n/*anims*/\n@keyframes rota {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes fill {\n  0% {\n    opacity: 0;\n  }\n  50%,\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes mask {\n  0% {\n    opacity: 1;\n  }\n  50%,\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes init {\n  0% {\n    transform: scale(0, 0);\n  }\n  50% {\n    transform: scale(0, 0);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n", ""]);
+	exports.push([module.id, ".wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n  padding-bottom: 2.2%;\n  padding-top: 91px;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n  letter-spacing: 1px;\n}\n.sub-title {\n  font: 18px \"Roboto\", sans-serif;\n  text-align: center;\n  width: 100%;\n  color: #8198ab;\n  margin-top: 21px;\n  position: relative;\n}\n/*timer*/\n.main-wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n}\n.phases {\n  /* padding: 0 6.8%; */\n  box-sizing: border-box;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  position: relative;\n}\n.phase {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(58) + ") no-repeat;\n  margin: 0 5px;\n}\n.phase-resolved {\n  background: url(" + __webpack_require__(59) + ") no-repeat;\n}\n.phase-failed {\n  background: url(" + __webpack_require__(78) + ") no-repeat;\n}\n.ico-text-button-nocontainer {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 10px;\n  font-size: 18px;\n  line-height: 24px;\n}\n.phase-add-active .phase-add {\n  display: inline-block;\n}\n.phase-add {\n  font-family: icomoon;\n  position: absolute;\n  right: -10px;\n  color: #8ca4b7;\n  line-height: 25px;\n  cursor: pointer;\n  display: none;\n}\n.phase-add:hover {\n  color: white;\n}\n.graph-container {\n  padding-top: 32px;\n}\n.back {\n  font-family: icomoon;\n  position: absolute;\n  left: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.forward {\n  font-family: icomoon;\n  position: absolute;\n  right: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.move-on .back,\n.move-on .forward {\n  display: inline-block;\n}\n/*graph*/\n.timer-outer-circle {\n  height: 300px;\n  width: 300px;\n  margin: 0 auto;\n  background-color: #2a3f50;\n  border: 8px solid #2a3f50;\n  border-radius: 50%;\n  display: flex;\n  position: relative;\n  animation: init 1.5s linear;\n  margin-bottom: 39px;\n  box-shadow: 0 5px 83px 17px #152b3b;\n}\n.timer-inner-circle {\n  height: 170px;\n  width: 170px;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  color: white;\n  z-index: 99999;\n}\n.timer-time {\n  font-size: 100px;\n  display: inline-block;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  position: absolute;\n  text-align: center;\n  line-height: 125px;\n  cursor: default;\n}\n.time-wrapper {\n  width: 250px;\n  height: 250px;\n  position: relative;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n}\n.circle {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  background: #8da5b8;\n  transform-origin: 100% 50%;\n}\n.rotator {\n  border-radius: 100% 0 0 100% / 50% 0 0 50%;\n  z-index: 200;\n  animation: rota 10s linear;\n  animation-play-state: paused;\n  border-right: none;\n  left: 0;\n  top: 0;\n}\n.filler {\n  border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n  z-index: 100;\n  border-left: none;\n  animation: fill 10s steps(1, end);\n  animation-play-state: paused;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n}\n.mask {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  z-index: 300;\n  opacity: 1;\n  background: inherit;\n  animation: mask 10s steps(1, end);\n  animation-play-state: paused;\n  border-radius: 100% 0 0 100%;\n}\n.category {\n  background-color: transparent !important;\n}\n/*specs*/\n.start .inner-1 {\n  line-height: 149px;\n  font-size: 30px;\n  position: absolute;\n  bottom: 13px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.work .inner-2 {\n  position: absolute;\n  bottom: 26px;\n  line-height: 24px;\n  font-size: 24px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.break .inner-1 {\n  position: absolute;\n  top: 6px;\n  line-height: 24px;\n  font-size: 20px;\n  width: 100%;\n  font-family: \"Helvetica\", sans-serif;\n}\n.break .inner-2 {\n  position: absolute;\n  bottom: 20px;\n  line-height: 27px;\n  font-size: 24px;\n  width: 100%;\n}\n.break-timer-time {\n  line-height: 120px;\n}\n.break-over .inner-1 {\n  position: absolute;\n  bottom: 26px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n}\n.task-over .inner-1 {\n  position: absolute;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n  bottom: 8px;\n}\n.break-over .mask,\n.task-over .mask {\n  opacity: 0;\n  animation: none;\n}\n.break-over .filler,\n.task-over .filler {\n  opacity: 1;\n  animation: none;\n}\n/*anims*/\n@keyframes rota {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes fill {\n  0% {\n    opacity: 0;\n  }\n  50%,\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes mask {\n  0% {\n    opacity: 1;\n  }\n  50%,\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes init {\n  0% {\n    transform: scale(0, 0);\n  }\n  50% {\n    transform: scale(0, 0);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato-failed.svg?sourceMap";
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(79);
+	var _template = __webpack_require__(80);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(80);
+	var _controller = __webpack_require__(81);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -3203,7 +3262,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(17);
@@ -3217,7 +3276,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports) {
 
 	'use strict';

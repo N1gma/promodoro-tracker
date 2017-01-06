@@ -3,9 +3,10 @@
  * @memberOf @memberOf app.Renderer.ModalAddTask
  */
 class Controller {
-    constructor(view, el) {
+    constructor(view, el, model) {
         this.view = view;
         this.el = el;
+        this.model = model;
     }
     init() {
         var context = this;
@@ -30,6 +31,8 @@ class Controller {
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
             this.view.estimationRangeReview(e);
         }.bind(context));
+
+        this.model.validateInit();
     }
 }
 
