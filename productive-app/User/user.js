@@ -92,7 +92,7 @@ class UserClass {
      */
     setTaskData(account, path, node) {
         database.ref('users/' + account + path).set((function () {
-            var newData = {
+            return {
                 title: document.getElementById('title-input').value,
                 description: document.getElementById('description-input').value,
                 category: (function () {
@@ -133,8 +133,6 @@ class UserClass {
                     }
                 })()
             };
-            console.log(newData);
-            return newData;
         })()).then(function () {
             app.EventBus.publish('notify', {
                 msg: 'Task edited',
@@ -172,7 +170,7 @@ class UserClass {
         path += '/' + newKey;
         var newData = {
             title: document.getElementById('title-input').value,
-            description: document.getElementById('title-input').value,
+            description: document.getElementById('description-input').value,
             category: (function () {
                 var tag = document.getElementsByClassName('categories-choose-list')[0];
                 for (var i = 0; i < tag.children.length; i++) {

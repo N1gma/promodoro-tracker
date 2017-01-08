@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/title/titleTaskListGlobal/index.js</title>
+    <title>JSDoc: Source: Global/js/main/eBusLocalTimer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/title/titleTaskListGlobal/index.js</h1>
+    <h1 class="page-title">Source: Global/js/main/eBusLocalTimer.js</h1>
 
     
 
@@ -26,26 +26,56 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import template from './template.jade';
-import {controller} from '../titleTaskList/controller';
-import {controllerFilter} from  './filter-controller';
-
-/**
- * Method which add global-list title-header
- *
- * @memberOf app.Renderer
- * @instance
- * @namespace globalListTitle
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
  */
-app.Renderer.renderTitleTaskListGlobal = function () {
-    var el = document.createElement('div');
-    el.innerHTML = template();
-    document.getElementById('app-body').appendChild(el);
-    controller.init(el,'sorted-list');
-    controllerFilter.init(el);
-};
+class CEventBusLocalTimer {
+    constructor() {
+        this.topics = {};
+    }
 
-</code></pre>
+    /**
+     * @memberOf CEventBusLocal
+     * @param {String} topic
+     * @param {function} listener
+     */
+    subscribe(topic, listener) {
+        if (!this.topics[topic]) {
+            this.topics[topic] = [];
+        }
+        this.topics[topic].push(listener);
+    }
+
+    /**
+     * @memberOf CEventBusLocal
+     * @param {String} topic
+     * @param  [data]
+     */
+    publish(topic, data) {
+        if (!this.topics[topic] || this.topics[topic].length &lt; 1) {
+            return;
+        }
+        this.topics[topic].forEach(function (listener) {
+            listener(data || {});
+        });
+    }
+
+    /**
+     * @memberOf CEventBusLocal
+     * @param {String} topic
+     */
+    unsubscribe(topic) {
+        delete this.topics[topic];
+    }
+}
+
+(function () {
+    /**
+     * @memberOf app
+     * @type {CEventBusLocal}
+     */
+    app.EventBusLocalTimer = new CEventBusLocalTimer();
+}());</code></pre>
         </article>
     </section>
 

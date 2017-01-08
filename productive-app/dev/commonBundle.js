@@ -12,7 +12,8 @@ webpackJsonp([0],[
 	__webpack_require__(10);
 	__webpack_require__(11);
 	__webpack_require__(12);
-	module.exports = __webpack_require__(13);
+	__webpack_require__(13);
+	module.exports = __webpack_require__(15);
 
 
 /***/ },
@@ -426,7 +427,7 @@ webpackJsonp([0],[
 	        key: 'setTaskData',
 	        value: function setTaskData(account, path, node) {
 	            database.ref('users/' + account + path).set(function () {
-	                var newData = {
+	                return {
 	                    title: document.getElementById('title-input').value,
 	                    description: document.getElementById('description-input').value,
 	                    category: function () {
@@ -467,8 +468,6 @@ webpackJsonp([0],[
 	                        }
 	                    }()
 	                };
-	                console.log(newData);
-	                return newData;
 	            }()).then(function () {
 	                app.EventBus.publish('notify', {
 	                    msg: 'Task edited',
@@ -511,7 +510,7 @@ webpackJsonp([0],[
 	            path += '/' + newKey;
 	            var newData = {
 	                title: document.getElementById('title-input').value,
-	                description: document.getElementById('title-input').value,
+	                description: document.getElementById('description-input').value,
 	                category: function () {
 	                    var tag = document.getElementsByClassName('categories-choose-list')[0];
 	                    for (var i = 0; i < tag.children.length; i++) {
@@ -1245,6 +1244,153 @@ webpackJsonp([0],[
 	};
 
 	exports.default = loginView;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Validator = function () {
+	    function Validator() {
+	        var _this = this;
+
+	        _classCallCheck(this, Validator);
+
+	        this.results = [];
+	        this.iteration = 0;
+	        this.valid = true;
+	        this.defaultFns = {
+	            success: function success(node) {
+	                if (node.removeClass) {
+	                    node.removeClass('error-field');
+	                } else {
+	                    node.classList.remove('error-field');
+	                }
+	            },
+	            error: function error(node) {
+	                if (node.addClass) {
+	                    node.addClass('error-field');
+	                } else {
+	                    node.classList.add('error-field');
+	                }
+	            }
+	        };
+	        this.methods = {
+	            empty: function empty(target) {
+	                if (target.val.trim().length === 0) {
+	                    _this.results[_this.iteration].push(target.title + " can't be empty");
+	                    _this.valid = false;
+	                }
+	            },
+	            maxLength: function maxLength(target, params) {
+	                if (target.val.length > params.len) {
+	                    _this.results[_this.iteration].push(target.title + " maximum of " + params.len + ' characters');
+	                    _this.valid = false;
+	                }
+	            },
+
+	            checked: function checked(target) {
+	                var switcher = false;
+	                if (Array.isArray(target.node)) {
+	                    for (var i = 0; i < target.node.length; i++) {
+	                        if (target.node[i].checked) {
+	                            switcher = true;
+	                        }
+	                    }
+	                } else {
+	                    if (target.node.checked) {
+	                        switcher = true;
+	                    }
+	                }
+	                if (!switcher) {
+	                    _this.results[_this.iteration].push(target.title + " checkbox must be checked");
+	                    _this.valid = false;
+	                }
+	            },
+	            containClass: function containClass(target, params) {
+	                var switcher = false;
+	                if (Array.isArray(target.node)) {
+	                    for (var i = 0; i < target.node.length; i++) {
+	                        if (target.node[i].classList.contains(params.askingClass)) {
+	                            switcher = true;
+	                        }
+	                    }
+	                } else {
+	                    if (target.node.classList.contains(params.askingClass)) {
+	                        switcher = true;
+	                    }
+	                }
+	                if (!switcher) {
+	                    _this.results[_this.iteration].push("checkbox must be checked");
+	                    _this.valid = false;
+	                }
+	            }
+	        };
+	    }
+
+	    _createClass(Validator, [{
+	        key: 'validate',
+	        value: function validate(targets) {
+	            for (var i = 0; i < targets.length; i++) {
+	                this.results.push([]);
+	                this.createConfig(targets[i]);
+	                this.valid = true;
+	                var options = this.conf.options;
+	                var target = this.conf.target;
+	                for (var _i = 0; _i < options.length; _i++) {
+	                    if (_typeof(this.conf.options[_i]) === 'object') {
+	                        this.methods[options[_i].name](target, options[_i].params);
+	                    } else {
+	                        this.methods[options[_i]](target);
+	                    }
+	                }
+	                if (!this.conf.preventAction) {
+	                    if (this.valid) {
+	                        this.conf.success(target.origin);
+	                    } else {
+	                        this.conf.error(target.origin);
+	                    }
+	                }
+	                this.iteration++;
+	            }
+	            return this.results;
+	        }
+	    }, {
+	        key: 'createConfig',
+	        value: function createConfig(target) {
+	            var context = this;
+	            this.conf = {
+	                target: {
+	                    val: target.target.value,
+	                    node: target.target
+	                },
+	                options: target.options,
+	                success: target.success || context.defaultFns.success,
+	                error: target.error || context.defaultFns.error,
+	                preventAction: target.preventAction || false
+	            };
+	            this.conf.target.origin = target.origin || this.conf.target.node;
+	            if (this.conf.target.origin.previousElementSibling) {
+	                this.conf.target.title = this.conf.target.origin.previousElementSibling.innerText;
+	            }
+	        }
+	    }]);
+
+	    return Validator;
+	}();
+
+	exports.default = Validator;
 
 /***/ }
 ]);

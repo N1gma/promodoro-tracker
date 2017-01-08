@@ -207,6 +207,10 @@
   bottom: 0;
   cursor: pointer;
 }
+/*modal*/
+.modal-window .error-field {
+  border-bottom-color: red;
+}
 .button-row-2 {
   color: white;
   width: 44%;
@@ -1034,7 +1038,7 @@ input:-webkit-autofill:active {
 .notification-wrap-bottom {
   position: fixed;
   bottom: 30px;
-  z-index: 999;
+  z-index: 30000;
   width: 100%;
   left: 0;
   box-sizing: border-box;
@@ -1079,7 +1083,7 @@ input:-webkit-autofill:active {
   margin-right: 9px;
 }
 .notify-msg {
-  font: 16px 'Roboto', sans-serif;
+  font: 1rem 'Roboto', sans-serif;
   color: white;
   font-weight: bold;
   line-height: 52px!important;

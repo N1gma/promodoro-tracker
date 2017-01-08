@@ -28,7 +28,7 @@
                 }
             }
             if(app.EventBusLocalTimer.timer){
-                clearInterval(app.EventBusLocalTimer.timer.timeout)
+                clearInterval(app.EventBusLocalTimer.timer.timeout);
             }
         },
         /**

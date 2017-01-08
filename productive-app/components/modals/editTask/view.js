@@ -45,7 +45,6 @@ view = {
      * @param {HTMLElement|Node} target
      */
     modalConfirmEdit:function (e,el,target) {
-        e.preventDefault();
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }

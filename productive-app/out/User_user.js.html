@@ -106,6 +106,9 @@ class UserClass {
                 });
             });
     }
+    saveData(account, path, data){
+        database.ref('users/' + account + path).update(data);
+    }
 
     /**
      * Set task data in firebase tasks User profile after edit
@@ -117,7 +120,7 @@ class UserClass {
      */
     setTaskData(account, path, node) {
         database.ref('users/' + account + path).set((function () {
-            var newData = {
+            return {
                 title: document.getElementById('title-input').value,
                 description: document.getElementById('description-input').value,
                 category: (function () {
@@ -158,8 +161,6 @@ class UserClass {
                     }
                 })()
             };
-            console.log(newData);
-            return newData;
         })()).then(function () {
             app.EventBus.publish('notify', {
                 msg: 'Task edited',
@@ -197,7 +198,7 @@ class UserClass {
         path += '/' + newKey;
         var newData = {
             title: document.getElementById('title-input').value,
-            description: document.getElementById('title-input').value,
+            description: document.getElementById('description-input').value,
             category: (function () {
                 var tag = document.getElementsByClassName('categories-choose-list')[0];
                 for (var i = 0; i &lt; tag.children.length; i++) {
@@ -259,13 +260,13 @@ class UserClass {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.view.html">view</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.view.html">view</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.view.html">view</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.view.html">view</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 30 2016 03:11:48 GMT+0200 (Финляндия (зима))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 08 2017 20:06:37 GMT+0200 (Финляндия (зима))
 </footer>
 
 <script> prettyPrint(); </script>

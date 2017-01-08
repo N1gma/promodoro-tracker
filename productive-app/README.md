@@ -70,8 +70,8 @@ Notification classes :
 
 #phase4
 ##login data
-- login: Oleksandr_Chornobai@epam.com, 
-- pw: eE4180029818
+- login: Oleksandr_Chornobai@gmail.com, 
+- pw: 4180029818
 
 ##logic
 - every components loads have `index.js` (entry for webpack )

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/title/titleTaskListGlobal/index.js</title>
+    <title>JSDoc: Source: components/modals/editTask/controller.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/title/titleTaskListGlobal/index.js</h1>
+    <h1 class="page-title">Source: components/modals/editTask/controller.js</h1>
 
     
 
@@ -26,26 +26,60 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import template from './template.jade';
-import {controller} from '../titleTaskList/controller';
-import {controllerFilter} from  './filter-controller';
-
-/**
- * Method which add global-list title-header
- *
- * @memberOf app.Renderer
- * @instance
- * @namespace globalListTitle
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
+ * @memberOf @memberOf app.Renderer.ModalEditTask
  */
-app.Renderer.renderTitleTaskListGlobal = function () {
-    var el = document.createElement('div');
-    el.innerHTML = template();
-    document.getElementById('app-body').appendChild(el);
-    controller.init(el,'sorted-list');
-    controllerFilter.init(el);
-};
+class Controller {
+    constructor(el,view,model) {
+        this.el = el;
+        this.view = view;
+        this.model = model;
+    }
 
-</code></pre>
+    init(target) {
+        var context = this;
+        var listeners = {
+            'modal-close': function (e) {
+                context.view.modalClose(e, context.el);
+            },
+            'modal-remove':function (e) {
+                context.view.modalRemove(e,context.el,target);
+            },
+            'modal-confirm-edit' : function (e) {
+                e.preventDefault();
+                let validator = new context.model.Validator();
+                let validateResults = validator.validate(context.model.getModalConfirmData());
+                if (context.model.checkResults(validateResults)) {
+                    context.view.modalConfirmEdit(e,context.el,target);
+                } else {
+                    for (let i = 0; i &lt; validateResults.length; i++) {
+                        if(validateResults[i].length>0){
+                            app.EventBus.publish('notify', {
+                                msg: validateResults[i],
+                                type: 'fail'
+                            });
+                        }
+                    }
+                }
+                //context.view.modalConfirmEdit(e,context.el,target);
+            }
+        };
+        this.el.addEventListener('click', function (e) {
+            if(listeners[e.target.id]) {
+                listeners[e.target.id](e);
+            }
+        });
+
+        document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
+            this.view.estimationRangeReview(e);
+        }.bind(context));
+
+        this.model.validateInit();
+    }
+}
+
+export default Controller;</code></pre>
         </article>
     </section>
 

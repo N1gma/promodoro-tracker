@@ -88,8 +88,8 @@ tasks = {
         var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var currentDate = new Date();
         return (monthArray[parseInt(currentDate.getMonth(), 10)] === date.month &&
-        (parseInt(currentDate.getDate(), 10) === date.day) &&
-        (parseInt(currentDate.getFullYear(), 10) === date.year));
+        (parseInt(currentDate.getDate(), 10) === +date.day) &&
+        (parseInt(currentDate.getFullYear(), 10) === +date.year));
     }
 };
 

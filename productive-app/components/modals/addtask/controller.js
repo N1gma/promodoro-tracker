@@ -8,18 +8,31 @@ class Controller {
         this.el = el;
         this.model = model;
     }
+
     init() {
         var context = this;
-
         var listeners = {
             'modal-close': function (e) {
                 context.view.modalClose(e, context.el);
             },
             'modal-confirm-add': function (e) {
                 e.preventDefault();
-                context.view.dropData(function () {
-                    document.getElementById('app-body').removeChild(context.el);
-                });
+                let validator = new context.model.Validator();
+                let validateResults = validator.validate(context.model.getModalConfirmData());
+                if (context.model.checkResults(validateResults)) {
+                    context.view.dropData(function () {
+                        document.getElementById('app-body').removeChild(context.el);
+                    });
+                } else {
+                    for (let i = 0; i < validateResults.length; i++) {
+                        if(validateResults[i].length>0){
+                            app.EventBus.publish('notify', {
+                                msg: validateResults[i],
+                                type: 'fail'
+                            });
+                        }
+                    }
+                }
             }
         };
         this.el.addEventListener('click', function (e) {
@@ -34,6 +47,8 @@ class Controller {
 
         this.model.validateInit();
     }
+
 }
+
 
 export default Controller;

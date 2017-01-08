@@ -14,6 +14,7 @@
     bottom: 8px;
     line-height: 19px;
 }
+
 .label1:hover,.text-label:hover ~ .label1{
     background: url(../../img/ico-sprite.png) no-repeat 0 -19px;
 }
@@ -29,7 +30,6 @@
 .label5:hover,.text-label:hover ~ .label5{
     background: url(../../img/ico-sprite.png) no-repeat -72px -19px;
 }
-
 
 .text-label{
     color: #748b9e;
