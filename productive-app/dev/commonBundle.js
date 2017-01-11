@@ -103,7 +103,7 @@ webpackJsonp([0],[
 	    /**
 	     * Transforms Minutes in Minutes/Hours+'h' + Minutes%Hours+'m' (130 -> 2h 10m)
 	     *
-	     * memberOf app.Renderer
+	     * memberOf app.Renderer.helpers
 	     * @instance
 	     * returns {String}
 	     * @param {Number} time
@@ -134,6 +134,21 @@ webpackJsonp([0],[
 	            }
 	        }
 	        return arr;
+	    },
+
+	    /**
+	     * extract CSS text from '!!css-loader!less-loader!./style.less' loader processing result object,
+	     * returns style node with this css
+	     *
+	     * memberOf app.Renderer.helpers
+	     * @instance
+	     * returns {HTMLElement}
+	     * @param {String} css
+	     */
+	    getCss: function getCss(css) {
+	        var elCss = document.createElement('style');
+	        elCss.innerHTML = css['0'][1];
+	        return elCss;
 	    }
 	};
 

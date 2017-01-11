@@ -1,36 +1,38 @@
-export var view;
 /**
+ * @class
  * @memberOf @memberOf app.Renderer.ModalAddTask
  * @namespace
  */
-view = {
+class View  {
+    constructor(model){
+        this.model = model;
+    }
     /**Updates task data after edit
      *
      * @memberOf app.Renderer.ModalAddTask.view
      * @param {function} callback
      */
-    dropData:function(callback){
+    dropData(callback){
         app.User.updateTasksData();
         callback();
-    },
+    }
     /**
      * Close modal window
      *
      * @memberOf app.Renderer.ModalAddTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      */
-    modalClose:function (e,el) {
+    modalClose (e) {
         e.preventDefault();
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * Calculate and represent estimation pomodoras visual
      *
      * @memberOf app.Renderer.ModalAddTask.view
      * @param {Event} e
      */
-    estimationRangeReview:function (e) {
+    static estimationRangeReview (e) {
         if (e.target.tagName.toUpperCase() === 'LI') {
             var i,j;
             var parent = e.currentTarget;
@@ -44,4 +46,6 @@ view = {
             e.currentTarget.estimation = j+1;
         }
     }
-};
+}
+
+export default View;

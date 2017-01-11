@@ -7,7 +7,7 @@ module.exports = function (config) {
         frameworks: ['mocha','chai','sinon'],
         files: [
             'Global/js/main/*.js',
-            'User/user.js',
+            'Global/js/main/user.js',
             'components/**/**/*.js',
             'components/**/*.js',
             'tests/specs/*.js'

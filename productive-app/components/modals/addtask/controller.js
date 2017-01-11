@@ -3,17 +3,17 @@
  * @memberOf @memberOf app.Renderer.ModalAddTask
  */
 class Controller {
-    constructor(view, el, model) {
+    constructor(view, model) {
         this.view = view;
-        this.el = el;
         this.model = model;
     }
 
     init() {
+        var el = this.model.$el[0];
         var context = this;
         var listeners = {
             'modal-close': function (e) {
-                context.view.modalClose(e, context.el);
+                context.view.modalClose(e, el);
             },
             'modal-confirm-add': function (e) {
                 e.preventDefault();
@@ -21,7 +21,7 @@ class Controller {
                 let validateResults = validator.validate(context.model.getModalConfirmData());
                 if (context.model.checkResults(validateResults)) {
                     context.view.dropData(function () {
-                        document.getElementById('app-body').removeChild(context.el);
+                        document.getElementById('app-body').removeChild(el);
                     });
                 } else {
                     for (let i = 0; i < validateResults.length; i++) {
@@ -35,14 +35,14 @@ class Controller {
                 }
             }
         };
-        this.el.addEventListener('click', function (e) {
+        el.addEventListener('click', function (e) {
             if (listeners[e.target.id]) {
                 listeners[e.target.id](e);
             }
         });
 
         document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-            this.view.estimationRangeReview(e);
+            this.view.constructor.estimationRangeReview(e);
         }.bind(context));
 
         this.model.validateInit();

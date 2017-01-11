@@ -956,11 +956,9 @@ webpackJsonp([1],[
 	 */
 	app.Renderer.renderSettingsCategories = function () {
 	  var el = document.createElement('div');
-	  var elCss = document.createElement('style');
-	  elCss.innerHTML = _style2.default['0'][1];
 	  el.innerHTML = (0, _template2.default)();
 	  document.getElementById('app-body').appendChild(el);
-	  el.appendChild(elCss);
+	  el.appendChild(app.Renderer.helpers.getCss(_style2.default));
 	};
 
 /***/ },
@@ -2102,6 +2100,8 @@ webpackJsonp([1],[
 
 	var _view = __webpack_require__(56);
 
+	var _view2 = _interopRequireDefault(_view);
+
 	var _style = __webpack_require__(57);
 
 	var _style2 = _interopRequireDefault(_style);
@@ -2124,12 +2124,11 @@ webpackJsonp([1],[
 	 */
 	app.Renderer.showModalAdd = function () {
 	    var el = document.createElement('div');
-	    var elCss = document.createElement('style');
-	    elCss.innerHTML = _style2.default['0'][1];
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
-	    el.appendChild(elCss);
-	    var controller = new _controller2.default(_view.view, el, new _Model2.default(el));
+	    el.appendChild(app.Renderer.helpers.getCss(_style2.default));
+	    var model = new _Model2.default(el);
+	    var controller = new _controller2.default(new _view2.default(model), model);
 	    controller.init();
 	    $(".datepicker").datepicker({
 	        dateFormat: "MM dd, yy"
@@ -2169,21 +2168,21 @@ webpackJsonp([1],[
 	 * @memberOf @memberOf app.Renderer.ModalAddTask
 	 */
 	var Controller = function () {
-	    function Controller(view, el, model) {
+	    function Controller(view, model) {
 	        _classCallCheck(this, Controller);
 
 	        this.view = view;
-	        this.el = el;
 	        this.model = model;
 	    }
 
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init() {
+	            var el = this.model.$el[0];
 	            var context = this;
 	            var listeners = {
 	                'modal-close': function modalClose(e) {
-	                    context.view.modalClose(e, context.el);
+	                    context.view.modalClose(e, el);
 	                },
 	                'modal-confirm-add': function modalConfirmAdd(e) {
 	                    e.preventDefault();
@@ -2191,7 +2190,7 @@ webpackJsonp([1],[
 	                    var validateResults = validator.validate(context.model.getModalConfirmData());
 	                    if (context.model.checkResults(validateResults)) {
 	                        context.view.dropData(function () {
-	                            document.getElementById('app-body').removeChild(context.el);
+	                            document.getElementById('app-body').removeChild(el);
 	                        });
 	                    } else {
 	                        for (var i = 0; i < validateResults.length; i++) {
@@ -2205,14 +2204,14 @@ webpackJsonp([1],[
 	                    }
 	                }
 	            };
-	            this.el.addEventListener('click', function (e) {
+	            el.addEventListener('click', function (e) {
 	                if (listeners[e.target.id]) {
 	                    listeners[e.target.id](e);
 	                }
 	            });
 
 	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-	                this.view.estimationRangeReview(e);
+	                this.view.constructor.estimationRangeReview(e);
 	            }.bind(context));
 
 	            this.model.validateInit();
@@ -2233,53 +2232,77 @@ webpackJsonp([1],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var view = exports.view = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 	/**
+	 * @class
 	 * @memberOf @memberOf app.Renderer.ModalAddTask
 	 * @namespace
 	 */
-	exports.view = view = {
+	var View = function () {
+	    function View(model) {
+	        _classCallCheck(this, View);
+
+	        this.model = model;
+	    }
 	    /**Updates task data after edit
 	     *
 	     * @memberOf app.Renderer.ModalAddTask.view
 	     * @param {function} callback
 	     */
-	    dropData: function dropData(callback) {
-	        app.User.updateTasksData();
-	        callback();
-	    },
-	    /**
-	     * Close modal window
-	     *
-	     * @memberOf app.Renderer.ModalAddTask.view
-	     * @param {Event} e
-	     * @param {HTMLElement} el
-	     */
-	    modalClose: function modalClose(e, el) {
-	        e.preventDefault();
-	        document.getElementById('app-body').removeChild(el);
-	    },
-	    /**
-	     * Calculate and represent estimation pomodoras visual
-	     *
-	     * @memberOf app.Renderer.ModalAddTask.view
-	     * @param {Event} e
-	     */
-	    estimationRangeReview: function estimationRangeReview(e) {
-	        if (e.target.tagName.toUpperCase() === 'LI') {
-	            var i, j;
-	            var parent = e.currentTarget;
-	            for (i = 0; i < parent.children.length; i++) {
-	                parent.children[i].classList.remove('estimated');
-	            }
-	            for (i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
-	                parent.children[i].classList.add('estimated');
-	            }
-	            e.target.classList.add('estimated');
-	            e.currentTarget.estimation = j + 1;
+
+
+	    _createClass(View, [{
+	        key: 'dropData',
+	        value: function dropData(callback) {
+	            app.User.updateTasksData();
+	            callback();
 	        }
-	    }
-	};
+	        /**
+	         * Close modal window
+	         *
+	         * @memberOf app.Renderer.ModalAddTask.view
+	         * @param {Event} e
+	         */
+
+	    }, {
+	        key: 'modalClose',
+	        value: function modalClose(e) {
+	            e.preventDefault();
+	            document.getElementById('app-body').removeChild(this.model.$el[0]);
+	        }
+	        /**
+	         * Calculate and represent estimation pomodoras visual
+	         *
+	         * @memberOf app.Renderer.ModalAddTask.view
+	         * @param {Event} e
+	         */
+
+	    }], [{
+	        key: 'estimationRangeReview',
+	        value: function estimationRangeReview(e) {
+	            if (e.target.tagName.toUpperCase() === 'LI') {
+	                var i, j;
+	                var parent = e.currentTarget;
+	                for (i = 0; i < parent.children.length; i++) {
+	                    parent.children[i].classList.remove('estimated');
+	                }
+	                for (i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
+	                    parent.children[i].classList.add('estimated');
+	                }
+	                e.target.classList.add('estimated');
+	                e.currentTarget.estimation = j + 1;
+	            }
+	        }
+	    }]);
+
+	    return View;
+	}();
+
+	exports.default = View;
 
 /***/ },
 /* 57 */
@@ -2495,6 +2518,8 @@ webpackJsonp([1],[
 
 	var _view = __webpack_require__(65);
 
+	var _view2 = _interopRequireDefault(_view);
+
 	var _style = __webpack_require__(57);
 
 	var _style2 = _interopRequireDefault(_style);
@@ -2518,16 +2543,15 @@ webpackJsonp([1],[
 	app.Renderer.showModalEdit = function (target) {
 	    var User = window.app.User;
 	    var el = document.createElement('div');
-	    var elCss = document.createElement('style');
-	    elCss.innerHTML = _style2.default['0'][1];
-	    var controller = new _controller2.default(el, _view.view /*, new Model(el)*/);
+	    var controller = new _controller2.default(new _view2.default());
 	    controller.view.syncChanges(target, function (key) {
 	        el.innerHTML = (0, _template2.default)({
 	            data: User.dataSnapShot[key]
 	        });
 	        document.getElementById('app-body').appendChild(el);
-	        el.appendChild(elCss);
+	        el.appendChild(app.Renderer.helpers.getCss(_style2.default));
 	        controller.model = new _Model2.default(el);
+	        controller.view.model = controller.model;
 	    });
 	    controller.init(target);
 	    $(".datepicker").datepicker({
@@ -2568,10 +2592,9 @@ webpackJsonp([1],[
 	 * @memberOf @memberOf app.Renderer.ModalEditTask
 	 */
 	var Controller = function () {
-	    function Controller(el, view, model) {
+	    function Controller(view, model) {
 	        _classCallCheck(this, Controller);
 
-	        this.el = el;
 	        this.view = view;
 	        this.model = model;
 	    }
@@ -2579,20 +2602,21 @@ webpackJsonp([1],[
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init(target) {
+	            var el = this.model.$el[0];
 	            var context = this;
 	            var listeners = {
 	                'modal-close': function modalClose(e) {
-	                    context.view.modalClose(e, context.el);
+	                    context.view.modalClose(e);
 	                },
 	                'modal-remove': function modalRemove(e) {
-	                    context.view.modalRemove(e, context.el, target);
+	                    context.view.modalRemove(e, target);
 	                },
 	                'modal-confirm-edit': function modalConfirmEdit(e) {
 	                    e.preventDefault();
 	                    var validator = new context.model.Validator();
 	                    var validateResults = validator.validate(context.model.getModalConfirmData());
 	                    if (context.model.checkResults(validateResults)) {
-	                        context.view.modalConfirmEdit(e, context.el, target);
+	                        context.view.modalConfirmEdit(e, target);
 	                    } else {
 	                        for (var i = 0; i < validateResults.length; i++) {
 	                            if (validateResults[i].length > 0) {
@@ -2603,17 +2627,16 @@ webpackJsonp([1],[
 	                            }
 	                        }
 	                    }
-	                    //context.view.modalConfirmEdit(e,context.el,target);
 	                }
 	            };
-	            this.el.addEventListener('click', function (e) {
+	            el.addEventListener('click', function (e) {
 	                if (listeners[e.target.id]) {
 	                    listeners[e.target.id](e);
 	                }
 	            });
 
 	            document.getElementsByClassName('estimation-range')[0].addEventListener('click', function (e) {
-	                this.view.estimationRangeReview(e);
+	                this.view.constructor.estimationRangeReview(e);
 	            }.bind(context));
 
 	            this.model.validateInit();
@@ -2634,13 +2657,22 @@ webpackJsonp([1],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var User = window.app.User;
-	var view = exports.view = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 	/**
+	 * @class
 	 * @namespace
 	 * @memberOf ModalEditTask
 	 */
-	exports.view = view = {
+	var View = function () {
+	    function View(model) {
+	        _classCallCheck(this, View);
+
+	        this.model = model;
+	    }
 	    /**
 	     * sync estimation
 	     *
@@ -2648,82 +2680,103 @@ webpackJsonp([1],[
 	     * @param {HTMLElement|Node} target
 	     * @param {function} callback
 	     */
-	    syncChanges: function syncChanges(target, callback) {
-	        while (target.parentNode.classList.contains('task') === false) {
-	            target = target.parentNode;
-	        }
-	        var key = target.parentNode.getAttribute('key');
-	        callback(key);
-	        document.getElementById(User.dataSnapShot[key].priority).checked = true;
-	        document.getElementById(User.dataSnapShot[key].category).checked = true;
-	        var estimationRecount = User.dataSnapShot[key].estimation.slice(-1);
-	        for (var i = 0; i < estimationRecount; i++) {
-	            document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
-	        }
-	    },
-	    /**
-	     * Close modal window
-	     *
-	     * @memberOf ModalEditTask.view
-	     * @param {Event} e
-	     * @param {HTMLElement} el
-	     */
-	    modalClose: function modalClose(e, el) {
-	        e.preventDefault();
-	        document.getElementById('app-body').removeChild(el);
-	    },
-	    /**
-	     * Edit task confirmation
-	     *
-	     * @memberOf ModalEditTask.view
-	     * @param {Event} e
-	     * @param {HTMLElement} el
-	     * @param {HTMLElement|Node} target
-	     */
-	    modalConfirmEdit: function modalConfirmEdit(e, el, target) {
-	        while (target.parentNode.classList.contains('task') === false) {
-	            target = target.parentNode;
-	        }
-	        var keyy = target.parentNode.getAttribute('key');
-	        User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
-	        document.getElementById('app-body').removeChild(el);
-	    },
-	    /**
-	     * Deleting task in edit process
-	     *
-	     * @memberOf ModalEditTask.view
-	     * @param {Event} e
-	     * @param {HTMLElement} el
-	     * @param {HTMLElement|Node} target
-	     */
-	    modalRemove: function modalRemove(e, el, target) {
-	        e.preventDefault();
-	        while (target.parentNode.classList.contains('task') === false) {
-	            target = target.parentNode;
-	        }
-	        var keyy = target.parentNode.getAttribute('key');
-	        User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
-	        document.getElementById('app-body').removeChild(el);
-	    },
-	    /**
-	     * @memberOf ModalEditTask.view
-	     * @param {Event} e
-	     */
-	    estimationRangeReview: function estimationRangeReview(e) {
-	        if (e.target.tagName.toUpperCase() === 'LI') {
-	            var i, j;
-	            var parent = e.currentTarget;
-	            for (i = 0; i < parent.children.length; i++) {
-	                parent.children[i].classList.remove('estimated');
+
+
+	    _createClass(View, [{
+	        key: 'syncChanges',
+	        value: function syncChanges(target, callback) {
+	            var User = app.User;
+	            while (target.parentNode.classList.contains('task') === false) {
+	                target = target.parentNode;
 	            }
-	            for (i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
-	                parent.children[i].classList.add('estimated');
+	            var key = target.parentNode.getAttribute('key');
+	            callback(key);
+	            document.getElementById(User.dataSnapShot[key].priority).checked = true;
+	            document.getElementById(User.dataSnapShot[key].category).checked = true;
+	            var estimationRecount = User.dataSnapShot[key].estimation.slice(-1);
+	            for (var i = 0; i < estimationRecount; i++) {
+	                document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
 	            }
-	            e.target.classList.add('estimated');
-	            e.currentTarget.estimation = j + 1;
 	        }
-	    }
-	};
+	        /**
+	         * Close modal window
+	         *
+	         * @memberOf ModalEditTask.view
+	         * @param {Event} e
+	         */
+
+	    }, {
+	        key: 'modalClose',
+	        value: function modalClose(e) {
+	            e.preventDefault();
+	            document.getElementById('app-body').removeChild(this.model.$el[0]);
+	        }
+	        /**
+	         * Edit task confirmation
+	         *
+	         * @memberOf ModalEditTask.view
+	         * @param {Event} e
+	         * @param {HTMLElement|Node} target
+	         */
+
+	    }, {
+	        key: 'modalConfirmEdit',
+	        value: function modalConfirmEdit(e, target) {
+	            var User = app.User;
+	            while (target.parentNode.classList.contains('task') === false) {
+	                target = target.parentNode;
+	            }
+	            var keyy = target.parentNode.getAttribute('key');
+	            User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
+	            document.getElementById('app-body').removeChild(this.model.$el[0]);
+	        }
+	        /**
+	         * Deleting task in edit process
+	         *
+	         * @memberOf ModalEditTask.view
+	         * @param {Event} e
+	         * @param {HTMLElement|Node} target
+	         */
+
+	    }, {
+	        key: 'modalRemove',
+	        value: function modalRemove(e, target) {
+	            e.preventDefault();
+	            var User = app.User;
+	            while (target.parentNode.classList.contains('task') === false) {
+	                target = target.parentNode;
+	            }
+	            var keyy = target.parentNode.getAttribute('key');
+	            User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
+	            document.getElementById('app-body').removeChild(this.model.$el[0]);
+	        }
+	        /**
+	         * @memberOf ModalEditTask.view
+	         * @param {Event} e
+	         */
+
+	    }], [{
+	        key: 'estimationRangeReview',
+	        value: function estimationRangeReview(e) {
+	            if (e.target.tagName.toUpperCase() === 'LI') {
+	                var i, j;
+	                var parent = e.currentTarget;
+	                for (i = 0; i < parent.children.length; i++) {
+	                    parent.children[i].classList.remove('estimated');
+	                }
+	                for (i = 0, j = 0; parent.children[i] !== e.target; i++, j++) {
+	                    parent.children[i].classList.add('estimated');
+	                }
+	                e.target.classList.add('estimated');
+	                e.currentTarget.estimation = j + 1;
+	            }
+	        }
+	    }]);
+
+	    return View;
+	}();
+
+	exports.default = View;
 
 /***/ },
 /* 66 */
@@ -3054,13 +3107,11 @@ webpackJsonp([1],[
 	 * @namespace Timer
 	 */
 	app.Renderer.renderTimer = function (target) {
-	    var elCss = document.createElement('style');
-	    elCss.innerHTML = _style2.default['0'][1];
 	    var timer = document.createElement('div');
 	    timer.key = target.getAttribute('key');
 	    var cycle = app.User.dataSnapShot[timer.key].cycle || undefined;
 	    var model = new _model.StartModel(timer);
-	    var view = new _view2.default(model, _template2.default, elCss);
+	    var view = new _view2.default(model, _template2.default, app.Renderer.helpers.getCss(_style2.default));
 	    var controller = new _controller2.default(view, model);
 	    controller.init(cycle);
 	};

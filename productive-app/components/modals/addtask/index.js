@@ -1,6 +1,6 @@
 import template from './template.jade';
 import Controller from './controller';
-import {view} from  './view';
+import View from  './view';
 import css from '!!css-loader!less-loader!./style/style.less';
 import Model from './../Model';
 
@@ -16,12 +16,11 @@ import Model from './../Model';
  */
 app.Renderer.showModalAdd = function () {
     var el = document.createElement('div');
-    var elCss = document.createElement('style');
-    elCss.innerHTML = css['0'][1];
     el.innerHTML = template();
     document.getElementById('app-body').appendChild(el);
-    el.appendChild(elCss);
-    var controller = new Controller(view, el, new Model(el));
+    el.appendChild(app.Renderer.helpers.getCss(css));
+    var model = new Model(el);
+    var controller = new Controller(new View(model), model);
     controller.init();
     $(".datepicker").datepicker({
         dateFormat: "MM dd, yy"

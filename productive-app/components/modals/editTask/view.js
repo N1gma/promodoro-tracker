@@ -1,10 +1,12 @@
-var User = window.app.User;
-export var view;
 /**
+ * @class
  * @namespace
  * @memberOf ModalEditTask
  */
-view = {
+class View {
+    constructor(model){
+        this.model = model;
+    }
     /**
      * sync estimation
      *
@@ -12,7 +14,8 @@ view = {
      * @param {HTMLElement|Node} target
      * @param {function} callback
      */
-    syncChanges: function (target, callback) {
+    syncChanges (target, callback) {
+        var User = app.User;
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
@@ -24,56 +27,55 @@ view = {
         for (var i = 0; i < estimationRecount; i++) {
             document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
         }
-    },
+    }
     /**
      * Close modal window
      *
      * @memberOf ModalEditTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      */
-    modalClose:function (e,el) {
+    modalClose (e) {
         e.preventDefault();
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * Edit task confirmation
      *
      * @memberOf ModalEditTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      * @param {HTMLElement|Node} target
      */
-    modalConfirmEdit:function (e,el,target) {
+    modalConfirmEdit (e,target) {
+        var User = app.User;
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var keyy = target.parentNode.getAttribute('key');
         User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * Deleting task in edit process
      *
      * @memberOf ModalEditTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      * @param {HTMLElement|Node} target
      */
-    modalRemove:function (e,el,target) {
+    modalRemove (e,target) {
         e.preventDefault();
+        var User = app.User;
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var keyy = target.parentNode.getAttribute('key');
         User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * @memberOf ModalEditTask.view
      * @param {Event} e
      */
-    estimationRangeReview:function (e) {
+    static estimationRangeReview (e) {
         if (e.target.tagName.toUpperCase() === 'LI') {
             var i,j;
             var parent = e.currentTarget;
@@ -87,4 +89,6 @@ view = {
             e.currentTarget.estimation = j+1;
         }
     }
-};
+}
+
+export default View;
