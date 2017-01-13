@@ -28,7 +28,8 @@ class Controller {
                         if(validateResults[i].length>0){
                             app.EventBus.publish('notify', {
                                 msg: validateResults[i],
-                                type: 'fail'
+                                type: 'fail',
+                                singleton: true
                             });
                         }
                     }

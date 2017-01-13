@@ -3,13 +3,15 @@
  * @memberOf app.Renderer.HeaderDetailed
  * @instance
  */
-class Controller  {
-    constructor(el,view){
+class Controller {
+    constructor(el, view) {
         this.el = el;
         this.view = view;
     }
-    init () {
+
+    init() {
         var context = this;
+        var throttle = app.Renderer.helpers.throttle;
         var listeners = {
             'log_out': function (e) {
                 firebase.auth().signOut();
@@ -21,14 +23,14 @@ class Controller  {
                 app.router.moveTo('reports');
 
             },
-            'addTask':function () {
+            'addTask': function () {
                 app.Renderer.showModalAdd();
 
             },
-            'trashOn':function (e) {
-                if(e.target.classList.contains('active')){
+            'trashOn': function (e) {
+                if (e.target.classList.contains('active')) {
                     app.EventBusLocal.publish('trash-off', e.target);
-                }else{
+                } else {
                     app.EventBusLocal.publish('trash-on', e.target);
                 }
             }
@@ -37,19 +39,19 @@ class Controller  {
         $('#trashOn').tips('Activate delete mode');
         $('#reports').tips('Go to Reports');
         $('#settings').tips('Go to Settings');
-        $('#log_out').tips('Sign out',true);
-        this.el.addEventListener('click',function (e) {
-            if (listeners[e.target.id]){
+        $('#log_out').tips('Sign out', true);
+        this.el.addEventListener('click', function (e) {
+            if (listeners[e.target.id]) {
                 listeners[e.target.id](e);
             }
         });
-        $(window).on("scroll", function(e) {
+        $(window).on("scroll", throttle(function (e) {
             if ($(this).scrollTop() > 94) {
                 context.view.fixHeader();
             } else {
-                context.view.unfixHeader();
+               context.view.unfixHeader();
             }
-        });
+        }, 150));
     }
 }
 

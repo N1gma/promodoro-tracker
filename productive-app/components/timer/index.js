@@ -4,7 +4,6 @@ import {StartModel} from './model';
 import template from './template.jade';
 import css from '!!css-loader!less-loader!./style.less';
 
-
 /**
  * Method which show timer on page
  *

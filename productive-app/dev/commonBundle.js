@@ -149,6 +149,30 @@ webpackJsonp([0],[
 	        var elCss = document.createElement('style');
 	        elCss.innerHTML = css['0'][1];
 	        return elCss;
+	    },
+	    throttle: function throttle(fn, threshhold, scope) {
+	        threshhold || (threshhold = 250);
+	        var last, deferTimer;
+	        return function () {
+	            var context = scope || this;
+	            var now = +new Date(),
+	                args = arguments;
+	            if (last && now < last + threshhold) {
+	                clearTimeout(deferTimer);
+	                deferTimer = setTimeout(function () {
+	                    last = now;
+	                    fn.apply(context, args);
+	                }, threshhold);
+	            } else {
+	                last = now;
+	                fn.apply(context, args);
+	            }
+	        };
+	    },
+	    isSolved: function isSolved() {
+	        for (var i = 0; i < arguments.length; i++) {
+	            arguments[i].solved = false;
+	        }
 	    }
 	};
 
@@ -293,13 +317,21 @@ webpackJsonp([0],[
 	        Renderer.renderTimer(data);
 	    });
 	    //----------------------------------
+	    EventBus.subscribe('waitOverlay', function () {
+	        app.Renderer.waitOverlay();
+	    });
+	    //----------------------------------
 	    EventBus.subscribe('no-user', function () {
 	        app.EventBus.publish('login');
 	    });
 	    //----------------------------------
 
 	    EventBus.subscribe('notify', function (opts) {
-	        app.Renderer.addNotification(opts);
+	        if (!opts.singleton) {
+	            app.Renderer.addNotification(opts);
+	        } else {
+	            app.Renderer.addSingletonNotification(opts);
+	        }
 	    });
 
 	    //----------------------------------
@@ -930,6 +962,7 @@ webpackJsonp([0],[
 	            }, route.name, route.url);
 	            app.EventBus.publish(route.module);
 	            console.log(history);
+	            this.currentState = page;
 	            return this;
 	        }
 	        /**
@@ -957,8 +990,12 @@ webpackJsonp([0],[
 	        value: function bind() {
 	            var context = this;
 	            window.addEventListener("popstate", function (e) {
-	                console.log(e.state);
-	                app.EventBus.publish(context.routes[e.state.path].module);
+	                if (context.currentState !== 'login') {
+	                    console.log(e.state);
+	                    app.EventBus.publish(context.routes[e.state.path].module);
+	                } else {
+	                    app.router.replaceState('login');
+	                }
 	            });
 	        }
 	    }]);
@@ -985,6 +1022,7 @@ webpackJsonp([0],[
 	    $.fn.tips = function (tip, offset) {
 	        var $target = $(this);
 	        var offsetTriangle, $tooltip, $triangle;
+	        var throttle = app.Renderer.helpers.throttle;
 	        if (offset) {
 	            offsetTriangle = 85;
 	            offset = 90;
@@ -1068,17 +1106,17 @@ webpackJsonp([0],[
 	    };
 	    $.fn.accordeon = function () {
 	        var $target = $(this);
-	        var heads = $target.find('.accordeon-head');
-	        var listener = function listener(e) {
-	            var $link = $('#' + $(e.target).attr('linked_block'));
+	        var $heads = $target.find('.accordeon-head');
+	        var listener = function listener() {
+	            var $link = $('#' + $heads.attr('linked_block'));
 	            if ($link.is(':visible')) {
 	                $link.slideUp("slow");
 	            } else {
 	                $link.slideDown("slow");
 	            }
 	        };
-	        $target.off('click', listener);
-	        $target.on('click', heads, listener);
+	        $heads.off('click', listener);
+	        $heads.on('click', listener);
 	        return this;
 	    };
 	})(window.$);
@@ -1161,13 +1199,11 @@ webpackJsonp([0],[
 
 	/**
 	 *
-	 * @param {loginView} view
-	 * @param {CEventBus} eBus
+	 * @param {LoginView} view
 	 * @constructor
 	 */
-	function LoginController(view, eBus) {
+	function LoginController(view) {
 	    this.view = view;
-	    this.eBus = eBus;
 	}
 
 	LoginController.prototype = {
@@ -1176,17 +1212,20 @@ webpackJsonp([0],[
 	     * @instance
 	     */
 	    init: function init() {
-	        this.eBus.subscribe('auth', this.view.auth);
-	        this.eBus.subscribe('logOut', this.view.logOut);
-	        this.eBus.publish('login');
+	        var EventBus = app.EventBus;
+	        var router = app.router;
+	        var User = app.User;
+	        EventBus.subscribe('auth', this.view.auth);
+	        EventBus.subscribe('logOut', this.view.logOut);
+	        //EventBus.publish('login');
 	        firebase.auth().onAuthStateChanged(function (user) {
-	            var EventBus = window.app.EventBus;
-	            var router = window.app.router;
-	            var User = window.app.User;
 	            if (!user) {
-	                router.replaceState('login');
+	                //router.replaceState('login');
+	                //EventBus.publish('login');
+	                router.resetState().replaceState('login');
 	            }
 	            if (user) {
+	                EventBus.publish('waitOverlay');
 	                User.currentLogin = user.email.slice(0, user.email.search('@'));
 	                var locate = location.pathname.slice(1);
 	                for (var key in router.routes) {
@@ -1201,7 +1240,7 @@ webpackJsonp([0],[
 	                } else {
 	                    router.replaceState(router.currentState).moveTo(locate);
 	                }
-	                EventBus.publish('initData');
+	                //EventBus.publish('initData');
 	            }
 	        });
 	    }
@@ -1212,7 +1251,7 @@ webpackJsonp([0],[
 	     * @memberOf app
 	     * @type {LoginController}
 	     */
-	    app.loginCtrl = new LoginController(new _loginView2.default(app.EventBus), app.EventBus);
+	    app.loginCtrl = new LoginController(new _loginView2.default());
 	    app.loginCtrl.init();
 	});
 
@@ -1229,14 +1268,12 @@ webpackJsonp([0],[
 	 * @param {CEventBus} eBus
 	 * @constructor
 	 */
-	function loginView(eBus) {
-	    this.eBus = eBus;
-	}
+	function LoginView() {}
 	/**
 	 * memberOf loginView
 	 * @param {Event} e
 	 */
-	loginView.prototype.auth = function (e) {
+	LoginView.prototype.auth = function (e) {
 	    var context = this;
 	    var val1 = document.getElementById('name_input').value;
 	    var val2 = document.getElementById('pw_input').value;
@@ -1254,11 +1291,11 @@ webpackJsonp([0],[
 	/**
 	 * memberOf loginView
 	 */
-	loginView.prototype.logOut = function () {
+	LoginView.prototype.logOut = function () {
 	    firebase.auth().signOut();
 	};
 
-	exports.default = loginView;
+	exports.default = LoginView;
 
 /***/ },
 /* 15 */

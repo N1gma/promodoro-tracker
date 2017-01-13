@@ -2,6 +2,7 @@
     $.fn.tips = function (tip, offset) {
         var $target = $(this);
         var offsetTriangle, $tooltip, $triangle;
+        var throttle = app.Renderer.helpers.throttle;
         if (offset) {
             offsetTriangle = 85;
             offset = 90;
@@ -85,17 +86,17 @@
     };
     $.fn.accordeon = function () {
         var $target = $(this);
-        var heads = $target.find('.accordeon-head');
-        var listener = function (e) {
-            var $link = $('#' + $(e.target).attr('linked_block'));
+        var $heads = $target.find('.accordeon-head');
+        var listener = function () {
+            var $link = $('#' + $heads.attr('linked_block'));
             if ($link.is(':visible')) {
                 $link.slideUp("slow");
             } else {
                 $link.slideDown("slow");
             }
         };
-        $target.off('click', listener);
-        $target.on('click', heads, listener);
+        $heads.off('click', listener);
+        $heads.on('click', listener);
         return this;
     };
 }(window.$));

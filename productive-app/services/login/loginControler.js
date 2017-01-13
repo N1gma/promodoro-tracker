@@ -1,13 +1,11 @@
-import loginView from './loginView';
+import LoginView from './loginView';
 /**
  *
- * @param {loginView} view
- * @param {CEventBus} eBus
+ * @param {LoginView} view
  * @constructor
  */
-function LoginController(view, eBus) {
+function LoginController(view) {
     this.view = view;
-    this.eBus = eBus;
 }
 
 LoginController.prototype = {
@@ -16,17 +14,20 @@ LoginController.prototype = {
      * @instance
      */
     init:function () {
-        this.eBus.subscribe('auth', this.view.auth);
-        this.eBus.subscribe('logOut', this.view.logOut);
-        this.eBus.publish('login');
+        var EventBus = app.EventBus;
+        var router = app.router;
+        var User = app.User;
+        EventBus.subscribe('auth', this.view.auth);
+        EventBus.subscribe('logOut', this.view.logOut);
+        //EventBus.publish('login');
         firebase.auth().onAuthStateChanged(function (user) {
-            var EventBus = window.app.EventBus;
-            var router = window.app.router;
-            var User = window.app.User;
             if (!user) {
-                router.replaceState('login');
+                //router.replaceState('login');
+                //EventBus.publish('login');
+                router.resetState().replaceState('login');
             }
             if (user) {
+                EventBus.publish('waitOverlay');
                 User.currentLogin = user.email.slice(0, user.email.search('@'));
                 var locate = location.pathname.slice(1);
                 for(var key in router.routes){
@@ -41,7 +42,7 @@ LoginController.prototype = {
                 } else {
                     router.replaceState(router.currentState).moveTo(locate);
                 }
-                EventBus.publish('initData');
+                //EventBus.publish('initData');
             }
         });
     }
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * @memberOf app
      * @type {LoginController}
      */
-    app.loginCtrl = new LoginController(new loginView(app.EventBus), app.EventBus);
-    app.loginCtrl .init();
+    app.loginCtrl = new LoginController(new LoginView());
+    app.loginCtrl.init();
 });
 

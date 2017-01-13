@@ -71,6 +71,7 @@ class Routes {
         }, route.name, route.url);
         app.EventBus.publish(route.module);
         console.log(history);
+        this.currentState = page;
         return this;
     }
     /**
@@ -92,8 +93,12 @@ class Routes {
     bind() {
         var context = this;
         window.addEventListener("popstate", function (e) {
-            console.log(e.state);
-            app.EventBus.publish(context.routes[e.state.path].module);
+            if(context.currentState!=='login'){
+                console.log(e.state);
+                app.EventBus.publish(context.routes[e.state.path].module);
+            }else{
+                app.router.replaceState('login');
+            }
         });
     }
 

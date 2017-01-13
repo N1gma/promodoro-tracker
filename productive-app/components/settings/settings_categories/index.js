@@ -1,5 +1,5 @@
 import template from './template.jade';
-import css from '!!css-loader!less-loader!./style/style.less';
+import css from '!!css-loader!less-loader!../style/style.less';
 /**
  * @namespace SettingsCategories
  * @memberOf app.Renderer

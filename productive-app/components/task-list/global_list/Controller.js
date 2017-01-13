@@ -30,6 +30,7 @@ export default class Controller {
         el.addEventListener('click', this.listeners.editTask);
         el.addEventListener('click', this.listeners.trashDrop);
         el.addEventListener('click', this.listeners.moveToDaily);
+        el.addEventListener('click', this.listeners.showGlobalList);
         app.EventBusLocal.subscribe('filter-tasks', function (type) {
             console.log('filter ' + type);
             console.log(this);
@@ -45,7 +46,6 @@ export default class Controller {
                 context.setEventListeners(el);
             });
         }.bind(this));
-
     }
 
     removeEventListeners(el) {

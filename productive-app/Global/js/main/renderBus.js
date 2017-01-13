@@ -136,13 +136,21 @@ class CEventBus {
         Renderer.renderTimer(data);
     });
 //----------------------------------
+    EventBus.subscribe('waitOverlay', function () {
+        app.Renderer.waitOverlay();
+    });
+//----------------------------------
     EventBus.subscribe('no-user', function () {
         app.EventBus.publish('login');
     });
 //----------------------------------
 
     EventBus.subscribe('notify', function (opts) {
-        app.Renderer.addNotification(opts);
+        if(!opts.singleton){
+            app.Renderer.addNotification(opts);
+        }else {
+            app.Renderer.addSingletonNotification(opts);
+        }
     });
 
 //----------------------------------

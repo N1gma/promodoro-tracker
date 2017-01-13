@@ -269,6 +269,9 @@
 .ico-text-button:active {
   color: #59ABE3;
 }
+.interface-container-2 {
+  cursor: default;
+}
 .interface-container-3 .ico-text-button:hover {
   color: white;
 }
@@ -297,6 +300,37 @@
 }
 .active-tab {
   color: white;
+}
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: loaderSpin 2s linear infinite;
+  animation: loaderSpin 2s linear infinite;
+}
+@keyframes loaderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner-modal-wrap {
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2a3f50;
 }
 body,
 html {

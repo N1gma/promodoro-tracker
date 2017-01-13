@@ -2,14 +2,14 @@
  * @param {CEventBus} eBus
  * @constructor
  */
-function loginView(eBus) {
-    this.eBus = eBus;
+function LoginView() {
+
 }
 /**
  * memberOf loginView
  * @param {Event} e
  */
-loginView.prototype.auth = function (e) {
+LoginView.prototype.auth = function (e) {
     var context = this;
     var val1 = document.getElementById('name_input').value;
     var val2 = document.getElementById('pw_input').value;
@@ -28,10 +28,10 @@ loginView.prototype.auth = function (e) {
 /**
  * memberOf loginView
  */
-loginView.prototype.logOut = function(){
+LoginView.prototype.logOut = function(){
     firebase.auth().signOut();
 };
 
-export default loginView;
+export default LoginView;
 
 

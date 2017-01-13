@@ -3,7 +3,6 @@ import Controller from './Controller';
 import {tasks} from '../daily_list/Model';
 import {view} from './View';
 
-
 /**
  * Method which add daily global-list to page
  *

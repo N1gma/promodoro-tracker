@@ -1,7 +1,7 @@
 import template from './template.jade';
 import Controller from './controller';
 import View from './view';
-import css from '!!css-loader!less-loader!./../addtask/style/style.less';
+import css from '!!css-loader!less-loader!../style/style.less';
 import Model from './../Model';
 /**
  * @namespace ModalEditTask

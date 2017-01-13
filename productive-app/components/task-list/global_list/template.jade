@@ -1,5 +1,4 @@
 style.
-
     .task {
         height: 87px;
         width: 100%;
@@ -90,8 +89,6 @@ style.
     .drop-switch {
         color: #8da5b8;
         display: inline-block;
-        font-family: icomoon;
-        font-size: 11px;
         padding-left: 6.8%;
         cursor: pointer
     }
@@ -102,8 +99,15 @@ style.
         font-size: 20px;
         margin-right: 8px;
         font-weight: bold;
+        font-family: 'PTSans', sans-serif;
     }
-    .drop-switch span:hover,.drop-switch:hover{
+
+    .drop-switch .arrow {
+        font-family: icomoon;
+        font-size: 11px;
+    }
+
+    .drop-switch span:hover, .drop-switch .arrow:hover {
         color: white;
     }
 
@@ -114,6 +118,7 @@ style.
         margin-top: 2%;
         position: relative;
         font-family: 'Roboto', sans-serif;
+        font-weight: bold;
     }
 
     .list-header-category-mark {
@@ -124,6 +129,7 @@ style.
         background: url(./Global/img/ico-sprite.png);
         z-index: 9999;
     }
+
     .date-day {
         height: 50%;
         line-height: 70px;
@@ -131,6 +137,7 @@ style.
         font-family: 'PTSans', sans-serif;
         margin-left: 4px;
     }
+
     .date-month {
         line-height: 34px;
         height: 50%;
@@ -138,11 +145,10 @@ style.
         margin-left: 3px;
     }
 
-
 .sorted-lists-wrapper
     button(linked_block='accord1').drop-switch.accordeon-head
         span Global list
-        | 
+        span.arrow 
     ul.global-list#accord1
       -for(var type in structure)
          li

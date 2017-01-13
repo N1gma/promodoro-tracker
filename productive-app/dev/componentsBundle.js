@@ -3,20 +3,21 @@ webpackJsonp([1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(16);
-	__webpack_require__(20);
 	__webpack_require__(23);
-	__webpack_require__(25);
-	__webpack_require__(31);
-	__webpack_require__(36);
-	__webpack_require__(42);
+	__webpack_require__(27);
+	__webpack_require__(29);
+	__webpack_require__(35);
+	__webpack_require__(39);
 	__webpack_require__(46);
-	__webpack_require__(49);
-	__webpack_require__(53);
-	__webpack_require__(62);
-	__webpack_require__(66);
-	__webpack_require__(69);
-	__webpack_require__(73);
-	module.exports = __webpack_require__(80);
+	__webpack_require__(51);
+	__webpack_require__(54);
+	__webpack_require__(58);
+	__webpack_require__(67);
+	__webpack_require__(71);
+	__webpack_require__(74);
+	__webpack_require__(78);
+	__webpack_require__(85);
+	module.exports = __webpack_require__(89);
 
 
 /***/ },
@@ -190,6 +191,10 @@ webpackJsonp([1],[
 
 	var _template2 = _interopRequireDefault(_template);
 
+	var _style = __webpack_require__(20);
+
+	var _style2 = _interopRequireDefault(_style);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -201,6 +206,7 @@ webpackJsonp([1],[
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.getElementById('app-body').appendChild(el);
+	    el.appendChild(app.Renderer.helpers.getCss(_style2.default));
 	    document.getElementsByClassName('center-inputs')[0].addEventListener('submit', function (e) {
 	        e.preventDefault();
 	        app.EventBus.publish('auth');
@@ -218,7 +224,7 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>body {\n    background: url(\"./Global/img/bg.png\");\n    background-size: cover;\n    background-position: 50%;\n}\n\nbody, html {\n    height: 100%;\n}\n\n.login-wrapper {\n    margin: 0 auto;\n    max-width: 320px;\n    text-align: center;\n}\n\n.center-logo {\n    width: 246px;\n    padding: 48px 0;\n    text-align: center;\n}\n\n.center-inputs {\n    margin: 0 auto;\n    font-family: icomoon;\n    color: #8da5b8;\n    width: 360px;\n}\n\n.center-inputs:nth-child(2) .input-row {\n    margin-bottom: 29px;\n}\n\n.input-row {\n    position: relative;\n    margin-left: 5px;\n}\n\n.log-input, .pw-input {\n    border: none;\n    background-color: transparent;\n    font: 16px Roboto, sans-serif;\n    padding-left: 30px;\n    color: #8da5b8;\n    border-bottom: 1px solid #425869;\n    padding-bottom: 10px;\n    width: 91%;\n}\n\n.center-inputs input:focus {\n    border-color: white;\n    color: white;\n}\n\n.center-inputs input:focus + label {\n    color: white;\n}\n\n.center-inputs label {\n    font-size: 14px;\n    position: absolute;\n    bottom: 13px;\n    left: 0;\n}\n\n.submit {\n    display: block;\n    margin: 51px auto;\n    width: 125px;\n    background-color: #1abc9c;\n    color: white;\n    border: none;\n    outline: none;\n    font: 18px \"PTSans\", sans-serif;\n    height: 42px;\n}\n\n.submit:active {\n    background-color: #62D3BD;\n}\n\n.submit:focus, .submit:hover {\n    background-color: #16A085;\n}\n\n.invalid_msg {\n    font: 12px \"Roboto\", sans-serif;\n    color: red;\n    position: absolute;\n    display: none;\n    left: 0;\n    bottom: -20px;\n}\n\n\n</style><div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
+	buf.push("<div class=\"login-wrapper\"><img src=\"./Global/img/Logo_1.svg\" alt=\"logo goes here\" class=\"center-logo\"><form class=\"center-inputs\"><div class=\"input-row\"><input id=\"name_input\" type=\"text\" placeholder=\"Username\" required=\"\" class=\"log-input\"><label for=\"name_input\"></label><span class=\"invalid_msg\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></div><div class=\"input-row\"><input id=\"pw_input\" type=\"password\" placeholder=\"Password\" required=\"\" class=\"pw-input\"><label for=\"pw_input\"></label></div><button type=\"submit\" class=\"submit\">Log in</button></form></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -483,13 +489,93 @@ webpackJsonp([1],[
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
+	exports = module.exports = __webpack_require__(21)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body {\n  background: url(" + __webpack_require__(22) + ");\n  background-size: cover;\n  background-position: 50%;\n}\nbody,\nhtml {\n  height: 100%;\n}\n.login-wrapper {\n  margin: 0 auto;\n  max-width: 320px;\n  text-align: center;\n}\n.center-logo {\n  width: 246px;\n  padding: 48px 0;\n  text-align: center;\n}\n.center-inputs {\n  margin: 0 auto;\n  font-family: icomoon;\n  color: #8da5b8;\n  width: 360px;\n}\n.center-inputs:nth-child(2) .input-row {\n  margin-bottom: 29px;\n}\n.input-row {\n  position: relative;\n  margin-left: 5px;\n}\n.log-input,\n.pw-input {\n  border: none;\n  background-color: transparent;\n  font: 16px Roboto, sans-serif;\n  padding-left: 30px;\n  color: #8da5b8;\n  border-bottom: 1px solid #425869;\n  padding-bottom: 10px;\n  width: 91%;\n}\n.center-inputs input:focus {\n  border-color: white;\n  color: white;\n}\n.center-inputs input:focus + label {\n  color: white;\n}\n.center-inputs label {\n  font-size: 14px;\n  position: absolute;\n  bottom: 13px;\n  left: 0;\n}\n.submit {\n  display: block;\n  margin: 51px auto;\n  width: 125px;\n  background-color: #1abc9c;\n  color: white;\n  border: none;\n  outline: none;\n  font: 18px \"PTSans\", sans-serif;\n  height: 42px;\n  font-weight: bold;\n}\n.submit:active {\n  background-color: #62D3BD;\n}\n.submit:focus,\n.submit:hover {\n  background-color: #16A085;\n}\n.invalid_msg {\n  font: 12px \"Roboto\", sans-serif;\n  color: red;\n  position: absolute;\n  display: none;\n  left: 0;\n  bottom: -20px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "./Global/img/bg.png?sourceMap";
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var _template = __webpack_require__(21);
+	var _template = __webpack_require__(24);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(22);
+	var _controller = __webpack_require__(25);
+
+	var _style = __webpack_require__(26);
+
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -506,11 +592,12 @@ webpackJsonp([1],[
 	  var el = document.createElement('div');
 	  el.innerHTML = (0, _template2.default)();
 	  document.getElementById('app-body').appendChild(el);
+	  el.appendChild(app.Renderer.helpers.getCss(_style2.default));
 	  _controller.Controller.initCntrl(el);
 	};
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -520,11 +607,11 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    visibility: hidden;\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 15px;\n    left: 6.8%;\n}\n\n.main-head {\n    overflow: hidden;\n    position: fixed;\n    width: 100%;\n    background-color: #2a3f50;\n}\n\n.main-head-shadow-on {\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n</style><header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<header class=\"main-head\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"#\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -564,12 +651,26 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 23 */
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(21)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".logo {\n  visibility: hidden;\n  min-width: 241px;\n  width: 17%;\n  position: absolute;\n  top: 15px;\n  left: 6.8%;\n}\n.main-head {\n  overflow: hidden;\n  position: fixed;\n  width: 100%;\n  background-color: #2a3f50;\n}\n.main-head-shadow-on {\n  box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n.inner-head {\n  max-width: 1366px;\n  margin: 0 auto;\n  box-sizing: border-box;\n}\n.inner-2-head {\n  width: 100%;\n  padding: 0 6.8%;\n  box-sizing: border-box;\n  padding-top: 56px;\n  overflow: hidden;\n  position: relative;\n}\n.visible-logo {\n  visibility: visible;\n}\n.interface-container {\n  margin-bottom: 17px;\n  float: right;\n  width: 46%;\n  text-align: right;\n  font-size: 18px;\n}\n.interface-container .ico-text-button {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 5.7%;\n}\n.visible-logo {\n  visibility: visible;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(24);
+	var _template = __webpack_require__(28);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -594,7 +695,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 24 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -608,26 +709,26 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 25 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(26);
+	var _template = __webpack_require__(30);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _dataModule = __webpack_require__(27);
+	var _dataModule = __webpack_require__(31);
 
-	var _view = __webpack_require__(28);
+	var _view = __webpack_require__(32);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(29);
+	var _model = __webpack_require__(33);
 
 	var _model2 = _interopRequireDefault(_model);
 
-	var _controller = __webpack_require__(30);
+	var _controller = __webpack_require__(34);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
@@ -665,7 +766,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 26 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -679,7 +780,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 27 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -765,7 +866,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 28 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -856,7 +957,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 29 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -892,7 +993,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 30 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -929,16 +1030,16 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(32);
+	var _template = __webpack_require__(36);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _style = __webpack_require__(33);
+	var _style = __webpack_require__(37);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -962,7 +1063,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -976,96 +1077,44 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 33 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(34)();
+	exports = module.exports = __webpack_require__(21)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(" + __webpack_require__(35) + ") no-repeat 0 -19px;\n}\n.label2 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -18px -19px;\n}\n.label3 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -36px -19px;\n}\n.label4 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -54px -19px;\n}\n.label5 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n", ""]);
+	exports.push([module.id, ".button-holder {\n  width: 282px;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n#categories-settings,\n#settings {\n  color: white;\n}\n.categories-choose-wrap {\n  width: 19.8%;\n  color: #5b7284;\n  margin: 0 auto 7% auto;\n  font: 16px \"Roboto\", sans-serif;\n  max-width: 267px;\n}\n.categories-choose-list {\n  padding-left: 14%;\n}\n.categories-choose-list li {\n  margin-bottom: 15%;\n  position: relative;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: -17%;\n  top: 0;\n  cursor: pointer;\n}\n.label1 {\n  background: url(" + __webpack_require__(38) + ") no-repeat 0 -19px;\n}\n.label2 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -18px -19px;\n}\n.label3 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -36px -19px;\n}\n.label4 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -54px -19px;\n}\n.label5 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -72px -19px;\n}\n.text-label {\n  border-bottom: 1px solid #5b7284;\n  width: 100%;\n  display: inline-block;\n  padding-bottom: 7px;\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:hover ~ .text-label {\n  border-color: white;\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 34 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 35 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/ico-sprite.png?sourceMap";
 
 /***/ },
-/* 36 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(37);
+	var _template = __webpack_require__(40);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(38);
+	var _Controller = __webpack_require__(41);
 
-	var _View = __webpack_require__(41);
+	var _View = __webpack_require__(44);
 
-	var _Model = __webpack_require__(40);
+	var _Model = __webpack_require__(43);
+
+	var _style = __webpack_require__(45);
+
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1083,12 +1132,13 @@ webpackJsonp([1],[
 	  var el = document.createElement('div');
 	  el.innerHTML = (0, _template2.default)();
 	  document.getElementById('app-body').appendChild(el);
+	  el.appendChild(app.Renderer.helpers.getCss(_style2.default));
 	  var controller = new _Controller.Controller(_Model.Model, _View.View);
 	  controller.initController();
 	};
 
 /***/ },
-/* 37 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -1098,11 +1148,11 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.wrapper {\n    max-width: 1366px;\n    padding-top: 90px;\n    margin: 0 auto;\n    padding-bottom: 2.2%;\n}\n\n.logo {\n    display: none;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n}\n\n.button-holder {\n    width: 21.2%;\n    display: flex;\n    margin: 0 auto;\n    justify-content: space-around;\n}\n\n.interface-container-2, .interface-container-3 {\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    display: flex;\n    justify-content: center;\n    margin-bottom: 104px;\n    color: #8da5b8;\n}\n\n.interface-container-2 .ico-text-button, .interface-container-3 .ico-text-button {\n    cursor: pointer;\n    font: 15px \"Roboto\", sans-serif;\n    margin: 0 6px;\n}\n\n.interface-container-3 {\n    margin-bottom: 0;\n}\n\n.main-head-title {\n    clear: both;\n    font: 28px \"Roboto\", sans-serif;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    color: white;\n    margin-bottom: 28px;\n}\n\n.graph-container {\n    margin: 0 auto;\n    width: 100%;\n    max-width: 650px;\n    height: 290px;\n    margin-bottom: 77px;\n    font-family: Roboto;\n}\n\n.active-tab {\n    color: white;\n}\n\n #reports {\n    color: white;\n}\n</style><div class=\"wrapper\"><h2 class=\"main-head-title\">Report</h2><main class=\"main-wrapper\"><div class=\"interface-container-2\"><button id=\"day_tab\" class=\"ico-text-button active-tab\">Day</button>            |<button id=\"week_tab\" class=\"ico-text-button\">Week</button>            |<button id=\"month_tab\" class=\"ico-text-button\">Month</button></div><div id=\"report-graph\" class=\"graph-container\"></div><div class=\"interface-container-3\"><button class=\"ico-text-button\">Pomodoros</button>            |<button class=\"ico-text-button active-tab\">Tasks</button></div></main></div>");;return buf.join("");
+	buf.push("<div class=\"wrapper\"><h2 class=\"main-head-title\">Report</h2><main class=\"main-wrapper\"><div class=\"interface-container-2\"><button id=\"day_tab\" class=\"ico-text-button active-tab\">Day</button>            |<button id=\"week_tab\" class=\"ico-text-button\">Week</button>            |<button id=\"month_tab\" class=\"ico-text-button\">Month</button></div><div id=\"report-graph\" class=\"graph-container\"></div><div class=\"interface-container-3\"><button class=\"ico-text-button\">Pomodoros</button>            |<button class=\"ico-text-button active-tab\">Tasks</button></div></main></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 38 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1114,7 +1164,7 @@ webpackJsonp([1],[
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _options = __webpack_require__(39);
+	var _options = __webpack_require__(42);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1156,7 +1206,7 @@ webpackJsonp([1],[
 	}();
 
 /***/ },
-/* 39 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1169,7 +1219,7 @@ webpackJsonp([1],[
 	exports.createRandom30xArray = createRandom30xArray;
 	exports.totalValueCount = totalValueCount;
 
-	var _Model = __webpack_require__(40);
+	var _Model = __webpack_require__(43);
 
 	var options = exports.options = {
 	    pieView: {
@@ -1509,7 +1559,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1543,7 +1593,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1553,7 +1603,7 @@ webpackJsonp([1],[
 	});
 	exports.View = undefined;
 
-	var _Model = __webpack_require__(40);
+	var _Model = __webpack_require__(43);
 
 	var View = exports.View = {
 	    renderChart: function renderChart(options) {
@@ -1572,22 +1622,40 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 42 */
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(21)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".wrapper {\n  max-width: 1366px;\n  padding-top: 90px;\n  margin: 0 auto;\n  padding-bottom: 2.2%;\n}\n.logo {\n  display: none;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n}\n.button-holder {\n  width: 21.2%;\n  display: flex;\n  margin: 0 auto;\n  justify-content: space-around;\n}\n.interface-container-2,\n.interface-container-3 {\n  margin: 0 auto;\n  width: 100%;\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  margin-bottom: 104px;\n  color: #8da5b8;\n}\n.interface-container-2 .ico-text-button,\n.interface-container-3 .ico-text-button {\n  cursor: pointer;\n  font: 15px \"Roboto\", sans-serif;\n  margin: 0 6px;\n}\n.interface-container-3 {\n  margin-bottom: 0;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n  margin-bottom: 28px;\n}\n.graph-container {\n  margin: 0 auto;\n  width: 100%;\n  max-width: 650px;\n  height: 290px;\n  margin-bottom: 77px;\n  font-family: Roboto;\n}\n.active-tab {\n  color: white;\n}\n#reports {\n  color: white;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(43);
+	var _template = __webpack_require__(47);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(44);
+	var _controller = __webpack_require__(48);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(45);
+	var _view = __webpack_require__(49);
 
 	var _view2 = _interopRequireDefault(_view);
+
+	var _style = __webpack_require__(50);
+
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1604,12 +1672,13 @@ webpackJsonp([1],[
 	  var el = document.createElement('div');
 	  el.innerHTML = (0, _template2.default)();
 	  document.getElementById('app-body').appendChild(el);
+	  el.appendChild(app.Renderer.helpers.getCss(_style2.default));
 	  var controller = new _controller2.default(el, new _view2.default(el));
 	  controller.init();
 	};
 
 /***/ },
-/* 43 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -1619,11 +1688,11 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 
-	buf.push("<style>.logo {\n    min-width: 241px;\n    width: 17%;\n    position: absolute;\n    top: 19px;\n    left: 6.8%;\n    display: none;\n}\n\n.main-head {\n    position: absolute;\n    width: 100%;\n    background-color: #2a3f50;\n    z-index: 9999;\n    height: 112px;\n}\n\n.fixed-main-head{\n    position: fixed;\n    box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n.fixed-main-head .logo{\n    display: block;\n}\n\n.inner-head {\n    max-width: 1366px;\n    margin: 0 auto;\n    box-sizing: border-box;\n}\n\n.inner-2-head {\n    width: 100%;\n    padding: 0 6.8%;\n    box-sizing: border-box;\n    padding-top: 56px;\n    overflow: hidden;\n    position: relative;\n}\n\n.visible-logo {\n    visibility: visible;\n}\n\n.interface-container {\n    margin-bottom: 17px;\n    float: right;\n    width: 46%;\n    text-align: right;\n    font-size: 18px;\n}\n\n.interface-container .ico-text-button {\n    font-family: icomoon;\n    cursor: pointer;\n    margin-left: 5.7%;\n}\n.active{\n    color: white;\n}\n.trash-counter {\n    position: absolute;\n    bottom: -10px;\n    right: -10px;\n    background-color: red;\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    font-size: 14px;\n    display: none;\n}\n\n</style><header class=\"main-head task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"reports\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
+	buf.push("<header class=\"main-head task-list-header\"><div class=\"inner-head\"><div class=\"inner-2-head\"><a href=\"reports\"><img src=\"./Global/img/Logo.svg\" alt=\"logo goes here\" class=\"logo\"></a><div class=\"interface-container\"><button id=\"addTask\" class=\"ico-text-button\"></button><button id=\"trashOn\" class=\"ico-text-button\"><span class=\"trash-counter\"></span></button><button id=\"reports\" class=\"ico-text-button\">&#xe90c;</button><button id=\"settings\" class=\"ico-text-button\"> &#xe90b;</button><button id=\"log_out\" class=\"ico-text-button\"> &#xe908;</button></div></div></div></header>");;return buf.join("");
 	}
 
 /***/ },
-/* 44 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1653,6 +1722,7 @@ webpackJsonp([1],[
 	        key: 'init',
 	        value: function init() {
 	            var context = this;
+	            var throttle = app.Renderer.helpers.throttle;
 	            var listeners = {
 	                'log_out': function log_out(e) {
 	                    firebase.auth().signOut();
@@ -1684,13 +1754,13 @@ webpackJsonp([1],[
 	                    listeners[e.target.id](e);
 	                }
 	            });
-	            $(window).on("scroll", function (e) {
+	            $(window).on("scroll", throttle(function (e) {
 	                if ($(this).scrollTop() > 94) {
 	                    context.view.fixHeader();
 	                } else {
 	                    context.view.unfixHeader();
 	                }
-	            });
+	            }, 150));
 	        }
 	    }]);
 
@@ -1700,7 +1770,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 45 */
+/* 49 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1738,16 +1808,30 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 46 */
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(21)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".logo {\n  min-width: 241px;\n  width: 17%;\n  position: absolute;\n  top: 19px;\n  left: 6.8%;\n  display: none;\n}\n.main-head {\n  position: absolute;\n  width: 100%;\n  background-color: #2a3f50;\n  z-index: 9999;\n  height: 112px;\n}\n.fixed-main-head {\n  position: fixed;\n  box-shadow: 0 5px 8px 1px rgba(22, 26, 29, 0.3);\n}\n.fixed-main-head .logo {\n  display: block;\n}\n.inner-head {\n  max-width: 1366px;\n  margin: 0 auto;\n  box-sizing: border-box;\n}\n.inner-2-head {\n  width: 100%;\n  padding: 0 6.8%;\n  box-sizing: border-box;\n  padding-top: 56px;\n  overflow: hidden;\n  position: relative;\n}\n.visible-logo {\n  visibility: visible;\n}\n.interface-container {\n  margin-bottom: 17px;\n  float: right;\n  width: 46%;\n  text-align: right;\n  font-size: 18px;\n}\n.interface-container .ico-text-button {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 5.7%;\n}\n.active {\n  color: white;\n}\n.trash-counter {\n  position: absolute;\n  bottom: -10px;\n  right: -10px;\n  background-color: red;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  font-size: 14px;\n  display: none;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(47);
+	var _template = __webpack_require__(52);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(48);
+	var _controller = __webpack_require__(53);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1766,7 +1850,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 47 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -1780,7 +1864,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 48 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1822,20 +1906,20 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 49 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(50);
+	var _template = __webpack_require__(55);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(51);
+	var _Controller = __webpack_require__(56);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(52);
+	var _Model = __webpack_require__(57);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1866,7 +1950,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 50 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -1876,7 +1960,7 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (console, data, tools) {
-	buf.push("<style>.today-list {\n    padding: 0 6.8%;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.top-block-message {\n    font-size: 42px;\n    color: #8da5b8;\n    width: 100%;\n    box-sizing: border-box;\n    padding: 0 6.8%;\n    text-align: center;\n    line-height: 114%;\n}\n\n.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n#to_do {\n    color: white;\n}\n\n.wrapper-list {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n\n</style><div class=\"wrapper-list\">");
+	buf.push("<style>.today-list {\n    padding: 0 6.8%;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.top-block-message {\n    font-size: 42px;\n    color: #8da5b8;\n    width: 100%;\n    box-sizing: border-box;\n    padding: 0 6.8%;\n    text-align: center;\n    line-height: 114%;\n    font-family: 'Helvetica', sans-serif;\n}\n\n.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n#to_do {\n    color: white;\n}\n\n.wrapper-list {\n    max-width: 1366px;\n    margin: 0 auto;\n}\n</style><div class=\"wrapper-list\">");
 	var switcher = true;
 	console.log(switcher);
 	buf.push("<ul class=\"today-list\">");
@@ -1897,7 +1981,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 51 */
+/* 56 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1985,7 +2069,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 52 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2085,28 +2169,28 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 53 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(54);
+	var _template = __webpack_require__(59);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(55);
+	var _controller = __webpack_require__(60);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(56);
+	var _view = __webpack_require__(61);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _style = __webpack_require__(57);
+	var _style = __webpack_require__(62);
 
 	var _style2 = _interopRequireDefault(_style);
 
-	var _Model = __webpack_require__(61);
+	var _Model = __webpack_require__(66);
 
 	var _Model2 = _interopRequireDefault(_Model);
 
@@ -2136,7 +2220,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 54 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -2150,7 +2234,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 55 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2197,7 +2281,8 @@ webpackJsonp([1],[
 	                            if (validateResults[i].length > 0) {
 	                                app.EventBus.publish('notify', {
 	                                    msg: validateResults[i],
-	                                    type: 'fail'
+	                                    type: 'fail',
+	                                    singleton: true
 	                                });
 	                            }
 	                        }
@@ -2224,7 +2309,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 56 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2305,39 +2390,39 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 57 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(34)();
+	exports = module.exports = __webpack_require__(21)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(35) + ") no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(" + __webpack_require__(35) + ") no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(" + __webpack_require__(35) + ") no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(58) + ") no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(" + __webpack_require__(58) + ") no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(" + __webpack_require__(58) + ") no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(" + __webpack_require__(58) + ") no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(" + __webpack_require__(58) + ") no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 10000;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n  cursor: default;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(59) + ") no-repeat;\n}\n.estimation-range li:hover {\n  background: url(" + __webpack_require__(60) + ") no-repeat;\n}\n.estimated {\n  background: url(" + __webpack_require__(60) + ") no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n#deadline-input {\n  cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, "/*horisontal category select*/\n.categories-choose-list {\n  border-bottom: 1px solid #5b7284;\n  display: flex;\n  display: -webkit-flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: flex-start;\n  justify-content: flex-start;\n  margin-bottom: 32px;\n}\nbody {\n  overflow-y: hidden;\n}\n.categories-choose-list li {\n  position: relative;\n  padding-left: 5%;\n  display: inline-block;\n  box-sizing: border-box;\n  margin-right: 3%;\n}\n.categories-choose-list input {\n  display: none;\n}\n.label1,\n.label2,\n.label3,\n.label4,\n.label5 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(38) + ") no-repeat 0 -37px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label1:hover,\n.text-label:hover ~ .label1 {\n  background: url(" + __webpack_require__(38) + ") no-repeat 0 -19px;\n}\n.label2:hover,\n.text-label:hover ~ .label2 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -18px -19px;\n}\n.label3:hover,\n.text-label:hover ~ .label3 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -36px -19px;\n}\n.label4:hover,\n.text-label:hover ~ .label4 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -54px -19px;\n}\n.label5:hover,\n.text-label:hover ~ .label5 {\n  background: url(" + __webpack_require__(38) + ") no-repeat -72px -19px;\n}\n.text-label {\n  color: #748b9e;\n  display: inline-block;\n  padding-bottom: 9px;\n  font: 16px Roboto, sans-serif;\n  line-height: 16px;\n}\n.categories-choose-list label {\n  cursor: pointer;\n}\ninput:checked ~ .text-label {\n  color: white;\n}\n.categories-choose-list li:hover .text-label {\n  color: white;\n}\ninput:checked ~ .label1 {\n  background-position: 0 0;\n}\ninput:checked ~ .label2 {\n  background-position: -18px 0;\n}\ninput:checked ~ .label3 {\n  background-position: -36px 0;\n}\ninput:checked ~ .label4 {\n  background-position: -54px 0;\n}\ninput:checked ~ .label5 {\n  background-position: -72px 0;\n}\n.categories-choose-list li:hover {\n  border-color: white;\n  color: white;\n}\n/*horisontal urgency select*/\n.label11,\n.label22,\n.label33,\n.label44 {\n  width: 19px;\n  height: 19px;\n  position: absolute;\n  left: 0;\n  background: url(" + __webpack_require__(63) + ") no-repeat -1px -38px;\n  bottom: 8px;\n  line-height: 19px;\n}\n.label11:hover,\n.text-label:hover ~ .label11 {\n  background: url(" + __webpack_require__(63) + ") no-repeat -1px -20px;\n}\n.label22:hover,\n.text-label:hover ~ .label22 {\n  background: url(" + __webpack_require__(63) + ") no-repeat -19px -20px;\n}\n.label33:hover,\n.text-label:hover ~ .label33 {\n  background: url(" + __webpack_require__(63) + ") no-repeat -37px -20px;\n}\n.label44:hover,\n.text-label:hover ~ .label44 {\n  background: url(" + __webpack_require__(63) + ") no-repeat -55px -20px;\n}\ninput:checked ~ .label11 {\n  background-position: -1px -1px;\n}\ninput:checked ~ .label22 {\n  background-position: -19px -1px;\n}\ninput:checked ~ .label33 {\n  background-position: -37px -1px;\n}\ninput:checked ~ .label44 {\n  background-position: -55px -1px;\n}\n.modal-interface {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  width: 100%;\n  padding: 0 2.8%;\n  box-sizing: border-box;\n  font-family: icomoon;\n}\n.modal-interface-confirm,\n.modal-interface-cancel {\n  float: right;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n.modal-interface-cancel {\n  margin-right: 3%;\n}\n.modal-interface button:hover {\n  color: white;\n  cursor: pointer;\n}\n.modal-wrap {\n  position: fixed;\n  z-index: 10000;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.modal-window {\n  font: 14px 'Roboto', sans-serif;\n  background-color: #2a3f50;\n  margin: 6.4% auto;\n  width: 500px;\n  padding: 41px 3%;\n  color: white;\n  box-sizing: border-box;\n  position: relative;\n}\n.modal-window-head {\n  font-size: 28px;\n  text-align: center;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.modal-input-title {\n  display: block;\n  font: 14px 'Roboto', sans-serif;\n  margin-bottom: 8px;\n  margin-top: 9px;\n  cursor: default;\n}\n.modal-input-field {\n  color: #748b9e;\n  border-bottom: 1px solid #425869;\n  font: 16px 'Roboto', sans-serif;\n  padding-bottom: 4px;\n  width: 100%;\n  margin-bottom: 25px;\n}\n.modal-input-field:focus {\n  color: white;\n}\n.estimation-range {\n  width: 50%;\n  display: block;\n  margin-bottom: 34px;\n}\n.estimation-range li {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(64) + ") no-repeat;\n}\n.estimation-range li:hover {\n  background: url(" + __webpack_require__(65) + ") no-repeat;\n}\n.estimated {\n  background: url(" + __webpack_require__(65) + ") no-repeat !important;\n}\n.modal-remove-inner-wrapper {\n  height: 480px;\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  -webkit-flex-wrap: wrap;\n  align-content: flex-start;\n  padding-top: 30%;\n  box-sizing: border-box;\n  position: relative;\n}\n.remove-submit-msg {\n  font: 36px Roboto, sans-serif;\n  color: #8da5b8;\n  width: 90%;\n  margin: 0 auto;\n  text-align: center;\n  margin-bottom: 44%;\n}\n.button-default {\n  color: white;\n  width: 38%;\n  padding: 12px 0;\n}\n.button-holder-default {\n  width: 73%;\n  display: flex;\n  display: -webkit-flex;\n  margin: 0 auto;\n  justify-content: space-around;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-around;\n}\n.modal-interface-trash {\n  float: left;\n  font-family: icomoon;\n  font-size: 20px;\n  color: #88a0b3;\n}\n#deadline-input {\n  cursor: pointer;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 58 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/urgency-sprite.png?sourceMap";
 
 /***/ },
-/* 59 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato.svg?sourceMap";
 
 /***/ },
-/* 60 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato_fill.svg?sourceMap";
 
 /***/ },
-/* 61 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2503,28 +2588,28 @@ webpackJsonp([1],[
 	exports.default = Model;
 
 /***/ },
-/* 62 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(63);
+	var _template = __webpack_require__(68);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(64);
+	var _controller = __webpack_require__(69);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(65);
+	var _view = __webpack_require__(70);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _style = __webpack_require__(57);
+	var _style = __webpack_require__(62);
 
 	var _style2 = _interopRequireDefault(_style);
 
-	var _Model = __webpack_require__(61);
+	var _Model = __webpack_require__(66);
 
 	var _Model2 = _interopRequireDefault(_Model);
 
@@ -2560,7 +2645,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 63 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -2574,7 +2659,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 64 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2622,7 +2707,8 @@ webpackJsonp([1],[
 	                            if (validateResults[i].length > 0) {
 	                                app.EventBus.publish('notify', {
 	                                    msg: validateResults[i],
-	                                    type: 'fail'
+	                                    type: 'fail',
+	                                    singleton: true
 	                                });
 	                            }
 	                        }
@@ -2649,7 +2735,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 65 */
+/* 70 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2779,18 +2865,18 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 66 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(67);
+	var _template = __webpack_require__(72);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(48);
+	var _controller = __webpack_require__(53);
 
-	var _filterController = __webpack_require__(68);
+	var _filterController = __webpack_require__(73);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2810,7 +2896,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 67 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -2824,7 +2910,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 68 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2879,22 +2965,22 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 69 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(70);
+	var _template = __webpack_require__(75);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _Controller = __webpack_require__(71);
+	var _Controller = __webpack_require__(76);
 
 	var _Controller2 = _interopRequireDefault(_Controller);
 
-	var _Model = __webpack_require__(52);
+	var _Model = __webpack_require__(57);
 
-	var _View = __webpack_require__(72);
+	var _View = __webpack_require__(77);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2932,7 +3018,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 70 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -2942,7 +3028,7 @@ webpackJsonp([1],[
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (data, filterStruct, structure) {
-	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    font-family: icomoon;\n    font-size: 11px;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n.drop-switch span:hover,.drop-switch:hover{\n    color: white;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n    font-family: 'PTSans', sans-serif;\n    margin-left: 4px;\n}\n.date-month {\n    line-height: 34px;\n    height: 50%;\n    font-family: 'HelveticaNeue', sans-serif;\n    margin-left: 3px;\n}\n\n</style><div class=\"sorted-lists-wrapper\"><button linked_block=\"accord1\" class=\"drop-switch accordeon-head\"><span>Global list</span></button><ul id=\"accord1\" class=\"global-list\">");
+	buf.push("<style>.task {\n    height: 87px;\n    width: 100%;\n    background-color: white;\n    line-height: 87px;\n    display: flex;\n    display: -webkit-flex;\n    justify-content: flex-start;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n    margin-bottom: 0.6%;\n    position: relative;\n    box-shadow: 6px 8px 8px 1px rgba(22, 26, 29, 0.3);\n}\n\n.task-buttons-container {\n    position: absolute;\n    right: 34px;\n    display: flex;\n    display: -webkit-flex;\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    height: 100%;\n    top: 0;\n    font-size: 19px;\n    padding: 11px 0;\n    box-sizing: border-box;\n}\n\n.edit-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n}\n\n.drag-task {\n    color: #cacaca;\n    font-family: icomoon;\n    cursor: pointer;\n    width: 100%;\n    display: none;\n}\n\n.sorted-list .drag-task {\n    display: inline-block;\n}\n\n.edit-task:hover {\n    color: #88a3b5;\n}\n\n.drag-task:hover {\n    color: #88a3b5;\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n}\n\n.sorted-list {\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.sorted-lists-wrapper {\n    max-width: 1366px;\n    margin: 0 auto;\n    width: 100%;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n}\n\n.global-list {\n    font-family: icomoon;\n    position: relative;\n    font-size: 20px;\n    color: #8da5b8;\n    clear: both;\n    padding: 0 6.8%;\n}\n\n.drop-switch {\n    color: #8da5b8;\n    display: inline-block;\n    padding-left: 6.8%;\n    cursor: pointer\n}\n\n.drop-switch span {\n    display: inline-block;\n    vertical-align: text-bottom;\n    font-size: 20px;\n    margin-right: 8px;\n    font-weight: bold;\n    font-family: 'PTSans', sans-serif;\n}\n\n.drop-switch .arrow {\n    font-family: icomoon;\n    font-size: 11px;\n}\n\n.drop-switch span:hover, .drop-switch .arrow:hover {\n    color: white;\n}\n\n.list-header {\n    padding-left: 2%;\n    font-size: 18px;\n    margin-bottom: 1%;\n    margin-top: 2%;\n    position: relative;\n    font-family: 'Roboto', sans-serif;\n    font-weight: bold;\n}\n\n.list-header-category-mark {\n    width: 19px;\n    height: 19px;\n    position: absolute;\n    left: -4px;\n    background: url(./Global/img/ico-sprite.png);\n    z-index: 9999;\n}\n\n.date-day {\n    height: 50%;\n    line-height: 70px;\n    font-size: 25px;\n    font-family: 'PTSans', sans-serif;\n    margin-left: 4px;\n}\n\n.date-month {\n    line-height: 34px;\n    height: 50%;\n    font-family: 'HelveticaNeue', sans-serif;\n    margin-left: 3px;\n}\n</style><div class=\"sorted-lists-wrapper\"><button linked_block=\"accord1\" class=\"drop-switch accordeon-head\"><span>Global list</span><span class=\"arrow\"></span></button><ul id=\"accord1\" class=\"global-list\">");
 	for(var type in structure)
 	{
 	buf.push("<li><ul" + (jade.cls(['sorted-list',type], [null,true])) + "><li class=\"list-header\"><span class=\"list-header-category-mark\"></span>" + (jade.escape((jade_interp = type.toUpperCase()) == null ? '' : jade_interp)) + "</li>");
@@ -2959,7 +3045,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 71 */
+/* 76 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3009,6 +3095,7 @@ webpackJsonp([1],[
 	            el.addEventListener('click', this.listeners.editTask);
 	            el.addEventListener('click', this.listeners.trashDrop);
 	            el.addEventListener('click', this.listeners.moveToDaily);
+	            el.addEventListener('click', this.listeners.showGlobalList);
 	            app.EventBusLocal.subscribe('filter-tasks', function (type) {
 	                console.log('filter ' + type);
 	                console.log(this);
@@ -3042,7 +3129,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 72 */
+/* 77 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3070,30 +3157,43 @@ webpackJsonp([1],[
 	                }()
 	            });
 	        }
+	    },
+	    showGlobalList: function showGlobalList(e) {
+	        if (e.target.parentNode.classList.contains('drop-switch')) {
+	            var isActive = e.target.classList.contains('tabbed');
+	            var target = document.getElementsByClassName('arrow')[0];
+	            console.log('click');
+	            if (isActive) {
+	                target.innerHTML = '&#xe906;';
+	            } else {
+	                target.innerHTML = '&#xe907;';
+	            }
+	            e.target.classList.toggle('tabbed');
+	        }
 	    }
 	};
 
 /***/ },
-/* 73 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _controller = __webpack_require__(74);
+	var _controller = __webpack_require__(79);
 
 	var _controller2 = _interopRequireDefault(_controller);
 
-	var _view = __webpack_require__(75);
+	var _view = __webpack_require__(80);
 
 	var _view2 = _interopRequireDefault(_view);
 
-	var _model = __webpack_require__(76);
+	var _model = __webpack_require__(81);
 
-	var _template = __webpack_require__(77);
+	var _template = __webpack_require__(82);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _style = __webpack_require__(78);
+	var _style = __webpack_require__(83);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -3117,7 +3217,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 74 */
+/* 79 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3201,7 +3301,7 @@ webpackJsonp([1],[
 	exports.default = Controller;
 
 /***/ },
-/* 75 */
+/* 80 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3330,7 +3430,7 @@ webpackJsonp([1],[
 	exports.default = View;
 
 /***/ },
-/* 76 */
+/* 81 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3509,7 +3609,7 @@ webpackJsonp([1],[
 	}(TimerModel);
 
 /***/ },
-/* 77 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -3556,38 +3656,40 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 78 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(34)();
+	exports = module.exports = __webpack_require__(21)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n  padding-bottom: 2.2%;\n  padding-top: 91px;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n  letter-spacing: 1px;\n}\n.sub-title {\n  font: 18px \"Roboto\", sans-serif;\n  text-align: center;\n  width: 100%;\n  color: #8198ab;\n  margin-top: 21px;\n  position: relative;\n}\n/*timer*/\n.main-wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n}\n.phases {\n  /* padding: 0 6.8%; */\n  box-sizing: border-box;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  position: relative;\n}\n.phase {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(59) + ") no-repeat;\n  margin: 0 5px;\n}\n.phase-resolved {\n  background: url(" + __webpack_require__(60) + ") no-repeat;\n}\n.phase-failed {\n  background: url(" + __webpack_require__(79) + ") no-repeat;\n}\n.ico-text-button-nocontainer {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 10px;\n  font-size: 18px;\n  line-height: 24px;\n}\n.phase-add-active .phase-add {\n  display: inline-block;\n}\n.phase-add {\n  font-family: icomoon;\n  position: absolute;\n  right: -10px;\n  color: #8ca4b7;\n  line-height: 25px;\n  cursor: pointer;\n  display: none;\n}\n.phase-add:hover {\n  color: white;\n}\n.graph-container {\n  padding-top: 32px;\n}\n.back {\n  font-family: icomoon;\n  position: absolute;\n  left: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.forward {\n  font-family: icomoon;\n  position: absolute;\n  right: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.move-on .back,\n.move-on .forward {\n  display: inline-block;\n}\n/*graph*/\n.timer-outer-circle {\n  height: 300px;\n  width: 300px;\n  margin: 0 auto;\n  background-color: #2a3f50;\n  border: 8px solid #2a3f50;\n  border-radius: 50%;\n  display: flex;\n  position: relative;\n  animation: init 1.5s linear;\n  margin-bottom: 39px;\n  box-shadow: 0 5px 83px 17px #152b3b;\n}\n.timer-inner-circle {\n  height: 170px;\n  width: 170px;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  color: white;\n  z-index: 99999;\n}\n.timer-time {\n  font-size: 100px;\n  display: inline-block;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  position: absolute;\n  text-align: center;\n  line-height: 125px;\n  cursor: default;\n}\n.time-wrapper {\n  width: 250px;\n  height: 250px;\n  position: relative;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n}\n.circle {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  background: #8da5b8;\n  transform-origin: 100% 50%;\n}\n.rotator {\n  border-radius: 100% 0 0 100% / 50% 0 0 50%;\n  z-index: 200;\n  animation: rota 10s linear;\n  animation-play-state: paused;\n  border-right: none;\n  left: 0;\n  top: 0;\n}\n.filler {\n  border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n  z-index: 100;\n  border-left: none;\n  animation: fill 10s steps(1, end);\n  animation-play-state: paused;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n}\n.mask {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  z-index: 300;\n  opacity: 1;\n  background: inherit;\n  animation: mask 10s steps(1, end);\n  animation-play-state: paused;\n  border-radius: 100% 0 0 100%;\n}\n.category {\n  background-color: transparent !important;\n}\n/*specs*/\n.start .inner-1 {\n  line-height: 149px;\n  font-size: 30px;\n  position: absolute;\n  bottom: 13px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.work .inner-2 {\n  position: absolute;\n  bottom: 26px;\n  line-height: 24px;\n  font-size: 24px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.break .inner-1 {\n  position: absolute;\n  top: 6px;\n  line-height: 24px;\n  font-size: 20px;\n  width: 100%;\n  font-family: \"Helvetica\", sans-serif;\n}\n.break .inner-2 {\n  position: absolute;\n  bottom: 20px;\n  line-height: 27px;\n  font-size: 24px;\n  width: 100%;\n}\n.break-timer-time {\n  line-height: 120px;\n}\n.break-over .inner-1 {\n  position: absolute;\n  bottom: 26px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n}\n.task-over .inner-1 {\n  position: absolute;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n  bottom: 8px;\n}\n.break-over .mask,\n.task-over .mask {\n  opacity: 0;\n  animation: none;\n}\n.break-over .filler,\n.task-over .filler {\n  opacity: 1;\n  animation: none;\n}\n/*anims*/\n@keyframes rota {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes fill {\n  0% {\n    opacity: 0;\n  }\n  50%,\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes mask {\n  0% {\n    opacity: 1;\n  }\n  50%,\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes init {\n  0% {\n    transform: scale(0, 0);\n  }\n  50% {\n    transform: scale(0, 0);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n", ""]);
+	exports.push([module.id, ".wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n  padding-bottom: 2.2%;\n  padding-top: 91px;\n}\n.main-head-title {\n  clear: both;\n  font: 28px \"Roboto\", sans-serif;\n  font-weight: bold;\n  text-align: center;\n  width: 100%;\n  color: white;\n  letter-spacing: 1px;\n}\n.sub-title {\n  font: 18px \"Roboto\", sans-serif;\n  text-align: center;\n  width: 100%;\n  color: #8198ab;\n  margin-top: 21px;\n  position: relative;\n}\n/*timer*/\n.main-wrapper {\n  max-width: 1366px;\n  margin: 0 auto;\n}\n.phases {\n  /* padding: 0 6.8%; */\n  box-sizing: border-box;\n  margin: 0 auto;\n  display: flex;\n  justify-content: center;\n  position: relative;\n}\n.phase {\n  width: 28px;\n  height: 23px;\n  display: inline-block;\n  background: url(" + __webpack_require__(64) + ") no-repeat;\n  margin: 0 5px;\n}\n.phase-resolved {\n  background: url(" + __webpack_require__(65) + ") no-repeat;\n}\n.phase-failed {\n  background: url(" + __webpack_require__(84) + ") no-repeat;\n}\n.ico-text-button-nocontainer {\n  font-family: icomoon;\n  cursor: pointer;\n  margin-left: 10px;\n  font-size: 18px;\n  line-height: 24px;\n}\n.phase-add-active .phase-add {\n  display: inline-block;\n}\n.phase-add {\n  font-family: icomoon;\n  position: absolute;\n  right: -10px;\n  color: #8ca4b7;\n  line-height: 25px;\n  cursor: pointer;\n  display: none;\n}\n.phase-add:hover {\n  color: white;\n}\n.graph-container {\n  padding-top: 32px;\n}\n.back {\n  font-family: icomoon;\n  position: absolute;\n  left: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.forward {\n  font-family: icomoon;\n  position: absolute;\n  right: 27px;\n  top: 50%;\n  bottom: 50%;\n  font-size: 41px;\n  cursor: pointer;\n  display: none;\n}\n.move-on .back,\n.move-on .forward {\n  display: inline-block;\n}\n/*graph*/\n.timer-outer-circle {\n  height: 300px;\n  width: 300px;\n  margin: 0 auto;\n  background-color: #2a3f50;\n  border: 8px solid #2a3f50;\n  border-radius: 50%;\n  display: flex;\n  position: relative;\n  animation: init 1.5s linear;\n  margin-bottom: 39px;\n  box-shadow: 0 5px 83px 17px #152b3b;\n}\n.timer-inner-circle {\n  height: 170px;\n  width: 170px;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  color: white;\n  z-index: 99999;\n}\n.timer-time {\n  font-size: 100px;\n  display: inline-block;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  position: absolute;\n  text-align: center;\n  line-height: 125px;\n  cursor: default;\n}\n.time-wrapper {\n  width: 250px;\n  height: 250px;\n  position: relative;\n  background-color: #2a3f50;\n  border-radius: 50%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n}\n.circle {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  background: #8da5b8;\n  transform-origin: 100% 50%;\n}\n.rotator {\n  border-radius: 100% 0 0 100% / 50% 0 0 50%;\n  z-index: 200;\n  animation: rota 10s linear;\n  animation-play-state: paused;\n  border-right: none;\n  left: 0;\n  top: 0;\n}\n.filler {\n  border-radius: 0 100% 100% 0 / 0 50% 50% 0;\n  z-index: 100;\n  border-left: none;\n  animation: fill 10s steps(1, end);\n  animation-play-state: paused;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n}\n.mask {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  z-index: 300;\n  opacity: 1;\n  background: inherit;\n  animation: mask 10s steps(1, end);\n  animation-play-state: paused;\n  border-radius: 100% 0 0 100%;\n}\n.category {\n  background-color: transparent !important;\n}\n/*specs*/\n.start .inner-1 {\n  line-height: 149px;\n  font-size: 30px;\n  position: absolute;\n  bottom: 13px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.work .inner-2 {\n  position: absolute;\n  bottom: 26px;\n  line-height: 24px;\n  font-size: 24px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n}\n.break .inner-1 {\n  position: absolute;\n  top: 6px;\n  line-height: 24px;\n  font-size: 20px;\n  width: 100%;\n  font-family: \"Helvetica\", sans-serif;\n}\n.break .inner-2 {\n  position: absolute;\n  bottom: 20px;\n  line-height: 27px;\n  font-size: 24px;\n  width: 100%;\n}\n.break-timer-time {\n  line-height: 120px;\n}\n.break-over .inner-1 {\n  position: absolute;\n  bottom: 26px;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n}\n.task-over .inner-1 {\n  position: absolute;\n  width: 100%;\n  font-family: \"HelveticaNeue\", sans-serif;\n  line-height: 54px;\n  font-size: 30px;\n  bottom: 8px;\n}\n.break-over .mask,\n.task-over .mask {\n  opacity: 0;\n  animation: none;\n}\n.break-over .filler,\n.task-over .filler {\n  opacity: 1;\n  animation: none;\n}\n/*anims*/\n@keyframes rota {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes fill {\n  0% {\n    opacity: 0;\n  }\n  50%,\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes mask {\n  0% {\n    opacity: 1;\n  }\n  50%,\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes init {\n  0% {\n    transform: scale(0, 0);\n  }\n  50% {\n    transform: scale(0, 0);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 79 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./Global/img/tomato-failed.svg?sourceMap";
 
 /***/ },
-/* 80 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _template = __webpack_require__(81);
+	var _template = __webpack_require__(86);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	var _controller = __webpack_require__(82);
+	var _controller = __webpack_require__(87);
 
 	var _controller2 = _interopRequireDefault(_controller);
+
+	var _model = __webpack_require__(88);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3602,16 +3704,28 @@ webpackJsonp([1],[
 	 * @instance
 	 */
 	app.Renderer.addNotification = function (opts) {
-	  var el = document.createElement('li');
-	  el.classList.add(opts.type + '-pomodora-type');
-	  el.innerHTML = (0, _template2.default)(opts);
-	  var controller = new _controller2.default(el);
-	  controller.init();
-	  document.getElementById('notification-body').insertBefore(el, document.getElementById('notification-body').firstElementChild);
+	    var el = document.createElement('li');
+	    el.classList.add(opts.type + '-pomodora-type');
+	    el.innerHTML = (0, _template2.default)(opts);
+	    var controller = new _controller2.default(new _model.Model(el));
+	    controller.init();
+	    document.getElementById('notification-body').insertBefore(el, document.getElementById('notification-body').firstElementChild);
+	};
+
+	app.Renderer.addSingletonNotification = function (opts) {
+	    var name = opts.msg[0];
+	    if (_model.SingletonModel.isSingle(name)) {
+	        var el = document.createElement('li');
+	        el.classList.add(opts.type + '-pomodora-type');
+	        el.innerHTML = (0, _template2.default)(opts);
+	        var controller = new _controller2.default(new _model.SingletonModel(el, name));
+	        controller.init();
+	        document.getElementById('notification-body').insertBefore(el, document.getElementById('notification-body').firstElementChild);
+	    }
 	};
 
 /***/ },
-/* 81 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(18);
@@ -3625,7 +3739,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 82 */
+/* 87 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3643,10 +3757,10 @@ webpackJsonp([1],[
 	 * @memberOf Notifications
 	 */
 	var Controller = function () {
-	    function Controller(el) {
+	    function Controller(model) {
 	        _classCallCheck(this, Controller);
 
-	        this.el = el;
+	        this.model = model;
 	    }
 
 	    _createClass(Controller, [{
@@ -3654,14 +3768,21 @@ webpackJsonp([1],[
 	        value: function init() {
 	            var _this = this;
 
+	            var el = this.model.el;
 	            setTimeout(function () {
-	                if (_this.el && _this.el.parentNode) {
-	                    _this.el.parentNode.removeChild(_this.el);
+	                if (el && el.parentNode) {
+	                    if (_this.model.clearSelf) {
+	                        _this.model.clearSelf();
+	                    }
+	                    el.parentNode.removeChild(el);
 	                }
-	            }, 5000);
-	            this.el.addEventListener('click', function (e) {
+	            }, 10000);
+	            el.addEventListener('click', function (e) {
 	                if (e.target.classList.contains('notify-dismiss')) {
-	                    _this.el.parentNode.removeChild(_this.el);
+	                    if (_this.model.clearSelf) {
+	                        _this.model.clearSelf();
+	                    }
+	                    el.parentNode.removeChild(el);
 	                }
 	            });
 	        }
@@ -3671,6 +3792,80 @@ webpackJsonp([1],[
 	}();
 
 	exports.default = Controller;
+
+/***/ },
+/* 88 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	function Model(el) {
+	    this.el = el;
+	}
+
+	function SingletonModel(el, name) {
+	    Model.call(this, el);
+	    this.name = name;
+	}
+
+	SingletonModel.names = [];
+	SingletonModel.isSingle = function (name) {
+	    if (SingletonModel.names.indexOf(name) === -1) {
+	        SingletonModel.names.push(name);
+	        return true;
+	    } else {
+	        return false;
+	    }
+	};
+
+	SingletonModel.prototype = Object.create(Model.prototype);
+	SingletonModel.prototype.constructor = SingletonModel;
+	SingletonModel.prototype.clearSelf = function () {
+	    var name = this.name;
+	    var Model = this.constructor;
+	    Model.names.splice(Model.names.indexOf(name), 1);
+	};
+
+	exports.Model = Model;
+	exports.SingletonModel = SingletonModel;
+
+/***/ },
+/* 89 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _template = __webpack_require__(90);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	app.Renderer.waitOverlay = function () {
+	    var el = document.createElement('div');
+	    el.innerHTML = (0, _template2.default)();
+	    document.body.appendChild(el);
+	    setTimeout(function () {
+	        document.body.removeChild(el);
+	    }, 2000);
+	};
+
+/***/ },
+/* 90 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(18);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+
+	buf.push("<div class=\"spinner-modal-wrap\"><div class=\"loader\"></div></div>");;return buf.join("");
+	}
 
 /***/ }
 ]);
