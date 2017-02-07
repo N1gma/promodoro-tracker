@@ -62,6 +62,6 @@
     "prod": "webpack --config webpack.config.prod.js && jsdoc -r -c conf.json && karma start karma.conf.js"
   },
   "keywords": [],
-  "author": "Oleksandr_Chornobai@epam.com",
+  "author": "Oleksandr_Chornobai",
   "license": "ISC"
 }

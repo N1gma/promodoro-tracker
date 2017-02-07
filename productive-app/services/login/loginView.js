@@ -13,6 +13,8 @@ LoginView.prototype.auth = function (e) {
     var context = this;
     var val1 = document.getElementById('name_input').value;
     var val2 = document.getElementById('pw_input').value;
+    /*var val1 = 'Oleksandr_Chornobai@epam.com';
+    var val2 = 'eE418002918';*/
     firebase.auth().signInWithEmailAndPassword(val1, val2)
         .catch(function (error) {
             var msgs = document.getElementsByClassName('invalid_msg');
