@@ -6,6 +6,7 @@ class TimerModel  {
         this.title = app.User.dataSnapShot[this.key].title;
         this.category = app.User.dataSnapShot[this.key].category;
     }
+
     getNewModel(type){
         var types = {
             'work':  new WorkModel(this.elem),
@@ -18,6 +19,17 @@ class TimerModel  {
     saveCycle(cycle) {
         var cycleObj = app.Renderer.helpers.arrayToObject(cycle);
         app.User.saveData(app.User.currentLogin, '/tasks/'+ this.key+'/cycle', cycleObj);
+    }
+    saveEstimation(estimation){
+        app.User.saveData(app.User.currentLogin, '/tasks/' + this.key, {
+            'estimation': 'estimate-' + estimation
+        });
+    }
+    cycleIsntEmpty(cycle) {
+        return cycle.indexOf('work') !== -1
+    }
+    endCycle(cycle){
+
     }
 }
 

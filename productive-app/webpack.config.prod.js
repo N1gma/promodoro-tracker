@@ -4,19 +4,19 @@ var webpack = require("webpack");
 
 module.exports = {
     entry: {
-        vendors: ['jquery','./services/plugins/jquery-ui.min.js','./services/vendors.entry.js','./services/firebase.js'],
+        vendors: ['jquery','./services/jquery-ui.min.js','./services/vendors.entry.js','./services/firebase.js'],
         commonBundle: ['./Global/js/main/GlobalView.js', './Global/js/main/helpers.js','./Global/js/main/renderBus.js',
-            './User/user.js','./Global/js/main/eBusLocalTasks.js','./Global/js/main/eBusLocalTimer.js','./Global/js/main/Routes.js',
-            './services/plugins/index.js','./services/notifications.js','./services/pingservice.js',
+            './Global/js/main/user.js','./Global/js/main/eBusLocalTasks.js','./Global/js/main/eBusLocalTimer.js','./Global/js/main/Routes.js',
+            './services/plugins.js','./services/notifications.js','./services/pingservice.js',
             './services/login/loginControler.js','./services/validator.js'],
-        componentsBundle: ['./components/login/index.js', './components/header/index.js',
+        componentsBundle: ['./components/login/index.js', './components/header/header-global/index.js',
             './components/title/index.js', './components/settings/settings_pomodoros/index.js',
-            './components/settings/settings_categories/index.js', './components/reports/module/index.js',
-            './components/header/header-2/index.js', './components/title/titleTaskList/index.js',
+            './components/settings/settings_categories/index.js', './components/reports/index.js',
+            './components/header/header-task-list/index.js', './components/title/titleTaskList/index.js',
             './components/task-list/daily_list/index.js', './components/modals/addtask/index.js',
             './components/modals/editTask/index.js', './components/title/titleTaskListGlobal/index.js',
             './components/task-list/global_list/index.js', './components/timer/index.js',
-            './components/notifications/index.js'],
+            './components/notifications/index.js','./components/modals/spinner/index.js'],
         style:'./Global/style/main/stylesEntry.js'
     },
     output: {

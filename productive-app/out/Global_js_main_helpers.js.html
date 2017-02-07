@@ -34,7 +34,7 @@ app.Renderer.helpers = {
     /**
      * Transforms Minutes in Minutes/Hours+'h' + Minutes%Hours+'m' (130 -> 2h 10m)
      *
-     * memberOf app.Renderer
+     * memberOf app.Renderer.helpers
      * @instance
      * returns {String}
      * @param {Number} time
@@ -66,104 +66,84 @@ app.Renderer.helpers = {
         }
         return arr;
     },
-    /*validator(targets){
-        let results = [];
-        let iteration = 0;
-        let valid = true;
-
-        let defaultFns = {
-            success: function (node) {
-                if (node.removeClass) {
-                    node.removeClass('error-field')
-                } else {
-                    node.classList.remove('error-field');
-                }
-            },
-            error: function (node) {
-                if (node.addClass) {
-                    node.addClass('error-field')
-                } else {
-                    node.classList.add('error-field');
-                }
+    /**
+     * extract CSS text from '!!css-loader!less-loader!./style.less' loader processing result object,
+     * returns style node with this css
+     *
+     * memberOf app.Renderer.helpers
+     * @instance
+     * returns {HTMLElement}
+     * @param {String} css
+     */
+    getCss(css){
+        var elCss = document.createElement('style');
+        elCss.innerHTML = css['0'][1];
+        return elCss;
+    },
+    throttle(fn, threshhold, scope){
+        threshhold || (threshhold = 250);
+        var last, deferTimer;
+        return function () {
+            var context = scope || this;
+            var now = +new Date,
+                args = arguments;
+            if (last &amp;&amp; now &lt; last + threshhold) {
+                clearTimeout(deferTimer);
+                deferTimer = setTimeout(function () {
+                    last = now;
+                    fn.apply(context, args);
+                }, threshhold);
+            } else {
+                last = now;
+                fn.apply(context, args);
             }
         };
-        let validate = {
-            empty: function (target) {
-                if (target.val.trim().length === 0) {
-                    results[iteration].push(" can't be empty");
-                    valid = false;
-                }
-            },
-            maxLength: function (target, params) {
-                if (target.val.length > params.len) {
-                    results[iteration].push(" maximum of " + params.len + ' characters');
-                    valid = false;
-                }
-            },
-
-            checked: function (target) {
-                let switcher = false;
-                if (Array.isArray(target.node)) {
-                    for (let i = 0; i &lt; target.node.length; i++) {
-                        if (target.node[i].checked) {
-                            switcher = true;
-                        }
-                    }
-                } else {
-                    if (target.node.checked) {
-                        switcher = true;
-                    }
-                }
-                if (!switcher){
-                    results[iteration].push("checkboxes must be checked");
-                    valid = false;
-                }
-            },
-            containClass: function (target, params) {
-                let switcher = false;
-                if (Array.isArray(target.node)) {
-                    for (let i = 0; i &lt; target.node.length; i++) {
-                        if(target.node[i].classList.contains(params.askingClass)) switcher=true;
-                    }
-                }else{
-                    if(target.node.classList.contains(params.askingClass)) switcher=true;
-                }
-                if (!switcher){
-                    results[iteration].push("checkboxes must be checked");
-                    valid = false;
-                }
+    },
+    ifSolvedThen(requiredActions, callback){
+        app.EventBusLocal.resolvedCount = 0;
+        var interval = setInterval(function(){
+            var currentActions = app.EventBusLocal.resolvedCount;
+            if(requiredActions &lt;= currentActions || !navigator.onLine){
+                console.log(requiredActions);
+                console.log(currentActions);
+                app.EventBusLocal.resolvedCount = 0;
+                callback();
+                clearInterval(interval);
             }
-        };
-
-        for (let i = 0; i &lt; targets.length; i++) {
-            results.push([]);
-            let target = {};
-            valid = true;
-            target.val = targets[i].target.value;
-            target.node = targets[i].target;
-            let options = targets[i].options;
-            let origin = targets[i].origin || target.node;
-            let success = targets[i].success || defaultFns.success;
-            let error = targets[i].error || defaultFns.error;
-            for (let i = 0; i &lt; options.length; i++) {
-                if (typeof options[i] === 'object') {
-                    validate[options[i].name](target, options[i].params);
-                } else {
-                    validate[options[i]](target);
-                }
+        },100);
+        //var result = true;
+        /*var selfCall = app.Renderer.helpers.ifSolvedThen;
+        for (var i = 0; i &lt; fns.length; i++) {
+            if(arguments[i].solved = false){
+                setTimeout(function(){
+                    selfCall(fns);
+                },250)
             }
-            console.log(results);
-            if(!targets[i].preventAction){
-                if (valid) {
-                    success(origin);
-                } else {
-                    error(origin);
-                }
-            }
-            iteration++;
         }
-        return results;
-    }*/
+        action();*/
+    },
+    isEmptyObj(obj){
+            // null and undefined are "empty"
+            if (obj == null) return true;
+
+            // Assume if it has a length property with a non-zero value
+            // that that property is correct.
+            if (obj.length > 0)    return false;
+            if (obj.length === 0)  return true;
+
+            // If it isn't an object at this point
+            // it is empty, but it can't be anything *but* empty
+            // Is it empty?  Depends on your application.
+            if (typeof obj !== "object") return true;
+
+            // Otherwise, does it have any properties of its own?
+            // Note that this doesn't handle
+            // toString and valueOf enumeration bugs in IE &lt; 9
+            for (var key in obj) {
+                if (hasOwnProperty.call(obj, key)) return false;
+            }
+            return true;
+    }
 };
 
 </code></pre>
@@ -176,13 +156,13 @@ app.Renderer.helpers = {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.view.html">view</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.view.html">view</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="LoginView.html">LoginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.View.html">View</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.View.html">View</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 08 2017 20:06:37 GMT+0200 (Финляндия (зима))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Feb 07 2017 18:58:25 GMT+0200 (FLE Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

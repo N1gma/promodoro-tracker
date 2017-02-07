@@ -71,10 +71,50 @@ app.Renderer.helpers = {
             }
         };
     },
-    isSolved(){
-        for (var i = 0; i < arguments.length; i++) {
-            arguments[i].solved = false;
+    ifSolvedThen(requiredActions, callback){
+        app.EventBusLocal.resolvedCount = 0;
+        var interval = setInterval(function(){
+            var currentActions = app.EventBusLocal.resolvedCount;
+            if(requiredActions <= currentActions || !navigator.onLine){
+                console.log(requiredActions);
+                console.log(currentActions);
+                app.EventBusLocal.resolvedCount = 0;
+                callback();
+                clearInterval(interval);
+            }
+        },100);
+        //var result = true;
+        /*var selfCall = app.Renderer.helpers.ifSolvedThen;
+        for (var i = 0; i < fns.length; i++) {
+            if(arguments[i].solved = false){
+                setTimeout(function(){
+                    selfCall(fns);
+                },250)
+            }
         }
+        action();*/
+    },
+    isEmptyObj(obj){
+            // null and undefined are "empty"
+            if (obj == null) return true;
+
+            // Assume if it has a length property with a non-zero value
+            // that that property is correct.
+            if (obj.length > 0)    return false;
+            if (obj.length === 0)  return true;
+
+            // If it isn't an object at this point
+            // it is empty, but it can't be anything *but* empty
+            // Is it empty?  Depends on your application.
+            if (typeof obj !== "object") return true;
+
+            // Otherwise, does it have any properties of its own?
+            // Note that this doesn't handle
+            // toString and valueOf enumeration bugs in IE < 9
+            for (var key in obj) {
+                if (hasOwnProperty.call(obj, key)) return false;
+            }
+            return true;
     }
 };
 

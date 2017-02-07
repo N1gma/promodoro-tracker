@@ -102,7 +102,7 @@ export default class Validator{
         this.conf = {
             target:{
                 val: target.target.value,
-                node: target.target,
+                node: target.target
             },
             options: target.options,
             success : target.success || context.defaultFns.success,

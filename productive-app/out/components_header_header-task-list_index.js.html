@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/task-list/daily_list/Controller.js</title>
+    <title>JSDoc: Source: components/header/header-task-list/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/task-list/daily_list/Controller.js</h1>
+    <h1 class="page-title">Source: components/header/header-task-list/index.js</h1>
 
     
 
@@ -26,63 +26,28 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class
- * @memberOf DailyList
+            <pre class="prettyprint source linenums"><code>import template from  './template.jade';
+import Controller from './controller';
+import View from './view';
+import css from '!!css-loader!less-loader!./style.less';
+
+/**
+ * @namespace HeaderDetailed
+ * @memberOf app.Renderer
  */
-class Controller {
-    constructor(model) {
-        //this.view = view;
-        this.model = model;
-        this.listeners = {
-            editTask: function (e) {
-                if (e.target.classList.contains('edit-task')) {
-                    app.Renderer.showModalEdit(e.target);
-                }
-            },
-            trashDrop: function (e) {
-                app.EventBusLocal.publish('trash-drop', {
-                    e: e,
-                    context: this
-                });
-            }.bind(this),
-            goToTimer:function (e) {
-                if (e.target.classList.contains('urgency')) {
-                    app.router.moveTo('timer', e.target.parentNode);
-                }
-            }
-        };
-    }
-
-    /**
-     * @param {function} callback
-     */
-    initController(callback) {
-        app.EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
-        this.model.patchList(callback);
-        //this.view.showList
-    }
-    /**
-     * @param {HTMLElement} el
-     */
-    setEventListeners(el) {
-        var context = this;
-        el.addEventListener('click', this.listeners.editTask);
-        el.addEventListener('click', this.listeners.trashDrop);
-        el.addEventListener('click', this.listeners.goToTimer);
-    }
-    /**
-     * @param {HTMLElement} el
-     */
-    removeEventListeners(el) {
-        var context = this;
-        for (var key in this.listeners) {
-            el.removeEventListener('click', this.listeners[key]);
-        }
-    }
-}
-
-export default Controller;
+/**
+ * Method which append task-list header to page
+ *
+ * @memberOf app.Renderer
+ */
+app.Renderer.renderHeaderDetailed = function(){
+    let el = document.createElement('div');
+    el.innerHTML = template();
+    document.getElementById('app-body').appendChild(el);
+    el.appendChild(app.Renderer.helpers.getCss(css));
+    let controller = new Controller(el, new View(el));
+    controller.init();
+};
 
 </code></pre>
         </article>

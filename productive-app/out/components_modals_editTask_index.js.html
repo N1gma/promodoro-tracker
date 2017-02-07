@@ -28,8 +28,8 @@
         <article>
             <pre class="prettyprint source linenums"><code>import template from './template.jade';
 import Controller from './controller';
-import {view} from './view';
-import css from '!!css-loader!less-loader!./../addtask/style/style.less';
+import View from './view';
+import css from '!!css-loader!less-loader!../style/style.less';
 import Model from './../Model';
 /**
  * @namespace ModalEditTask
@@ -44,22 +44,20 @@ import Model from './../Model';
 app.Renderer.showModalEdit = function (target) {
     var User = window.app.User;
     var el = document.createElement('div');
-    var elCss = document.createElement('style');
-    elCss.innerHTML = css['0'][1];
-    var controller = new Controller(el, view/*, new Model(el)*/);
+    var controller = new Controller(new View());
     controller.view.syncChanges(target, function (key) {
         el.innerHTML = template({
             data: User.dataSnapShot[key]
         });
         document.getElementById('app-body').appendChild(el);
-        el.appendChild(elCss);
+        el.appendChild(app.Renderer.helpers.getCss(css));
         controller.model = new Model(el);
+        controller.view.model = controller.model;
     });
     controller.init(target);
     $(".datepicker").datepicker({
         dateFormat: "MM dd, yy"
     });
-
 };</code></pre>
         </article>
     </section>
@@ -70,13 +68,13 @@ app.Renderer.showModalEdit = function (target) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.view.html">view</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.view.html">view</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="LoginView.html">LoginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.View.html">View</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.View.html">View</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 08 2017 20:06:37 GMT+0200 (Финляндия (зима))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Feb 07 2017 18:58:25 GMT+0200 (FLE Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

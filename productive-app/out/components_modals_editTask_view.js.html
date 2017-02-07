@@ -26,13 +26,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var User = window.app.User;
-export var view;
-/**
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
  * @namespace
  * @memberOf ModalEditTask
  */
-view = {
+class View {
+    constructor(model){
+        this.model = model;
+    }
     /**
      * sync estimation
      *
@@ -40,7 +42,8 @@ view = {
      * @param {HTMLElement|Node} target
      * @param {function} callback
      */
-    syncChanges: function (target, callback) {
+    syncChanges (target, callback) {
+        var User = app.User;
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
@@ -52,56 +55,55 @@ view = {
         for (var i = 0; i &lt; estimationRecount; i++) {
             document.getElementsByClassName('estimation-range')[0].children[i].classList.add('estimated');
         }
-    },
+    }
     /**
      * Close modal window
      *
      * @memberOf ModalEditTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      */
-    modalClose:function (e,el) {
+    modalClose (e) {
         e.preventDefault();
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * Edit task confirmation
      *
      * @memberOf ModalEditTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      * @param {HTMLElement|Node} target
      */
-    modalConfirmEdit:function (e,el,target) {
+    modalConfirmEdit (e,target) {
+        var User = app.User;
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var keyy = target.parentNode.getAttribute('key');
         User.setTaskData(User.currentLogin, '/tasks/' + keyy, target.parentNode);
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * Deleting task in edit process
      *
      * @memberOf ModalEditTask.view
      * @param {Event} e
-     * @param {HTMLElement} el
      * @param {HTMLElement|Node} target
      */
-    modalRemove:function (e,el,target) {
+    modalRemove (e,target) {
         e.preventDefault();
+        var User = app.User;
         while (target.parentNode.classList.contains('task') === false) {
             target = target.parentNode;
         }
         var keyy = target.parentNode.getAttribute('key');
         User.deleteTaskData(User.currentLogin, '/tasks/' + keyy);
-        document.getElementById('app-body').removeChild(el);
-    },
+        document.getElementById('app-body').removeChild(this.model.$el[0]);
+    }
     /**
      * @memberOf ModalEditTask.view
      * @param {Event} e
      */
-    estimationRangeReview:function (e) {
+    static estimationRangeReview (e) {
         if (e.target.tagName.toUpperCase() === 'LI') {
             var i,j;
             var parent = e.currentTarget;
@@ -115,7 +117,9 @@ view = {
             e.currentTarget.estimation = j+1;
         }
     }
-};
+}
+
+export default View;
 </code></pre>
         </article>
     </section>
@@ -126,13 +130,13 @@ view = {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.view.html">view</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.view.html">view</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="LoginView.html">LoginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.View.html">View</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.View.html">View</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 08 2017 20:06:37 GMT+0200 (Финляндия (зима))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Feb 07 2017 18:58:25 GMT+0200 (FLE Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

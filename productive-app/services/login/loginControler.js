@@ -27,7 +27,7 @@ LoginController.prototype = {
                 router.resetState().replaceState('login');
             }
             if (user) {
-                EventBus.publish('waitOverlay');
+                app.EventBus.publish('waitOverlay');
                 User.currentLogin = user.email.slice(0, user.email.search('@'));
                 var locate = location.pathname.slice(1);
                 for(var key in router.routes){
@@ -49,6 +49,7 @@ LoginController.prototype = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+    //app.EventBus.publish('waitOverlay');
     /**
      * @memberOf app
      * @type {LoginController}

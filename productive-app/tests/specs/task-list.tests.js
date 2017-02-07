@@ -1,4 +1,4 @@
-import {tasks as model}  from './../../components/task-list/daily_list/Model.js';
+import {tasks as model}  from './../../components/task-list/Model.js';
 import Controller  from './../../components/task-list/daily_list/Controller.js';
 
 var assert = require('assert');

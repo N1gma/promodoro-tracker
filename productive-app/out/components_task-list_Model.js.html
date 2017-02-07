@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/task-list/daily_list/Controller.js</title>
+    <title>JSDoc: Source: components/task-list/Model.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/task-list/daily_list/Controller.js</h1>
+    <h1 class="page-title">Source: components/task-list/Model.js</h1>
 
     
 
@@ -26,64 +26,106 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class
- * @memberOf DailyList
- */
-class Controller {
-    constructor(model) {
-        //this.view = view;
-        this.model = model;
-        this.listeners = {
-            editTask: function (e) {
-                if (e.target.classList.contains('edit-task')) {
-                    app.Renderer.showModalEdit(e.target);
-                }
-            },
-            trashDrop: function (e) {
-                app.EventBusLocal.publish('trash-drop', {
-                    e: e,
-                    context: this
-                });
-            }.bind(this),
-            goToTimer:function (e) {
-                if (e.target.classList.contains('urgency')) {
-                    app.router.moveTo('timer', e.target.parentNode);
-                }
-            }
-        };
+            <pre class="prettyprint source linenums"><code>class Model  {
+    constructor(){
+        this.data = {};
     }
-
     /**
+     * refresh task list data
+     *
+     * @memberOf DailyList.tasks
      * @param {function} callback
      */
-    initController(callback) {
-        app.EventBusLocal.publish('trash-refresh', document.getElementById('trashOn'));
-        this.model.patchList(callback);
-        //this.view.showList
+    patchList (callback) {
+        var self = this;
+        //self.patchList.resolved = false;
+        app.User.getData(app.User.currentLogin, 'tasks', function (value) {
+            if (!value || value === []) {
+                console.log('empty list');
+            } else {
+                self.data = value;
+            }
+            callback();
+        });
     }
     /**
-     * @param {HTMLElement} el
+     * check if task in trash
+     *
+     * @memberOf DailyList.tasks
+     * @param {string} key - task ID
+     * @returns {boolean}
      */
-    setEventListeners(el) {
-        var context = this;
-        el.addEventListener('click', this.listeners.editTask);
-        el.addEventListener('click', this.listeners.trashDrop);
-        el.addEventListener('click', this.listeners.goToTimer);
-    }
-    /**
-     * @param {HTMLElement} el
-     */
-    removeEventListeners(el) {
-        var context = this;
-        for (var key in this.listeners) {
-            el.removeEventListener('click', this.listeners[key]);
+    checkTrashBuffer (key) {
+        for (var i = 0; i &lt; app.User.trashData.length; i++) {
+            if (app.User.trashData[i] === key) {
+                return false;
+            }
         }
+        return true;
+    }
+    /**
+     * compare dates to render
+     *
+     * @memberOf DailyList.tasks
+     * @param {string} data
+     * @returns {Object}
+     */
+    getStruct (data) {
+        var structure = {};
+        for (var key in data) {
+                if (!this.compareDates(data[key].deadline)) {
+                    if (structure[data[key].category]) {
+                        structure[data[key].category].push(key);
+                    } else if (!structure[data[key].category]) {
+                        structure[data[key].category] = [];
+                        structure[data[key].category].push(key);
+                    }
+                }
+
+        }
+        return structure;
+    }
+    /**
+     * filters tasks to render
+     *
+     * @memberOf DailyList.tasks
+     * @param {string} data
+     * @param {string} type
+     * @returns {Object}
+     */
+    getFilterStruct (data, type) {
+        var structure = [];
+        for (var key in data) {
+                if (!this.compareDates(data[key].deadline)) {
+                    if (data[key].priority === type) {
+                        structure.push(key);
+                    }
+                }
+
+        }
+        return {
+            type: type,
+            list: structure
+        };
+    }
+    /**
+     * compare dates
+     *
+     * @memberOf DailyList.tasks
+     * @param {Object} date
+     * @returns {Boolean}
+     */
+    compareDates (date) {
+        var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var currentDate = new Date();
+        return (monthArray[parseInt(currentDate.getMonth(), 10)] === date.month &amp;&amp;
+        (parseInt(currentDate.getDate(), 10) === +date.day) &amp;&amp;
+        (parseInt(currentDate.getFullYear(), 10) === +date.year));
     }
 }
 
-export default Controller;
 
+export default Model;
 </code></pre>
         </article>
     </section>

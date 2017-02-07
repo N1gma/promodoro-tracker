@@ -9,7 +9,8 @@ main.main-wrapper
             li.phase
          -else if(data.cycle[i]==='resolved' || data.cycle[i]==='failed')
             li.phase(class='phase-' + data.cycle[i])
-       li.button#addPomodoro.ico-text-button.ico-text-button-nocontainer 
+       -if(data.estimation < 5)
+         li.button#addPomodoro.ico-text-button.ico-text-button-nocontainer 
     .graph-container(class=data.category)
         .timer-outer-circle.category
             .time-wrapper(class=data.type)

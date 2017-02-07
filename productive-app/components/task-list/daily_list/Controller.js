@@ -3,10 +3,9 @@
  * @memberOf DailyList
  */
 class Controller {
-    constructor(model, eBusLocal) {
+    constructor(model) {
         //this.view = view;
         this.model = model;
-        this.eBusLocal = eBusLocal;
         this.listeners = {
             editTask: function (e) {
                 if (e.target.classList.contains('edit-task')) {
@@ -14,7 +13,7 @@ class Controller {
                 }
             },
             trashDrop: function (e) {
-                this.eBusLocal.publish('trash-drop', {
+                app.EventBusLocal.publish('trash-drop', {
                     e: e,
                     context: this
                 });

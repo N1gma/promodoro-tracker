@@ -20,6 +20,7 @@ export default class View {
         document.getElementById('app-body').appendChild(this.model.elem);
         this.buttonsHolder = 'button-holder-centered';
         app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
+        $('#addPomodoro').tips('Add pomodoro');
     }
 
     newCycle() {
@@ -38,6 +39,27 @@ export default class View {
             timer.timeout = setInterval(context.timesOut.bind(context), 1000);
         }
     }
+
+    expandCycle(e) {
+        var self = this;
+        var cycle = this.cycle;
+        this.model.estimationBuffer = this.model.estimationBuffer || this.model.estimation++;
+        this.model.estimationBuffer++;
+        var estimation = this.model.estimationBuffer;
+        var cycleList = document.getElementsByClassName('phases')[0];
+        cycle.push('break');
+        cycle.push('break-over');
+        cycle.push('work');
+        this.model.saveCycle(cycle);
+        this.model.saveEstimation(estimation);
+        var el = document.createElement('li');
+        el.classList.add('phase');
+        cycleList.insertBefore(el, e.target);
+        if (estimation === 5) {
+            cycleList.removeChild(e.target);
+        }
+    }
+
     stateProgress(){
         this.resolvePomodora(this.model.status);
         if(this.cycleCheck()){
@@ -93,5 +115,6 @@ export default class View {
             data: this.model
         });
         this.model.elem.appendChild(this.css);
+        $('#addPomodoro').tips('Add pomodoro');
     }
 }

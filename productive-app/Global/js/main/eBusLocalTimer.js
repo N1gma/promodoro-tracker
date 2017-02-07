@@ -16,6 +16,7 @@ class CEventBusLocalTimer {
             this.topics[topic] = [];
         }
         this.topics[topic].push(listener);
+        return this;
     }
 
     /**

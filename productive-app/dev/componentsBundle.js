@@ -1921,6 +1921,8 @@ webpackJsonp([1],[
 
 	var _Model = __webpack_require__(57);
 
+	var _Model2 = _interopRequireDefault(_Model);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -1935,7 +1937,7 @@ webpackJsonp([1],[
 	 */
 	app.Renderer.renderReportsDaily = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_Model.tasks, app.EventBusLocal);
+	    var controller = new _Controller2.default(new _Model2.default(), app.EventBusLocal);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
@@ -1945,6 +1947,7 @@ webpackJsonp([1],[
 	        }
 	        controller.removeEventListeners(el);
 	        controller.setEventListeners(el);
+	        app.EventBusLocal.publish('actionResolved');
 	    });
 	    document.getElementById('app-body').appendChild(el);
 	};
@@ -1999,12 +2002,11 @@ webpackJsonp([1],[
 	 * @memberOf DailyList
 	 */
 	var Controller = function () {
-	    function Controller(model, eBusLocal) {
+	    function Controller(model) {
 	        _classCallCheck(this, Controller);
 
 	        //this.view = view;
 	        this.model = model;
-	        this.eBusLocal = eBusLocal;
 	        this.listeners = {
 	            editTask: function editTask(e) {
 	                if (e.target.classList.contains('edit-task')) {
@@ -2012,7 +2014,7 @@ webpackJsonp([1],[
 	                }
 	            },
 	            trashDrop: function (e) {
-	                this.eBusLocal.publish('trash-drop', {
+	                app.EventBusLocal.publish('trash-drop', {
 	                    e: e,
 	                    context: this
 	                });
@@ -2077,96 +2079,127 @@ webpackJsonp([1],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var tasks = exports.tasks = undefined;
-	exports.tasks = tasks = {
-	    data: {},
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Model = function () {
+	    function Model() {
+	        _classCallCheck(this, Model);
+
+	        this.data = {};
+	    }
 	    /**
 	     * refresh task list data
 	     *
 	     * @memberOf DailyList.tasks
 	     * @param {function} callback
 	     */
-	    patchList: function patchList(callback) {
-	        app.User.getData(app.User.currentLogin, 'tasks', function (value) {
-	            if (!value || value === []) {
-	                console.log('empty list');
-	            } else {
-	                tasks.data = value;
-	            }
-	            callback();
-	        });
-	    },
-	    /**
-	     * check if task in trash
-	     *
-	     * @memberOf DailyList.tasks
-	     * @param {string} key - task ID
-	     * @returns {boolean}
-	     */
-	    checkTrashBuffer: function checkTrashBuffer(key) {
-	        for (var i = 0; i < app.User.trashData.length; i++) {
-	            if (app.User.trashData[i] === key) {
-	                return false;
-	            }
+
+
+	    _createClass(Model, [{
+	        key: 'patchList',
+	        value: function patchList(callback) {
+	            var self = this;
+	            //self.patchList.resolved = false;
+	            app.User.getData(app.User.currentLogin, 'tasks', function (value) {
+	                if (!value || value === []) {
+	                    console.log('empty list');
+	                } else {
+	                    self.data = value;
+	                }
+	                callback();
+	            });
 	        }
-	        return true;
-	    },
-	    /**
-	     * compare dates to render
-	     *
-	     * @memberOf DailyList.tasks
-	     * @param {string} data
-	     * @returns {Object}
-	     */
-	    getStruct: function getStruct(data) {
-	        var structure = {};
-	        for (var key in data) {
-	            if (!this.compareDates(data[key].deadline)) {
-	                if (structure[data[key].category]) {
-	                    structure[data[key].category].push(key);
-	                } else if (!structure[data[key].category]) {
-	                    structure[data[key].category] = [];
-	                    structure[data[key].category].push(key);
+	        /**
+	         * check if task in trash
+	         *
+	         * @memberOf DailyList.tasks
+	         * @param {string} key - task ID
+	         * @returns {boolean}
+	         */
+
+	    }, {
+	        key: 'checkTrashBuffer',
+	        value: function checkTrashBuffer(key) {
+	            for (var i = 0; i < app.User.trashData.length; i++) {
+	                if (app.User.trashData[i] === key) {
+	                    return false;
 	                }
 	            }
+	            return true;
 	        }
-	        return structure;
-	    },
-	    /**
-	     * filters tasks to render
-	     *
-	     * @memberOf DailyList.tasks
-	     * @param {string} data
-	     * @param {string} type
-	     * @returns {Object}
-	     */
-	    getFilterStruct: function getFilterStruct(data, type) {
-	        var structure = [];
-	        for (var key in data) {
-	            if (!this.compareDates(data[key].deadline)) {
-	                if (data[key].priority === type) {
-	                    structure.push(key);
+	        /**
+	         * compare dates to render
+	         *
+	         * @memberOf DailyList.tasks
+	         * @param {string} data
+	         * @returns {Object}
+	         */
+
+	    }, {
+	        key: 'getStruct',
+	        value: function getStruct(data) {
+	            var structure = {};
+	            for (var key in data) {
+	                if (!this.compareDates(data[key].deadline)) {
+	                    if (structure[data[key].category]) {
+	                        structure[data[key].category].push(key);
+	                    } else if (!structure[data[key].category]) {
+	                        structure[data[key].category] = [];
+	                        structure[data[key].category].push(key);
+	                    }
 	                }
 	            }
+	            return structure;
 	        }
-	        return {
-	            type: type,
-	            list: structure
-	        };
-	    },
-	    /**
-	     * compare dates
-	     *
-	     * @memberOf DailyList.tasks
-	     * @param {Object} date
-	     * @returns {Boolean}
-	     */
-	    compareDates: function compareDates(date) {
-	        var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-	        var currentDate = new Date();
-	        return monthArray[parseInt(currentDate.getMonth(), 10)] === date.month && parseInt(currentDate.getDate(), 10) === +date.day && parseInt(currentDate.getFullYear(), 10) === +date.year;
-	    }
-	};
+	        /**
+	         * filters tasks to render
+	         *
+	         * @memberOf DailyList.tasks
+	         * @param {string} data
+	         * @param {string} type
+	         * @returns {Object}
+	         */
+
+	    }, {
+	        key: 'getFilterStruct',
+	        value: function getFilterStruct(data, type) {
+	            var structure = [];
+	            for (var key in data) {
+	                if (!this.compareDates(data[key].deadline)) {
+	                    if (data[key].priority === type) {
+	                        structure.push(key);
+	                    }
+	                }
+	            }
+	            return {
+	                type: type,
+	                list: structure
+	            };
+	        }
+	        /**
+	         * compare dates
+	         *
+	         * @memberOf DailyList.tasks
+	         * @param {Object} date
+	         * @returns {Boolean}
+	         */
+
+	    }, {
+	        key: 'compareDates',
+	        value: function compareDates(date) {
+	            var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	            var currentDate = new Date();
+	            return monthArray[parseInt(currentDate.getMonth(), 10)] === date.month && parseInt(currentDate.getDate(), 10) === +date.day && parseInt(currentDate.getFullYear(), 10) === +date.year;
+	        }
+	    }]);
+
+	    return Model;
+	}();
+
+	exports.default = Model;
 
 /***/ },
 /* 58 */
@@ -2980,6 +3013,8 @@ webpackJsonp([1],[
 
 	var _Model = __webpack_require__(57);
 
+	var _Model2 = _interopRequireDefault(_Model);
+
 	var _View = __webpack_require__(77);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -2993,7 +3028,8 @@ webpackJsonp([1],[
 	 */
 	app.Renderer.renderReportsGlobal = function () {
 	    var el = document.createElement('div');
-	    var controller = new _Controller2.default(_Model.tasks, _View.view, app.EventBusLocal, _template2.default);
+	    var controller = new _Controller2.default(new _Model2.default(), _View.view, _template2.default);
+	    console.log(controller);
 	    controller.initController(function () {
 	        if (controller.model.data) {
 	            el.innerHTML = (0, _template2.default)({
@@ -3001,6 +3037,7 @@ webpackJsonp([1],[
 	                structure: controller.model.getStruct(controller.model.data)
 	            });
 	        }
+	        //controller.model.
 	        controller.removeEventListeners(el);
 	        controller.setEventListeners(el);
 	        $('.urgency').tips('Go to Timer', true);
@@ -3008,6 +3045,7 @@ webpackJsonp([1],[
 	        $('.drag-task').tips('Move to Daily');
 	        $('.drop-switch').tips('Go to Global List');
 	        $('.sorted-lists-wrapper').accordeon();
+	        app.EventBusLocal.publish('actionResolved');
 	    });
 	    document.getElementById('app-body').appendChild(el);
 	    $('.urgency').tips('Go to Timer', true);
@@ -3059,13 +3097,12 @@ webpackJsonp([1],[
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
-	    function Controller(model, view, eBusLocal, template) {
+	    function Controller(model, view, template) {
 	        _classCallCheck(this, Controller);
 
 	        this.template = template;
 	        this.model = model;
 	        this.view = view;
-	        this.eBusLocal = eBusLocal;
 	        this.listeners = {
 	            editTask: function editTask(e) {
 	                if (e.target.classList.contains('edit-task')) {
@@ -3073,7 +3110,7 @@ webpackJsonp([1],[
 	                }
 	            },
 	            trashDrop: function (e) {
-	                this.eBusLocal.publish('trash-drop', {
+	                app.EventBusLocal.publish('trash-drop', {
 	                    e: e,
 	                    context: this
 	                });
@@ -3087,6 +3124,16 @@ webpackJsonp([1],[
 	        key: 'initController',
 	        value: function initController(callback) {
 	            this.model.patchList(callback);
+	            /*var self = this;
+	            if(this.model.data){
+	                el.innerHTML = self.template({
+	                    data: self.model.data,
+	                    structure: self.model.getStruct(self.model.data)
+	                });
+	            }
+	            this.removeEventListeners(el);
+	            this.setEventListeners(el);*/
+	            //return this;
 	        }
 	    }, {
 	        key: 'setEventListeners',
@@ -3183,6 +3230,34 @@ webpackJsonp([1],[
 
 	var _controller2 = _interopRequireDefault(_controller);
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Method which show timer on page
+	 *
+	 * @memberOf app.Renderer
+	 * @instance
+	 * @namespace Timer
+	 */
+	app.Renderer.renderTimer = function (target) {
+	    var helpers = app.Renderer.helpers;
+	    !helpers.isEmptyObj(app.User.settings) ? _controller2.default.preinit(target) : app.User.getSettings(app.User.currentLogin, function () {
+	        _controller2.default.preinit(target);
+	    });
+	};
+
+/***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _view = __webpack_require__(80);
 
 	var _view2 = _interopRequireDefault(_view);
@@ -3199,35 +3274,6 @@ webpackJsonp([1],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * Method which show timer on page
-	 *
-	 * @memberOf app.Renderer
-	 * @instance
-	 * @namespace Timer
-	 */
-	app.Renderer.renderTimer = function (target) {
-	    var timer = document.createElement('div');
-	    timer.key = target.getAttribute('key');
-	    var cycle = app.User.dataSnapShot[timer.key].cycle || undefined;
-	    var model = new _model.StartModel(timer);
-	    var view = new _view2.default(model, _template2.default, app.Renderer.helpers.getCss(_style2.default));
-	    var controller = new _controller2.default(view, model);
-	    controller.init(cycle);
-	};
-
-/***/ },
-/* 79 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
@@ -3242,38 +3288,31 @@ webpackJsonp([1],[
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init(cycle) {
+	            var _this = this;
+
 	            var EventBusLocalTimer = app.EventBusLocalTimer;
 	            var context = this;
-	            this.view.cycle = this.generateCycle(cycle);
 	            EventBusLocalTimer.timer = this.view.timer;
 	            EventBusLocalTimer.subscribe('timer-progress', function (type) {
 	                context.model = context.model.getNewModel(type);
 	                context.view.model = context.model;
 	                context.view.newCycle();
-	            });
-	            EventBusLocalTimer.subscribe('state-progress', function () {
+	            }).subscribe('state-progress', function () {
 	                context.view.stateProgress();
-	            });
-	            EventBusLocalTimer.subscribe('timer-terminate', function (step) {
+	            }).subscribe('timer-terminate', function (step) {
 	                context.view.timer.count = context.model.time;
 	                context.view.step = step;
 	                context.view.timesOut();
-	            });
-	            EventBusLocalTimer.subscribe('finish-task', function (type) {
+	            }).subscribe('finish-task', function (type) {
 	                app.router.moveTo('task-list');
-	            });
+	            }).subscribe('task-done', function () {});
 	            this.model.elem.addEventListener('click', function (e) {
 	                if (e.target.id === 'addPomodoro') {
-	                    var cycle = context.view.cycle;
-	                    cycle.push('break');
-	                    cycle.push('break-over');
-	                    cycle.push('work');
-	                    var el = document.createElement('li');
-	                    el.classList.add('phase');
-	                    document.getElementsByClassName('phases')[0].insertBefore(el, e.target);
+	                    _this.view.expandCycle(e);
 	                }
 	            });
-	            context.view.startCycle();
+	            this.view.cycle = this.generateCycle(cycle);
+	            this.view.startCycle();
 	        }
 	    }, {
 	        key: 'generateCycle',
@@ -3292,6 +3331,17 @@ webpackJsonp([1],[
 	                cycle.splice(-2, 2);
 	                return cycle;
 	            }
+	        }
+	    }], [{
+	        key: 'preinit',
+	        value: function preinit(target) {
+	            var timer = document.createElement('div');
+	            timer.key = target.getAttribute('key');
+	            var cycle = app.User.dataSnapShot[timer.key].cycle || undefined;
+	            var model = new _model.StartModel(timer);
+	            var view = new _view2.default(model, _template2.default, app.Renderer.helpers.getCss(_style2.default));
+	            var controller = new Controller(view, model);
+	            controller.init(cycle);
 	        }
 	    }]);
 
@@ -3340,6 +3390,7 @@ webpackJsonp([1],[
 	            document.getElementById('app-body').appendChild(this.model.elem);
 	            this.buttonsHolder = 'button-holder-centered';
 	            app.Renderer.renderButtons(this.model.buttonsList, this.buttonsHolder);
+	            $('#addPomodoro').tips('Add pomodoro');
 	        }
 	    }, {
 	        key: 'newCycle',
@@ -3357,6 +3408,27 @@ webpackJsonp([1],[
 	                    timer.timerControlElements[i].style.animationPlayState = 'running';
 	                }
 	                timer.timeout = setInterval(context.timesOut.bind(context), 1000);
+	            }
+	        }
+	    }, {
+	        key: 'expandCycle',
+	        value: function expandCycle(e) {
+	            var self = this;
+	            var cycle = this.cycle;
+	            this.model.estimationBuffer = this.model.estimationBuffer || this.model.estimation++;
+	            this.model.estimationBuffer++;
+	            var estimation = this.model.estimationBuffer;
+	            var cycleList = document.getElementsByClassName('phases')[0];
+	            cycle.push('break');
+	            cycle.push('break-over');
+	            cycle.push('work');
+	            this.model.saveCycle(cycle);
+	            this.model.saveEstimation(estimation);
+	            var el = document.createElement('li');
+	            el.classList.add('phase');
+	            cycleList.insertBefore(el, e.target);
+	            if (estimation === 5) {
+	                cycleList.removeChild(e.target);
 	            }
 	        }
 	    }, {
@@ -3421,6 +3493,7 @@ webpackJsonp([1],[
 	                data: this.model
 	            });
 	            this.model.elem.appendChild(this.css);
+	            $('#addPomodoro').tips('Add pomodoro');
 	        }
 	    }]);
 
@@ -3475,6 +3548,21 @@ webpackJsonp([1],[
 	            var cycleObj = app.Renderer.helpers.arrayToObject(cycle);
 	            app.User.saveData(app.User.currentLogin, '/tasks/' + this.key + '/cycle', cycleObj);
 	        }
+	    }, {
+	        key: 'saveEstimation',
+	        value: function saveEstimation(estimation) {
+	            app.User.saveData(app.User.currentLogin, '/tasks/' + this.key, {
+	                'estimation': 'estimate-' + estimation
+	            });
+	        }
+	    }, {
+	        key: 'cycleIsntEmpty',
+	        value: function cycleIsntEmpty(cycle) {
+	            return cycle.indexOf('work') !== -1;
+	        }
+	    }, {
+	        key: 'endCycle',
+	        value: function endCycle(cycle) {}
 	    }]);
 
 	    return TimerModel;
@@ -3631,7 +3719,11 @@ webpackJsonp([1],[
 	buf.push("<li" + (jade.cls(['phase','phase-' + data.cycle[i]], [null,true])) + "></li>");
 	}
 	}
-	buf.push("<li id=\"addPomodoro\" class=\"button ico-text-button ico-text-button-nocontainer\"></li></ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div" + (jade.cls(['time-wrapper',data.type], [null,true])) + "><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div" + (jade.cls(['timer-inner-circle',data.type], [null,true])) + ">");
+	if(data.estimation < 5)
+	{
+	buf.push("<li id=\"addPomodoro\" class=\"button ico-text-button ico-text-button-nocontainer\"></li>");
+	}
+	buf.push("</ul><div" + (jade.cls(['graph-container',data.category], [null,true])) + "><div class=\"timer-outer-circle category\"><div" + (jade.cls(['time-wrapper',data.type], [null,true])) + "><div class=\"rotator circle set-able\"></div><div class=\"filler circle set-able\"></div><div class=\"mask set-able\"></div></div><div" + (jade.cls(['timer-inner-circle',data.type], [null,true])) + ">");
 	if(data.type === 'start')
 	{
 	buf.push("<div class=\"timer-time\"><p class=\"inner-1\">Lets do it!</p></div>");
@@ -3848,9 +3940,12 @@ webpackJsonp([1],[
 	    var el = document.createElement('div');
 	    el.innerHTML = (0, _template2.default)();
 	    document.body.appendChild(el);
-	    setTimeout(function () {
+	    /*setTimeout(function(){
+	     document.body.removeChild(el);
+	     },2000);*/
+	    app.Renderer.helpers.ifSolvedThen(2, function () {
 	        document.body.removeChild(el);
-	    }, 2000);
+	    });
 	};
 
 /***/ },

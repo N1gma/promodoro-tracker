@@ -95,6 +95,8 @@ webpackJsonp([0],[
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	/**
 	 * memberOf app.Renderer
 	 * @namespace
@@ -169,10 +171,50 @@ webpackJsonp([0],[
 	            }
 	        };
 	    },
-	    isSolved: function isSolved() {
-	        for (var i = 0; i < arguments.length; i++) {
-	            arguments[i].solved = false;
+	    ifSolvedThen: function ifSolvedThen(requiredActions, callback) {
+	        app.EventBusLocal.resolvedCount = 0;
+	        var interval = setInterval(function () {
+	            var currentActions = app.EventBusLocal.resolvedCount;
+	            if (requiredActions <= currentActions || !navigator.onLine) {
+	                console.log(requiredActions);
+	                console.log(currentActions);
+	                app.EventBusLocal.resolvedCount = 0;
+	                callback();
+	                clearInterval(interval);
+	            }
+	        }, 100);
+	        //var result = true;
+	        /*var selfCall = app.Renderer.helpers.ifSolvedThen;
+	        for (var i = 0; i < fns.length; i++) {
+	            if(arguments[i].solved = false){
+	                setTimeout(function(){
+	                    selfCall(fns);
+	                },250)
+	            }
 	        }
+	        action();*/
+	    },
+	    isEmptyObj: function isEmptyObj(obj) {
+	        // null and undefined are "empty"
+	        if (obj == null) return true;
+
+	        // Assume if it has a length property with a non-zero value
+	        // that that property is correct.
+	        if (obj.length > 0) return false;
+	        if (obj.length === 0) return true;
+
+	        // If it isn't an object at this point
+	        // it is empty, but it can't be anything *but* empty
+	        // Is it empty?  Depends on your application.
+	        if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== "object") return true;
+
+	        // Otherwise, does it have any properties of its own?
+	        // Note that this doesn't handle
+	        // toString and valueOf enumeration bugs in IE < 9
+	        for (var key in obj) {
+	            if (hasOwnProperty.call(obj, key)) return false;
+	        }
+	        return true;
 	    }
 	};
 
@@ -205,6 +247,7 @@ webpackJsonp([0],[
 	            this.topics[topic] = [];
 	        }
 	        this.topics[topic].push(listener);
+	        return this;
 	    };
 	    /**
 	     * @memberOf CEventBus
@@ -232,18 +275,14 @@ webpackJsonp([0],[
 	     */
 	    app.EventBus = new CEventBus();
 	    var EventBus = window.app.EventBus;
-	    /*var Renderer = window.app.Renderer;
-	     var User = window.app.User;
-	     var app.EventBusLocal = window.app.app.EventBusLocal;*/
 
 	    EventBus.subscribe('login', function () {
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderLog();
-	    });
-
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('settings', function () {
+	    .subscribe('settings', function () {
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
@@ -266,10 +305,9 @@ webpackJsonp([0],[
 	            }
 	        }];
 	        Renderer.renderButtons(list);
-	    });
-
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('settings-2', function () {
+	    .subscribe('settings-2', function () {
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
@@ -290,16 +328,16 @@ webpackJsonp([0],[
 	            }
 	        }];
 	        Renderer.renderButtons(list);
-	    });
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('reports', function () {
+	    .subscribe('reports', function () {
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderReports();
-	    });
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('taskList', function () {
+	    .subscribe('taskList', function () {
 	        var Renderer = window.app.Renderer;
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeaderDetailed();
@@ -307,35 +345,33 @@ webpackJsonp([0],[
 	        Renderer.renderReportsDaily();
 	        Renderer.renderTitleTaskListGlobal();
 	        Renderer.renderReportsGlobal();
-	    });
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('goToTimer', function (data) {
+	    .subscribe('goToTimer', function (data) {
 	        var Renderer = window.app.Renderer;
 	        app.EventBusLocalTimer.topics = {};
 	        Renderer.clearContent(document.getElementById('app-body'));
 	        Renderer.renderHeader();
 	        Renderer.renderTimer(data);
-	    });
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('waitOverlay', function () {
+	    .subscribe('waitOverlay', function () {
 	        app.Renderer.waitOverlay();
-	    });
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('no-user', function () {
+	    .subscribe('no-user', function () {
 	        app.EventBus.publish('login');
-	    });
+	    })
 	    //----------------------------------
-
-	    EventBus.subscribe('notify', function (opts) {
+	    .subscribe('notify', function (opts) {
 	        if (!opts.singleton) {
 	            app.Renderer.addNotification(opts);
 	        } else {
 	            app.Renderer.addSingletonNotification(opts);
 	        }
-	    });
-
+	    })
 	    //----------------------------------
-	    EventBus.subscribe('initData', function () {
+	    .subscribe('initData', function () {
 	        var User = window.app.User;
 	        User.getData(User.currentLogin, 'tasks', function (value) {
 	            console.log(value);
@@ -391,7 +427,11 @@ webpackJsonp([0],[
 	            var data = database.ref('users/' + account + '/user_settings');
 	            data.on('value', function (snapshot) {
 	                this.settings = snapshot.val();
-	                callback(this.settings);
+	                if (callback) {
+	                    callback(this.settings);
+	                } else {
+	                    return this.settings;
+	                }
 	            }.bind(this));
 	        }
 
@@ -630,6 +670,7 @@ webpackJsonp([0],[
 	        _classCallCheck(this, CEventBusLocal);
 
 	        this.topics = {};
+	        this.resolvedCount = 0;
 	    }
 
 	    /**
@@ -646,6 +687,7 @@ webpackJsonp([0],[
 	                this.topics[topic] = [];
 	            }
 	            this.topics[topic].push(listener);
+	            return this;
 	        }
 
 	        /**
@@ -680,14 +722,15 @@ webpackJsonp([0],[
 	    return CEventBusLocal;
 	}();
 
-	(function () {
+	(function (app) {
 	    /**
 	     * @memberOf app
 	     * @type {CEventBusLocal}
 	     */
 	    app.EventBusLocal = new CEventBusLocal();
-	    var EventBusLocal = window.app.EventBusLocal;
-	    var User = window.app.User;
+	    var EventBusLocal = app.EventBusLocal;
+	    var ifSolvedThen = app.Renderer.helpers.ifSolvedThen;
+	    var User = app.User;
 	    EventBusLocal.subscribe('trash-drop', function (data) {
 	        var e = data.e;
 	        var context = data.context;
@@ -716,9 +759,7 @@ webpackJsonp([0],[
 	            }
 	            console.log(User.trashData);
 	        }
-	    });
-
-	    EventBusLocal.subscribe('trash-check-all', function (dependency) {
+	    }).subscribe('trash-check-all', function (dependency) {
 	        var elems = document.getElementsByClassName('task');
 	        for (var i = 0; i < elems.length; i++) {
 	            if (elems[i].parentNode.classList.contains(dependency)) {
@@ -737,9 +778,7 @@ webpackJsonp([0],[
 	                }
 	            }
 	        }
-	    });
-
-	    EventBusLocal.subscribe('trash-uncheck-all', function (dependency) {
+	    }).subscribe('trash-uncheck-all', function (dependency) {
 	        var elems = document.getElementsByClassName('task');
 	        for (var i = 0; i < elems.length; i++) {
 	            if (elems[i].parentNode.classList.contains(dependency)) {
@@ -759,15 +798,11 @@ webpackJsonp([0],[
 	                }
 	            }
 	        }
-	    });
-
-	    EventBusLocal.subscribe('trash-refresh', function (e) {
+	    }).subscribe('trash-refresh', function (e) {
 	        document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
 	        document.getElementsByClassName('trash-counter')[0].style.display = 'none';
 	        User.trashData = [];
-	    });
-
-	    EventBusLocal.subscribe('trash-on', function (target) {
+	    }).subscribe('trash-on', function (target) {
 	        var tasks = document.getElementsByClassName('task');
 	        target.classList.add('active');
 
@@ -779,9 +814,7 @@ webpackJsonp([0],[
 	        for (i = 0; i < labels.length; i++) {
 	            labels[i].classList.remove('hidden');
 	        }
-	    });
-
-	    EventBusLocal.subscribe('trash-off', function (target) {
+	    }).subscribe('trash-off', function (target) {
 	        var tasks = document.getElementsByClassName('task');
 	        target.classList.remove('active');
 
@@ -792,8 +825,11 @@ webpackJsonp([0],[
 	        for (i = 0; i < labels.length; i++) {
 	            labels[i].classList.add('hidden');
 	        }
+	    }).subscribe('actionResolved', function () {
+	        EventBusLocal.resolvedCount++;
+	        console.log(EventBusLocal.resolvedCount);
 	    });
-	})();
+	})(window.app);
 
 /***/ },
 /* 8 */
@@ -829,6 +865,7 @@ webpackJsonp([0],[
 	                this.topics[topic] = [];
 	            }
 	            this.topics[topic].push(listener);
+	            return this;
 	        }
 
 	        /**
@@ -1225,7 +1262,7 @@ webpackJsonp([0],[
 	                router.resetState().replaceState('login');
 	            }
 	            if (user) {
-	                EventBus.publish('waitOverlay');
+	                app.EventBus.publish('waitOverlay');
 	                User.currentLogin = user.email.slice(0, user.email.search('@'));
 	                var locate = location.pathname.slice(1);
 	                for (var key in router.routes) {
@@ -1247,6 +1284,7 @@ webpackJsonp([0],[
 	};
 
 	document.addEventListener('DOMContentLoaded', function () {
+	    //app.EventBus.publish('waitOverlay');
 	    /**
 	     * @memberOf app
 	     * @type {LoginController}

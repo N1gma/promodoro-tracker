@@ -1,9 +1,8 @@
 export default class Controller {
-    constructor(model, view, eBusLocal, template) {
+    constructor(model, view, template) {
         this.template = template;
         this.model = model;
         this.view = view;
-        this.eBusLocal = eBusLocal;
         this.listeners = {
             editTask: function (e) {
                 if (e.target.classList.contains('edit-task')) {
@@ -11,7 +10,7 @@ export default class Controller {
                 }
             },
             trashDrop: function (e) {
-                this.eBusLocal.publish('trash-drop', {
+                app.EventBusLocal.publish('trash-drop', {
                     e: e,
                     context: this
                 });
@@ -23,6 +22,16 @@ export default class Controller {
 
     initController(callback) {
         this.model.patchList(callback);
+        /*var self = this;
+        if(this.model.data){
+            el.innerHTML = self.template({
+                data: self.model.data,
+                structure: self.model.getStruct(self.model.data)
+            });
+        }
+        this.removeEventListeners(el);
+        this.setEventListeners(el);*/
+        //return this;
     }
 
     setEventListeners(el) {

@@ -1,6 +1,6 @@
 import template from './template.jade';
 import Controller from './Controller';
-import {tasks} from './Model';
+import Model from './../Model';
 
 /**
  * @namespace
@@ -14,7 +14,7 @@ import {tasks} from './Model';
  */
 app.Renderer.renderReportsDaily = function () {
     var el = document.createElement('div');
-    let controller = new Controller(tasks, app.EventBusLocal);
+    let controller = new Controller(new Model(), app.EventBusLocal);
     controller.initController(function () {
         if(controller.model.data){
             el.innerHTML = template({
@@ -24,6 +24,7 @@ app.Renderer.renderReportsDaily = function () {
         }
         controller.removeEventListeners(el);
         controller.setEventListeners(el);
+        app.EventBusLocal.publish('actionResolved');
     });
     document.getElementById('app-body').appendChild(el);
 };

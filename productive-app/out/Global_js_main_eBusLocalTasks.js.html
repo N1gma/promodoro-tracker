@@ -32,6 +32,7 @@
 class CEventBusLocal {
     constructor() {
         this.topics = {};
+        this.resolvedCount = 0;
     }
 
     /**
@@ -44,6 +45,7 @@ class CEventBusLocal {
             this.topics[topic] = [];
         }
         this.topics[topic].push(listener);
+        return this;
     }
 
     /**
@@ -69,22 +71,36 @@ class CEventBusLocal {
     }
 }
 
-(function () {
+(function (app) {
     /**
      * @memberOf app
      * @type {CEventBusLocal}
      */
     app.EventBusLocal = new CEventBusLocal();
-    var EventBusLocal = window.app.EventBusLocal;
-    var User = window.app.User;
-    EventBusLocal.subscribe('trash-drop', function (data) {
-        var e = data.e;
-        var context = data.context;
-        if (e.target.classList.contains('category') &amp;&amp; !e.target.classList.contains('toogled') &amp;&amp; e.target.parentNode.classList.contains('trash')) {
-            e.target.innerHTML = '&amp;#xe910;';
-            e.target.classList.add('toogled');
-            if (context.model.checkTrashBuffer(e.target.parentNode.getAttribute('key'))) {
-                User.trashData.push(e.target.parentNode.getAttribute('key'));
+    var EventBusLocal = app.EventBusLocal;
+    var ifSolvedThen = app.Renderer.helpers.ifSolvedThen;
+    var User = app.User;
+    EventBusLocal
+        .subscribe('trash-drop', function (data) {
+            var e = data.e;
+            var context = data.context;
+            if (e.target.classList.contains('category') &amp;&amp; !e.target.classList.contains('toogled') &amp;&amp; e.target.parentNode.classList.contains('trash')) {
+                e.target.innerHTML = '&amp;#xe910;';
+                e.target.classList.add('toogled');
+                if (context.model.checkTrashBuffer(e.target.parentNode.getAttribute('key'))) {
+                    User.trashData.push(e.target.parentNode.getAttribute('key'));
+                    if (User.trashData.length > 0) {
+                        document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
+                        document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+                    } else {
+                        document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+                    }
+                    console.log(User.trashData);
+                }
+            } else if (e.target.classList.contains('toogled') &amp;&amp; e.target.parentNode.classList.contains('trash')) {
+                e.target.innerHTML = '&amp;#xe912;';
+                e.target.classList.remove('toogled');
+                User.trashData.splice(User.trashData.indexOf(e.target.parentNode.getAttribute('key')), 1);
                 if (User.trashData.length > 0) {
                     document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
                     document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
@@ -93,98 +109,84 @@ class CEventBusLocal {
                 }
                 console.log(User.trashData);
             }
-        } else if (e.target.classList.contains('toogled') &amp;&amp; e.target.parentNode.classList.contains('trash')) {
-            e.target.innerHTML = '&amp;#xe912;';
-            e.target.classList.remove('toogled');
-            User.trashData.splice(User.trashData.indexOf(e.target.parentNode.getAttribute('key')), 1);
-            if (User.trashData.length > 0) {
-                document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
-                document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
-            } else {
-                document.getElementsByClassName('trash-counter')[0].style.display = 'none';
-            }
-            console.log(User.trashData);
-        }
-    });
-
-    EventBusLocal.subscribe('trash-check-all', function (dependency) {
-        var elems = document.getElementsByClassName('task');
-        for (var i = 0; i &lt; elems.length; i++) {
-            if (elems[i].parentNode.classList.contains(dependency)) {
-                elems[i].firstElementChild.innerHTML = '&amp;#xe910;';
-                elems[i].firstElementChild.classList.add('toogled');
-                var key = elems[i].getAttribute('key');
-                if (User.trashData.indexOf(key) === -1) {
-                    User.trashData.push(key);
-                    if (User.trashData.length > 0) {
-                        document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
-                        document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
-                    } else {
-                        document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+        })
+        .subscribe('trash-check-all', function (dependency) {
+            var elems = document.getElementsByClassName('task');
+            for (var i = 0; i &lt; elems.length; i++) {
+                if (elems[i].parentNode.classList.contains(dependency)) {
+                    elems[i].firstElementChild.innerHTML = '&amp;#xe910;';
+                    elems[i].firstElementChild.classList.add('toogled');
+                    var key = elems[i].getAttribute('key');
+                    if (User.trashData.indexOf(key) === -1) {
+                        User.trashData.push(key);
+                        if (User.trashData.length > 0) {
+                            document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
+                            document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+                        } else {
+                            document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+                        }
+                        console.log(User.trashData);
                     }
-                    console.log(User.trashData);
                 }
             }
-        }
-    });
-
-    EventBusLocal.subscribe('trash-uncheck-all', function (dependency) {
-        var elems = document.getElementsByClassName('task');
-        for (var i = 0; i &lt; elems.length; i++) {
-            if (elems[i].parentNode.classList.contains(dependency)) {
-                elems[i].firstElementChild.innerHTML = '&amp;#xe912;';
-                elems[i].firstElementChild.classList.remove('toogled');
-                var key = elems[i].getAttribute('key');
-                console.log(key);
-                if (User.trashData.indexOf(key) !== -1) {
-                    User.trashData.splice(User.trashData.indexOf(key), 1);
-                    if (User.trashData.length > 0) {
-                        document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
-                        document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
-                    } else {
-                        document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+        })
+        .subscribe('trash-uncheck-all', function (dependency) {
+            var elems = document.getElementsByClassName('task');
+            for (var i = 0; i &lt; elems.length; i++) {
+                if (elems[i].parentNode.classList.contains(dependency)) {
+                    elems[i].firstElementChild.innerHTML = '&amp;#xe912;';
+                    elems[i].firstElementChild.classList.remove('toogled');
+                    var key = elems[i].getAttribute('key');
+                    console.log(key);
+                    if (User.trashData.indexOf(key) !== -1) {
+                        User.trashData.splice(User.trashData.indexOf(key), 1);
+                        if (User.trashData.length > 0) {
+                            document.getElementsByClassName('trash-counter')[0].style.display = 'inline-block';
+                            document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+                        } else {
+                            document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+                        }
+                        console.log(User.trashData);
                     }
-                    console.log(User.trashData);
                 }
             }
-        }
-    });
+        })
+        .subscribe('trash-refresh', function (e) {
+            document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
+            document.getElementsByClassName('trash-counter')[0].style.display = 'none';
+            User.trashData = [];
+        })
+        .subscribe('trash-on', function (target) {
+            var tasks = document.getElementsByClassName('task');
+            target.classList.add('active');
 
-    EventBusLocal.subscribe('trash-refresh', function (e) {
-        document.getElementsByClassName('trash-counter')[0].innerHTML = User.trashData.length;
-        document.getElementsByClassName('trash-counter')[0].style.display = 'none';
-        User.trashData = [];
-    });
+            for (var i = 0; i &lt; tasks.length; i++) {
+                tasks[i].classList.add('trash');
+            }
 
+            var labels = document.getElementsByClassName('left-side');
+            for (i = 0; i &lt; labels.length; i++) {
+                labels[i].classList.remove('hidden');
 
-    EventBusLocal.subscribe('trash-on', function (target) {
-        var tasks = document.getElementsByClassName('task');
-        target.classList.add('active');
+            }
+        })
+        .subscribe('trash-off', function (target) {
+            var tasks = document.getElementsByClassName('task');
+            target.classList.remove('active');
 
-        for (var i = 0; i &lt; tasks.length; i++) {
-            tasks[i].classList.add('trash');
-        }
-
-        var labels = document.getElementsByClassName('left-side');
-        for (i = 0; i &lt; labels.length; i++) {
-            labels[i].classList.remove('hidden');
-
-        }
-    });
-
-    EventBusLocal.subscribe('trash-off', function (target) {
-        var tasks = document.getElementsByClassName('task');
-        target.classList.remove('active');
-
-        for (var i = 0; i &lt; tasks.length; i++) {
-            tasks[i].classList.remove('trash');
-        }
-        var labels = document.getElementsByClassName('left-side');
-        for (i = 0; i &lt; labels.length; i++) {
-            labels[i].classList.add('hidden');
-        }
-    });
-}());
+            for (var i = 0; i &lt; tasks.length; i++) {
+                tasks[i].classList.remove('trash');
+            }
+            var labels = document.getElementsByClassName('left-side');
+            for (i = 0; i &lt; labels.length; i++) {
+                labels[i].classList.add('hidden');
+            }
+        })
+        .subscribe('actionResolved', function () {
+            EventBusLocal.resolvedCount++;
+            console.log(EventBusLocal.resolvedCount);
+        })
+}(window.app));
 
 
 
@@ -198,13 +200,13 @@ class CEventBusLocal {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="loginView.html">loginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.view.html">view</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.view.html">view</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.Controller.html">Controller</a></li><li><a href="@memberOf%2520app.Renderer.ModalEditTask.Controller.html">Controller</a></li><li><a href="app.Renderer.HeaderDetailed_Controller.html">Controller</a></li><li><a href="CEventBus.html">CEventBus</a></li><li><a href="CEventBusLocal.html">CEventBusLocal</a></li><li><a href="CEventBusLocalTimer.html">CEventBusLocalTimer</a></li><li><a href="DailyList.Controller.html">Controller</a></li><li><a href="LoginController.html">LoginController</a></li><li><a href="LoginView.html">LoginView</a></li><li><a href="Notifications.Controller.html">Controller</a></li><li><a href="Routes.html">Routes</a></li><li><a href="UserClass.html">UserClass</a></li></ul><h3>Namespaces</h3><ul><li><a href="@memberOf%2520app.Renderer.ModalAddTask.View.html">View</a></li><li><a href="app.html">app</a></li><li><a href="app.Renderer.html">Renderer</a></li><li><a href="app.Renderer.Header.html">Header</a></li><li><a href="app.Renderer.HeaderDetailed.html">HeaderDetailed</a></li><li><a href="app.Renderer.helpers.html">helpers</a></li><li><a href="app.Renderer.ModalAddTask.html">ModalAddTask</a></li><li><a href="app.Renderer.ModalEditTask.html">ModalEditTask</a></li><li><a href="app.Renderer.Notifications.html">Notifications</a></li><li><a href="app.Renderer.Reports.html">Reports</a></li><li><a href="app.Renderer.SettingsCategories.html">SettingsCategories</a></li><li><a href="app.Renderer.SettingsPomodoros.html">SettingsPomodoros</a></li><li><a href="app.Renderer_GlobalList.html">GlobalList</a></li><li><a href="app.Renderer_globalListTitle.html">globalListTitle</a></li><li><a href="app.Renderer_taskListTitle.html">taskListTitle</a></li><li><a href="app.Renderer_Timer.html">Timer</a></li><li><a href="ModalEditTask.View.html">View</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 08 2017 20:06:37 GMT+0200 (Финляндия (зима))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Feb 07 2017 18:58:25 GMT+0200 (FLE Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
